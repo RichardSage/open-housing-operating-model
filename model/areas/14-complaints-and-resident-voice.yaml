@@ -89,3 +89,23 @@ services:
     name: Log MP and councillor enquiries
   - code: "14.8.2"
     name: Respond to member enquiries
+- code: "14.9"
+  name: Tenant access to information (STAIRs)
+  notes: Request handling is often supported by information governance (22.3).
+  references:
+  - https://www.housing-ombudsman.org.uk/?p=173894
+  activities:
+  - code: "14.9.1"
+    name: Maintain and publish the information publication scheme
+  - code: "14.9.2"
+    name: Receive, log and acknowledge tenant information requests
+  - code: "14.9.3"
+    name: Locate and collate requested information
+  - code: "14.9.4"
+    name: Assess requests against refusal grounds
+  - code: "14.9.5"
+    name: Redact and issue responses within 30 days
+  - code: "14.9.6"
+    name: Review challenges to information decisions
+  - code: "14.9.7"
+    name: Report information request volumes and timeliness
