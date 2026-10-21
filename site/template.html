@@ -176,7 +176,7 @@ const dc = d => d ? 'enab' : 'homes';
 const nAct = a => a.s.reduce((m, s) => m + s.a.length, 0);
 const NS = D.areas.reduce((n, a) => n + a.s.length, 0), NA = D.areas.reduce((n, a) => n + nAct(a), 0);
 $('#ver').textContent = D.version;
-if (D.repo) { $('#links').insertAdjacentHTML('beforeend', `<a class="alt" href="${esc(D.repo)}">Contribute on GitHub</a>`); $('#contrib').insertAdjacentHTML('beforeend', ` <a href="${esc(D.repo)}/issues/new/choose">Suggest a change</a> or <a href="${esc(D.repo)}">read how to contribute</a>.`); }
+if (D.repo) { $('#links').insertAdjacentHTML('beforeend', `<a class="alt" href="${esc(D.repo)}">Contribute on GitHub</a>`); $('#contrib').insertAdjacentHTML('beforeend', ` <a href="${esc(D.repo)}/issues/new/choose">Suggest a change</a> or <a href="${esc(D.repo)}/blob/main/CONTRIBUTING.md">read how to contribute</a>.`); }
 $('#stats').innerHTML = [[D.domains.length, 'domains'], [D.areas.length, 'service areas'], [NS, 'services'], [NA, 'activities']].map(([n, l]) => `<div><span class="num">${n}</span><span>${l}</span></div>`).join('');
 $('#cap1').textContent = `${D.domains.length} domains · ${D.areas.length} areas · ${NS} services · ${NA} activities`;
 const tip = $('#tip');
