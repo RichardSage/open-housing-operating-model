@@ -29,7 +29,7 @@ services:
   name: Information governance
   activities:
   - code: "22.3.1"
-    name: Respond to subject access and FOI requests
+    name: Respond to subject access requests
   - code: "22.3.2"
     name: Manage data breaches
   - code: "22.3.3"
