@@ -1,0 +1,8 @@
+# The two top-level domains. Service area files refer to these by id.
+domains:
+- id: homes-and-customers
+  name: Homes & Customers
+  description: Front-line delivery to residents and their homes
+- id: business-and-enabling
+  name: Business & Enabling
+  description: Corporate functions that run and support the organisation

@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this model, please credit it as below."
+title: "Open Housing Operating Model"
+type: dataset
+version: "0.1.0"
+date-released: "2026-10-21"
+license: CC-BY-4.0
+authors:
+  - name: "Open Housing Operating Model contributors"
+abstract: "An open map of the work of a housing association in England: 2 domains, 22 service areas, 173 services and 643 activities."
+keywords:
+  - social housing
+  - housing associations
+  - operating model
+  - service model

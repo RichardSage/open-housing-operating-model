@@ -1,0 +1,77 @@
+# Open Housing Operating Model - service area file
+# Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
+code: "15"
+name: Development & New Supply
+domain: homes-and-customers
+description: Building and acquiring new homes
+services:
+- code: "15.1"
+  name: Land & sites
+  activities:
+  - code: "15.1.1"
+    name: Identify development sites
+  - code: "15.1.2"
+    name: Carry out site due diligence
+  - code: "15.1.3"
+    name: Negotiate land acquisitions
+- code: "15.2"
+  name: Scheme appraisal
+  activities:
+  - code: "15.2.1"
+    name: Build financial appraisals
+  - code: "15.2.2"
+    name: Seek investment committee approval
+  - code: "15.2.3"
+    name: Manage scheme budgets
+- code: "15.3"
+  name: Planning & design
+  activities:
+  - code: "15.3.1"
+    name: Appoint design teams
+  - code: "15.3.2"
+    name: Submit planning applications
+  - code: "15.3.3"
+    name: Develop employer's requirements
+- code: "15.4"
+  name: Grant funding
+  activities:
+  - code: "15.4.1"
+    name: Bid for grant funding
+  - code: "15.4.2"
+    name: Manage grant claims and milestones
+  - code: "15.4.3"
+    name: Prepare for grant compliance audits
+- code: "15.5"
+  name: Construction
+  activities:
+  - code: "15.5.1"
+    name: Procure build contractors
+  - code: "15.5.2"
+    name: Manage construction contracts
+  - code: "15.5.3"
+    name: Monitor build quality through clerk of works
+- code: "15.6"
+  name: Section 106 & partnerships
+  activities:
+  - code: "15.6.1"
+    name: Negotiate Section 106 package deals
+  - code: "15.6.2"
+    name: Manage joint ventures
+- code: "15.7"
+  name: Handover & defects
+  activities:
+  - code: "15.7.1"
+    name: Manage practical completion and handover
+  - code: "15.7.2"
+    name: Manage defects liability period
+  - code: "15.7.3"
+    name: Manage new home warranty claims
+  - code: "15.7.4"
+    name: Prepare new homes for first let
+- code: "15.8"
+  name: Development performance
+  activities:
+  - code: "15.8.1"
+    name: Report development pipeline
+  - code: "15.8.2"
+    name: Carry out post-occupancy evaluation

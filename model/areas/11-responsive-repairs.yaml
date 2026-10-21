@@ -1,0 +1,110 @@
+# Open Housing Operating Model - service area file
+# Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
+code: "11"
+name: Responsive Repairs
+domain: homes-and-customers
+description: Day-to-day repairs, damp and mould, and disrepair
+services:
+- code: "11.1"
+  name: Repairs reporting & diagnosis
+  activities:
+  - code: "11.1.1"
+    name: Take repair reports
+  - code: "11.1.2"
+    name: Diagnose repair and determine trade
+  - code: "11.1.3"
+    name: Assign priority and target time
+  - code: "11.1.4"
+    name: Confirm landlord or tenant responsibility
+  - code: "11.1.5"
+    name: Capture photos and video of reported repairs
+- code: "11.2"
+  name: Scheduling & appointments
+  activities:
+  - code: "11.2.1"
+    name: Book repair appointments
+  - code: "11.2.2"
+    name: Optimise operative schedules
+  - code: "11.2.3"
+    name: Send appointment reminders
+  - code: "11.2.4"
+    name: Rearrange missed appointments
+- code: "11.3"
+  name: Repair delivery
+  activities:
+  - code: "11.3.1"
+    name: Attend and complete repairs
+  - code: "11.3.2"
+    name: Order materials and manage van stock
+  - code: "11.3.3"
+    name: Raise follow-on works
+  - code: "11.3.4"
+    name: Record job completion
+  - code: "11.3.5"
+    name: Monitor operative productivity
+- code: "11.4"
+  name: Emergency repairs
+  activities:
+  - code: "11.4.1"
+    name: Make safe emergency repairs
+  - code: "11.4.2"
+    name: Monitor emergency response times
+  - code: "11.4.3"
+    name: Manage major incidents such as floods and fires
+  - code: "11.4.4"
+    name: Arrange temporary accommodation during major incidents
+- code: "11.5"
+  name: Damp & mould
+  activities:
+  - code: "11.5.1"
+    name: Triage damp and mould reports
+  - code: "11.5.2"
+    name: Inspect and diagnose cause
+  - code: "11.5.3"
+    name: Complete remedial works
+  - code: "11.5.4"
+    name: Monitor against Awaab's Law timescales
+  - code: "11.5.5"
+    name: Keep residents updated throughout damp cases
+- code: "11.6"
+  name: Disrepair claims
+  activities:
+  - code: "11.6.1"
+    name: Receive pre-action protocol letters
+  - code: "11.6.2"
+    name: Inspect and schedule disrepair works
+  - code: "11.6.3"
+    name: Manage claims to settlement
+  - code: "11.6.4"
+    name: Analyse root causes of disrepair claims
+- code: "11.7"
+  name: Repairs contractor management
+  activities:
+  - code: "11.7.1"
+    name: Issue works orders to contractors
+  - code: "11.7.2"
+    name: Validate contractor invoices against schedule of rates
+  - code: "11.7.3"
+    name: Monitor contractor KPIs
+  - code: "11.7.4"
+    name: Approve subcontractors
+- code: "11.8"
+  name: Repairs quality
+  activities:
+  - code: "11.8.1"
+    name: Carry out post-inspections
+  - code: "11.8.2"
+    name: Manage recalls and right-first-time
+  - code: "11.8.3"
+    name: Collect repairs satisfaction
+  - code: "11.8.4"
+    name: Analyse repeat repairs
+- code: "11.9"
+  name: Rechargeable repairs
+  activities:
+  - code: "11.9.1"
+    name: Identify rechargeable repairs
+  - code: "11.9.2"
+    name: Calculate and raise recharges
+  - code: "11.9.3"
+    name: Recover recharge debts

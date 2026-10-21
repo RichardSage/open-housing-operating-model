@@ -1,0 +1,104 @@
+# Open Housing Operating Model - service area file
+# Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
+code: "13"
+name: Asset Management & Investment
+domain: homes-and-customers
+description: Knowing the stock and investing in it over 30 years
+services:
+- code: "13.1"
+  name: Stock condition
+  activities:
+  - code: "13.1.1"
+    name: Plan stock condition surveys
+  - code: "13.1.2"
+    name: Carry out stock condition surveys
+  - code: "13.1.3"
+    name: Validate and load survey data
+  - code: "13.1.4"
+    name: Commission specialist structural surveys
+- code: "13.2"
+  name: Asset data
+  activities:
+  - code: "13.2.1"
+    name: Maintain asset register and attributes
+  - code: "13.2.2"
+    name: Maintain component lifecycle data
+  - code: "13.2.3"
+    name: Maintain property hierarchy
+  - code: "13.2.4"
+    name: Monitor property data quality
+- code: "13.3"
+  name: Investment planning
+  activities:
+  - code: "13.3.1"
+    name: Develop 30-year investment plan
+  - code: "13.3.2"
+    name: Prioritise investment programmes
+  - code: "13.3.3"
+    name: Model investment scenarios
+  - code: "13.3.4"
+    name: Align investment plan with financial plan
+- code: "13.4"
+  name: Planned works
+  activities:
+  - code: "13.4.1"
+    name: Programme planned component replacements
+  - code: "13.4.2"
+    name: Consult residents on planned works
+  - code: "13.4.3"
+    name: Manage planned works contractors
+  - code: "13.4.4"
+    name: Hand over completed planned works
+  - code: "13.4.5"
+    name: Carry out pre-works surveys
+- code: "13.5"
+  name: Cyclical maintenance
+  activities:
+  - code: "13.5.1"
+    name: Schedule cyclical decorations
+  - code: "13.5.2"
+    name: Schedule gutter clearance and roof inspections
+- code: "13.6"
+  name: Decarbonisation & energy
+  activities:
+  - code: "13.6.1"
+    name: Assess energy performance
+  - code: "13.6.2"
+    name: Plan retrofit programmes
+  - code: "13.6.3"
+    name: Bid for decarbonisation funding
+  - code: "13.6.4"
+    name: Monitor post-retrofit performance
+  - code: "13.6.5"
+    name: Engage residents on retrofit
+- code: "13.7"
+  name: Asset strategy
+  activities:
+  - code: "13.7.1"
+    name: Evaluate asset performance
+  - code: "13.7.2"
+    name: Identify homes for disposal or regeneration
+  - code: "13.7.3"
+    name: Maintain asset management strategy
+  - code: "13.7.4"
+    name: Carry out option appraisals for poor-performing homes
+- code: "13.8"
+  name: Regeneration
+  activities:
+  - code: "13.8.1"
+    name: Develop regeneration masterplans
+  - code: "13.8.2"
+    name: Consult residents on regeneration
+  - code: "13.8.3"
+    name: Manage decanting and rehousing
+  - code: "13.8.4"
+    name: Manage leaseholder buybacks
+- code: "13.9"
+  name: Acquisitions & disposals
+  activities:
+  - code: "13.9.1"
+    name: Appraise stock acquisitions
+  - code: "13.9.2"
+    name: Manage property disposals
+  - code: "13.9.3"
+    name: Manage stock transfers

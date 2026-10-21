@@ -1,0 +1,81 @@
+# Open Housing Operating Model - service area file
+# Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
+code: "16"
+name: Governance, Regulation & Risk
+domain: business-and-enabling
+description: Board, regulator, risk and assurance
+services:
+- code: "16.1"
+  name: Board governance
+  activities:
+  - code: "16.1.1"
+    name: Plan board and committee cycles
+  - code: "16.1.2"
+    name: Prepare and circulate board papers
+  - code: "16.1.3"
+    name: Minute meetings and track actions
+  - code: "16.1.4"
+    name: Recruit and appraise board members
+- code: "16.2"
+  name: Regulatory compliance
+  activities:
+  - code: "16.2.1"
+    name: Self-assess against regulatory standards
+  - code: "16.2.2"
+    name: Prepare for regulatory inspection
+  - code: "16.2.3"
+    name: Submit regulatory returns
+  - code: "16.2.4"
+    name: Maintain regulatory compliance register
+- code: "16.3"
+  name: Risk management
+  activities:
+  - code: "16.3.1"
+    name: Maintain strategic and operational risk registers
+  - code: "16.3.2"
+    name: Run risk workshops
+  - code: "16.3.3"
+    name: Report risk to audit committee
+- code: "16.4"
+  name: Internal audit
+  activities:
+  - code: "16.4.1"
+    name: Agree internal audit plan
+  - code: "16.4.2"
+    name: Coordinate audits
+  - code: "16.4.3"
+    name: Track audit actions
+- code: "16.5"
+  name: Assurance framework
+  activities:
+  - code: "16.5.1"
+    name: Map assurance across the three lines
+  - code: "16.5.2"
+    name: Report assurance to board
+- code: "16.6"
+  name: Code of governance
+  activities:
+  - code: "16.6.1"
+    name: Assess against the code of governance
+  - code: "16.6.2"
+    name: Maintain standing orders and delegations
+  - code: "16.6.3"
+    name: Manage declarations of interest
+- code: "16.7"
+  name: Company secretariat
+  activities:
+  - code: "16.7.1"
+    name: Maintain statutory registers
+  - code: "16.7.2"
+    name: File statutory returns
+  - code: "16.7.3"
+    name: Manage group structure and subsidiaries
+- code: "16.8"
+  name: Fraud & whistleblowing
+  activities:
+  - code: "16.8.1"
+    name: Investigate whistleblowing concerns
+  - code: "16.8.2"
+    name: Maintain fraud register
+  - code: "16.8.3"
+    name: Report fraud to the regulator

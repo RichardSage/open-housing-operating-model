@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Ask a question or start a discussion
+    url: ../../discussions
+    about: For broader ideas, such as new layers, regional versions or how to use the model.

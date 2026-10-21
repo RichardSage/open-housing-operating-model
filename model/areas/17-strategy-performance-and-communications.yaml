@@ -1,0 +1,74 @@
+# Open Housing Operating Model - service area file
+# Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
+code: "17"
+name: Strategy, Performance & Communications
+domain: business-and-enabling
+description: Direction, performance, change and comms
+services:
+- code: "17.1"
+  name: Corporate strategy
+  activities:
+  - code: "17.1.1"
+    name: Develop corporate strategy
+  - code: "17.1.2"
+    name: Prepare annual business plan
+  - code: "17.1.3"
+    name: Develop directorate service plans
+- code: "17.2"
+  name: Performance management
+  activities:
+  - code: "17.2.1"
+    name: Define KPIs
+  - code: "17.2.2"
+    name: Produce performance reports
+  - code: "17.2.3"
+    name: Run performance reviews
+  - code: "17.2.4"
+    name: Benchmark against peers
+- code: "17.3"
+  name: Business intelligence
+  activities:
+  - code: "17.3.1"
+    name: Maintain reporting dashboards
+  - code: "17.3.2"
+    name: Analyse customer and stock data
+  - code: "17.3.3"
+    name: Produce insight reports
+- code: "17.4"
+  name: Value for money
+  activities:
+  - code: "17.4.1"
+    name: Produce VfM metrics
+  - code: "17.4.2"
+    name: Prepare VfM statement
+  - code: "17.4.3"
+    name: Identify efficiency opportunities
+- code: "17.5"
+  name: Change & transformation
+  activities:
+  - code: "17.5.1"
+    name: Manage transformation portfolio
+  - code: "17.5.2"
+    name: Run business case process
+  - code: "17.5.3"
+    name: Track benefits realisation
+- code: "17.6"
+  name: Communications
+  activities:
+  - code: "17.6.1"
+    name: Produce resident newsletters and communications
+  - code: "17.6.2"
+    name: Manage website content
+  - code: "17.6.3"
+    name: Manage social media
+  - code: "17.6.4"
+    name: Run internal communications
+- code: "17.7"
+  name: Media & public affairs
+  activities:
+  - code: "17.7.1"
+    name: Respond to media enquiries
+  - code: "17.7.2"
+    name: Manage reputational incidents
+  - code: "17.7.3"
+    name: Engage stakeholders and politicians

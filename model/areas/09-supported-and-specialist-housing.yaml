@@ -1,0 +1,80 @@
+# Open Housing Operating Model - service area file
+# Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
+code: "09"
+name: Supported & Specialist Housing
+domain: homes-and-customers
+description: Older people's, supported and extra care housing
+services:
+- code: "09.1"
+  name: Retirement housing
+  activities:
+  - code: "09.1.1"
+    name: Carry out wellbeing checks
+  - code: "09.1.2"
+    name: Manage scheme communal facilities
+  - code: "09.1.3"
+    name: Run social activities
+  - code: "09.1.4"
+    name: Carry out scheme health and safety checks
+- code: "09.2"
+  name: Supported housing
+  activities:
+  - code: "09.2.1"
+    name: Manage referrals to supported schemes
+  - code: "09.2.2"
+    name: Deliver key working and support plans
+  - code: "09.2.3"
+    name: Plan move-on
+  - code: "09.2.4"
+    name: Assess referral risk and suitability
+- code: "09.3"
+  name: Commissioned support contracts
+  activities:
+  - code: "09.3.1"
+    name: Manage commissioned support contracts
+  - code: "09.3.2"
+    name: Report outcomes to commissioners
+  - code: "09.3.3"
+    name: Bid for support contracts
+- code: "09.4"
+  name: Telecare & alarms
+  activities:
+  - code: "09.4.1"
+    name: Monitor alarm calls
+  - code: "09.4.2"
+    name: Install and maintain telecare equipment
+  - code: "09.4.3"
+    name: Respond to alarm activations
+  - code: "09.4.4"
+    name: Migrate alarm equipment to digital lines
+- code: "09.5"
+  name: Extra care
+  activities:
+  - code: "09.5.1"
+    name: Coordinate with care providers
+  - code: "09.5.2"
+    name: Manage extra care allocations
+  - code: "09.5.3"
+    name: Manage care and support charges
+  - code: "09.5.4"
+    name: Review care quality with providers
+- code: "09.6"
+  name: Managing agents
+  activities:
+  - code: "09.6.1"
+    name: Oversee managing agents
+  - code: "09.6.2"
+    name: Audit managing agent compliance
+  - code: "09.6.3"
+    name: Manage leases with support providers
+- code: "09.7"
+  name: Exempt accommodation
+  activities:
+  - code: "09.7.1"
+    name: Evidence enhanced Housing Benefit claims
+  - code: "09.7.2"
+    name: Maintain exempt accommodation standards
+  - code: "09.7.3"
+    name: Report to local authorities
+  - code: "09.7.4"
+    name: Evidence the support provided

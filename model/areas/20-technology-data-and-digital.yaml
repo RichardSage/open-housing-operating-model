@@ -1,0 +1,81 @@
+# Open Housing Operating Model - service area file
+# Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
+code: "20"
+name: Technology, Data & Digital
+domain: business-and-enabling
+description: Systems, data, security and digital services
+services:
+- code: "20.1"
+  name: IT service desk
+  activities:
+  - code: "20.1.1"
+    name: Log and resolve IT tickets
+  - code: "20.1.2"
+    name: Manage user accounts and access
+  - code: "20.1.3"
+    name: Manage devices and equipment
+- code: "20.2"
+  name: Infrastructure
+  activities:
+  - code: "20.2.1"
+    name: Manage networks and hosting
+  - code: "20.2.2"
+    name: Manage backups and disaster recovery
+  - code: "20.2.3"
+    name: Monitor system availability
+- code: "20.3"
+  name: Cyber security
+  activities:
+  - code: "20.3.1"
+    name: Monitor security threats
+  - code: "20.3.2"
+    name: Run security awareness training
+  - code: "20.3.3"
+    name: Manage patching and vulnerabilities
+  - code: "20.3.4"
+    name: Respond to cyber incidents
+- code: "20.4"
+  name: Business applications
+  activities:
+  - code: "20.4.1"
+    name: Administer the housing management system
+  - code: "20.4.2"
+    name: Manage system configuration and upgrades
+  - code: "20.4.3"
+    name: Manage application suppliers
+- code: "20.5"
+  name: Data management
+  activities:
+  - code: "20.5.1"
+    name: Maintain data standards
+  - code: "20.5.2"
+    name: Cleanse and validate data
+  - code: "20.5.3"
+    name: Manage master data for properties and people
+- code: "20.6"
+  name: Integration & architecture
+  activities:
+  - code: "20.6.1"
+    name: Maintain system integrations
+  - code: "20.6.2"
+    name: Maintain enterprise architecture
+  - code: "20.6.3"
+    name: Assess new technology
+- code: "20.7"
+  name: Digital delivery
+  activities:
+  - code: "20.7.1"
+    name: Gather digital requirements
+  - code: "20.7.2"
+    name: Design and build digital services
+  - code: "20.7.3"
+    name: Test and release changes
+- code: "20.8"
+  name: IT strategy
+  activities:
+  - code: "20.8.1"
+    name: Maintain IT roadmap
+  - code: "20.8.2"
+    name: Manage software licences
+  - code: "20.8.3"
+    name: Manage IT budget

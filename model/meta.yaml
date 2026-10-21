@@ -1,0 +1,7 @@
+name: Open Housing Operating Model
+version: "0.1.0"
+released: "2026-10-21"
+licence: CC-BY-4.0
+scope: A generic housing association in England
+# Set this once the repository exists, e.g. https://github.com/your-name/open-housing-operating-model
+repo_url: ""

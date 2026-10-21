@@ -1,0 +1,91 @@
+# Open Housing Operating Model - service area file
+# Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
+code: "01"
+name: Customer Contact & Access
+domain: homes-and-customers
+description: How residents reach the organisation and get enquiries resolved
+services:
+- code: "01.1"
+  name: Contact centre
+  activities:
+  - code: "01.1.1"
+    name: Answer and triage inbound calls
+  - code: "01.1.2"
+    name: Log and route service requests
+  - code: "01.1.3"
+    name: Resolve enquiries at first point of contact
+  - code: "01.1.4"
+    name: Manage call-back and missed contact queues
+  - code: "01.1.5"
+    name: Forecast call volumes and staffing
+- code: "01.2"
+  name: Digital self-service
+  activities:
+  - code: "01.2.1"
+    name: Manage customer portal registration and verification
+  - code: "01.2.2"
+    name: Monitor and respond to web chat and messaging
+  - code: "01.2.3"
+    name: Maintain online forms and self-service content
+  - code: "01.2.4"
+    name: Analyse portal usage and drop-off
+- code: "01.3"
+  name: Written correspondence
+  activities:
+  - code: "01.3.1"
+    name: Triage the shared mailbox
+  - code: "01.3.2"
+    name: Draft and send responses to written enquiries
+  - code: "01.3.3"
+    name: Track correspondence against response targets
+  - code: "01.3.4"
+    name: Scan and index incoming documents
+- code: "01.4"
+  name: Customer records
+  activities:
+  - code: "01.4.1"
+    name: Verify identity of customers and representatives
+  - code: "01.4.2"
+    name: Maintain household and contact records
+  - code: "01.4.3"
+    name: Record vulnerabilities and reasonable adjustments
+  - code: "01.4.4"
+    name: Manage consent and communication preferences
+- code: "01.5"
+  name: Face-to-face services
+  activities:
+  - code: "01.5.1"
+    name: Run reception and drop-in sessions
+  - code: "01.5.2"
+    name: Book appointments with specialist officers
+  - code: "01.5.3"
+    name: Process post and documents received
+  - code: "01.5.4"
+    name: Visit customers unable to use other channels
+- code: "01.6"
+  name: Out-of-hours service
+  activities:
+  - code: "01.6.1"
+    name: Triage out-of-hours emergencies
+  - code: "01.6.2"
+    name: Dispatch emergency contractors
+  - code: "01.6.3"
+    name: Hand over overnight incidents to day teams
+- code: "01.7"
+  name: Accessibility & language support
+  activities:
+  - code: "01.7.1"
+    name: Arrange interpreters and translation
+  - code: "01.7.2"
+    name: Provide information in accessible formats
+  - code: "01.7.3"
+    name: Maintain accessible communication standards
+- code: "01.8"
+  name: Customer insight
+  activities:
+  - code: "01.8.1"
+    name: Run transactional satisfaction surveys
+  - code: "01.8.2"
+    name: Analyse contact drivers and failure demand
+  - code: "01.8.3"
+    name: Report customer service performance

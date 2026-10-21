@@ -1,0 +1,91 @@
+# Open Housing Operating Model - service area file
+# Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
+code: "14"
+name: Complaints & Resident Voice
+domain: homes-and-customers
+description: Complaints, scrutiny and tenant satisfaction measures
+services:
+- code: "14.1"
+  name: Stage 1 complaints
+  activities:
+  - code: "14.1.1"
+    name: Receive and log complaints
+  - code: "14.1.2"
+    name: Acknowledge and assess complaints
+  - code: "14.1.3"
+    name: Investigate stage 1 complaints
+  - code: "14.1.4"
+    name: Issue stage 1 responses
+  - code: "14.1.5"
+    name: Agree complaint extensions with residents
+- code: "14.2"
+  name: Stage 2 complaints
+  activities:
+  - code: "14.2.1"
+    name: Review escalation requests
+  - code: "14.2.2"
+    name: Investigate stage 2 complaints
+  - code: "14.2.3"
+    name: Issue final responses
+- code: "14.3"
+  name: Housing Ombudsman
+  activities:
+  - code: "14.3.1"
+    name: Respond to Ombudsman information requests
+  - code: "14.3.2"
+    name: Implement Ombudsman determinations
+  - code: "14.3.3"
+    name: Publish self-assessment against the Complaint Handling Code
+- code: "14.4"
+  name: Remedies & compensation
+  activities:
+  - code: "14.4.1"
+    name: Calculate compensation
+  - code: "14.4.2"
+    name: Approve and pay remedies
+  - code: "14.4.3"
+    name: Track remedy actions
+  - code: "14.4.4"
+    name: Record goodwill payments
+- code: "14.5"
+  name: Learning from complaints
+  activities:
+  - code: "14.5.1"
+    name: Analyse complaint themes
+  - code: "14.5.2"
+    name: Implement service improvements
+  - code: "14.5.3"
+    name: Report learning to board
+  - code: "14.5.4"
+    name: Track improvement actions to completion
+- code: "14.6"
+  name: Resident engagement & scrutiny
+  activities:
+  - code: "14.6.1"
+    name: Recruit involved residents
+  - code: "14.6.2"
+    name: Support resident panels and scrutiny groups
+  - code: "14.6.3"
+    name: Run resident consultations
+  - code: "14.6.4"
+    name: Respond to scrutiny recommendations
+  - code: "14.6.5"
+    name: Report the impact of resident involvement
+- code: "14.7"
+  name: Tenant satisfaction measures
+  activities:
+  - code: "14.7.1"
+    name: Run TSM perception survey
+  - code: "14.7.2"
+    name: Calculate TSM results
+  - code: "14.7.3"
+    name: Publish TSM results
+  - code: "14.7.4"
+    name: Analyse drivers of satisfaction
+- code: "14.8"
+  name: Member enquiries
+  activities:
+  - code: "14.8.1"
+    name: Log MP and councillor enquiries
+  - code: "14.8.2"
+    name: Respond to member enquiries

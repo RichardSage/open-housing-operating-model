@@ -1,0 +1,64 @@
+name: Suggest a change to the model
+description: Add, rename, move, merge or remove a service area, service or activity. No Git knowledge needed.
+title: "[Change] "
+labels: ["proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve the model. Fill in what you can; a maintainer will turn agreed suggestions into an update.
+        You can find codes (like `11.5.3`) on the atlas or in the CSV.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of change?
+      options:
+        - Add an activity
+        - Add a service
+        - Rename something
+        - Move something to a different service or area
+        - Merge or remove something
+        - Fix a description or typo
+        - Something else
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Where in the model?
+      description: The code(s) affected, or the nearest service if you're adding something.
+      placeholder: "e.g. 11.5 Damp & mould"
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What should change?
+      description: Be specific. For new activities, start with a verb, e.g. "Inspect fire doors".
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why?
+      description: What's missing or wrong today? Links to regulation, guidance or practice help.
+    validations:
+      required: true
+  - type: dropdown
+    id: nations
+    attributes:
+      label: Does this apply everywhere?
+      options:
+        - All UK nations
+        - England only
+        - Scotland only
+        - Wales only
+        - Northern Ireland only
+        - Specific kinds of provider (say below)
+        - Not sure
+  - type: input
+    id: context
+    attributes:
+      label: Your context (optional)
+      description: Your role or the kind of organisation you know, so we understand the perspective.
+      placeholder: "e.g. Repairs manager, 20,000-home association"

@@ -1,0 +1,93 @@
+# Open Housing Operating Model - service area file
+# Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
+code: "04"
+name: Tenancy Management
+domain: homes-and-customers
+description: Managing the tenancy relationship from start to end
+services:
+- code: "04.1"
+  name: Tenancy reviews
+  activities:
+  - code: "04.1.1"
+    name: Manage starter tenancy reviews
+  - code: "04.1.2"
+    name: Manage fixed-term tenancy reviews
+  - code: "04.1.3"
+    name: Extend or end probationary tenancies
+  - code: "04.1.4"
+    name: Maintain tenancy agreement templates
+- code: "04.2"
+  name: Tenancy changes
+  activities:
+  - code: "04.2.1"
+    name: Process succession requests
+  - code: "04.2.2"
+    name: Process assignments and joint-to-sole changes
+  - code: "04.2.3"
+    name: Update household composition
+  - code: "04.2.4"
+    name: Approve lodgers and subletting of rooms
+- code: "04.3"
+  name: Tenancy breaches
+  activities:
+  - code: "04.3.1"
+    name: Investigate tenancy breaches
+  - code: "04.3.2"
+    name: Issue warnings and agreements
+  - code: "04.3.3"
+    name: Serve notices for breach
+  - code: "04.3.4"
+    name: Prepare breach cases for court
+- code: "04.4"
+  name: Tenancy fraud
+  activities:
+  - code: "04.4.1"
+    name: Investigate subletting and fraud referrals
+  - code: "04.4.2"
+    name: Carry out tenancy audits
+  - code: "04.4.3"
+    name: Recover unlawfully occupied properties
+  - code: "04.4.4"
+    name: Run data-matching exercises
+- code: "04.5"
+  name: Permissions
+  activities:
+  - code: "04.5.1"
+    name: Process requests for tenant alterations
+  - code: "04.5.2"
+    name: Process pet and parking permissions
+  - code: "04.5.3"
+    name: Inspect completed tenant alterations
+  - code: "04.5.4"
+    name: Remove unauthorised alterations
+- code: "04.6"
+  name: Abandonment & deceased tenants
+  activities:
+  - code: "04.6.1"
+    name: Investigate suspected abandonment
+  - code: "04.6.2"
+    name: End tenancies following a death
+  - code: "04.6.3"
+    name: Liaise with next of kin and executors
+  - code: "04.6.4"
+    name: Clear and secure the property
+- code: "04.7"
+  name: Patch management
+  activities:
+  - code: "04.7.1"
+    name: Plan patch officer caseloads
+  - code: "04.7.2"
+    name: Carry out tenancy visits
+  - code: "04.7.3"
+    name: Record visit outcomes and household data
+  - code: "04.7.4"
+    name: Provide tenancy advice and information
+- code: "04.8"
+  name: Evictions
+  activities:
+  - code: "04.8.1"
+    name: Obtain possession orders
+  - code: "04.8.2"
+    name: Apply for bailiff warrants
+  - code: "04.8.3"
+    name: Carry out eviction and secure the property

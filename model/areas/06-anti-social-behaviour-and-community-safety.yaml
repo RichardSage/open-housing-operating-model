@@ -1,0 +1,84 @@
+# Open Housing Operating Model - service area file
+# Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
+code: "06"
+name: Anti-social Behaviour & Community Safety
+domain: homes-and-customers
+description: Responding to ASB, hate crime and domestic abuse
+services:
+- code: "06.1"
+  name: ASB reporting & triage
+  activities:
+  - code: "06.1.1"
+    name: Receive and log ASB reports
+  - code: "06.1.2"
+    name: Risk-assess victims and cases
+  - code: "06.1.3"
+    name: Categorise cases and set response targets
+  - code: "06.1.4"
+    name: Close cases and record outcomes
+- code: "06.2"
+  name: ASB investigation
+  activities:
+  - code: "06.2.1"
+    name: Gather evidence and witness statements
+  - code: "06.2.2"
+    name: Interview alleged perpetrators
+  - code: "06.2.3"
+    name: Review noise monitoring and CCTV evidence
+  - code: "06.2.4"
+    name: Maintain case action plans
+- code: "06.3"
+  name: Victim support
+  activities:
+  - code: "06.3.1"
+    name: Agree support plans with victims
+  - code: "06.3.2"
+    name: Keep complainants updated
+  - code: "06.3.3"
+    name: Refer to victim support services
+  - code: "06.3.4"
+    name: Survey complainant satisfaction
+- code: "06.4"
+  name: Early intervention
+  activities:
+  - code: "06.4.1"
+    name: Issue warning letters
+  - code: "06.4.2"
+    name: Agree acceptable behaviour contracts
+  - code: "06.4.3"
+    name: Arrange mediation
+  - code: "06.4.4"
+    name: Carry out joint visits with police
+- code: "06.5"
+  name: Legal remedies
+  activities:
+  - code: "06.5.1"
+    name: Apply for injunctions
+  - code: "06.5.2"
+    name: Seek closure orders
+  - code: "06.5.3"
+    name: Pursue possession on ASB grounds
+  - code: "06.5.4"
+    name: Monitor and enforce court orders
+- code: "06.6"
+  name: Multi-agency working
+  activities:
+  - code: "06.6.1"
+    name: Attend community safety partnership meetings
+  - code: "06.6.2"
+    name: Share information with police and council
+  - code: "06.6.3"
+    name: Manage ASB case reviews
+  - code: "06.6.4"
+    name: Coordinate with youth services and community groups
+- code: "06.7"
+  name: Hate crime & domestic abuse
+  activities:
+  - code: "06.7.1"
+    name: Respond to hate crime reports
+  - code: "06.7.2"
+    name: Respond to domestic abuse disclosures
+  - code: "06.7.3"
+    name: Arrange management transfers and sanctuary measures
+  - code: "06.7.4"
+    name: Refer high-risk cases to MARAC

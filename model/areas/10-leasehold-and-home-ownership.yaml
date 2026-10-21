@@ -1,0 +1,90 @@
+# Open Housing Operating Model - service area file
+# Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
+code: "10"
+name: Leasehold & Home Ownership
+domain: homes-and-customers
+description: Shared ownership, leaseholders and home sales
+services:
+- code: "10.1"
+  name: Shared ownership sales
+  activities:
+  - code: "10.1.1"
+    name: Market shared ownership homes
+  - code: "10.1.2"
+    name: Assess purchaser eligibility
+  - code: "10.1.3"
+    name: Progress sales
+  - code: "10.1.4"
+    name: Complete sales
+  - code: "10.1.5"
+    name: Respond to sales enquiries
+- code: "10.2"
+  name: Staircasing
+  activities:
+  - code: "10.2.1"
+    name: Process staircasing applications
+  - code: "10.2.2"
+    name: Arrange valuations
+  - code: "10.2.3"
+    name: Complete staircasing transactions
+  - code: "10.2.4"
+    name: Calculate staircasing premiums
+- code: "10.3"
+  name: Resales & lease extensions
+  activities:
+  - code: "10.3.1"
+    name: Manage resales and nominations
+  - code: "10.3.2"
+    name: Process lease extensions
+  - code: "10.3.3"
+    name: Respond to enfranchisement claims
+- code: "10.4"
+  name: Leaseholder services
+  activities:
+  - code: "10.4.1"
+    name: Respond to leasehold enquiries
+  - code: "10.4.2"
+    name: Issue pre-sale information packs
+  - code: "10.4.3"
+    name: Process leaseholder consents
+  - code: "10.4.4"
+    name: Investigate lease breaches
+- code: "10.5"
+  name: Section 20 consultation
+  activities:
+  - code: "10.5.1"
+    name: Issue notices of intention
+  - code: "10.5.2"
+    name: Consider leaseholder observations
+  - code: "10.5.3"
+    name: Issue estimates and award notices
+  - code: "10.5.4"
+    name: Consult on long-term agreements
+- code: "10.6"
+  name: Leasehold service charges
+  activities:
+  - code: "10.6.1"
+    name: Prepare leasehold service charge budgets
+  - code: "10.6.2"
+    name: Issue service charge demands
+  - code: "10.6.3"
+    name: Respond to service charge challenges
+  - code: "10.6.4"
+    name: Collect ground rent
+  - code: "10.6.5"
+    name: Pursue leasehold arrears
+  - code: "10.6.6"
+    name: Pursue forfeiture
+  - code: "10.6.7"
+    name: Prepare year-end service charge accounts
+- code: "10.7"
+  name: Leaseholder building safety
+  activities:
+  - code: "10.7.1"
+    name: Recover remediation costs
+  - code: "10.7.2"
+    name: Issue building safety information
+  - code: "10.7.3"
+    name: Apply leaseholder protections
+  - code: "10.7.4"
+    name: Respond to leaseholder building safety queries

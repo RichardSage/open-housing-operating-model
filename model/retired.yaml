@@ -1,0 +1,7 @@
+# Codes that have been removed from the model. They must never be reused.
+# Add an entry whenever an area, service or activity is deleted or merged.
+# - code: "11.3.6"
+#   name: Old activity name
+#   retired_in: "0.2.0"
+#   reason: Merged into 11.3.2
+retired: []

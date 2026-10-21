@@ -1,0 +1,72 @@
+# Open Housing Operating Model - service area file
+# Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
+code: "21"
+name: Procurement & Commercial
+domain: business-and-enabling
+description: Buying, contracts and suppliers
+services:
+- code: "21.1"
+  name: Procurement planning
+  activities:
+  - code: "21.1.1"
+    name: Maintain procurement pipeline
+  - code: "21.1.2"
+    name: Develop procurement strategies
+  - code: "21.1.3"
+    name: Engage the market
+- code: "21.2"
+  name: Tendering
+  activities:
+  - code: "21.2.1"
+    name: Prepare tender documents
+  - code: "21.2.2"
+    name: Run compliant tender processes
+  - code: "21.2.3"
+    name: Evaluate bids
+  - code: "21.2.4"
+    name: Award contracts and manage standstill
+- code: "21.3"
+  name: Contract management
+  activities:
+  - code: "21.3.1"
+    name: Maintain contract register
+  - code: "21.3.2"
+    name: Run contract performance reviews
+  - code: "21.3.3"
+    name: Manage contract variations
+  - code: "21.3.4"
+    name: Manage contract renewals and exits
+- code: "21.4"
+  name: Supplier management
+  activities:
+  - code: "21.4.1"
+    name: Onboard suppliers
+  - code: "21.4.2"
+    name: Carry out supplier due diligence
+  - code: "21.4.3"
+    name: Monitor supplier risk
+- code: "21.5"
+  name: Commercial management
+  activities:
+  - code: "21.5.1"
+    name: Value works against contracts
+  - code: "21.5.2"
+    name: Agree final accounts
+  - code: "21.5.3"
+    name: Resolve commercial disputes
+- code: "21.6"
+  name: Social value
+  activities:
+  - code: "21.6.1"
+    name: Set social value requirements
+  - code: "21.6.2"
+    name: Monitor social value delivery
+- code: "21.7"
+  name: Purchasing
+  activities:
+  - code: "21.7.1"
+    name: Raise purchase orders
+  - code: "21.7.2"
+    name: Manage framework call-offs
+  - code: "21.7.3"
+    name: Monitor spend compliance

@@ -1,0 +1,73 @@
+# Open Housing Operating Model - service area file
+# Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
+code: "03"
+name: Empty Homes
+domain: homes-and-customers
+description: Turning around empty properties to the lettable standard
+services:
+- code: "03.1"
+  name: Tenancy termination
+  activities:
+  - code: "03.1.1"
+    name: Receive and acknowledge notice to end tenancy
+  - code: "03.1.2"
+    name: Carry out pre-termination inspection
+  - code: "03.1.3"
+    name: Agree recharges and clearance with outgoing tenant
+  - code: "03.1.4"
+    name: Collect keys and confirm end of tenancy
+- code: "03.2"
+  name: Void inspection & specification
+  activities:
+  - code: "03.2.1"
+    name: Inspect empty property
+  - code: "03.2.2"
+    name: Specify works against the lettable standard
+  - code: "03.2.3"
+    name: Estimate void works cost
+- code: "03.3"
+  name: Void works delivery
+  activities:
+  - code: "03.3.1"
+    name: Raise and issue void works orders
+  - code: "03.3.2"
+    name: Monitor contractor progress on voids
+  - code: "03.3.3"
+    name: Manage major void works
+  - code: "03.3.4"
+    name: Agree variations to void works
+- code: "03.4"
+  name: Void safety & security
+  activities:
+  - code: "03.4.1"
+    name: Complete void gas and electrical safety checks
+  - code: "03.4.2"
+    name: Commission asbestos surveys for void works
+  - code: "03.4.3"
+    name: Secure empty properties
+  - code: "03.4.4"
+    name: Clear items left in empty homes
+- code: "03.5"
+  name: Void sign-off & handover
+  activities:
+  - code: "03.5.1"
+    name: Carry out post-works void inspection
+  - code: "03.5.2"
+    name: Confirm lettable standard and hand over to lettings
+  - code: "03.5.3"
+    name: Update property attributes and EPC data
+  - code: "03.5.4"
+    name: Manage void utility accounts and meter readings
+  - code: "03.5.5"
+    name: Notify council tax of empty periods
+- code: "03.6"
+  name: Void performance
+  activities:
+  - code: "03.6.1"
+    name: Track void durations and costs
+  - code: "03.6.2"
+    name: Analyse void causes and recurring defects
+  - code: "03.6.3"
+    name: Report rent loss from voids
+  - code: "03.6.4"
+    name: Agree void targets with contractors

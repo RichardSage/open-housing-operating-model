@@ -1,0 +1,96 @@
+# Open Housing Operating Model - service area file
+# Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
+code: "18"
+name: Finance & Treasury
+domain: business-and-enabling
+description: Planning, accounting, treasury and payroll
+services:
+- code: "18.1"
+  name: Financial planning
+  activities:
+  - code: "18.1.1"
+    name: Maintain long-term financial plan
+  - code: "18.1.2"
+    name: Run stress testing and mitigation plans
+  - code: "18.1.3"
+    name: Prepare annual budget
+  - code: "18.1.4"
+    name: Monitor golden rules and covenants
+- code: "18.2"
+  name: Management accounts
+  activities:
+  - code: "18.2.1"
+    name: Produce monthly management accounts
+  - code: "18.2.2"
+    name: Run budget monitoring with managers
+  - code: "18.2.3"
+    name: Forecast outturn
+- code: "18.3"
+  name: Financial accounting
+  activities:
+  - code: "18.3.1"
+    name: Close month-end ledgers
+  - code: "18.3.2"
+    name: Prepare statutory accounts
+  - code: "18.3.3"
+    name: Coordinate external audit
+  - code: "18.3.4"
+    name: Prepare SORP disclosures
+- code: "18.4"
+  name: Accounts payable
+  activities:
+  - code: "18.4.1"
+    name: Process supplier invoices
+  - code: "18.4.2"
+    name: Match invoices to purchase orders
+  - code: "18.4.3"
+    name: Run supplier payment runs
+  - code: "18.4.4"
+    name: Maintain supplier records
+- code: "18.5"
+  name: Accounts receivable
+  activities:
+  - code: "18.5.1"
+    name: Raise sundry invoices
+  - code: "18.5.2"
+    name: Chase sundry debtors
+  - code: "18.5.3"
+    name: Reconcile receivables
+- code: "18.6"
+  name: Treasury
+  activities:
+  - code: "18.6.1"
+    name: Manage cash flow forecasts
+  - code: "18.6.2"
+    name: Monitor loan covenants
+  - code: "18.6.3"
+    name: Arrange funding and refinancing
+  - code: "18.6.4"
+    name: Manage property security and charging
+- code: "18.7"
+  name: Tax & VAT
+  activities:
+  - code: "18.7.1"
+    name: Prepare VAT returns
+  - code: "18.7.2"
+    name: Manage corporation tax
+  - code: "18.7.3"
+    name: Calculate partial exemption
+- code: "18.8"
+  name: Payroll & pensions
+  activities:
+  - code: "18.8.1"
+    name: Process monthly payroll
+  - code: "18.8.2"
+    name: Manage pension contributions
+  - code: "18.8.3"
+    name: Process expenses
+- code: "18.9"
+  name: Fixed assets
+  activities:
+  - code: "18.9.1"
+    name: Maintain fixed asset register
+  - code: "18.9.2"
+    name: Apply componentisation
+  - code: "18.9.3"
+    name: Calculate depreciation and impairment
