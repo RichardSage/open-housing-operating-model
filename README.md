@@ -17,7 +17,7 @@ It gives people across social housing a shared vocabulary for the work: for desi
 
 ## Explore it
 
-- **Interactive atlas:** published from this repository with GitHub Pages (see the link in the About panel).
+- **Interactive atlas:** [richardsage.github.io/open-housing-operating-model](https://richardsage.github.io/open-housing-operating-model/). Browse the services, see what sits behind each one, and explore every activity.
 - **Download the data:** `open-housing-services.csv` (one row per request), `open-housing-operating-model.csv` (one row per activity) and the full `open-housing-operating-model.json` are published alongside the atlas and attached to each [release](../../releases).
 - **Read the source:** the service list is in [`model/services.yaml`](model/services.yaml), and there's one file per function area in [`model/function-areas/`](model/function-areas).
 
