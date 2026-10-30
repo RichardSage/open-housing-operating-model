@@ -140,7 +140,7 @@ The service list and interaction patterns are adapted, with thanks, from the [so
 
 ## Contribute
 
-You don't need to know Git or code to help.
+You don't need to know Git or code to help. New to this? Start with the step-by-step guide, [HOW-TO-CONTRIBUTE.md](HOW-TO-CONTRIBUTE.md).
 
 1. **Suggest a change:** use the [suggestion form](../../issues/new/choose) to add, rename, move or remove anything.
 2. **Discuss bigger ideas:** use [Discussions](../../discussions) for new layers, regional versions or how you're using the model.

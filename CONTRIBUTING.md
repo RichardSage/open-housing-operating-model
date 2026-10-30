@@ -2,6 +2,8 @@
 
 Thank you for helping improve the Open Housing Operating Model. Contributions from anyone who works in, lives in or works with social housing are welcome: residents, frontline staff, managers, service designers, consultants, suppliers and researchers.
 
+New to GitHub? The [step-by-step guide](HOW-TO-CONTRIBUTE.md) walks you through your first suggestion.
+
 ## Three ways to take part
 
 | If you want to… | Do this | Git needed? |

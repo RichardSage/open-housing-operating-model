@@ -270,7 +270,7 @@ footer h2{color:var(--ink);font-size:20px}
 
   <section class="contribute" id="contribute" aria-labelledby="hc">
     <h2 id="hc">Help improve it</h2>
-    <p>Spotted something missing, misnamed or in the wrong place? Suggestions from anyone who works in, lives in or works with social housing are welcome. You don't need to know Git to take part.</p>
+    <p>Spotted something missing, misnamed or in the wrong place? Suggestions from anyone who works in, lives in or works with social housing are welcome. You don't need to know Git to take part.<span id="guide"></span></p>
     <div class="routes" id="routes"></div>
     <div class="credit" id="credit"></div>
   </section>
@@ -367,6 +367,7 @@ $('#routes').innerHTML = [
   [R ? `${R}/discussions` : '', 'Discuss a bigger idea', 'A version for Scotland or Wales, a supported housing variant, or a new layer on top of the model.', 'Join the discussion'],
   [R ? `${R}/blob/main/CONTRIBUTING.md` : '', 'Edit it yourself', `Each function area and the service list is a simple text file. Propose an edit and it's checked automatically.`, 'Read how to contribute'],
 ].map(([href, t, d, go]) => href ? `<a class="route" href="${esc(href)}"><b>${t}</b><span>${d}</span><span class="go">${go} →</span></a>` : `<div class="route"><b>${t}</b><span>${d}</span></div>`).join('');
+if (R) $('#guide').innerHTML = ` New to this? Read the <a href="${esc(R)}/blob/main/HOW-TO-CONTRIBUTE.md">step-by-step guide</a>.`;
 $('#credit').innerHTML = `<span>To credit the model, use: <code>Open Housing Operating Model, v${esc(D.version)} (CC BY 4.0)</code>${R ? `, with a link to <a href="${esc(R)}">the repository</a>` : ''}.</span>${R ? `<span>See <a href="${esc(R)}/blob/main/CHANGELOG.md">what's changed in each version</a>.</span>` : ''}`;
 </script>
 </body>
