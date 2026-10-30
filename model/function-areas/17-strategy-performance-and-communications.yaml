@@ -1,10 +1,10 @@
-# Open Housing Operating Model - service area file
+# Open Housing Operating Model - function area file
 # Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
 code: "17"
 name: Strategy, Performance & Communications
 domain: business-and-enabling
 description: Direction, performance, change and comms
-services:
+functions:
 - code: "17.1"
   name: Corporate strategy
   activities:

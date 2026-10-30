@@ -4,78 +4,132 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Open Housing Operating Model Atlas</title>
-<meta name="description" content="An open, CC BY map of what a housing association does: service areas, services and activities.">
+<meta name="description" content="An open, CC BY map of what a housing association does: the services people use, and the functions and activities behind them.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-/* Layout: an atlas of three self-contained figures (title, chart, source line), each ready to screenshot into a blog post. */
+/* Layout: an atlas of self-contained figures (title, chart, source line), each ready to screenshot into a blog post.
+   Outside-in first (services people use), then inside-out (the operating model behind them). */
 :root{
   --bg:#f4f6f5; --surface:#ffffff; --ink:#17221e; --muted:#5a6964; --line:#d9e1dd; --faint:#e9eeec;
-  --homes:#1f6a5f; --homes-soft:#dcebe7; --enable:#a0600f; --enable-soft:#f3e6d4;
+  --homes:#1f6a5f; --homes-soft:#dcebe7; --enable:#a0600f; --enable-soft:#f3e6d4; --heat:#1f6a5f; --on-heat:#ffffff;
+  --p-apply:#1f7a6c; --p-book:#3366b0; --p-pay:#a8730f; --p-request:#7d4fae; --p-tell:#b8455f; --p-check:#56687a;
   --display:"Literata",Georgia,"Times New Roman",serif;
   --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#101715; --surface:#17201d; --ink:#e3ebe7; --muted:#97a7a1; --line:#2a3732; --faint:#1f2a26;
-  --homes:#6cc2b3; --homes-soft:#1c332e; --enable:#e2a65c; --enable-soft:#372919; color-scheme:dark}}
+  --homes:#6cc2b3; --homes-soft:#1c332e; --enable:#e2a65c; --enable-soft:#372919; --heat:#6cc2b3; --on-heat:#10241f;
+  --p-apply:#5fc0ad; --p-book:#7fa8e6; --p-pay:#e2b45a; --p-request:#c49be0; --p-tell:#ec8aa0; --p-check:#a3b4c4; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#101715; --surface:#17201d; --ink:#e3ebe7; --muted:#97a7a1; --line:#2a3732; --faint:#1f2a26;
-  --homes:#6cc2b3; --homes-soft:#1c332e; --enable:#e2a65c; --enable-soft:#372919; color-scheme:dark}
+  --homes:#6cc2b3; --homes-soft:#1c332e; --enable:#e2a65c; --enable-soft:#372919; --heat:#6cc2b3; --on-heat:#10241f;
+  --p-apply:#5fc0ad; --p-book:#7fa8e6; --p-pay:#e2b45a; --p-request:#c49be0; --p-tell:#ec8aa0; --p-check:#a3b4c4; color-scheme:dark}
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55}
 .wrap{max-width:1280px;margin:0 auto;padding-block:40px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:40px}
 h1,h2{font-family:var(--display);font-weight:650;text-wrap:balance;margin:0;line-height:1.18}
 h1{font-size:clamp(30px,4.6vw,48px)}
 h2{font-size:clamp(21px,2.4vw,27px)}
-p{margin:0;max-width:70ch}
+h3{margin:0}
+p{margin:0;max-width:72ch}
+a{color:var(--ink)}
 .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
 .eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
 header{display:grid;gap:14px}
 .lede{font-size:17px;color:var(--muted)}
 .licence{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:14px;align-items:center}
 .licence b{font-family:var(--mono);font-size:12px;border:1.5px solid var(--ink);padding:2px 7px;border-radius:3px}
-.stats{display:flex;flex-wrap:wrap;gap:10px 28px}
+.stats{display:flex;flex-wrap:wrap;gap:10px 28px;align-items:end}
 .stats div{display:grid}
 .stats .num{font-size:28px;line-height:1.1}
 .stats span:last-child{font-size:13px;color:var(--muted)}
+.stats .sep{width:1px;align-self:stretch;background:var(--line)}
+.stats .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;grid-column:1/-1;margin-bottom:2px}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.links a{color:var(--surface);background:var(--ink);text-decoration:none;padding:7px 14px;border-radius:7px;font-size:14px;font-weight:500}
+.links a.alt{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.links a:focus-visible,nav.toc a:focus-visible,.seg button:focus-visible,select:focus-visible,.route:focus-visible{outline:2px solid var(--homes);outline-offset:2px}
 nav.toc{display:flex;flex-wrap:wrap;gap:8px}
 nav.toc a{color:var(--ink);text-decoration:none;border:1px solid var(--line);background:var(--surface);padding:5px 12px;border-radius:999px;font-size:14px}
-nav.toc a:hover,nav.toc a:focus-visible{border-color:var(--ink);outline:none}
+nav.toc a:hover{border-color:var(--ink)}
+.part{display:grid;gap:6px;border-top:2px solid var(--ink);padding-top:14px}
+.part p{color:var(--muted)}
 
 figure{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:clamp(16px,2.4vw,32px);display:grid;gap:18px;min-width:0}
 .fighead{display:grid;gap:6px}
 .fighead .eyebrow{color:var(--homes)}
 .controls{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.seg button{font:inherit;font-size:13px;padding:6px 12px;border:0;background:transparent;color:var(--ink);cursor:pointer}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
 .key{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--muted)}
 .key span{display:inline-flex;gap:6px;align-items:center}
 .sw{width:11px;height:11px;border-radius:2px;flex:none;background:var(--dc)}
 figcaption{font-size:12px;color:var(--muted);border-top:1px solid var(--faint);padding-top:12px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 20px}
 .homes{--dc:var(--homes);--ds:var(--homes-soft)}.enab{--dc:var(--enable);--ds:var(--enable-soft)}
+.p-apply{--pc:var(--p-apply)}.p-book{--pc:var(--p-book)}.p-pay{--pc:var(--p-pay)}.p-request{--pc:var(--p-request)}.p-tell{--pc:var(--p-tell)}.p-check{--pc:var(--p-check)}
+.pill{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.03em;padding:1px 7px;border-radius:999px;border:1.5px solid var(--pc);color:var(--pc);white-space:nowrap;line-height:1.5}
+.psw{width:11px;height:11px;border-radius:50%;border:2px solid var(--pc);flex:none}
 
-/* Fig 1 mosaic */
+/* Fig 1 services */
+.sgroups{columns:3 320px;column-gap:16px}
+.sgroup{break-inside:avoid;margin:0 0 18px;display:grid;gap:8px}
+.sgroup>h3{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;border-bottom:1px solid var(--line);padding-bottom:4px}
+.svc{border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:grid;gap:6px;background:var(--surface)}
+.svc .top{display:flex;gap:8px;align-items:baseline}
+.svc .top .num{font-size:11px;color:var(--muted)}
+.svc .top b{font-size:15px;font-weight:600;line-height:1.3}
+.svc .goal{font-size:12.5px;color:var(--muted);line-height:1.4}
+.svc ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.svc li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:start;font-size:13px;line-height:1.35}
+.svc .meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 10px;font-size:11.5px;color:var(--muted);border-top:1px solid var(--faint);padding-top:6px}
+.svc .meta a{color:var(--muted)}
+
+/* Fig 2 matrix */
+.mx-scroll{overflow-x:auto}
+table.mx{border-collapse:separate;border-spacing:2px;font-size:12px;min-width:980px}
+.mx thead th{font-weight:500;color:var(--muted);vertical-align:bottom}
+.mx thead th.ar{padding:4px 0;text-align:center;width:40px;min-width:40px;max-width:40px}
+.mx thead th.ar span{display:inline-block;writing-mode:vertical-rl;transform:rotate(180deg);max-height:170px;white-space:normal;text-align:left;font-size:11px;line-height:1.15}
+.mx thead th.ar span.num{color:var(--dc);font-size:10.5px;margin-top:4px}
+.mx tbody th{text-align:left;white-space:nowrap;padding-right:10px;font-weight:500;color:var(--ink);font-size:12.5px}
+.mx tbody th .num{color:var(--muted);margin-right:6px;font-weight:500}
+.mx tbody tr.gh th{padding-top:10px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.mx td{width:40px;height:24px;text-align:center;border-radius:3px;font-family:var(--mono);font-size:10.5px;background:var(--faint);color:var(--ink)}
+.mx td.v{color:var(--on-heat)}
+.mx td.tot{background:none;color:var(--muted);width:44px}
+.mx tfoot td{background:none;color:var(--muted);height:auto;padding-top:6px}
+.mx tfoot th{text-align:left;font-weight:600;font-size:12px;padding-top:6px}
+.heatkey{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--muted)}
+.heatkey .ramp{width:140px;height:10px;border-radius:2px;background:linear-gradient(90deg,color-mix(in srgb,var(--heat) 25%,var(--faint)),var(--heat))}
+
+/* Fig 3 mosaic */
 .dom{display:grid;gap:10px}
 .dom+.dom{margin-top:14px}
 .domhead{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;font-weight:600;font-size:14px;border-bottom:2px solid var(--dc);padding-bottom:4px}
 .domhead .num{font-weight:500;font-size:12px;color:var(--muted)}
 .cards{columns:4 250px;column-gap:12px}
 .card{break-inside:avoid;margin:0 0 12px;border:1px solid var(--line);border-radius:6px;padding:10px 12px;display:grid;gap:6px;background:var(--surface)}
-.card h3{margin:0;font-size:13.5px;font-weight:600;display:flex;gap:8px;align-items:baseline;line-height:1.3}
+.card h3{font-size:13.5px;font-weight:600;display:flex;gap:8px;align-items:baseline;line-height:1.3}
 .card h3 .num{font-size:11px;color:var(--dc);font-weight:500}
 .card .meta{font-size:11px;color:var(--muted);font-family:var(--mono)}
 .srow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;font-size:11.5px;line-height:1.25;color:var(--muted)}
 .dots{display:flex;flex-wrap:wrap;gap:2px;justify-content:flex-end;max-width:96px}
 .dot{width:10px;height:10px;border-radius:2px;background:var(--dc)}
+.dot.off{background:var(--faint);box-shadow:inset 0 0 0 1px var(--line)}
 .dot:hover{outline:2px solid var(--ink);outline-offset:1px}
 
-/* Fig 2 branch */
-select{font:inherit;font-size:14px;padding:6px 10px;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--ink)}
-select:focus-visible{outline:2px solid var(--homes);outline-offset:1px}
+/* Fig 4 branch */
+select{font:inherit;font-size:14px;padding:6px 10px;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--ink);max-width:100%}
 .branch{display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr);gap:0 28px;align-items:start}
 @media (max-width:700px){.branch{grid-template-columns:1fr;gap:14px}}
 .root{border:2px solid var(--dc);border-radius:8px;padding:14px;display:grid;gap:6px}
 .lvl{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
 .root b{font-family:var(--display);font-size:20px;line-height:1.2}
+.root a{font-size:13px}
 .svclist{display:grid;gap:10px;border-left:2px solid var(--dc);padding-left:22px}
 .svcn{position:relative;display:grid;grid-template-columns:minmax(140px,210px) minmax(0,1fr);gap:6px 18px;align-items:start}
 .svcn::before{content:"";position:absolute;left:-24px;top:16px;width:20px;border-top:2px solid var(--dc)}
@@ -85,85 +139,146 @@ select:focus-visible{outline:2px solid var(--homes);outline-offset:1px}
 .acts{display:flex;flex-wrap:wrap;gap:6px}
 .act{font-size:12.5px;border:1px solid var(--line);border-radius:4px;padding:3px 8px;background:var(--surface);display:inline-flex;gap:6px;align-items:baseline}
 .act .num{font-size:10.5px;color:var(--muted)}
+.act.sv{border-color:var(--dc)}
 
-/* Fig 3 index */
+/* Fig 5 index */
 .index{columns:4 240px;column-gap:24px}
 .ix{break-inside:avoid;margin:0 0 18px;display:grid;gap:4px}
-.ix h3{margin:0;font-size:14px;font-weight:600;display:flex;gap:8px;align-items:baseline;border-bottom:2px solid var(--dc);padding-bottom:3px}
+.ix h3{font-size:14px;font-weight:600;display:flex;gap:8px;align-items:baseline;border-bottom:2px solid var(--dc);padding-bottom:3px}
 .ix h3 .num{font-size:11px;color:var(--dc);font-weight:500}
 .ix ol{list-style:none;margin:0;padding:0;display:grid;gap:1px}
 .ix li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;font-size:12.5px;line-height:1.35}
 .ix li .num{font-size:11px;color:var(--muted)}
 .ixdom{column-span:all;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--dc);margin:4px 0 12px}
 
-.tip{position:fixed;z-index:20;pointer-events:none;background:var(--ink);color:var(--surface);font-size:12.5px;line-height:1.35;padding:7px 10px;border-radius:6px;max-width:280px;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+/* Contribute */
+.contribute{display:grid;gap:16px}
+.routes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.route{display:grid;gap:6px;align-content:start;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+a.route:hover{border-color:var(--ink)}
+.route b{font-size:16px}
+.route span{font-size:14px;color:var(--muted)}
+.route .go{font-size:13px;font-weight:600;color:var(--homes)}
+.credit{font-size:14px;color:var(--muted);display:grid;gap:6px}
+.credit code{font-family:var(--mono);font-size:12.5px;background:var(--faint);padding:2px 6px;border-radius:4px;color:var(--ink)}
+
+.tip{position:fixed;z-index:20;pointer-events:none;background:var(--ink);color:var(--surface);font-size:12.5px;line-height:1.35;padding:7px 10px;border-radius:6px;max-width:300px;box-shadow:0 4px 14px rgba(0,0,0,.18)}
 .tip small{display:block;opacity:.75;font-size:11px}
 footer{display:grid;gap:10px;font-size:14px;color:var(--muted);max-width:80ch}
 footer h2{color:var(--ink);font-size:20px}
-.links{display:flex;flex-wrap:wrap;gap:8px}
-.links a{color:var(--surface);background:var(--ink);text-decoration:none;padding:7px 14px;border-radius:7px;font-size:14px;font-weight:500}
-.links a.alt{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
-.links a:focus-visible{outline:2px solid var(--homes);outline-offset:2px}
-footer a{color:var(--ink)}
 </style>
 </head>
 <body>
-
 <div class="wrap">
   <header>
     <div class="eyebrow">An open reference model · version <span id="ver"></span></div>
     <h1>What a housing association actually does</h1>
-    <p class="lede">A shared map of the work of an English housing association, from answering a repair call to submitting the regulatory returns. It's organised into service areas, services and activities so that people can talk about the same work in the same terms, whether they're redesigning a service, choosing a system or planning a change.</p>
+    <p class="lede">A shared map of social housing in two views. <strong>Services</strong> describe what residents, communities and colleagues are trying to get done, in their own words. The <strong>operating model</strong> describes how the organisation does the work behind them, down to individual activities. Each service is linked to the activities it relies on.</p>
     <div class="stats" id="stats"></div>
     <div class="licence"><b>CC BY 4.0</b><span>Free to reuse, adapt and build on, including commercially, with credit. It's a starting point built on judgement, and it's meant to be improved.</span></div>
-    <div class="links" id="links"><a href="open-housing-operating-model.csv" download>Download CSV</a><a class="alt" href="open-housing-operating-model.json" download>Download JSON</a></div>
+    <div class="links" id="links"><a href="open-housing-services.csv" download>Services CSV</a><a class="alt" href="open-housing-operating-model.csv" download>Activities CSV</a><a class="alt" href="open-housing-operating-model.json" download>Full model (JSON)</a></div>
     <nav class="toc" aria-label="Figures">
-      <a href="#fig1">1 · The whole model</a>
-      <a href="#fig2">2 · How the levels nest</a>
-      <a href="#fig3">3 · Every service, indexed</a>
+      <a href="#fig1">1 · The services people use</a>
+      <a href="#fig2">2 · What sits behind each service</a>
+      <a href="#fig3">3 · The whole operating model</a>
+      <a href="#fig4">4 · How the levels nest</a>
+      <a href="#fig5">5 · Every function, indexed</a>
+      <a href="#contribute">Help improve it</a>
     </nav>
   </header>
+
+  <div class="part"><span class="eyebrow">Outside in</span><p>How people see the organisation: the things they come to it to do.</p></div>
 
   <figure id="fig1">
     <div class="fighead">
       <span class="eyebrow">Figure 1</span>
-      <h2>643 activities in 22 service areas, one square each</h2>
-      <p>Each card is a service area, each row a service, and each square an activity. Hover a square to read it.</p>
+      <h2 id="h1"></h2>
+      <p>A service is something that helps someone do something. Each one is named the way people would say it, and broken into the requests they make. Every request has an interaction pattern, so similar requests can share the same design.</p>
     </div>
-    <div class="key" id="key1"></div>
-    <div id="mosaic"></div>
-    <figcaption><span>Open Housing Operating Model (CC BY 4.0).</span><span class="num" id="cap1"></span></figcaption>
+    <div class="controls">
+      <div class="seg" role="group" aria-label="Show services for" id="aud1">
+        <button type="button" data-aud="public" aria-pressed="true">Residents and communities</button>
+        <button type="button" data-aud="colleagues" aria-pressed="false">Colleagues</button>
+        <button type="button" data-aud="all" aria-pressed="false">Everyone</button>
+      </div>
+      <div class="key" id="pkey"></div>
+    </div>
+    <div class="sgroups" id="services"></div>
+    <figcaption><span>Open Housing Operating Model (CC BY 4.0). Service names and patterns adapted from Design Patterns for Social Housing.</span><span class="num" id="cap1"></span></figcaption>
   </figure>
 
   <figure id="fig2">
     <div class="fighead">
       <span class="eyebrow">Figure 2</span>
-      <h2>How the levels nest: one service area, opened up</h2>
-      <p>A <strong>service area</strong> is a broad area of work, often one team or directorate. A <strong>service</strong> is a distinct thing delivered to residents or the business, with its own outcome. An <strong>activity</strong> is a single task that someone, or something, carries out.</p>
+      <h2>What sits behind each service</h2>
+      <p>Each row is a service and each column a function area. The number is how many activities in that area the service relies on. A service that's simple for a resident often crosses several internal teams, and every crossing is a hand-off where things can go wrong.</p>
     </div>
     <div class="controls">
-      <label for="areaSel" class="eyebrow">Service area</label>
-      <select id="areaSel"></select>
+      <div class="seg" role="group" aria-label="Show services for" id="aud2">
+        <button type="button" data-aud="public" aria-pressed="true">Residents and communities</button>
+        <button type="button" data-aud="colleagues" aria-pressed="false">Colleagues</button>
+        <button type="button" data-aud="all" aria-pressed="false">Everyone</button>
+      </div>
+      <div class="heatkey"><span>Fewer</span><span class="ramp"></span><span>More activities</span></div>
     </div>
-    <div id="branch"></div>
-    <figcaption><span>Open Housing Operating Model (CC BY 4.0).</span><span>Codes run area.service.activity</span></figcaption>
+    <div class="mx-scroll"><table class="mx" id="matrix"></table></div>
+    <figcaption><span>Open Housing Operating Model (CC BY 4.0).</span><span>Bottom row: share of each area's activities that support at least one service shown</span></figcaption>
   </figure>
+
+  <div class="part"><span class="eyebrow">Inside out</span><p>How the organisation does the work: domains, function areas, functions and activities.</p></div>
 
   <figure id="fig3">
     <div class="fighead">
       <span class="eyebrow">Figure 3</span>
-      <h2>Every service, indexed</h2>
-      <p>All 173 services by service area, with the number of activities in each.</p>
+      <h2 id="h3"></h2>
+      <p>Each card is a function area, each row a function, and each square an activity. Hover a square to read it and see which services rely on it. Activities that no service relies on directly are the organisation's backstage: necessary, but invisible to residents.</p>
+    </div>
+    <div class="controls">
+      <div class="seg" role="group" aria-label="Colour squares by" id="mode3">
+        <button type="button" data-mode="domain" aria-pressed="true">Domain</button>
+        <button type="button" data-mode="svc" aria-pressed="false">Supports a service</button>
+      </div>
+      <div class="key" id="key3"></div>
+    </div>
+    <div id="mosaic"></div>
+    <figcaption><span>Open Housing Operating Model (CC BY 4.0).</span><span class="num" id="cap3"></span></figcaption>
+  </figure>
+
+  <figure id="fig4">
+    <div class="fighead">
+      <span class="eyebrow">Figure 4</span>
+      <h2>How the levels nest: one function area, opened up</h2>
+      <p>A <strong>function area</strong> is a broad area of work, often one team or directorate. A <strong>function</strong> is a distinct part of that work with its own outcome. An <strong>activity</strong> is a single task that someone, or something, carries out. Activities with a coloured border support at least one service.</p>
+    </div>
+    <div class="controls">
+      <label for="areaSel" class="eyebrow">Function area</label>
+      <select id="areaSel"></select>
+    </div>
+    <div id="branch"></div>
+    <figcaption><span>Open Housing Operating Model (CC BY 4.0).</span><span>Codes run area.function.activity</span></figcaption>
+  </figure>
+
+  <figure id="fig5">
+    <div class="fighead">
+      <span class="eyebrow">Figure 5</span>
+      <h2>Every function, indexed</h2>
+      <p id="p5"></p>
     </div>
     <div class="index" id="index"></div>
-    <figcaption><span>Open Housing Operating Model (CC BY 4.0).</span><span>Number = activities in the service</span></figcaption>
+    <figcaption><span>Open Housing Operating Model (CC BY 4.0).</span><span>Number = activities in the function</span></figcaption>
   </figure>
+
+  <section class="contribute" id="contribute" aria-labelledby="hc">
+    <h2 id="hc">Help improve it</h2>
+    <p>Spotted something missing, misnamed or in the wrong place? Suggestions from anyone who works in, lives in or works with social housing are welcome. You don't need to know Git to take part.</p>
+    <div class="routes" id="routes"></div>
+    <div class="credit" id="credit"></div>
+  </section>
 
   <footer>
     <h2>About this model</h2>
-    <p>The structure is based on what every English provider has to do: the Regulator of Social Housing's consumer and economic standards, landlord safety duties (gas, electrical, fire, asbestos, water and lifts), the Building Safety Act, HHSRS, Awaab's Law, the Housing Ombudsman's Complaint Handling Code and the Tenant Satisfaction Measures, plus the way the sector usually organises its teams and costs.</p><p> I was originally inspired to create this after reading Rannoch Associates' paper "The impact of AI on Housing Associations" (October 2026). That model wasn't published, but it did make me think that a common and open model for services could be useful for others in the sector, so this is an independent attempt, not their work. I was also inspired by Dave Skinners work around Housing Service Patterns. Every name and grouping is a judgement about a generic association. Real organisations differ, and that's what makes it worth improving together.</p>
-    <h2>Help improve it</h2>
-    <p id="contrib">Spotted something missing, misnamed or in the wrong place? Suggestions from anyone who works in or with social housing are welcome. You don't need to know Git to take part.</p>
+    <p>The structure is based on what every English provider has to do: the Regulator of Social Housing's consumer and economic standards, landlord safety duties (gas, electrical, fire, asbestos, water and lifts), the Building Safety Act, HHSRS, Awaab's Law, the Housing Ombudsman's Complaint Handling Code and the Tenant Satisfaction Measures, plus the way the sector usually organises its teams and costs.</p>
+    <p>I was originally inspired to create this after reading Rannoch Associates' paper "The impact of AI on Housing Associations" (October 2026). That model wasn't published, but it did make me think that a common and open model for services could be useful for others in the sector, so this is an independent attempt, not their work. I was also inspired by Dave Skinner's work around Housing Service Patterns: the service names and interaction patterns are adapted from the <a href="https://www.designpatternsforsocialhousing.co.uk/Social-housing-service-list-89c36fb8921944f79088b03c830c8584">social housing service list</a> by Design Patterns for Social Housing, whose pattern groups were mapped from TPXImpact's work on local government services. Every name and grouping is a judgement about a generic association. Real organisations differ, and that's what makes it worth improving together.</p>
   </footer>
 </div>
 <div class="tip" id="tip" hidden></div>
@@ -174,33 +289,85 @@ const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const dc = d => d ? 'enab' : 'homes';
 const nAct = a => a.s.reduce((m, s) => m + s.a.length, 0);
-const NS = D.areas.reduce((n, a) => n + a.s.length, 0), NA = D.areas.reduce((n, a) => n + nAct(a), 0);
-$('#ver').textContent = D.version;
-if (D.repo) { $('#links').insertAdjacentHTML('beforeend', `<a class="alt" href="${esc(D.repo)}">Contribute on GitHub</a>`); $('#contrib').insertAdjacentHTML('beforeend', ` <a href="${esc(D.repo)}/issues/new/choose">Suggest a change</a> or <a href="${esc(D.repo)}/blob/main/CONTRIBUTING.md">read how to contribute</a>.`); }
-$('#stats').innerHTML = [[D.domains.length, 'domains'], [D.areas.length, 'service areas'], [NS, 'services'], [NA, 'activities']].map(([n, l]) => `<div><span class="num">${n}</span><span>${l}</span></div>`).join('');
-$('#cap1').textContent = `${D.domains.length} domains · ${D.areas.length} areas · ${NS} services · ${NA} activities`;
+const NF = D.areas.reduce((n, a) => n + a.s.length, 0), NA = D.areas.reduce((n, a) => n + nAct(a), 0);
+const NR = D.services.reduce((n, s) => n + s.r.length, 0);
+const P = Object.fromEntries(D.patterns.map(p => [p.id, p]));
+const U = Object.fromEntries(D.users.map(u => [u.id, u.n]));
+const SV = Object.fromEntries(D.services.map(s => [s.c, s]));
+const isCol = s => s.u.length === 1 && s.u[0] === 'colleagues';
+const audOk = (s, aud) => aud === 'all' || (aud === 'colleagues' ? isCol(s) : !isCol(s));
+const suggest = where => D.repo ? `${D.repo}/issues/new?template=suggest-a-change.yml&where=${encodeURIComponent(where)}` : '';
+
+$('#ver').textContent = `${D.version}${D.released ? ' · ' + D.released : ''}`;
+$('#stats').innerHTML = `<div><span class="num">${D.services.length}</span><span>services</span></div><div><span class="num">${NR}</span><span>requests</span></div><span class="sep"></span><div><span class="num">${D.areas.length}</span><span>function areas</span></div><div><span class="num">${NF}</span><span>functions</span></div><div><span class="num">${NA}</span><span>activities</span></div>`;
+if (D.repo) $('#links').insertAdjacentHTML('beforeend', `<a class="alt" href="${esc(D.repo)}">Contribute on GitHub</a>`);
+
 const tip = $('#tip');
 document.addEventListener('pointermove', e => { const t = e.target.closest && e.target.closest('[data-tip]'); if (!t) { tip.hidden = true; return; } tip.innerHTML = t.dataset.tip; tip.hidden = false; const r = tip.getBoundingClientRect(); let x = e.clientX + 14, y = e.clientY + 14; if (x + r.width > innerWidth - 8) x = e.clientX - r.width - 14; if (y + r.height > innerHeight - 8) y = e.clientY - r.height - 14; tip.style.left = x + 'px'; tip.style.top = y + 'px'; });
+const segs = (id, cb) => document.getElementById(id).addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; document.querySelectorAll(`#${id} button`).forEach(x => x.setAttribute('aria-pressed', x === b)); cb(b.dataset); });
 
-// Fig 1
-$('#key1').innerHTML = D.domains.map((d, i) => `<span class="${dc(i)}"><span class="sw"></span>${esc(d)}</span>`).join('');
-$('#mosaic').innerHTML = D.domains.map((dn, di) => {
-  const as = D.areas.filter(a => a.d === di);
-  return `<section class="dom ${dc(di)}"><div class="domhead"><span>${esc(dn)}</span><span class="num">${as.length} service areas · ${as.reduce((n, a) => n + a.s.length, 0)} services · ${as.reduce((n, a) => n + nAct(a), 0)} activities</span></div><div class="cards">${as.map(a => `<div class="card"><h3><span class="num">${a.c}</span><span>${esc(a.n)}</span></h3><div class="meta">${a.s.length} services · ${nAct(a)} activities</div>${a.s.map(s => `<div class="srow"><span>${esc(s.n)}</span><span class="dots">${s.a.map((x, k) => `<i class="dot" data-tip="${esc(`<b>${esc(x)}</b><small>${s.c}.${k + 1} · ${esc(s.n)}</small>`)}"></i>`).join('')}</span></div>`).join('')}</div>`).join('')}</div></section>`;
-}).join('');
+// Fig 1: services
+function renderServices(aud) {
+  const ss = D.services.filter(s => audOk(s, aud)); const rs = ss.flatMap(s => s.r);
+  $('#h1').textContent = aud === 'colleagues' ? `${ss.length} services colleagues use` : aud === 'all' ? `${ss.length} services, ${rs.length} requests` : `The ${ss.length} services residents and communities use`;
+  $('#cap1').textContent = `${ss.length} services · ${rs.length} requests`;
+  $('#pkey').innerHTML = D.patterns.map(p => `<span class="p-${p.id}" data-tip="${esc(`<b>${esc(p.n)}</b><small>${esc(p.desc)}</small>`)}"><span class="psw"></span>${esc(p.n)} <span class="num">${rs.filter(r => r.p === p.id).length}</span></span>`).join('');
+  $('#services').innerHTML = D.groups.map(g => { const gs = ss.filter(s => s.g === g.id); if (!gs.length) return ''; return `<section class="sgroup"><h3>${esc(g.n)}</h3>${gs.map(s => { const areas = new Set(s.r.flatMap(r => r.a.map(x => x[0]))); const link = suggest(`${s.c} ${s.n}`); return `<article class="svc"><div class="top"><span class="num">${s.c}</span><b>${esc(s.n)}</b></div>${s.goal ? `<div class="goal">${esc(s.goal)}</div>` : ''}<ul>${s.r.map(r => `<li><span>${esc(r.n)}</span><span class="pill p-${r.p}" data-tip="${esc(`<b>${esc(P[r.p].n)}</b><small>${esc(P[r.p].desc)}</small>`)}">${esc(P[r.p].n)}</span></li>`).join('')}</ul><div class="meta"><span>${s.u.map(u => esc(U[u])).join(' · ')}</span><span>${areas.size} function area${areas.size === 1 ? '' : 's'}${link ? ` · <a href="${esc(link)}">Suggest a change</a>` : ''}</span></div></article>`; }).join('')}</section>`; }).join('');
+}
+segs('aud1', d => renderServices(d.aud));
+renderServices('public');
 
-// Fig 2
+// Fig 2: matrix
+function renderMatrix(aud) {
+  const ss = D.services.filter(s => audOk(s, aud));
+  const cell = s => { const c = D.areas.map(() => new Set()); s.r.forEach(r => r.a.forEach(([ai, code]) => c[ai].add(code))); return c.map(x => x.size); };
+  const rows = ss.map(s => [s, cell(s)]); const mx = Math.max(1, ...rows.flatMap(r => r[1]));
+  const used = D.areas.map(() => new Set()); ss.forEach(s => s.r.forEach(r => r.a.forEach(([ai, code]) => used[ai].add(code))));
+  const head = `<thead><tr><th></th>${D.areas.map(a => `<th class="ar ${dc(a.d)}" scope="col"><span>${esc(a.n)}</span><br><span class="num">${a.c}</span></th>`).join('')}<th class="ar"><span>Areas touched</span></th></tr></thead>`;
+  let body = '', lastG = '';
+  rows.forEach(([s, c]) => { if (s.g !== lastG) { lastG = s.g; body += `<tr class="gh"><th colspan="${D.areas.length + 2}">${esc(D.groups.find(g => g.id === s.g).n)}</th></tr>`; } body += `<tr><th scope="row"><span class="num">${s.c}</span>${esc(s.n)}</th>${c.map((v, i) => v ? `<td class="v" style="background:color-mix(in srgb, var(--heat) ${Math.round(30 + v / mx * 70)}%, var(--faint))" data-tip="${esc(`<b>${esc(s.n)}</b><small>${esc(D.areas[i].n)}: ${v} activit${v === 1 ? 'y' : 'ies'}</small>`)}">${v}</td>` : '<td></td>').join('')}<td class="tot num">${c.filter(Boolean).length}</td></tr>`; });
+  const foot = `<tfoot><tr><th>Activities supporting these services</th>${D.areas.map((a, i) => `<td class="num" data-tip="${esc(`<b>${esc(a.n)}</b><small>${used[i].size} of ${nAct(a)} activities</small>`)}">${Math.round(used[i].size / nAct(a) * 100)}%</td>`).join('')}<td></td></tr></tfoot>`;
+  $('#matrix').innerHTML = head + `<tbody>${body}</tbody>` + foot;
+}
+segs('aud2', d => renderMatrix(d.aud));
+renderMatrix('public');
+
+// Fig 3: mosaic
+let mode = 'domain';
+const NUSED = D.areas.reduce((n, a) => n + a.s.reduce((m, f) => m + f.u.filter(x => x.length).length, 0), 0);
+function renderMosaic() {
+  $('#h3').textContent = `${NA} activities in ${D.areas.length} function areas, one square each`;
+  $('#cap3').textContent = `${D.domains.length} domains · ${D.areas.length} function areas · ${NF} functions · ${NA} activities`;
+  $('#key3').innerHTML = mode === 'domain' ? D.domains.map((d, i) => `<span class="${dc(i)}"><span class="sw"></span>${esc(d)}</span>`).join('') : `<span class="homes"><span class="sw"></span>Supports a service (${NUSED})</span><span><span class="sw dot off"></span>Backstage (${NA - NUSED})</span>`;
+  $('#mosaic').innerHTML = D.domains.map((dn, di) => {
+    const as = D.areas.filter(a => a.d === di);
+    return `<section class="dom ${dc(di)}"><div class="domhead"><span>${esc(dn)}</span><span class="num">${as.length} function areas · ${as.reduce((n, a) => n + a.s.length, 0)} functions · ${as.reduce((n, a) => n + nAct(a), 0)} activities</span></div><div class="cards">${as.map(a => `<div class="card"><h3><span class="num">${a.c}</span><span>${esc(a.n)}</span></h3><div class="meta">${a.s.length} functions · ${nAct(a)} activities</div>${a.s.map(f => `<div class="srow"><span>${esc(f.n)}</span><span class="dots">${f.a.map((x, k) => { const u = f.u[k]; const off = mode === 'svc' && !u.length; return `<i class="dot${off ? ' off' : ''}" data-tip="${esc(`<b>${esc(x)}</b><small>${f.c}.${k + 1} · ${esc(f.n)}${u.length ? '<br>Supports: ' + u.map(c => esc(c + ' ' + SV[c].n)).join(', ') : '<br>Backstage: no service relies on it directly'}</small>`)}"></i>`; }).join('')}</span></div>`).join('')}</div>`).join('')}</div></section>`;
+  }).join('');
+}
+segs('mode3', d => { mode = d.mode; renderMosaic(); });
+renderMosaic();
+
+// Fig 4: branch
 $('#areaSel').innerHTML = D.areas.map((a, i) => `<option value="${i}"${a.c === '11' ? ' selected' : ''}>${a.c} · ${esc(a.n)}</option>`).join('');
 function renderBranch() {
-  const a = D.areas[+$('#areaSel').value];
-  $('#branch').innerHTML = `<div class="branch ${dc(a.d)}"><div class="root"><span class="lvl">${esc(D.domains[a.d])} › Service area ${a.c}</span><b>${esc(a.n)}</b><span style="font-size:13px;color:var(--muted)">${esc(a.desc)}.</span><span class="num" style="font-size:12px">${a.s.length} services · ${nAct(a)} activities</span></div><div class="svclist">${a.s.map(s => `<div class="svcn"><div class="svcbox"><span class="lvl num">Service ${s.c}</span><span>${esc(s.n)}</span></div><div class="acts">${s.a.map((x, k) => `<span class="act"><span class="num">${s.c}.${k + 1}</span>${esc(x)}</span>`).join('')}</div></div>`).join('')}</div></div>`;
+  const a = D.areas[+$('#areaSel').value]; const link = suggest(`${a.c} ${a.n}`);
+  $('#branch').innerHTML = `<div class="branch ${dc(a.d)}"><div class="root"><span class="lvl">${esc(D.domains[a.d])} › Function area ${a.c}</span><b>${esc(a.n)}</b><span style="font-size:13px;color:var(--muted)">${esc(a.desc)}.</span><span class="num" style="font-size:12px">${a.s.length} functions · ${nAct(a)} activities</span>${link ? `<a href="${esc(link)}">Suggest a change to this area</a>` : ''}</div><div class="svclist">${a.s.map(f => `<div class="svcn"><div class="svcbox"><span class="lvl num">Function ${f.c}</span><span>${esc(f.n)}</span></div><div class="acts">${f.a.map((x, k) => { const u = f.u[k]; return `<span class="act${u.length ? ' sv' : ''}"${u.length ? ` data-tip="${esc(`<b>Supports</b><small>${u.map(c => esc(c + ' ' + SV[c].n)).join('<br>')}</small>`)}"` : ''}><span class="num">${f.c}.${k + 1}</span>${esc(x)}</span>`; }).join('')}</div></div>`).join('')}</div></div>`;
 }
 $('#areaSel').addEventListener('change', renderBranch);
 renderBranch();
 
-// Fig 3
-$('#index').innerHTML = D.domains.map((dn, di) => `<div class="ixdom ${dc(di)}">${esc(dn)}</div>` + D.areas.filter(a => a.d === di).map(a => `<div class="ix ${dc(di)}"><h3><span class="num">${a.c}</span><span>${esc(a.n)}</span></h3><ol>${a.s.map(s => `<li><span>${esc(s.n)}</span><span class="num">${s.a.length}</span></li>`).join('')}</ol></div>`).join('')).join('');
-</script>
+// Fig 5: index
+$('#p5').textContent = `All ${NF} functions by function area, with the number of activities in each.`;
+$('#index').innerHTML = D.domains.map((dn, di) => `<div class="ixdom ${dc(di)}">${esc(dn)}</div>` + D.areas.filter(a => a.d === di).map(a => `<div class="ix ${dc(di)}"><h3><span class="num">${a.c}</span><span>${esc(a.n)}</span></h3><ol>${a.s.map(f => `<li><span>${esc(f.n)}</span><span class="num">${f.a.length}</span></li>`).join('')}</ol></div>`).join('')).join('');
 
+// Contribute
+const R = D.repo;
+$('#routes').innerHTML = [
+  [R ? `${R}/issues/new/choose` : '', 'Suggest a change', 'Add, rename, move or remove a service, request, function or activity. A short form, no Git needed.', 'Open the form'],
+  [R ? `${R}/discussions` : '', 'Discuss a bigger idea', 'A version for Scotland or Wales, a supported housing variant, or a new layer on top of the model.', 'Join the discussion'],
+  [R ? `${R}/blob/main/CONTRIBUTING.md` : '', 'Edit it yourself', `Each function area and the service list is a simple text file. Propose an edit and it's checked automatically.`, 'Read how to contribute'],
+].map(([href, t, d, go]) => href ? `<a class="route" href="${esc(href)}"><b>${t}</b><span>${d}</span><span class="go">${go} →</span></a>` : `<div class="route"><b>${t}</b><span>${d}</span></div>`).join('');
+$('#credit').innerHTML = `<span>To credit the model, use: <code>Open Housing Operating Model, v${esc(D.version)} (CC BY 4.0)</code>${R ? `, with a link to <a href="${esc(R)}">the repository</a>` : ''}.</span>${R ? `<span>See <a href="${esc(R)}/blob/main/CHANGELOG.md">what's changed in each version</a>.</span>` : ''}`;
+</script>
 </body>
 </html>

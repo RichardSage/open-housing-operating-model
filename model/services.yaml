@@ -1,0 +1,766 @@
+# Open Housing Operating Model - services (the outside-in view)
+#
+# A service is something that helps someone do something, named the way they would say it.
+# Each service has requests: the specific things people do within it, tagged with an interaction pattern.
+# Each request lists the functions or activities from model/function-areas/ that it relies on ("uses").
+#
+# Service names and pattern groups are adapted, with thanks, from the Social housing service list by
+# Design Patterns for Social Housing (https://www.designpatternsforsocialhousing.co.uk/), whose pattern groups
+# were mapped from TPXImpact's work on local government services.
+#
+# Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
+
+patterns:
+- id: apply
+  name: Apply
+  description: Ask for something that needs a decision about eligibility or suitability
+- id: book
+  name: Book
+  description: Arrange for something to happen at a time that suits
+- id: pay
+  name: Pay
+  description: Pay money, or agree how to pay it
+- id: request
+  name: Request
+  description: Ask for help, permission or something to be provided
+- id: tell
+  name: Tell
+  description: Report something or let the organisation know about a change
+- id: check
+  name: Check
+  description: Find out information or the status of something
+
+users:
+- id: applicants
+  name: People looking for a home
+- id: tenants
+  name: Tenants
+- id: owners
+  name: Shared owners and leaseholders
+- id: community
+  name: Neighbours, family and the wider community
+- id: businesses
+  name: Businesses
+- id: colleagues
+  name: Colleagues
+
+groups:
+- id: finding-a-home
+  name: Finding a home
+- id: moving
+  name: Moving in, moving on
+- id: my-home
+  name: Looking after my home
+- id: money
+  name: Money
+- id: my-tenancy
+  name: My tenancy and details
+- id: owning
+  name: Owning my home
+- id: where-i-live
+  name: Where I live
+- id: support
+  name: Support
+- id: having-a-say
+  name: Having a say
+- id: working-here
+  name: Working here
+
+services:
+
+# Finding a home
+- code: "S01"
+  name: Rent a home
+  group: finding-a-home
+  users: [applicants]
+  goal: Find a home I can afford and that meets my needs
+  requests:
+  - code: "S01.1"
+    name: Apply to rent a home
+    pattern: apply
+    uses: ["02.1", "02.2", "02.3"]
+  - code: "S01.2"
+    name: Rent a supported home
+    pattern: apply
+    uses: ["09.2.1", "09.2.4", "02.3"]
+  - code: "S01.3"
+    name: View a home and accept an offer
+    pattern: book
+    uses: ["02.4", "03.5.2"]
+
+- code: "S02"
+  name: Buy a home
+  group: finding-a-home
+  users: [applicants]
+  goal: Buy a home, or part of one, that I can afford
+  requests:
+  - code: "S02.1"
+    name: Buy a shared ownership home
+    pattern: pay
+    uses: ["10.1"]
+  - code: "S02.2"
+    name: Buy a Rent to Buy home
+    pattern: pay
+    uses: ["10.9.3", "10.9.4"]
+  - code: "S02.3"
+    name: Buy a home outright
+    pattern: pay
+    uses: ["10.9.1", "10.9.2"]
+
+- code: "S03"
+  name: Rent a commercial property
+  group: finding-a-home
+  users: [businesses]
+  goal: Rent and run premises for my business
+  requests:
+  - code: "S03.1"
+    name: Rent a commercial property
+    pattern: apply
+    uses: ["13.10.1", "13.10.2"]
+  - code: "S03.2"
+    name: Pay my commercial rent
+    pattern: pay
+    uses: ["13.10.3"]
+  - code: "S03.3"
+    name: Repair my commercial property
+    pattern: book
+    uses: ["13.10.4"]
+
+# Moving in, moving on
+- code: "S04"
+  name: Move into my new home
+  group: moving
+  users: [tenants]
+  goal: Move in and get settled quickly
+  requests:
+  - code: "S04.1"
+    name: Sign my tenancy
+    pattern: book
+    uses: ["02.5.1", "02.5.2"]
+  - code: "S04.2"
+    name: Set up my rent payments
+    pattern: pay
+    uses: ["02.5.3", "07.2.1"]
+  - code: "S04.3"
+    name: Get help settling in
+    pattern: request
+    uses: ["02.6", "02.5.4"]
+
+- code: "S05"
+  name: Move to a different home
+  group: moving
+  users: [tenants]
+  goal: Move to a home that suits my needs better
+  requests:
+  - code: "S05.1"
+    name: Exchange my home for another person's
+    pattern: apply
+    uses: ["02.7.1", "02.7.2", "02.7.4"]
+  - code: "S05.2"
+    name: Ask to transfer to another home
+    pattern: apply
+    uses: ["02.7.3"]
+
+- code: "S06"
+  name: End my tenancy
+  group: moving
+  users: [tenants]
+  goal: Leave my home without problems or unexpected costs
+  requests:
+  - code: "S06.1"
+    name: End my tenancy
+    pattern: tell
+    uses: ["03.1", "07.7.2"]
+
+- code: "S07"
+  name: Buy my current home
+  group: moving
+  users: [tenants]
+  goal: Own the home I live in
+  requests:
+  - code: "S07.1"
+    name: Buy my current home
+    pattern: apply
+    uses: ["10.8"]
+
+# Looking after my home
+- code: "S08"
+  name: Repair my home
+  group: my-home
+  users: [tenants]
+  goal: Get things fixed properly, first time
+  requests:
+  - code: "S08.1"
+    name: Repair my home
+    pattern: book
+    uses: ["11.1", "11.2", "11.3", "11.7.1", "11.7.2", "11.8"]
+  - code: "S08.2"
+    name: Repair a minor issue in my home
+    pattern: book
+    uses: ["11.1.1", "11.2.1", "11.3.1"]
+  - code: "S08.3"
+    name: Report an emergency repair
+    pattern: tell
+    uses: ["01.6", "11.4"]
+  - code: "S08.4"
+    name: Repair damp and mould
+    pattern: book
+    uses: ["11.5", "12.9.1"]
+  - code: "S08.5"
+    name: Stop a pest problem
+    pattern: book
+    uses: ["05.7"]
+  - code: "S08.6"
+    name: Make a disrepair claim
+    pattern: tell
+    uses: ["11.6"]
+  - code: "S08.7"
+    name: Pay for a repair I'm responsible for
+    pattern: pay
+    uses: ["11.9"]
+
+- code: "S09"
+  name: Keep my home safe
+  group: my-home
+  users: [tenants, owners]
+  goal: Know that my home and building are safe
+  requests:
+  - code: "S09.1"
+    name: Service my gas boiler
+    pattern: book
+    uses: ["12.1"]
+  - code: "S09.2"
+    name: Service my home's electrics
+    pattern: book
+    uses: ["12.2"]
+  - code: "S09.3"
+    name: Check my smoke and carbon monoxide alarms
+    pattern: book
+    uses: ["12.8"]
+  - code: "S09.4"
+    name: Check my building is safe
+    pattern: check
+    uses: ["12.7.3", "12.7.4", "10.7.2"]
+  - code: "S09.5"
+    name: Report a safety concern
+    pattern: tell
+    uses: ["12.9"]
+
+- code: "S10"
+  name: Improve or adapt my home
+  group: my-home
+  users: [tenants]
+  goal: Have a home that's modern, warm and works for me
+  requests:
+  - code: "S10.1"
+    name: Update my home
+    pattern: book
+    uses: ["13.4.2", "13.4.3", "13.4.4", "13.4.5"]
+  - code: "S10.2"
+    name: Make my home warmer and cheaper to heat
+    pattern: book
+    uses: ["13.6.2", "13.6.5"]
+  - code: "S10.3"
+    name: Make an adaptation to my home
+    pattern: apply
+    uses: ["08.7"]
+  - code: "S10.4"
+    name: Alter my home
+    pattern: request
+    uses: ["04.5.1", "04.5.3"]
+  - code: "S10.5"
+    name: Get permission to improve my home
+    pattern: request
+    uses: ["04.5.1", "04.5.3"]
+
+- code: "S11"
+  name: Fix problems in my new home
+  group: my-home
+  users: [owners, tenants]
+  goal: Get defects in a newly built home put right
+  requests:
+  - code: "S11.1"
+    name: Fix problems in my new home
+    pattern: book
+    uses: ["15.7.2", "15.7.3"]
+
+- code: "S12"
+  name: Make an insurance claim
+  group: my-home
+  users: [tenants, owners, community]
+  goal: Get compensated when something goes wrong
+  requests:
+  - code: "S12.1"
+    name: Make a claim on insurance
+    pattern: apply
+    uses: ["22.2.2", "22.2.3", "22.2.4"]
+  - code: "S12.2"
+    name: Get home contents insurance
+    pattern: request
+    uses: ["08.1.9"]
+
+# Money
+- code: "S13"
+  name: Pay my rent and charges
+  group: money
+  users: [tenants, owners]
+  goal: Pay what I owe easily and on time
+  requests:
+  - code: "S13.1"
+    name: Pay a bill
+    pattern: pay
+    uses: ["07.1.2", "07.2"]
+  - code: "S13.2"
+    name: Pay an overdue bill
+    pattern: pay
+    uses: ["07.4.2", "07.4.3", "07.7.1"]
+  - code: "S13.3"
+    name: Get a refund
+    pattern: request
+    uses: ["07.1.3"]
+
+- code: "S14"
+  name: Understand what I'm paying
+  group: money
+  users: [tenants, owners]
+  goal: Know what I'm paying for and that it's right
+  requests:
+  - code: "S14.1"
+    name: Check my rent account
+    pattern: check
+    uses: ["07.1.4", "01.2.1"]
+  - code: "S14.2"
+    name: Ask a question about my service charge
+    pattern: check
+    uses: ["07.9", "10.6.3"]
+  - code: "S14.3"
+    name: Understand my rent increase
+    pattern: check
+    uses: ["07.8.3"]
+
+- code: "S15"
+  name: Get help with my finances
+  group: money
+  users: [tenants]
+  goal: Manage my money and keep my home when times are hard
+  requests:
+  - code: "S15.1"
+    name: Get help with my finances
+    pattern: request
+    uses: ["08.1.1", "08.1.2", "08.1.3", "08.1.4"]
+  - code: "S15.2"
+    name: Get help with Universal Credit
+    pattern: request
+    uses: ["07.3.4", "07.5.1", "07.5.2"]
+  - code: "S15.3"
+    name: Get hardship support
+    pattern: apply
+    uses: ["08.1.5", "08.1.6"]
+
+# My tenancy and details
+- code: "S16"
+  name: Change my tenancy
+  group: my-tenancy
+  users: [tenants]
+  goal: Keep my tenancy right for my household
+  requests:
+  - code: "S16.1"
+    name: Change my tenancy type
+    pattern: request
+    uses: ["04.1.1", "04.1.2"]
+  - code: "S16.2"
+    name: Add or remove someone from my tenancy
+    pattern: request
+    uses: ["04.2.2", "04.2.3"]
+  - code: "S16.3"
+    name: Take over a tenancy
+    pattern: apply
+    uses: ["04.2.1"]
+  - code: "S16.4"
+    name: Request permission to keep a pet in my home
+    pattern: request
+    uses: ["04.5.2"]
+  - code: "S16.5"
+    name: Take in a lodger
+    pattern: request
+    uses: ["04.2.4"]
+
+- code: "S17"
+  name: Sort out a home after someone dies
+  group: my-tenancy
+  users: [community]
+  goal: Deal with a loved one's home with as little stress as possible
+  requests:
+  - code: "S17.1"
+    name: Tell you someone has died
+    pattern: tell
+    uses: ["04.6.2", "04.6.3", "04.6.4"]
+
+- code: "S18"
+  name: Keep my details up to date
+  group: my-tenancy
+  users: [tenants, owners]
+  goal: Be contacted in the way that works for me
+  requests:
+  - code: "S18.1"
+    name: Update my contact details
+    pattern: tell
+    uses: ["01.4.2", "01.4.4"]
+  - code: "S18.2"
+    name: Tell you I need adjustments or an interpreter
+    pattern: tell
+    uses: ["01.4.3", "01.7.1", "01.7.2"]
+
+# Owning my home
+- code: "S19"
+  name: Own more of my home or sell it
+  group: owning
+  users: [owners]
+  goal: Increase my share of my home, or move on
+  requests:
+  - code: "S19.1"
+    name: Buy more shares in my home
+    pattern: apply
+    uses: ["10.2"]
+  - code: "S19.2"
+    name: Sell my home
+    pattern: apply
+    uses: ["10.3.1"]
+  - code: "S19.3"
+    name: Extend my lease
+    pattern: apply
+    uses: ["10.3.2", "10.3.3"]
+
+- code: "S20"
+  name: Manage my lease
+  group: owning
+  users: [owners]
+  goal: Understand and meet the terms of my lease
+  requests:
+  - code: "S20.1"
+    name: Get consent for changes to my home
+    pattern: request
+    uses: ["10.4.3"]
+  - code: "S20.2"
+    name: Get a sales information pack
+    pattern: request
+    uses: ["10.4.2"]
+  - code: "S20.3"
+    name: Respond to a major works consultation
+    pattern: tell
+    uses: ["10.5"]
+  - code: "S20.4"
+    name: Ask a question about my lease
+    pattern: check
+    uses: ["10.4.1"]
+
+# Where I live
+- code: "S21"
+  name: Look after my neighbourhood
+  group: where-i-live
+  users: [tenants, owners, community]
+  goal: Live somewhere clean, safe and cared for
+  requests:
+  - code: "S21.1"
+    name: Clean my communal area
+    pattern: book
+    uses: ["05.2"]
+  - code: "S21.2"
+    name: Repair my communal area
+    pattern: book
+    uses: ["05.1.2", "05.5.2", "11.1.1"]
+  - code: "S21.3"
+    name: Look after communal gardens and land
+    pattern: request
+    uses: ["05.3.1", "05.3.2"]
+  - code: "S21.4"
+    name: Fix a tree
+    pattern: book
+    uses: ["05.3.3"]
+  - code: "S21.5"
+    name: Remove fly tipping
+    pattern: tell
+    uses: ["05.4.2"]
+  - code: "S21.6"
+    name: Remove graffiti
+    pattern: tell
+    uses: ["05.2.4"]
+  - code: "S21.7"
+    name: Rent a garage or parking space
+    pattern: apply
+    uses: ["05.6.1", "05.6.2"]
+  - code: "S21.8"
+    name: Book a community room
+    pattern: book
+    uses: ["05.5.1"]
+
+- code: "S22"
+  name: Stop antisocial behaviour
+  group: where-i-live
+  users: [tenants, owners, community]
+  goal: Feel safe and at peace in my home
+  requests:
+  - code: "S22.1"
+    name: Stop antisocial behaviour
+    pattern: tell
+    uses: ["06.1", "06.2", "06.3", "06.4", "06.5"]
+  - code: "S22.2"
+    name: Ask for an antisocial behaviour case review
+    pattern: request
+    uses: ["06.6.3"]
+
+- code: "S23"
+  name: Get help if I'm being abused or harassed
+  group: where-i-live
+  users: [tenants, community]
+  goal: Be safe from abuse and harassment
+  requests:
+  - code: "S23.1"
+    name: Report hate crime
+    pattern: tell
+    uses: ["06.7.1"]
+  - code: "S23.2"
+    name: Get help with domestic abuse
+    pattern: tell
+    uses: ["06.7.2", "06.7.3", "06.7.4"]
+
+- code: "S24"
+  name: Get involved in my community
+  group: where-i-live
+  users: [tenants, community]
+  goal: Help make my area a better place
+  requests:
+  - code: "S24.1"
+    name: Join a community project
+    pattern: apply
+    uses: ["05.8.2"]
+  - code: "S24.2"
+    name: Suggest something my community needs
+    pattern: tell
+    uses: ["05.8.1"]
+
+# Support
+- code: "S25"
+  name: Get support to live independently
+  group: support
+  users: [tenants]
+  goal: Stay well and independent in my home
+  requests:
+  - code: "S25.1"
+    name: Get support to manage my tenancy
+    pattern: request
+    uses: ["08.3", "08.5", "08.6"]
+  - code: "S25.2"
+    name: Live in retirement or extra care housing
+    pattern: apply
+    uses: ["09.1", "09.5.2"]
+  - code: "S25.3"
+    name: Get a personal alarm
+    pattern: request
+    uses: ["09.4"]
+
+- code: "S26"
+  name: Get help with employment and training
+  group: support
+  users: [tenants]
+  goal: Find work or build my skills
+  requests:
+  - code: "S26.1"
+    name: Get help with employment and training
+    pattern: request
+    uses: ["08.4"]
+
+- code: "S27"
+  name: Report a safeguarding concern
+  group: support
+  users: [community, tenants]
+  goal: Get help for someone who may be at risk
+  requests:
+  - code: "S27.1"
+    name: Report a safeguarding concern
+    pattern: tell
+    uses: ["08.2.1", "08.2.2", "08.2.3"]
+
+# Having a say
+- code: "S28"
+  name: Make a complaint
+  group: having-a-say
+  users: [tenants, owners, community]
+  goal: Get things put right when they go wrong
+  requests:
+  - code: "S28.1"
+    name: Make a complaint
+    pattern: tell
+    uses: ["14.1", "14.4"]
+  - code: "S28.2"
+    name: Escalate my complaint
+    pattern: request
+    uses: ["14.2"]
+  - code: "S28.3"
+    name: Take my complaint to the Housing Ombudsman
+    pattern: tell
+    uses: ["14.3"]
+  - code: "S28.4"
+    name: Give a compliment or feedback
+    pattern: tell
+    uses: ["01.8.4"]
+
+- code: "S29"
+  name: Have a say in how things are run
+  group: having-a-say
+  users: [tenants, owners]
+  goal: Influence decisions that affect my home and community
+  requests:
+  - code: "S29.1"
+    name: Join a resident panel
+    pattern: apply
+    uses: ["14.6.1", "14.6.2"]
+  - code: "S29.2"
+    name: Respond to a survey or consultation
+    pattern: tell
+    uses: ["14.7.1", "14.6.3"]
+  - code: "S29.3"
+    name: Have a say about regeneration plans
+    pattern: tell
+    uses: ["13.8.2"]
+
+- code: "S30"
+  name: Get information from my landlord
+  group: having-a-say
+  users: [tenants, owners]
+  goal: Understand how my home is managed and what's held about me
+  requests:
+  - code: "S30.1"
+    name: Find published information
+    pattern: check
+    uses: ["14.9.1", "14.7.3"]
+  - code: "S30.2"
+    name: Ask for information
+    pattern: request
+    uses: ["14.9.2", "14.9.3", "14.9.4", "14.9.5", "14.9.6"]
+  - code: "S30.3"
+    name: Get a copy of my personal data
+    pattern: request
+    uses: ["22.3.1"]
+
+# Working here (colleague services)
+- code: "S31"
+  name: Start a new job
+  group: working-here
+  users: [colleagues]
+  goal: Get set up and able to do my job from day one
+  requests:
+  - code: "S31.1"
+    name: Start a new job
+    pattern: request
+    uses: ["19.2", "20.1.2"]
+
+- code: "S32"
+  name: Recruit a new employee
+  group: working-here
+  users: [colleagues]
+  goal: Get the right person into my team
+  requests:
+  - code: "S32.1"
+    name: Recruit a new employee
+    pattern: request
+    uses: ["19.1"]
+
+- code: "S33"
+  name: Get help with IT
+  group: working-here
+  users: [colleagues]
+  goal: Get my technology working so I can do my job
+  requests:
+  - code: "S33.1"
+    name: Get help with IT
+    pattern: request
+    uses: ["20.1"]
+
+- code: "S34"
+  name: Get training to help me improve
+  group: working-here
+  users: [colleagues]
+  goal: Build the skills I need
+  requests:
+  - code: "S34.1"
+    name: Get training to help me improve
+    pattern: request
+    uses: ["19.3.1", "19.3.2", "19.3.3"]
+
+- code: "S35"
+  name: Get help with an absence issue
+  group: working-here
+  users: [colleagues]
+  goal: Get support when I'm unwell or need time off
+  requests:
+  - code: "S35.1"
+    name: Get help with an absence issue
+    pattern: request
+    uses: ["19.5.1"]
+
+- code: "S36"
+  name: Get help with a conduct issue
+  group: working-here
+  users: [colleagues]
+  goal: Resolve a conduct issue fairly
+  requests:
+  - code: "S36.1"
+    name: Get help with a conduct issue
+    pattern: request
+    uses: ["19.5.3"]
+
+- code: "S37"
+  name: Get help with a capability issue
+  group: working-here
+  users: [colleagues]
+  goal: Get support to meet what's expected of me or my team
+  requests:
+  - code: "S37.1"
+    name: Get help with a capability issue
+    pattern: request
+    uses: ["19.4.1"]
+
+- code: "S38"
+  name: Raise a complaint about my employer
+  group: working-here
+  users: [colleagues]
+  goal: Have a workplace concern heard and resolved
+  requests:
+  - code: "S38.1"
+    name: Raise a complaint about my employer
+    pattern: tell
+    uses: ["19.5.2"]
+
+- code: "S39"
+  name: Raise a concern to an external body
+  group: working-here
+  users: [colleagues]
+  goal: Report wrongdoing safely
+  requests:
+  - code: "S39.1"
+    name: Raise a concern to an external body
+    pattern: tell
+    uses: ["16.8.1"]
+
+- code: "S40"
+  name: Claim my expenses
+  group: working-here
+  users: [colleagues]
+  goal: Get paid back for work costs
+  requests:
+  - code: "S40.1"
+    name: Claim my expenses
+    pattern: pay
+    uses: ["18.8.3"]
+
+- code: "S41"
+  name: Give my resignation
+  group: working-here
+  users: [colleagues]
+  goal: Leave my job smoothly
+  requests:
+  - code: "S41.1"
+    name: Give my resignation
+    pattern: tell
+    uses: ["19.8.3"]

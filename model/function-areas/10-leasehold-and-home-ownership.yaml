@@ -1,10 +1,10 @@
-# Open Housing Operating Model - service area file
+# Open Housing Operating Model - function area file
 # Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
 code: "10"
 name: Leasehold & Home Ownership
 domain: homes-and-customers
 description: Shared ownership, leaseholders and home sales
-services:
+functions:
 - code: "10.1"
   name: Shared ownership sales
   activities:
@@ -88,3 +88,29 @@ services:
     name: Apply leaseholder protections
   - code: "10.7.4"
     name: Respond to leaseholder building safety queries
+- code: "10.8"
+  name: Right to Buy and Right to Acquire
+  activities:
+  - code: "10.8.1"
+    name: Receive and acknowledge Right to Buy and Right to Acquire applications
+  - code: "10.8.2"
+    name: Check eligibility and calculate discount
+  - code: "10.8.3"
+    name: Arrange valuations for Right to Buy sales
+  - code: "10.8.4"
+    name: Issue offer notices
+  - code: "10.8.5"
+    name: Complete Right to Buy and Right to Acquire sales
+  - code: "10.8.6"
+    name: Recover discount on early resale
+- code: "10.9"
+  name: Market sales & Rent to Buy
+  activities:
+  - code: "10.9.1"
+    name: Market homes for outright sale
+  - code: "10.9.2"
+    name: Progress outright sales
+  - code: "10.9.3"
+    name: Let Rent to Buy homes
+  - code: "10.9.4"
+    name: Manage Rent to Buy purchase options

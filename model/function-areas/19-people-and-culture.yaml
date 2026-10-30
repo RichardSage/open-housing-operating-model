@@ -1,10 +1,10 @@
-# Open Housing Operating Model - service area file
+# Open Housing Operating Model - function area file
 # Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
 code: "19"
 name: People & Culture
 domain: business-and-enabling
 description: Recruiting, developing and supporting colleagues
-services:
+functions:
 - code: "19.1"
   name: Recruitment
   activities:

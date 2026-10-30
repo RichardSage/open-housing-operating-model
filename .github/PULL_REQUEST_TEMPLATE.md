@@ -12,4 +12,5 @@
 - [ ] New items use the next free number, and no existing codes were renumbered
 - [ ] Anything removed or merged is listed in `model/retired.yaml`
 - [ ] Activity names start with a verb and describe one task
+- [ ] Service and request names use words residents would use
 - [ ] `python scripts/build.py --check` passes (or the automatic check on this pull request is green)

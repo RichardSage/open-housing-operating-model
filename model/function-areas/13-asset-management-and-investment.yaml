@@ -1,10 +1,10 @@
-# Open Housing Operating Model - service area file
+# Open Housing Operating Model - function area file
 # Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
 code: "13"
 name: Asset Management & Investment
 domain: homes-and-customers
 description: Knowing the stock and investing in it over 30 years
-services:
+functions:
 - code: "13.1"
   name: Stock condition
   activities:
@@ -102,3 +102,14 @@ services:
     name: Manage property disposals
   - code: "13.9.3"
     name: Manage stock transfers
+- code: "13.10"
+  name: Commercial property
+  activities:
+  - code: "13.10.1"
+    name: Let commercial units
+  - code: "13.10.2"
+    name: Manage commercial leases
+  - code: "13.10.3"
+    name: Collect commercial rent and charges
+  - code: "13.10.4"
+    name: Arrange repairs to commercial property

@@ -1,10 +1,10 @@
-# Open Housing Operating Model - service area file
+# Open Housing Operating Model - function area file
 # Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
 code: "22"
 name: Corporate Services
 domain: business-and-enabling
 description: Legal, insurance, information, health & safety and premises
-services:
+functions:
 - code: "22.1"
   name: Legal services
   activities:
@@ -25,6 +25,8 @@ services:
     name: Manage insurance claims
   - code: "22.2.3"
     name: Handle liability claims
+  - code: "22.2.4"
+    name: Handle residents' claims for damage to their belongings
 - code: "22.3"
   name: Information governance
   activities:

@@ -1,10 +1,10 @@
-# Open Housing Operating Model - service area file
+# Open Housing Operating Model - function area file
 # Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
 code: "01"
 name: Customer Contact & Access
 domain: homes-and-customers
 description: How residents reach the organisation and get enquiries resolved
-services:
+functions:
 - code: "01.1"
   name: Contact centre
   activities:
@@ -89,3 +89,5 @@ services:
     name: Analyse contact drivers and failure demand
   - code: "01.8.3"
     name: Report customer service performance
+  - code: "01.8.4"
+    name: Record and share compliments and feedback

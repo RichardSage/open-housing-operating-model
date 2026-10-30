@@ -1,5 +1,5 @@
 name: Suggest a change to the model
-description: Add, rename, move, merge or remove a service area, service or activity. No Git knowledge needed.
+description: Add, rename, move, merge or remove a service, request, function or activity. No Git knowledge needed.
 title: "[Change] "
 labels: ["proposal"]
 body:
@@ -7,16 +7,17 @@ body:
     attributes:
       value: |
         Thanks for helping improve the model. Fill in what you can; a maintainer will turn agreed suggestions into an update.
-        You can find codes (like `11.5.3`) on the atlas or in the CSV.
+        You can find codes on the atlas or in the CSVs: services look like `S08`, requests like `S08.4`, and activities like `11.5.3`.
   - type: dropdown
     id: kind
     attributes:
       label: What kind of change?
       options:
+        - Add or change a service or request (what residents see)
         - Add an activity
-        - Add a service
+        - Add a function
         - Rename something
-        - Move something to a different service or area
+        - Move something to a different function or area
         - Merge or remove something
         - Fix a description or typo
         - Something else
@@ -27,7 +28,7 @@ body:
     attributes:
       label: Where in the model?
       description: The code(s) affected, or the nearest service if you're adding something.
-      placeholder: "e.g. 11.5 Damp & mould"
+      placeholder: "e.g. S08 Repair my home, or 11.5 Damp & mould"
     validations:
       required: true
   - type: textarea

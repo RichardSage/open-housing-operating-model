@@ -1,10 +1,10 @@
-# Open Housing Operating Model - service area file
+# Open Housing Operating Model - function area file
 # Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
 code: "11"
 name: Responsive Repairs
 domain: homes-and-customers
 description: Day-to-day repairs, damp and mould, and disrepair
-services:
+functions:
 - code: "11.1"
   name: Repairs reporting & diagnosis
   activities:

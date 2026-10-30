@@ -1,10 +1,10 @@
-# Open Housing Operating Model - service area file
+# Open Housing Operating Model - function area file
 # Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
 code: "08"
 name: Tenancy Sustainment & Wellbeing
 domain: homes-and-customers
 description: Helping residents stay in their homes and thrive
-services:
+functions:
 - code: "08.1"
   name: Money & benefits advice
   activities:
@@ -24,6 +24,8 @@ services:
     name: Advise on energy use
   - code: "08.1.8"
     name: Run financial inclusion campaigns
+  - code: "08.1.9"
+    name: Promote home contents insurance
 - code: "08.2"
   name: Safeguarding
   activities:

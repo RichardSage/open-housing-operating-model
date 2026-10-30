@@ -1,10 +1,10 @@
-# Open Housing Operating Model - service area file
+# Open Housing Operating Model - function area file
 # Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
 code: "06"
 name: Anti-social Behaviour & Community Safety
 domain: homes-and-customers
 description: Responding to ASB, hate crime and domestic abuse
-services:
+functions:
 - code: "06.1"
   name: ASB reporting & triage
   activities:
