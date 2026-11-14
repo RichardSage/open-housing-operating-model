@@ -523,7 +523,7 @@ segs('view2', d => setView(d.view));
 
 let aud2 = 'public';
 function renderMatrix(aud) {
-  aud2 = aud; const ss = D.services.filter(s => audOk(s, aud) && svcOn(s));
+  aud2 = aud; const gi = id => D.groups.findIndex(g => g.id === id); const ss = D.services.filter(s => audOk(s, aud) && svcOn(s)).sort((a, b) => gi(a.g) - gi(b.g));
   const cell = s => { const c = D.areas.map(() => new Set()); reqsOf(s).forEach(r => r.a.forEach(([ai, code]) => c[ai].add(code))); return c.map(x => x.size); };
   const rows = ss.map(s => [s, cell(s)]); const mx = Math.max(1, ...rows.flatMap(r => r[1]));
   const used = D.areas.map(() => new Set()); ss.forEach(s => reqsOf(s).forEach(r => r.a.forEach(([ai, code]) => used[ai].add(code))));
