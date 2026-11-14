@@ -35,10 +35,10 @@ SITE = ROOT / "site"
 SLUG = "open-housing-operating-model"
 
 AREA_KEYS = {"code", "name", "domain", "description", "functions", "notes", "references"}
-FUNCTION_KEYS = {"code", "name", "description", "activities", "notes", "references"}
+FUNCTION_KEYS = {"code", "name", "description", "activities", "notes", "references", "specialist"}
 ACTIVITY_KEYS = {"code", "name", "description", "notes", "references", "aliases"}
-SERVICE_KEYS = {"code", "name", "group", "users", "goal", "description", "requests", "notes", "references"}
-REQUEST_KEYS = {"code", "name", "pattern", "uses", "description", "notes", "aliases"}
+SERVICE_KEYS = {"code", "name", "group", "users", "goal", "description", "requests", "notes", "references", "specialist"}
+REQUEST_KEYS = {"code", "name", "pattern", "uses", "description", "notes", "aliases", "specialist"}
 
 errors, warnings = [], []
 
@@ -365,6 +365,24 @@ def main(check_only):
     fn_index = {f["code"]: (a, f) for a in areas for f in a["functions"]}
     act_index = {x["code"]: (a, f, x) for a in areas for f in a["functions"] for x in f["activities"]}
     svc = load_services(fn_index, act_index, retired, seen)
+    specs = (load(MODEL / "specialist.yaml") or {}).get("specialist") or []
+    spec_ids = [x["id"] for x in specs]
+    def check_spec(where, item):
+        tags = item.get("specialist") or []
+        if not isinstance(tags, list):
+            err(where, "specialist must be a list, e.g. [older-people]")
+            tags = []
+        for t in tags:
+            if t not in spec_ids:
+                err(where, f"specialist '{t}' is not in specialist.yaml ({', '.join(spec_ids)})")
+        item["specialist"] = [t for t in tags if t in spec_ids]
+    for a in areas:
+        for f in a["functions"]:
+            check_spec(f"{a['code']} › {f['code']}", f)
+    for s in svc["services"]:
+        check_spec(f"services.yaml › {s['code']}", s)
+        for r in s["requests"]:
+            check_spec(f"services.yaml › {r['code']}", r)
     layers = load_layers(act_index, fn_index)
 
     for m in warnings:
@@ -412,16 +430,18 @@ def main(check_only):
     }
     (DIST / f"{SLUG}.json").write_text(json.dumps(model, indent=1, ensure_ascii=False), encoding="utf-8")
 
+    sname = {x["id"]: x["name"] for x in specs}
     # CSV: one row per activity
     with open(DIST / f"{SLUG}.csv", "w", newline="", encoding="utf-8") as f:
         wr = csv.writer(f)
         wr.writerow(["activity_code", "domain", "function_area_code", "function_area", "function_code", "function",
-                     "activity", "supports_services"])
+                     "activity", "supports_services", "specialist"])
         for a in areas:
             for fn in a["functions"]:
                 for x in fn["activities"]:
                     wr.writerow([x["code"], dname[a["domain"]], a["code"], a["name"], fn["code"], fn["name"], x["name"],
-                                 " ".join(sorted(used_by.get(x["code"], []), key=num_key))])
+                                 " ".join(sorted(used_by.get(x["code"], []), key=num_key)),
+                                 "; ".join(sname[t] for t in fn["specialist"])])
 
     # CSV: one row per request
     gname = {g["id"]: g["name"] for g in svc["groups"]}
@@ -430,12 +450,13 @@ def main(check_only):
     with open(DIST / "open-housing-services.csv", "w", newline="", encoding="utf-8") as f:
         wr = csv.writer(f)
         wr.writerow(["request_code", "service_code", "service", "group", "users", "goal", "request", "pattern",
-                     "uses", "function_areas"])
+                     "uses", "function_areas", "specialist"])
         for s in svc["services"]:
             for r in s["requests"]:
                 fa = sorted({act_index[c][0]["code"] + " " + act_index[c][0]["name"] for c in r["_acts"]})
                 wr.writerow([r["code"], s["code"], s["name"], gname[s["group"]], "; ".join(uname[u] for u in s["users"]),
-                             s.get("goal", ""), r["name"], pname[r["pattern"]], " ".join(r["uses"]), "; ".join(fa)])
+                             s.get("goal", ""), r["name"], pname[r["pattern"]], " ".join(r["uses"]), "; ".join(fa),
+                             "; ".join(sname[t] for t in dict.fromkeys(s["specialist"] + r["specialist"]))])
 
     # Compact data for the atlas page
     aidx = {a["code"]: i for i, a in enumerate(areas)}
@@ -444,13 +465,16 @@ def main(check_only):
         "domains": [d["name"] for d in domains],
         "areas": [{"c": a["code"], "n": a["name"], "desc": a.get("description", ""), "d": domain_ids.index(a["domain"]),
                    "s": [{"c": f["code"], "n": f["name"], "a": [x["name"] for x in f["activities"]],
-                          "u": [sorted(used_by.get(x["code"], []), key=num_key) for x in f["activities"]]}
+                          "u": [sorted(used_by.get(x["code"], []), key=num_key) for x in f["activities"]],
+                          "sp": [spec_ids.index(t) for t in f["specialist"]]}
                          for f in a["functions"]]} for a in areas],
         "patterns": [{"id": p["id"], "n": p["name"], "desc": p.get("description", "")} for p in svc["patterns"]],
         "users": [{"id": u["id"], "n": u["name"]} for u in svc["users"]],
         "groups": [{"id": g["id"], "n": g["name"]} for g in svc["groups"]],
+        "specs": [{"id": x["id"], "n": x["name"], "desc": x.get("description", "")} for x in specs],
         "services": [{"c": s["code"], "n": s["name"], "g": s["group"], "u": s["users"], "goal": s.get("goal", ""),
-                      "r": [{"c": r["code"], "n": r["name"], "p": r["pattern"],
+                      "sp": [spec_ids.index(t) for t in s["specialist"]],
+                      "r": [{"c": r["code"], "n": r["name"], "p": r["pattern"], "sp": [spec_ids.index(t) for t in r["specialist"]],
                              "a": [[aidx[act_index[c][0]["code"]], c] for c in r["_acts"]]} for r in s["requests"]]}
                      for s in svc["services"]],
         "layers": [{"id": ly["id"], "n": ly.get("name", ly["id"]), "v": str(ly.get("version", "")), "summary": ly.get("summary", ""),

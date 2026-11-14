@@ -8,7 +8,7 @@ An open map of what a housing association does, in two views:
 Every request a resident makes is linked to the activities it relies on.
 
 <!-- BEGIN:counts -->
-Version 0.2.0 has **41 services** made up of **100 requests**, delivered through **22 function areas, 177 functions and 667 activities**.
+Version 0.2.0 has **42 services** made up of **117 requests**, delivered through **22 function areas, 177 functions and 667 activities**.
 <!-- END:counts -->
 
 It gives people across social housing a shared vocabulary for the work: for designing services, choosing systems, planning change, benchmarking or building products. It's a starting point built on judgement, published openly so the sector can improve it together.
@@ -54,36 +54,36 @@ Codes are **permanent identifiers**: once published, a code always means the sam
 <!-- BEGIN:services -->
 | Code | Service | Group | Requests |
 |---|---|---|---|
-| S01 | Rent a home | Finding a home | 3 |
+| S01 | Rent a home | Finding a home | 6 |
 | S02 | Buy a home | Finding a home | 3 |
 | S03 | Rent a commercial property | Finding a home | 3 |
 | S04 | Move into my new home | Moving in, moving on | 3 |
 | S05 | Move to a different home | Moving in, moving on | 2 |
 | S06 | End my tenancy | Moving in, moving on | 1 |
 | S07 | Buy my current home | Moving in, moving on | 1 |
-| S08 | Repair my home | Looking after my home | 7 |
-| S09 | Keep my home safe | Looking after my home | 5 |
+| S08 | Repair my home | Looking after my home | 9 |
+| S09 | Keep my home safe | Looking after my home | 7 |
 | S10 | Improve or adapt my home | Looking after my home | 5 |
 | S11 | Fix problems in my new home | Looking after my home | 1 |
 | S12 | Make an insurance claim | Looking after my home | 2 |
 | S13 | Pay my rent and charges | Money | 3 |
 | S14 | Understand what I'm paying | Money | 3 |
-| S15 | Get help with my finances | Money | 3 |
+| S15 | Get help with my finances | Money | 4 |
 | S16 | Change my tenancy | My tenancy and details | 5 |
 | S17 | Sort out a home after someone dies | My tenancy and details | 1 |
-| S18 | Keep my details up to date | My tenancy and details | 2 |
+| S18 | Keep my details up to date | My tenancy and details | 4 |
 | S19 | Own more of my home or sell it | Owning my home | 3 |
-| S20 | Manage my lease | Owning my home | 4 |
+| S20 | Manage my lease | Owning my home | 6 |
 | S21 | Look after my neighbourhood | Where I live | 8 |
 | S22 | Stop antisocial behaviour | Where I live | 2 |
 | S23 | Get help if I'm being abused or harassed | Where I live | 2 |
 | S24 | Get involved in my community | Where I live | 2 |
-| S25 | Get support to live independently | Support | 3 |
+| S25 | Get support to live independently | Support | 5 |
 | S26 | Get help with employment and training | Support | 1 |
 | S27 | Report a safeguarding concern | Support | 1 |
 | S28 | Make a complaint | Having a say | 4 |
 | S29 | Have a say in how things are run | Having a say | 3 |
-| S30 | Get information from my landlord | Having a say | 3 |
+| S30 | Get information from my landlord | Having a say | 5 |
 | S31 | Start a new job | Working here | 1 |
 | S32 | Recruit a new employee | Working here | 1 |
 | S33 | Get help with IT | Working here | 1 |
@@ -95,6 +95,7 @@ Codes are **permanent identifiers**: once published, a code always means the sam
 | S39 | Raise a concern to an external body | Working here | 1 |
 | S40 | Claim my expenses | Working here | 1 |
 | S41 | Give my resignation | Working here | 1 |
+| S42 | Report tenancy fraud | Where I live | 1 |
 <!-- END:services -->
 
 ### Function areas
@@ -144,7 +145,11 @@ The operating model draws on what every English provider has to do: the Regulato
 
 It was inspired by Rannoch Associates' paper *The impact of AI on Housing Associations* (October 2026), which described, but didn't publish, a model of 22 areas, 173 services and 643 activities. This is an independent model, not their work.
 
+Several requests, including those for housing applications, decants, eviction support and retirement housing, were added after a review of Anchor Housing's customer journey catalogue, with thanks.
+
 The service list and interaction patterns are adapted, with thanks, from the [social housing service list](https://www.designpatternsforsocialhousing.co.uk/Social-housing-service-list-89c36fb8921944f79088b03c830c8584) by Design Patterns for Social Housing (Dave Skinner), whose pattern groups were mapped from TPXImpact's work on local government services. The approach follows the GOV.UK Service Manual's guidance on [creating a list of services](https://www.gov.uk/service-manual/design/create-a-list-of-services).
+
+**Specialist provision:** parts of the model that only some providers offer (retirement and extra care, supported housing, shared ownership and sales, and commercial property) are tagged as specialist. In the atlas you can switch each one off to see the model for your organisation, for example [without retirement and extra care](https://richardsage.github.io/open-housing-operating-model/?without=older-people).
 
 **Scope today:** a generic housing association in England. Scotland, Wales and Northern Ireland have different regulators and rules, and specialist providers (supported housing, almshouses, stock-transfer landlords, large developers) will weight things differently. Help with these is especially welcome.
 

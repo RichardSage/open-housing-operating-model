@@ -7,6 +7,7 @@ description: Shared ownership, leaseholders and home sales
 functions:
 - code: "10.1"
   name: Shared ownership sales
+  specialist: [sales]
   activities:
   - code: "10.1.1"
     name: Market shared ownership homes
@@ -20,6 +21,7 @@ functions:
     name: Respond to sales enquiries
 - code: "10.2"
   name: Staircasing
+  specialist: [sales]
   activities:
   - code: "10.2.1"
     name: Process staircasing applications
@@ -105,6 +107,7 @@ functions:
     name: Recover discount on early resale
 - code: "10.9"
   name: Market sales & Rent to Buy
+  specialist: [sales]
   activities:
   - code: "10.9.1"
     name: Market homes for outright sale

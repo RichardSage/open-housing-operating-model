@@ -4,7 +4,24 @@ All notable changes to the model are recorded here. Versions follow the rules in
 
 ## Unreleased
 
-The model itself is unchanged.
+**Services**
+- 16 new requests and one new service, following a review of Anchor Housing's customer journey catalogue, with thanks:
+  - S01 Rent a home: check my housing application, update my housing application, ask for a review of a housing decision
+  - S08 Repair my home: check or change my repair appointment, check if a repair is my responsibility
+  - S09 Keep my home safe: move out while my home is made safe, get help when an emergency affects my building
+  - S15 Get help with my finances: get help if I'm facing eviction
+  - S18 Keep my details up to date: let someone act on my behalf, get help if I can't go online
+  - S20 Manage my lease: challenge my service charge, take over management of my building
+  - S25 Get support to live independently: book a guest room, arrange meals or housekeeping
+  - S30 Get information from my landlord: get a landlord reference or proof of rent, correct or delete my personal data
+  - New service S42 Report tenancy fraud
+
+**Specialist provision (new)**
+- New `model/specialist.yaml` lists kinds of provision that only some providers offer: retirement and extra care, supported housing, shared ownership and sales, and commercial property
+- Services, requests and functions can be tagged with `specialist`. The CSVs gain a `specialist` column.
+- Atlas: a new **Specialist provision** bar. Untick a kind of provision and it drops out of every figure. Links can open with provision switched off (for example `?without=older-people`).
+
+**Layers**
 
 - New optional layers: a point of view on top of the model, kept in `layers/` with its own version, sources and caveats. Layers are validated against the model and published separately (`layers/<id>.csv` and `.json`).
 - Layer `regulation` v2026.11: a register of 48 laws, regulatory standards and codes for registered providers in England, with 267 links to functions and activities. Two lenses (legal basis, and what's changing) plus a "Coming up" timeline of dated changes. Not legal advice.

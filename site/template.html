@@ -220,6 +220,18 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .lensbar .seg button[aria-pressed="true"].on{background:#5b3f8f;color:#fff}
 .lseg{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center}
 .lgrp{font-size:12px;color:var(--muted);font-weight:600;margin-left:4px}
+.specbar{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.specbar .lbl{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.specbar .opt{font-size:12px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:inherit;font-size:13px;padding:5px 11px 5px 9px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chip::before{content:"";width:12px;height:12px;border-radius:3px;border:1.5px solid var(--muted);box-sizing:border-box}
+.chip[aria-pressed="true"]::before{background:var(--ink);border-color:var(--ink);box-shadow:inset 0 0 0 2px var(--surface)}
+.chip[aria-pressed="false"]{color:var(--muted);text-decoration:line-through}
+.chip:focus-visible{outline:2px solid var(--homes);outline-offset:2px}
+.spb{display:inline-block;font-size:9px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:0 4px;border-radius:3px;border:1px dashed var(--muted);color:var(--muted);line-height:1.6;white-space:nowrap;vertical-align:middle;margin-left:4px}
+.spoff{opacity:.28}
+.dot.spoff{opacity:.18}
 .coming{display:grid;gap:6px;margin:0;padding:0;list-style:none}
 .coming li{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:4px 12px;align-items:baseline;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--lc);border-radius:6px;padding:7px 10px;font-size:13px}
 .coming li .num{font-size:12px}
@@ -275,6 +287,11 @@ footer h2{color:var(--ink);font-size:20px}
     <div class="key" id="lensKey"></div>
   </div>
   <div class="lenspanel" id="lensPanel" hidden></div>
+  <div class="specbar" id="specbar" role="region" aria-label="Specialist provision">
+    <span class="lbl">Specialist provision</span>
+    <div class="chips" role="group" aria-label="Kinds of specialist provision to include" id="specSeg"></div>
+    <span class="opt">Not every provider does everything. Untick what your organisation doesn't do, and it drops out of the figures below.</span>
+  </div>
 
   <div class="part"><span class="eyebrow">Outside in</span><p>How people see the organisation: the things they come to it to do.</p></div>
 
@@ -378,7 +395,7 @@ footer h2{color:var(--ink);font-size:20px}
   <footer>
     <h2>About this model</h2>
     <p>The structure is based on what every English provider has to do: the Regulator of Social Housing's consumer and economic standards, landlord safety duties (gas, electrical, fire, asbestos, water and lifts), the Building Safety Act, HHSRS, Awaab's Law, the Housing Ombudsman's Complaint Handling Code and the Tenant Satisfaction Measures, plus the way the sector usually organises its teams and costs.</p>
-    <p>I was originally inspired to create this after reading Rannoch Associates' paper "The impact of AI on Housing Associations" (October 2026). That model wasn't published, but it did make me think that a common and open model for services could be useful for others in the sector, so this is an independent attempt, not their work. I was also inspired by Dave Skinner's work around Housing Service Patterns: the service names and interaction patterns are adapted from the <a href="https://www.designpatternsforsocialhousing.co.uk/Social-housing-service-list-89c36fb8921944f79088b03c830c8584">social housing service list</a> by Design Patterns for Social Housing, whose pattern groups were mapped from TPXImpact's work on local government services. Every name and grouping is a judgement about a generic association. Real organisations differ, and that's what makes it worth improving together.</p>
+    <p>I was originally inspired to create this after reading Rannoch Associates' paper "The impact of AI on Housing Associations" (October 2026). That model wasn't published, but it did make me think that a common and open model for services could be useful for others in the sector, so this is an independent attempt, not their work. I was also inspired by Dave Skinner's work around Housing Service Patterns: the service names and interaction patterns are adapted from the <a href="https://www.designpatternsforsocialhousing.co.uk/Social-housing-service-list-89c36fb8921944f79088b03c830c8584">social housing service list</a> by Design Patterns for Social Housing, whose pattern groups were mapped from TPXImpact's work on local government services. Several requests were added after a review of Anchor Housing's customer journey catalogue, with thanks. Every name and grouping is a judgement about a generic association. Real organisations differ, and that's what makes it worth improving together.</p>
   </footer>
 </div>
 <div class="tip" id="tip" hidden></div>
@@ -396,6 +413,14 @@ const U = Object.fromEntries(D.users.map(u => [u.id, u.n]));
 const SV = Object.fromEntries(D.services.map(s => [s.c, s]));
 const isCol = s => s.u.length === 1 && s.u[0] === 'colleagues';
 const audOk = (s, aud) => aud === 'all' || (aud === 'colleagues' ? isCol(s) : !isCol(s));
+const SPECS = D.specs || [];
+const specOff = new Set();
+const spOff = sp => (sp || []).some(i => specOff.has(i));
+const reqsOf = s => spOff(s.sp) ? [] : s.r.filter(r => !spOff(r.sp));
+const svcOn = s => reqsOf(s).length > 0;
+const spNames = sp => (sp || []).map(i => SPECS[i].n).join(', ');
+const spBadge = sp => (sp && sp.length) ? `<span class="spb" data-tip="${esc(`<b>Specialist: ${esc(spNames(sp))}</b><small>Only some providers offer this</small>`)}">Specialist</span>` : '';
+const spTip = sp => (sp && sp.length) ? `<br>Specialist: ${esc(spNames(sp))}` : '';
 const suggest = where => D.repo ? `${D.repo}/issues/new?template=suggest-a-change.yml&where=${encodeURIComponent(where)}` : '';
 
 $('#ver').textContent = `${D.version}${D.released ? ' · ' + D.released : ''}`;
@@ -454,11 +479,11 @@ $('#lensSeg').addEventListener('click', e => { const b = e.target.closest('butto
 // Fig 1: services
 let aud1 = 'public';
 function renderServices(aud) {
-  const ss = D.services.filter(s => audOk(s, aud)); const rs = ss.flatMap(s => s.r);
+  const ss = D.services.filter(s => audOk(s, aud) && svcOn(s)); const rs = ss.flatMap(reqsOf);
   $('#h1').textContent = aud === 'colleagues' ? `${ss.length} services colleagues use` : aud === 'all' ? `${ss.length} services, ${rs.length} requests` : `The ${ss.length} services residents and communities use`;
   $('#cap1').textContent = `${ss.length} services · ${rs.length} requests`;
   $('#pkey').innerHTML = D.patterns.map(p => `<span class="p-${p.id}" data-tip="${esc(`<b>${esc(p.n)}</b><small>${esc(p.desc)}</small>`)}"><span class="psw"></span>${esc(p.n)} <span class="num">${rs.filter(r => r.p === p.id).length}</span></span>`).join('');
-  $('#services').innerHTML = D.groups.map(g => { const gs = ss.filter(s => s.g === g.id); if (!gs.length) return ''; return `<section class="sgroup"><h3>${esc(g.n)}</h3>${gs.map(s => { const areas = new Set(s.r.flatMap(r => r.a.map(x => x[0]))); const link = suggest(`${s.c} ${s.n}`); return `<article class="svc"><div class="top"><span class="num">${s.c}</span><b>${esc(s.n)}</b></div>${s.goal ? `<div class="goal">${esc(s.goal)}</div>` : ''}<ul>${s.r.map(r => `<li><span>${esc(r.n)}</span><span class="pill p-${r.p}" data-tip="${esc(`<b>${esc(P[r.p].n)}</b><small>${esc(P[r.p].desc)}</small>`)}">${esc(P[r.p].n)}</span>${lensBar(r.a.map(x => x[1]))}</li>`).join('')}</ul><div class="meta"><span>${s.u.map(u => esc(U[u])).join(' · ')}</span><span><button type="button" class="trace-btn" data-trace="${s.c}">See what's behind it</button>${link ? ` · <a href="${esc(link)}">Suggest a change</a>` : ''}</span></div></article>`; }).join('')}</section>`; }).join('');
+  $('#services').innerHTML = D.groups.map(g => { const gs = ss.filter(s => s.g === g.id); if (!gs.length) return ''; return `<section class="sgroup"><h3>${esc(g.n)}</h3>${gs.map(s => { const link = suggest(`${s.c} ${s.n}`); return `<article class="svc"><div class="top"><span class="num">${s.c}</span><b>${esc(s.n)}</b>${spBadge(s.sp)}</div>${s.goal ? `<div class="goal">${esc(s.goal)}</div>` : ''}<ul>${reqsOf(s).map(r => `<li><span>${esc(r.n)}${spBadge(r.sp)}</span><span class="pill p-${r.p}" data-tip="${esc(`<b>${esc(P[r.p].n)}</b><small>${esc(P[r.p].desc)}</small>`)}">${esc(P[r.p].n)}</span>${lensBar(r.a.map(x => x[1]))}</li>`).join('')}</ul><div class="meta"><span>${s.u.map(u => esc(U[u])).join(' · ')}</span><span><button type="button" class="trace-btn" data-trace="${s.c}">See what's behind it</button>${link ? ` · <a href="${esc(link)}">Suggest a change</a>` : ''}</span></div></article>`; }).join('')}</section>`; }).join('');
 }
 segs('aud1', d => { aud1 = d.aud; renderServices(aud1); });
 renderServices('public');
@@ -467,19 +492,20 @@ renderServices('public');
 const ACT = {};
 D.areas.forEach((a, ai) => a.s.forEach((f, fi) => f.a.forEach((name, k) => { ACT[`${f.c}.${k + 1}`] = { ai, fi, k, name }; })));
 let cur = D.services[0].c, focusReq = null, view = 'trace';
-$('#svcSel').innerHTML = D.groups.map(g => { const gs = D.services.filter(s => s.g === g.id); return gs.length ? `<optgroup label="${esc(g.n)}">${gs.map(s => `<option value="${s.c}">${s.c} · ${esc(s.n)}</option>`).join('')}</optgroup>` : ''; }).join('');
+const buildSel = () => { $('#svcSel').innerHTML = D.groups.map(g => { const gs = D.services.filter(s => s.g === g.id && svcOn(s)); return gs.length ? `<optgroup label="${esc(g.n)}">${gs.map(s => `<option value="${s.c}">${s.c} · ${esc(s.n)}</option>`).join('')}</optgroup>` : ''; }).join(''); };
+buildSel();
 function renderTrace() {
-  const s = SV[cur]; $('#svcSel').value = cur;
+  const s = SV[cur]; $('#svcSel').value = cur; const rs = reqsOf(s);
   const byArea = new Map();
-  s.r.forEach(r => r.a.forEach(([ai, code]) => { const x = ACT[code]; if (!byArea.has(ai)) byArea.set(ai, new Map()); const fm = byArea.get(ai); if (!fm.has(x.fi)) fm.set(x.fi, new Map()); const am = fm.get(x.fi); if (!am.has(x.k)) am.set(x.k, new Set()); am.get(x.k).add(r.c); }));
+  rs.forEach(r => r.a.forEach(([ai, code]) => { const x = ACT[code]; if (!byArea.has(ai)) byArea.set(ai, new Map()); const fm = byArea.get(ai); if (!fm.has(x.fi)) fm.set(x.fi, new Map()); const am = fm.get(x.fi); if (!am.has(x.k)) am.set(x.k, new Set()); am.get(x.k).add(r.c); }));
   const areas = [...byArea.keys()].sort((a, b) => a - b);
   const nFn = areas.reduce((n, ai) => n + byArea.get(ai).size, 0);
   const nAc = areas.reduce((n, ai) => n + [...byArea.get(ai).values()].reduce((m, am) => m + am.size, 0), 0);
-  const RQ = Object.fromEntries(s.r.map(r => [r.c, r]));
+  const RQ = Object.fromEntries(rs.map(r => [r.c, r]));
   const tags = set => [...set].sort().map(c => `<span class="tag p-${RQ[c].p}" data-tip="${esc(`<b>${esc(RQ[c].n)}</b><small>${esc(P[RQ[c].p].n)}</small>`)}">${c}</span>`).join('');
   const link = suggest(`${s.c} ${s.n}`);
-  $('#cap2').textContent = `${s.c} ${s.n}: ${s.r.length} requests · ${areas.length} function areas · ${nFn} functions · ${nAc} activities`;
-  $('#trace').innerHTML = `<div class="trace"><div class="tleft"><div class="tcard"><span class="lvl">${esc(D.groups.find(g => g.id === s.g).n)} › Service ${s.c}</span><b>${esc(s.n)}</b>${s.goal ? `<span class="goal">${esc(s.goal)}</span>` : ''}<span class="who">For: ${s.u.map(u => esc(U[u])).join(', ')}</span><div class="tstats"><div><span class="num">${s.r.length}</span><span>requests</span></div><div><span class="num">${areas.length}</span><span>function areas</span></div><div><span class="num">${nFn}</span><span>functions</span></div><div><span class="num">${nAc}</span><span>activities</span></div></div>${lens ? `<div class="tlens"><span>${esc(lens.f.n)} across these ${nAc} activities</span>${lensBar([...new Set(s.r.flatMap(r => r.a.map(x => x[1])))])}</div>` : ''}${link ? `<a href="${esc(link)}" style="font-size:13px">Suggest a change to this service</a>` : ''}</div><div class="treqs"><span class="lvl"><span>Requests</span>${focusReq ? '<button type="button" id="showAll">Show all</button>' : ''}</span>${s.r.map(r => `<button type="button" class="rq p-${r.p}" data-req="${r.c}" aria-pressed="${focusReq === r.c}"><span class="num">${r.c}</span><span>${esc(r.n)}</span><span class="pill p-${r.p}">${esc(P[r.p].n)}</span></button>`).join('')}</div></div><div class="tright"><span class="lvl">Delivered through</span>${areas.map(ai => { const a = D.areas[ai]; const fm = byArea.get(ai); const areaReqs = new Set([...fm.values()].flatMap(am => [...am.values()].flatMap(x => [...x]))); const aDim = focusReq && !areaReqs.has(focusReq); return `<section class="tarea ${dc(a.d)}${aDim ? ' dim' : ''}"><h3><span class="num">${a.c}</span><span>${esc(a.n)}</span><span class="dom">${esc(D.domains[a.d])}</span></h3>${[...fm.keys()].sort((x, y) => x - y).map(fi => { const f = a.s[fi]; const am = fm.get(fi); const fReqs = new Set([...am.values()].flatMap(x => [...x])); const ks = [...am.keys()].sort((x, y) => x - y); const rest = f.a.length - ks.length; const fDim = !aDim && focusReq && !fReqs.has(focusReq); return `<div class="tfn${fDim ? ' dim' : ''}"><div class="fname"><span class="num">Function ${f.c}</span><span>${esc(f.n)}</span><span class="tags">${tags(fReqs)}</span></div><div class="tacts">${ks.map(k => { const rs = am.get(k); const ac = `${f.c}.${k + 1}`; const li = lensIdx(ac); return `<span class="tact${!aDim && !fDim && focusReq && !rs.has(focusReq) ? ' dim' : ''}"${lens ? ` style="border-left:5px solid ${li < 0 ? 'var(--lnone)' : lensCol(li)}"` : ''} data-tip="${esc(`<b>${esc(f.a[k])}</b><small>Used by ${[...rs].sort().map(c => esc(c + ' ' + RQ[c].n)).join('<br>')}${lensTip(ac)}</small>`)}"><span class="num">${f.c}.${k + 1}</span>${esc(f.a[k])}</span>`; }).join('')}${rest ? `<span class="tmore">+${rest} other activit${rest === 1 ? 'y' : 'ies'} in this function</span>` : ''}</div></div>`; }).join('')}</section>`; }).join('')}</div></div>`;
+  $('#cap2').textContent = `${s.c} ${s.n}: ${rs.length} requests · ${areas.length} function areas · ${nFn} functions · ${nAc} activities`;
+  $('#trace').innerHTML = `<div class="trace"><div class="tleft"><div class="tcard"><span class="lvl">${esc(D.groups.find(g => g.id === s.g).n)} › Service ${s.c}</span><b>${esc(s.n)}${spBadge(s.sp)}</b>${s.goal ? `<span class="goal">${esc(s.goal)}</span>` : ''}<span class="who">For: ${s.u.map(u => esc(U[u])).join(', ')}</span><div class="tstats"><div><span class="num">${rs.length}</span><span>requests</span></div><div><span class="num">${areas.length}</span><span>function areas</span></div><div><span class="num">${nFn}</span><span>functions</span></div><div><span class="num">${nAc}</span><span>activities</span></div></div>${lens ? `<div class="tlens"><span>${esc(lens.f.n)} across these ${nAc} activities</span>${lensBar([...new Set(rs.flatMap(r => r.a.map(x => x[1])))])}</div>` : ''}${link ? `<a href="${esc(link)}" style="font-size:13px">Suggest a change to this service</a>` : ''}</div><div class="treqs"><span class="lvl"><span>Requests</span>${focusReq ? '<button type="button" id="showAll">Show all</button>' : ''}</span>${rs.map(r => `<button type="button" class="rq p-${r.p}" data-req="${r.c}" aria-pressed="${focusReq === r.c}"><span class="num">${r.c}</span><span>${esc(r.n)}${spBadge(r.sp)}</span><span class="pill p-${r.p}">${esc(P[r.p].n)}</span></button>`).join('')}</div></div><div class="tright"><span class="lvl">Delivered through</span>${areas.map(ai => { const a = D.areas[ai]; const fm = byArea.get(ai); const areaReqs = new Set([...fm.values()].flatMap(am => [...am.values()].flatMap(x => [...x]))); const aDim = focusReq && !areaReqs.has(focusReq); return `<section class="tarea ${dc(a.d)}${aDim ? ' dim' : ''}"><h3><span class="num">${a.c}</span><span>${esc(a.n)}</span><span class="dom">${esc(D.domains[a.d])}</span></h3>${[...fm.keys()].sort((x, y) => x - y).map(fi => { const f = a.s[fi]; const am = fm.get(fi); const fReqs = new Set([...am.values()].flatMap(x => [...x])); const ks = [...am.keys()].sort((x, y) => x - y); const rest = f.a.length - ks.length; const fDim = !aDim && focusReq && !fReqs.has(focusReq); return `<div class="tfn${fDim ? ' dim' : ''}"><div class="fname"><span class="num">Function ${f.c}</span><span>${esc(f.n)}${spBadge(f.sp)}</span><span class="tags">${tags(fReqs)}</span></div><div class="tacts">${ks.map(k => { const rs = am.get(k); const ac = `${f.c}.${k + 1}`; const li = lensIdx(ac); return `<span class="tact${!aDim && !fDim && focusReq && !rs.has(focusReq) ? ' dim' : ''}"${lens ? ` style="border-left:5px solid ${li < 0 ? 'var(--lnone)' : lensCol(li)}"` : ''} data-tip="${esc(`<b>${esc(f.a[k])}</b><small>Used by ${[...rs].sort().map(c => esc(c + ' ' + RQ[c].n)).join('<br>')}${lensTip(ac)}</small>`)}"><span class="num">${f.c}.${k + 1}</span>${esc(f.a[k])}</span>`; }).join('')}${rest ? `<span class="tmore">+${rest} other activit${rest === 1 ? 'y' : 'ies'} in this function</span>` : ''}</div></div>`; }).join('')}</section>`; }).join('')}</div></div>`;
 }
 function selectService(code, scroll) {
   if (!SV[code]) return; cur = code; focusReq = null; setView('trace'); renderTrace();
@@ -495,11 +521,12 @@ $('#trace').addEventListener('click', e => { if (e.target.closest('#showAll')) {
 $('#services').addEventListener('click', e => { const b = e.target.closest('.trace-btn'); if (b) selectService(b.dataset.trace, true); });
 segs('view2', d => setView(d.view));
 
+let aud2 = 'public';
 function renderMatrix(aud) {
-  const ss = D.services.filter(s => audOk(s, aud));
-  const cell = s => { const c = D.areas.map(() => new Set()); s.r.forEach(r => r.a.forEach(([ai, code]) => c[ai].add(code))); return c.map(x => x.size); };
+  aud2 = aud; const ss = D.services.filter(s => audOk(s, aud) && svcOn(s));
+  const cell = s => { const c = D.areas.map(() => new Set()); reqsOf(s).forEach(r => r.a.forEach(([ai, code]) => c[ai].add(code))); return c.map(x => x.size); };
   const rows = ss.map(s => [s, cell(s)]); const mx = Math.max(1, ...rows.flatMap(r => r[1]));
-  const used = D.areas.map(() => new Set()); ss.forEach(s => s.r.forEach(r => r.a.forEach(([ai, code]) => used[ai].add(code))));
+  const used = D.areas.map(() => new Set()); ss.forEach(s => reqsOf(s).forEach(r => r.a.forEach(([ai, code]) => used[ai].add(code))));
   const head = `<thead><tr><th></th>${D.areas.map(a => `<th class="ar ${dc(a.d)}" scope="col"><span>${esc(a.n)}</span><br><span class="num">${a.c}</span></th>`).join('')}<th class="ar"><span>Areas touched</span></th></tr></thead>`;
   let body = '', lastG = '';
   rows.forEach(([s, c]) => { if (s.g !== lastG) { lastG = s.g; body += `<tr class="gh"><th colspan="${D.areas.length + 2}">${esc(D.groups.find(g => g.id === s.g).n)}</th></tr>`; } body += `<tr class="sr" data-svc="${s.c}" tabindex="0"><th scope="row"><span class="num">${s.c}</span>${esc(s.n)}</th>${c.map((v, i) => v ? `<td class="v" style="background:color-mix(in srgb, var(--heat) ${Math.round(30 + v / mx * 70)}%, var(--faint))" data-tip="${esc(`<b>${esc(s.n)}</b><small>${esc(D.areas[i].n)}: ${v} activit${v === 1 ? 'y' : 'ies'}</small>`)}">${v}</td>` : '<td></td>').join('')}<td class="tot num">${c.filter(Boolean).length}</td></tr>`; });
@@ -523,7 +550,7 @@ function renderMosaic() {
   if (lens) $('#key3').innerHTML = `<span>Coloured by the optional layer: <strong>${esc(lens.f.n)}</strong>. See the key at the top of the page.</span>`; else $('#key3').innerHTML = mode === 'domain' ? D.domains.map((d, i) => `<span class="${dc(i)}"><span class="sw"></span>${esc(d)}</span>`).join('') : `<span class="homes"><span class="sw"></span>Supports a service (${NUSED})</span><span><span class="sw dot off"></span>Backstage (${NA - NUSED})</span>`;
   $('#mosaic').innerHTML = D.domains.map((dn, di) => {
     const as = D.areas.filter(a => a.d === di);
-    return `<section class="dom ${dc(di)}"><div class="domhead"><span>${esc(dn)}</span><span class="num">${as.length} function areas · ${as.reduce((n, a) => n + a.s.length, 0)} functions · ${as.reduce((n, a) => n + nAct(a), 0)} activities</span></div><div class="cards">${as.map(a => `<div class="card"><h3><span class="num">${a.c}</span><span>${esc(a.n)}</span></h3><div class="meta">${a.s.length} functions · ${nAct(a)} activities</div>${a.s.map(f => `<div class="srow"><span>${esc(f.n)}</span><span class="dots">${f.a.map((x, k) => { const u = f.u[k]; const off = mode === 'svc' && !u.length; const ac = `${f.c}.${k + 1}`; const li = lensIdx(ac); const st = lens ? ` style="background:${li < 0 ? 'var(--lnone)' : lensCol(li)};box-shadow:none"` : ''; return `<i class="dot${off && !lens ? ' off' : ''}"${st} data-tip="${esc(`<b>${esc(x)}</b><small>${ac} · ${esc(f.n)}${u.length ? '<br>Supports: ' + u.map(c => esc(c + ' ' + SV[c].n)).join(', ') : '<br>Backstage: no service relies on it directly'}${lensTip(ac)}</small>`)}"></i>`; }).join('')}</span></div>`).join('')}</div>`).join('')}</div></section>`;
+    return `<section class="dom ${dc(di)}"><div class="domhead"><span>${esc(dn)}</span><span class="num">${as.length} function areas · ${as.reduce((n, a) => n + a.s.length, 0)} functions · ${as.reduce((n, a) => n + nAct(a), 0)} activities</span></div><div class="cards">${as.map(a => `<div class="card"><h3><span class="num">${a.c}</span><span>${esc(a.n)}</span></h3><div class="meta">${a.s.length} functions · ${nAct(a)} activities</div>${a.s.map(f => `<div class="srow${spOff(f.sp) ? ' spoff' : ''}"><span>${esc(f.n)}${f.sp.length ? ' <span class="spb" data-tip="' + esc(`<b>Specialist: ${esc(spNames(f.sp))}</b><small>Only some providers do this</small>`) + '">S</span>' : ''}</span><span class="dots">${f.a.map((x, k) => { const u = f.u[k]; const off = mode === 'svc' && !u.length; const ac = `${f.c}.${k + 1}`; const li = lensIdx(ac); const st = lens ? ` style="background:${li < 0 ? 'var(--lnone)' : lensCol(li)};box-shadow:none"` : ''; return `<i class="dot${off && !lens ? ' off' : ''}"${st} data-tip="${esc(`<b>${esc(x)}</b><small>${ac} · ${esc(f.n)}${spTip(f.sp)}${u.length ? '<br>Supports: ' + u.map(c => esc(c + ' ' + SV[c].n)).join(', ') : '<br>Backstage: no service relies on it directly'}${lensTip(ac)}</small>`)}"></i>`; }).join('')}</span></div>`).join('')}</div>`).join('')}</div></section>`;
   }).join('');
 }
 segs('mode3', d => { mode = d.mode; renderMosaic(); });
@@ -533,14 +560,30 @@ renderMosaic();
 $('#areaSel').innerHTML = D.areas.map((a, i) => `<option value="${i}"${a.c === '11' ? ' selected' : ''}>${a.c} · ${esc(a.n)}</option>`).join('');
 function renderBranch() {
   const a = D.areas[+$('#areaSel').value]; const link = suggest(`${a.c} ${a.n}`);
-  $('#branch').innerHTML = `<div class="branch ${dc(a.d)}"><div class="root"><span class="lvl">${esc(D.domains[a.d])} › Function area ${a.c}</span><b>${esc(a.n)}</b><span style="font-size:13px;color:var(--muted)">${esc(a.desc)}.</span><span class="num" style="font-size:12px">${a.s.length} functions · ${nAct(a)} activities</span>${link ? `<a href="${esc(link)}">Suggest a change to this area</a>` : ''}</div><div class="svclist">${a.s.map(f => `<div class="svcn"><div class="svcbox"><span class="lvl num">Function ${f.c}</span><span>${esc(f.n)}</span></div><div class="acts">${f.a.map((x, k) => { const u = f.u[k]; const ac = `${f.c}.${k + 1}`; const li = lensIdx(ac); const tipTxt = (u.length ? `<b>Supports</b><small>${u.map(c => esc(c + ' ' + SV[c].n)).join('<br>')}${lensTip(ac)}</small>` : (lens ? `<small>${lensTip(ac).slice(4)}</small>` : '')); return `<span class="act${u.length ? ' sv' : ''}"${lens ? ` style="border-left:5px solid ${li < 0 ? 'var(--lnone)' : lensCol(li)}"` : ''}${tipTxt ? ` data-tip="${esc(tipTxt)}"` : ''}><span class="num">${f.c}.${k + 1}</span>${esc(x)}</span>`; }).join('')}</div></div>`).join('')}</div></div>`;
+  $('#branch').innerHTML = `<div class="branch ${dc(a.d)}"><div class="root"><span class="lvl">${esc(D.domains[a.d])} › Function area ${a.c}</span><b>${esc(a.n)}</b><span style="font-size:13px;color:var(--muted)">${esc(a.desc)}.</span><span class="num" style="font-size:12px">${a.s.length} functions · ${nAct(a)} activities</span>${link ? `<a href="${esc(link)}">Suggest a change to this area</a>` : ''}</div><div class="svclist">${a.s.map(f => `<div class="svcn${spOff(f.sp) ? ' spoff' : ''}"><div class="svcbox"><span class="lvl num">Function ${f.c}</span><span>${esc(f.n)}${spBadge(f.sp)}</span></div><div class="acts">${f.a.map((x, k) => { const u = f.u[k]; const ac = `${f.c}.${k + 1}`; const li = lensIdx(ac); const tipTxt = (u.length ? `<b>Supports</b><small>${u.map(c => esc(c + ' ' + SV[c].n)).join('<br>')}${lensTip(ac)}</small>` : (lens ? `<small>${lensTip(ac).slice(4)}</small>` : '')); return `<span class="act${u.length ? ' sv' : ''}"${lens ? ` style="border-left:5px solid ${li < 0 ? 'var(--lnone)' : lensCol(li)}"` : ''}${tipTxt ? ` data-tip="${esc(tipTxt)}"` : ''}><span class="num">${f.c}.${k + 1}</span>${esc(x)}</span>`; }).join('')}</div></div>`).join('')}</div></div>`;
 }
 $('#areaSel').addEventListener('change', renderBranch);
 renderBranch();
 
 // Fig 5: index
 $('#p5').textContent = `All ${NF} functions by function area, with the number of activities in each.`;
-$('#index').innerHTML = D.domains.map((dn, di) => `<div class="ixdom ${dc(di)}">${esc(dn)}</div>` + D.areas.filter(a => a.d === di).map(a => `<div class="ix ${dc(di)}"><h3><span class="num">${a.c}</span><span>${esc(a.n)}</span></h3><ol>${a.s.map(f => `<li><span>${esc(f.n)}</span><span class="num">${f.a.length}</span></li>`).join('')}</ol></div>`).join('')).join('');
+const renderIndex = () => { $('#index').innerHTML = D.domains.map((dn, di) => `<div class="ixdom ${dc(di)}">${esc(dn)}</div>` + D.areas.filter(a => a.d === di).map(a => `<div class="ix ${dc(di)}"><h3><span class="num">${a.c}</span><span>${esc(a.n)}</span></h3><ol>${a.s.map(f => `<li class="${spOff(f.sp) ? 'spoff' : ''}"><span>${esc(f.n)}${f.sp.length ? ' <span class="spb">S</span>' : ''}</span><span class="num">${f.a.length}</span></li>`).join('')}</ol></div>`).join('')).join(''); };
+renderIndex();
+
+// Specialist provision: switch off kinds of housing your organisation doesn't provide (?without=older-people,commercial)
+function renderSpecUI() {
+  $('#specbar').hidden = !SPECS.length;
+  $('#specSeg').innerHTML = SPECS.map((x, i) => `<button type="button" class="chip" data-spec="${i}" aria-pressed="${!specOff.has(i)}" data-tip="${esc(`<b>${esc(x.n)}</b><small>${esc(x.desc)}</small>`)}">${esc(x.n)}</button>`).join('');
+}
+function applySpecs(push) {
+  renderSpecUI(); buildSel();
+  if (!svcOn(SV[cur])) { cur = D.services.find(svcOn).c; focusReq = null; }
+  renderServices(aud1); renderMatrix(aud2); renderTrace(); renderMosaic(); renderBranch(); renderIndex();
+  if (push) { try { const u = new URL(location.href); const off = [...specOff].map(i => SPECS[i].id); if (off.length) u.searchParams.set('without', off.join(',')); else u.searchParams.delete('without'); history.replaceState(null, '', u); } catch (e) {} }
+}
+$('#specSeg').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; const i = +b.dataset.spec; specOff.has(i) ? specOff.delete(i) : specOff.add(i); applySpecs(true); const nb = document.querySelector(`.chip[data-spec="${i}"]`); if (nb) nb.focus({ preventScroll: true }); });
+try { (new URL(location.href).searchParams.get('without') || '').split(',').forEach(id => { const i = SPECS.findIndex(x => x.id === id); if (i >= 0) specOff.add(i); }); } catch (e) {}
+applySpecs(false);
 
 // Contribute
 const R = D.repo;

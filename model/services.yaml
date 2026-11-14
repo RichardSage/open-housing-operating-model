@@ -2,11 +2,14 @@
 #
 # A service is something that helps someone do something, named the way they would say it.
 # Each service has requests: the specific things people do within it, tagged with an interaction pattern.
+# Several requests were added following a review of Anchor Housing's customer journey catalogue, with thanks.
 # Each request lists the functions or activities from model/function-areas/ that it relies on ("uses").
 #
 # Service names and pattern groups are adapted, with thanks, from the Social housing service list by
 # Design Patterns for Social Housing (https://www.designpatternsforsocialhousing.co.uk/), whose pattern groups
 # were mapped from TPXImpact's work on local government services.
+#
+# 'specialist' marks services, requests or functions that only some providers offer (see model/specialist.yaml).
 #
 # Codes are permanent identifiers: never renumber or reuse them. See CONTRIBUTING.md.
 
@@ -83,15 +86,29 @@ services:
     name: Rent a supported home
     pattern: apply
     uses: ["09.2.1", "09.2.4", "02.3"]
+    specialist: [supported]
   - code: "S01.3"
     name: View a home and accept an offer
     pattern: book
     uses: ["02.4", "03.5.2"]
+  - code: "S01.4"
+    name: Check my housing application
+    pattern: check
+    uses: ["02.1.3"]
+  - code: "S01.5"
+    name: Update my housing application
+    pattern: tell
+    uses: ["02.1.2", "02.1.3", "01.4.2"]
+  - code: "S01.6"
+    name: Ask for a review of a housing decision
+    pattern: request
+    uses: ["02.1.2", "02.4.4"]
 
 - code: "S02"
   name: Buy a home
   group: finding-a-home
   users: [applicants]
+  specialist: [sales]
   goal: Buy a home, or part of one, that I can afford
   requests:
   - code: "S02.1"
@@ -111,6 +128,7 @@ services:
   name: Rent a commercial property
   group: finding-a-home
   users: [businesses]
+  specialist: [commercial]
   goal: Rent and run premises for my business
   requests:
   - code: "S03.1"
@@ -218,6 +236,14 @@ services:
     name: Pay for a repair I'm responsible for
     pattern: pay
     uses: ["11.9"]
+  - code: "S08.8"
+    name: Check or change my repair appointment
+    pattern: book
+    uses: ["11.2.1", "11.2.4"]
+  - code: "S08.9"
+    name: Check if a repair is my responsibility
+    pattern: check
+    uses: ["11.1.4"]
 
 - code: "S09"
   name: Keep my home safe
@@ -245,6 +271,14 @@ services:
     name: Report a safety concern
     pattern: tell
     uses: ["12.9"]
+  - code: "S09.6"
+    name: Move out while my home is made safe
+    pattern: request
+    uses: ["11.4.4", "13.8.3", "02.7.3"]
+  - code: "S09.7"
+    name: Get help when an emergency affects my building
+    pattern: tell
+    uses: ["01.6", "11.4.3", "22.6.3"]
 
 - code: "S10"
   name: Improve or adapt my home
@@ -358,6 +392,11 @@ services:
     uses: ["08.1.5", "08.1.6"]
 
 # My tenancy and details
+  - code: "S15.4"
+    name: Get help if I'm facing eviction
+    pattern: request
+    uses: ["07.6", "04.8.1", "08.1.4", "08.3.1"]
+
 - code: "S16"
   name: Change my tenancy
   group: my-tenancy
@@ -412,6 +451,15 @@ services:
     uses: ["01.4.3", "01.7.1", "01.7.2"]
 
 # Owning my home
+  - code: "S18.3"
+    name: Let someone act on my behalf
+    pattern: tell
+    uses: ["01.4.1", "01.4.4"]
+  - code: "S18.4"
+    name: Get help if I can't go online
+    pattern: request
+    uses: ["01.5.1", "01.5.4", "08.4.2"]
+
 - code: "S19"
   name: Own more of my home or sell it
   group: owning
@@ -422,6 +470,7 @@ services:
     name: Buy more shares in my home
     pattern: apply
     uses: ["10.2"]
+    specialist: [sales]
   - code: "S19.2"
     name: Sell my home
     pattern: apply
@@ -455,6 +504,15 @@ services:
     uses: ["10.4.1"]
 
 # Where I live
+  - code: "S20.5"
+    name: Challenge my service charge
+    pattern: request
+    uses: ["10.6.3", "22.1.3"]
+  - code: "S20.6"
+    name: Take over management of my building
+    pattern: apply
+    uses: ["10.4.1", "22.1.4"]
+
 - code: "S21"
   name: Look after my neighbourhood
   group: where-i-live
@@ -540,6 +598,17 @@ services:
     uses: ["05.8.1"]
 
 # Support
+- code: "S42"
+  name: Report tenancy fraud
+  group: where-i-live
+  users: [community, tenants]
+  goal: Make sure homes go to the people who need them
+  requests:
+  - code: "S42.1"
+    name: Report tenancy fraud or subletting
+    pattern: tell
+    uses: ["04.4.1", "04.4.3"]
+
 - code: "S25"
   name: Get support to live independently
   group: support
@@ -554,10 +623,22 @@ services:
     name: Live in retirement or extra care housing
     pattern: apply
     uses: ["09.1", "09.5.2"]
+    specialist: [older-people]
   - code: "S25.3"
     name: Get a personal alarm
     pattern: request
     uses: ["09.4"]
+    specialist: [older-people]
+  - code: "S25.4"
+    name: Book a guest room
+    pattern: book
+    uses: ["09.1.2"]
+    specialist: [older-people]
+  - code: "S25.5"
+    name: Arrange meals or housekeeping
+    pattern: request
+    uses: ["09.5.1"]
+    specialist: [older-people]
 
 - code: "S26"
   name: Get help with employment and training
@@ -644,6 +725,15 @@ services:
     uses: ["22.3.1"]
 
 # Working here (colleague services)
+  - code: "S30.4"
+    name: Get a landlord reference or proof of rent
+    pattern: request
+    uses: ["01.3.2"]
+  - code: "S30.5"
+    name: Correct or delete my personal data
+    pattern: request
+    uses: ["22.3.1", "01.4.2"]
+
 - code: "S31"
   name: Start a new job
   group: working-here

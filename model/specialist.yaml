@@ -1,0 +1,25 @@
+# Open Housing Operating Model - specialist provision
+#
+# Not every housing association does everything. Most of the model describes what any registered
+# provider in England does. Some services, requests and functions only apply to providers that offer
+# particular kinds of housing. They're tagged in the model with `specialist: [id]`, using the ids below.
+#
+# - A tag on a service applies to all its requests.
+# - A tag on a function applies to all its activities.
+# - Anything without a tag applies to every provider.
+#
+# In the atlas you can switch each kind of provision on or off to see the model for your organisation.
+
+specialist:
+- id: older-people
+  name: Retirement and extra care
+  description: Housing for older people, including sheltered, retirement and extra care schemes
+- id: supported
+  name: Supported housing
+  description: Supported and exempt accommodation for people who need support to live independently
+- id: sales
+  name: Shared ownership and sales
+  description: Selling homes through shared ownership, Rent to Buy and outright sale
+- id: commercial
+  name: Commercial property
+  description: Letting shops, offices and other commercial units

@@ -96,6 +96,20 @@ functions:
 
 Any service, request, function area, function or activity can have `description` and `notes`. Most can have `references` (a list of links or citations). Activities and requests can have `aliases`: other names people use for the same thing.
 
+### Specialist provision
+
+Not every provider does everything. If a service, request or function only applies to providers that offer a particular kind of housing, tag it with `specialist`:
+
+```yaml
+  - code: "S25.4"
+    name: Book a guest room
+    pattern: book
+    uses: ["09.1.2"]
+    specialist: [older-people]
+```
+
+The kinds of provision are listed in `model/specialist.yaml`: retirement and extra care, supported housing, shared ownership and sales, and commercial property. A tag on a service covers all its requests, and a tag on a function covers all its activities. Leave it out for anything every provider does. In the atlas, people can switch each kind off to see the model for their own organisation.
+
 ## Optional layers
 
 Layers such as `layers/ai-impact/` add a point of view about the activities without changing the model. Suggest changes to a layer the same way as to the model. Say which layer you mean, because a layer is an opinion and is reviewed as one. To propose a new layer, see [layers/README.md](layers/README.md).

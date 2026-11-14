@@ -104,6 +104,7 @@ functions:
     name: Manage stock transfers
 - code: "13.10"
   name: Commercial property
+  specialist: [commercial]
   activities:
   - code: "13.10.1"
     name: Let commercial units

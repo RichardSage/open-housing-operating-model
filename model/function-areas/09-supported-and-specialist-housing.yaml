@@ -7,6 +7,7 @@ description: Older people's, supported and extra care housing
 functions:
 - code: "09.1"
   name: Retirement housing
+  specialist: [older-people]
   activities:
   - code: "09.1.1"
     name: Carry out wellbeing checks
@@ -18,6 +19,7 @@ functions:
     name: Carry out scheme health and safety checks
 - code: "09.2"
   name: Supported housing
+  specialist: [supported]
   activities:
   - code: "09.2.1"
     name: Manage referrals to supported schemes
@@ -29,6 +31,7 @@ functions:
     name: Assess referral risk and suitability
 - code: "09.3"
   name: Commissioned support contracts
+  specialist: [supported]
   activities:
   - code: "09.3.1"
     name: Manage commissioned support contracts
@@ -38,6 +41,7 @@ functions:
     name: Bid for support contracts
 - code: "09.4"
   name: Telecare & alarms
+  specialist: [older-people]
   activities:
   - code: "09.4.1"
     name: Monitor alarm calls
@@ -49,6 +53,7 @@ functions:
     name: Migrate alarm equipment to digital lines
 - code: "09.5"
   name: Extra care
+  specialist: [older-people]
   activities:
   - code: "09.5.1"
     name: Coordinate with care providers
@@ -60,6 +65,7 @@ functions:
     name: Review care quality with providers
 - code: "09.6"
   name: Managing agents
+  specialist: [supported]
   activities:
   - code: "09.6.1"
     name: Oversee managing agents
@@ -69,6 +75,7 @@ functions:
     name: Manage leases with support providers
 - code: "09.7"
   name: Exempt accommodation
+  specialist: [supported]
   activities:
   - code: "09.7.1"
     name: Evidence enhanced Housing Benefit claims
