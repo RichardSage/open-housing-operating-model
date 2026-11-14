@@ -1,0 +1,38 @@
+name: Regulation watch
+
+# Once a week, check the regulation layer's register against GOV.UK and legislation.gov.uk.
+# It never changes the register. It opens issues labelled `regulation-watch` for a person to review.
+# See layers/regulation/WATCH.md.
+
+on:
+  schedule:
+    - cron: "23 6 * * 1"   # Mondays 06:23 UTC
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Only report in the run summary; don't open issues"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: regulation-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - name: Check sources
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/check_regulation.py ${{ inputs.dry_run && '--dry-run' || '' }}

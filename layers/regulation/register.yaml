@@ -9,7 +9,10 @@
 # status:    in-force | partly-in-force | not-yet-in-force
 # changes:   dated changes still to come. date can be YYYY, YYYY-MM or YYYY-MM-DD.
 #            certainty: confirmed (in law or formally announced) | expected (announced, date not final)
-# last_checked: when someone last checked this entry against its source
+# watch:     optional list of pages for the weekly watcher to check (defaults to url).
+#            Only www.gov.uk and www.legislation.gov.uk links are checked automatically.
+# last_checked: when someone last checked this entry against its source. The watcher
+#            reports source updates after this date, so update it whenever you check an entry.
 
 obligations:
 
@@ -22,6 +25,8 @@ obligations:
   in_force_from: "2024-04-01"
   summary: Safe, good-quality homes and landlord services, including stock condition data, repairs and health and safety.
   url: https://www.gov.uk/government/organisations/regulator-of-social-housing
+  watch:
+  - https://www.gov.uk/government/collections/regulatory-standards-for-landlords
   last_checked: "2026-11-14"
 
 - id: rsh-tenancy
@@ -32,6 +37,8 @@ obligations:
   in_force_from: "2024-04-01"
   summary: Fair allocations and lettings, tenure, tenancy sustainment, mutual exchange and ending tenancies.
   url: https://www.gov.uk/government/organisations/regulator-of-social-housing
+  watch:
+  - https://www.gov.uk/government/collections/regulatory-standards-for-landlords
   last_checked: "2026-11-14"
 
 - id: rsh-neighbourhood
@@ -42,6 +49,8 @@ obligations:
   in_force_from: "2024-04-01"
   summary: Safe, clean shared spaces, local partnership working, anti-social behaviour and domestic abuse.
   url: https://www.gov.uk/government/organisations/regulator-of-social-housing
+  watch:
+  - https://www.gov.uk/government/collections/regulatory-standards-for-landlords
   last_checked: "2026-11-14"
 
 - id: rsh-tia
@@ -52,6 +61,8 @@ obligations:
   in_force_from: "2024-04-01"
   summary: Fairness and respect, diverse needs, engagement and scrutiny, information for tenants, complaints and self-referral. Revised from 1 October 2026.
   url: https://www.gov.uk/government/news/rsh-publishes-revised-consumer-standards-and-requirements
+  watch:
+  - https://www.gov.uk/government/collections/regulatory-standards-for-landlords
   last_checked: "2026-11-14"
 
 - id: rsh-stairs
@@ -66,6 +77,8 @@ obligations:
     certainty: confirmed
     summary: Landlords must respond to tenants' information requests within 30 calendar days
   url: https://www.gov.uk/government/news/rsh-publishes-revised-consumer-standards-and-requirements
+  watch:
+  - https://www.gov.uk/government/collections/regulatory-standards-for-landlords
   last_checked: "2026-11-14"
 
 - id: rsh-tsm
@@ -76,6 +89,8 @@ obligations:
   in_force_from: "2023-04-01"
   summary: Collect and publish tenant satisfaction measures, including perception surveys and management information. An electrical safety measure was added in June 2026.
   url: https://www.gov.uk/government/organisations/regulator-of-social-housing
+  watch:
+  - https://www.gov.uk/government/publications/tenant-satisfaction-measures-standard
   last_checked: "2026-11-14"
 
 - id: rsh-competence
@@ -104,6 +119,8 @@ obligations:
     certainty: expected
     summary: Revised economic standards expected after consultation in 2027
   url: https://www.gov.uk/government/organisations/regulator-of-social-housing
+  watch:
+  - https://www.gov.uk/government/publications/governance-and-financial-viability-standard
   last_checked: "2026-11-14"
 
 - id: rsh-vfm
@@ -118,6 +135,8 @@ obligations:
     certainty: expected
     summary: Revised economic standards expected after consultation in 2027
   url: https://www.gov.uk/government/organisations/regulator-of-social-housing
+  watch:
+  - https://www.gov.uk/government/collections/regulatory-standards-for-landlords
   last_checked: "2026-11-14"
 
 - id: rsh-rent
@@ -128,6 +147,9 @@ obligations:
   in_force_from: "2026-04-01"
   summary: Rent setting for low-cost rental homes, including annual increases of up to CPI + 1% until March 2036 and rent convergence.
   url: https://www.gov.uk/government/publications/decision-instruments
+  watch:
+  - https://www.gov.uk/government/collections/rent-standard-and-guidance
+  - https://www.gov.uk/government/publications/decision-instruments
   last_checked: "2026-11-14"
 
 # ---------------------------------------------------------------- Homes, condition and safety
@@ -299,6 +321,8 @@ obligations:
   - date: "2027-03"
     certainty: confirmed
     summary: Future Homes and Buildings Standards apply to new homes
+  watch:
+  - https://www.legislation.gov.uk/uksi/2010/2214
   last_checked: "2026-11-14"
 
 # ---------------------------------------------------------------- Tenancies, residents and communities

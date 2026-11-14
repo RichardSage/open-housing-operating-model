@@ -34,6 +34,7 @@ A layer's version changes independently of the model. Changing a layer never cha
 - **Add or correct an obligation** in `regulation/register.yaml`. Include a source link and update `last_checked`.
 - **Add a dated change** under an obligation's `changes`, marked `confirmed` or `expected`. The atlas's "Coming up" list and "What's changing" lens update themselves.
 - **Add or refine links** in `regulation/links.csv`. Use `requires` when the activity exists because of the obligation, and `shapes` when the obligation sets how it's done. Prefer activity-level links where only part of a function is affected.
+- **The weekly watcher** checks the register against GOV.UK and legislation.gov.uk, and opens `regulation-watch` issues when something may need updating. Picking one up is a good way to help. See [regulation/WATCH.md](regulation/WATCH.md).
 - It's **not legal advice**. If you're a housing lawyer or compliance specialist, a review of any section is especially welcome.
 
 ## Making a layer

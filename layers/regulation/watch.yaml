@@ -1,0 +1,74 @@
+# Settings for the regulation watcher (scripts/check_regulation.py)
+#
+# The watcher runs weekly as a GitHub Action. It never edits the register.
+# It opens issues labelled `regulation-watch` for a person to review.
+#
+# Per obligation, it checks every link in `watch:` (or the `url` if there is no `watch:` list)
+# when the link is on www.gov.uk or www.legislation.gov.uk. Other links are checked by hand.
+
+# How old last_checked can get before the watcher asks someone to re-check an entry
+stale_after_days: 180
+
+# How far back to look for new publications on each run (a little over a week, so nothing falls between runs)
+window_days: 9
+
+# New publications from organisations on GOV.UK
+govuk_feeds:
+  - organisation: regulator-of-social-housing
+    name: Regulator of Social Housing
+    # Leave out routine publications about individual landlords
+    exclude_titles:
+      - "^Regulatory judgement"
+      - "^Regulatory notice"
+      - "^Gradings under review"
+      - "^Enforcement notice"
+      - "^Registration"
+      - "^Deregistration"
+      - "^Private registered provider"
+      - "^Local authority registered provider"
+  - organisation: ministry-of-housing-communities-local-government
+    name: Ministry of Housing, Communities and Local Government
+    # MHCLG publishes widely, so only keep items that mention these words
+    include_keywords:
+      - social housing
+      - social rent
+      - registered provider
+      - housing association
+      - landlord
+      - tenant
+      - tenancy
+      - leasehold
+      - Awaab
+      - Decent Homes
+      - damp and mould
+      - building safety
+      - Renters' Rights
+      - supported housing
+      - energy efficiency
+      - consumer standard
+      - Regulator of Social Housing
+      - Housing Ombudsman
+  - organisation: building-safety-regulator
+    name: Building Safety Regulator
+    include_keywords:
+      - higher-risk building
+      - accountable person
+      - residents
+      - building safety
+      - golden thread
+
+# New Acts and statutory instruments on legislation.gov.uk with any of these words in the title
+legislation_titles:
+  - housing
+  - landlord
+  - tenant
+  - tenancy
+  - leasehold
+  - "building safety"
+  - "building regulations"
+  - "gas safety"
+  - "electrical safety"
+  - "smoke and carbon monoxide"
+  - "fire safety"
+  - "energy performance"
+  - renters

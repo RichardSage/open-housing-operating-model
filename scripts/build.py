@@ -235,6 +235,10 @@ def load_register_layer(ly, w, folder, fn_index, act_index):
                 err(ow, "change certainty must be 'confirmed' or 'expected'")
         if not o.get("last_checked"):
             warn(ow, "has no last_checked date")
+        watch = o.get("watch")
+        if watch is not None and (not isinstance(watch, list)
+                                  or not all(isinstance(u, str) and u.startswith("https://") for u in watch)):
+            err(ow, "watch must be a list of https:// links")
     links = defaultdict(lambda: {"requires": set(), "shapes": set()})
     lpath = folder / str(ly.get("links", "links.csv"))
     if not lpath.is_file():

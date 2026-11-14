@@ -133,7 +133,7 @@ Codes are **permanent identifiers**: once published, a code always means the sam
 Layers add a point of view on top of the model without changing it. In the atlas, choose a layer from the **Layer** bar to colour every activity by it, and choose **Model only** to hide it again. Each layer lives in [`layers/`](layers), with its own version, sources and caveats.
 
 There are two layers so far:
-- [`regulation`](layers/regulation): a register of the laws, regulatory standards and codes that apply to registered providers in England, linked to the activities they require or shape. It shows the **legal basis** for each activity and **what's changing**, with a "Coming up" timeline of dated changes. Not legal advice.
+- [`regulation`](layers/regulation): a register of the laws, regulatory standards and codes that apply to registered providers in England, linked to the activities they require or shape. It shows the **legal basis** for each activity and **what's changing**, with a "Coming up" timeline of dated changes. A [weekly watcher](layers/regulation/WATCH.md) flags changes to its sources for review. Not legal advice.
 - [`ai-impact`](layers/ai-impact): where AI could change each activity and how carefully to approach it, drawing on the NHF's AI code of practice and the Regulator's statements. An independent judgement for discussion, not compliance advice.
 
 See [layers/README.md](layers/README.md) to suggest changes or propose a new layer.

@@ -8,6 +8,7 @@ The model itself is unchanged.
 
 - New optional layers: a point of view on top of the model, kept in `layers/` with its own version, sources and caveats. Layers are validated against the model and published separately (`layers/<id>.csv` and `.json`).
 - Layer `regulation` v2026.11: a register of 48 laws, regulatory standards and codes for registered providers in England, with 267 links to functions and activities. Two lenses (legal basis, and what's changing) plus a "Coming up" timeline of dated changes. Not legal advice.
+- Regulation watcher: a weekly GitHub Action checks the register against GOV.UK and legislation.gov.uk and opens `regulation-watch` issues for review. It never edits the register. See `layers/regulation/WATCH.md`.
 - Layer `ai-impact` v2026.11. AI impact, a governance tier and a suggested route for all 667 activities, drawing on the NHF AI code of practice and the Regulator's statements.
 - Atlas: a new **Layer** bar, off by default. Choosing a layer colours activities in every figure, and links can open with a layer applied (for example `?layer=ai-impact:route`).
 
