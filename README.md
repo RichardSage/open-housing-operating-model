@@ -18,7 +18,11 @@ It gives people across social housing a shared vocabulary for the work: for desi
 ## Explore it
 
 - **Interactive atlas:** [richardsage.github.io/open-housing-operating-model](https://richardsage.github.io/open-housing-operating-model/). Browse the services, see what sits behind each one, and explore every activity.
-- **Download the data:** `open-housing-services.csv` (one row per request), `open-housing-operating-model.csv` (one row per activity) and the full `open-housing-operating-model.json` are published alongside the atlas and attached to each [release](../../releases).
+- **Use the tools:** three pages that put the model to work. Each says who it's for.
+  - [Patterns & components](https://richardsage.github.io/open-housing-operating-model/patterns.html): which shared building blocks would serve the most services, so you build them once.
+  - [Pressure map](https://richardsage.github.io/open-housing-operating-model/pressure.html): where regulatory change and AI opportunity land on the same work.
+  - [Assess](https://richardsage.github.io/open-housing-operating-model/assess.html): rate your organisation's capability, or [map a product's coverage](https://richardsage.github.io/open-housing-operating-model/assess.html?mode=product), against the model. Everything stays in your browser, and you can download it as a CSV.
+- **Download the data:** `open-housing-services.csv` (one row per request), `open-housing-operating-model.csv` (one row per activity), `open-housing-components.csv` (which shared components each request uses) and the full `open-housing-operating-model.json` are published alongside the atlas and attached to each [release](../../releases).
 - **Read the source:** the service list is in [`model/services.yaml`](model/services.yaml), and there's one file per function area in [`model/function-areas/`](model/function-areas).
 
 ## How the model is structured
@@ -46,6 +50,10 @@ Every request has one of six **interaction patterns**: Apply, Book, Pay, Request
 Each request lists the functions or activities it `uses`. That shows what sits behind each service, and which activities are **backstage**: necessary, but not something any resident sees directly.
 
 ![What sits behind each service](docs/images/2-behind-each-service.png)
+
+### Shared components
+
+Requests that share an interaction pattern need many of the same building blocks: every "Book" request needs a way to pick a time, and every "Pay" request needs a way to take a payment. [`model/components.yaml`](model/components.yaml) lists 15 shared components, such as signing in, tracking a case and sending updates, and which requests use each one. Most are assigned by pattern, with exceptions listed by hand.
 
 ### Specialist provision
 
@@ -175,6 +183,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for naming rules and how codes work, and 
 - Short descriptions and examples for every activity
 - Versions for Scotland, Wales and Northern Ireland, and more kinds of specialist provision (such as almshouses or student housing)
 - More optional layers alongside AI and regulation, such as roles, systems, data or performance measures
+- More tools: a service blueprint for each request, and comparing a tailored version with the reference model
 
 ## Use and licence
 

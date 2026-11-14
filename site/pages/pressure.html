@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pressure map · Open Housing Operating Model</title>
+<meta name="description" content="Where regulatory change and AI opportunity land on the same work in a housing association.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/*__BASE_CSS__*/
+.wrap{max-width:1280px;margin:0 auto;padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:32px;grid-template-columns:minmax(0,1fr)}
+.ctl{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+.ctl label{display:grid;gap:3px;font-size:12px;color:var(--muted);font-weight:600}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:20px;align-items:start}
+@media (max-width:980px){.layout{grid-template-columns:minmax(0,1fr)}}
+#chart{overflow-x:auto}
+svg.pm{width:100%;min-width:620px;height:auto;display:block;font-family:var(--body)}
+.pm .axis{stroke:var(--line)}
+.pm .grid{stroke:var(--faint)}
+.pm .tick{fill:var(--muted);font-size:12px}
+.pm .alab{fill:var(--ink);font-size:13px;font-weight:600}
+.pm .avg{stroke:var(--muted);stroke-dasharray:4 4}
+.pm .avgl{fill:var(--muted);font-size:11px}
+.pm .q{fill:var(--muted);font-size:12.5px;font-weight:600;letter-spacing:.02em}
+.pm .q.hot{fill:var(--ink)}
+.pm .qbg{fill:color-mix(in srgb,#b4475d 7%,transparent)}
+.pm .b{cursor:pointer;outline:none}
+.pm .b circle{fill:color-mix(in srgb,var(--dc) 55%,transparent);stroke:var(--dc);stroke-width:1.5}
+.pm .b:hover circle,.pm .b:focus-visible circle{fill:var(--dc)}
+.pm .b.sel circle{fill:var(--dc);stroke:var(--ink);stroke-width:3}
+.pm .b text{fill:var(--ink);font-family:var(--mono);font-size:11px;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.pm .b.sel text,.pm .b:hover text{fill:var(--surface)}
+.pm.fns .b circle{fill:color-mix(in srgb,var(--dc) 40%,transparent);stroke-width:1}
+.side{display:grid;gap:12px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:16px;position:sticky;top:12px}
+@media (max-width:980px){.side{position:static}}
+.side h3{font-size:18px;font-family:var(--display);font-weight:650;line-height:1.25}
+.side .lvl{font-size:12px;color:var(--muted)}
+.mets{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mets div{display:grid;background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:6px 8px}
+.mets .num{font-size:20px;line-height:1.15}
+.mets span:last-child{font-size:11.5px;color:var(--muted);line-height:1.3}
+.side h4{margin:4px 0 0;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.chg{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.chg li{font-size:13px;line-height:1.4;border-left:3px solid var(--l5);padding-left:8px}
+.chg li.exp{border-left-style:dashed}
+.chg .when{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.stack{display:flex;height:12px;border-radius:3px;overflow:hidden;background:var(--faint)}
+.stack i{display:block;height:100%}
+.legend{display:grid;gap:3px;font-size:12px}
+.legend span{display:flex;gap:6px;align-items:center}
+.legend i{width:10px;height:10px;border-radius:2px;flex:none}
+table.data tbody tr{cursor:pointer}
+table.data tbody tr:hover{background:var(--faint)}
+table.data tbody tr.sel{background:var(--homes-soft)}
+table.data th button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;font-weight:600}
+table.data th button[aria-sort]::after{content:" ↓"}
+.tblwrap{overflow-x:auto}
+.qtag{font-size:11.5px;padding:1px 7px;border-radius:999px;border:1px solid var(--line);white-space:nowrap}
+.qtag.hot{border-color:var(--l5);color:var(--l5);font-weight:600}
+</style>
+</head>
+<body>
+<!--__NAV__-->
+<main class="wrap" id="main">
+  <header class="pagehead">
+    <span class="eyebrow">Use the model · Pressure map</span>
+    <h1>Where change and opportunity meet</h1>
+    <p class="lede">The regulation layer shows which work faces legal change, and when. The AI layer shows where AI could change the work. Put them together and you can see where both pressures land on the same part of the organisation. That's where redesign, investment and governance need the most attention.</p>
+    <div class="forwho"><b>Useful for:</b><span class="persona">Business strategy</span><span class="persona">Executive teams and boards</span><span class="persona">Transformation portfolios</span><span class="persona">Compliance leads</span></div>
+    <ol class="howto">
+      <li>Each bubble is a function area, sized by its number of activities.</li>
+      <li>Further up means more of its work faces regulatory change. Further right means more of it could change with AI.</li>
+      <li>Select a bubble to see what's changing, when, and where AI could help.</li>
+    </ol>
+  </header>
+
+  <figure id="figq1">
+    <div class="fighead"><span class="eyebrow">Figure Q1</span><h2 id="qt">Regulatory change against AI opportunity</h2>
+      <p id="qsub"></p></div>
+    <div class="ctl">
+      <label>Regulatory change<select id="ysel"><option value="12">Due within 12 months</option><option value="36">Due within 3 years</option></select></label>
+      <label>AI opportunity<select id="xsel"><option value="any">AI could change the work</option><option value="ready">Ready to start or scale</option></select></label>
+      <div class="key"><span><i class="sw homes"></i>Homes &amp; Customers</span><span><i class="sw enab"></i>Business &amp; Enabling</span><span>Dashed lines: average across all 667 activities</span></div>
+    </div>
+    <div class="layout">
+      <div id="chart"></div>
+      <aside class="side" id="side" aria-live="polite"></aside>
+    </div>
+    <figcaption><span>Open Housing Operating Model (CC BY 4.0), with the AI and regulation layers. <span id="asof"></span> Not legal advice. The AI layer is a judgement, not a compliance assessment.</span><span id="capq"></span></figcaption>
+  </figure>
+
+  <figure id="figq2">
+    <div class="fighead"><span class="eyebrow">Figure Q2</span><h2>Every <span id="lvlname">function area</span>, as a table</h2>
+      <p>The same numbers, sortable. Switch to functions to see which parts of each area carry the pressure. Select a row for the detail.</p></div>
+    <div class="ctl"><div class="seg" data-seg="lvl" role="group" aria-label="Level"><button type="button" data-v="area" aria-pressed="true">Function areas</button><button type="button" data-v="fn" aria-pressed="false">Functions</button></div></div>
+    <div class="tblwrap" id="tbl"></div>
+  </figure>
+</main>
+<script>
+const D = __DATA__;
+/*__COMMON_JS__*/
+const AI = layer('ai-impact'), RG = layer('regulation');
+const fRoute = fieldOf(AI, 'route'), fTier = fieldOf(AI, 'tier'), fChg = fieldOf(RG, 'changing');
+const ROUTES = AI.fields[fRoute].vals;
+const RCOL = ['var(--l0)', 'var(--l1)', 'var(--l2)', 'var(--l3)', 'var(--l5)', 'var(--lnone)'];
+const routeId = c => ROUTES[AI.data[c][fRoute]].id;
+let win = 12, xm = 'any', sel = null, sortKey = 'both';
+
+const asOf = new Date(RG.asOf || Date.now());
+const when = d => { const m = String(d).match(/^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?/); return m ? new Date(+m[1], (+m[2] || 1) - 1, +m[3] || 1) : null; };
+const inWindow = d => { const t = when(d); if (!t) return false; const end = new Date(asOf); end.setMonth(end.getMonth() + win); return t >= asOf && t <= end; };
+const changingIn = c => { const v = RG.fields[fChg].vals[RG.data[c][fChg]].id; return v === 'next-12' || (win === 36 && v === '1-3y'); };
+const aiOn = c => xm === 'any' ? routeId(c) !== 'no-change' : ['start-here', 'scale-with-safeguards'].includes(routeId(c));
+
+function items(lvl) {
+  const mk = (id, name, sub, d, codes, extra) => {
+    const n = codes.length, y = codes.filter(changingIn).length, x = codes.filter(aiOn).length, t3 = codes.filter(c => AI.fields[fTier].vals[AI.data[c][fTier]].id === '3').length;
+    return { id, name, sub, d, codes, n, x: x / n, y: y / n, nx: x, ny: y, t3: t3 / n, ...extra };
+  };
+  if (lvl === 'area') return D.areas.map(a => mk(a.c, a.n, D.domains[a.d], a.d, a.s.flatMap(f => f.a.map((_, k) => `${f.c}.${k + 1}`))));
+  return FN.map(f => mk(f.c, f.n, `${f.area.c} ${f.area.n}`, f.area.d, f.a.map((_, k) => `${f.c}.${k + 1}`)));
+}
+const ALL = Object.keys(ACT);
+const avg = () => ({ x: ALL.filter(aiOn).length / ALL.length, y: ALL.filter(changingIn).length / ALL.length });
+const quad = (it, a) => it.y >= a.y && it.x >= a.x ? ['Change and opportunity', true] : it.y >= a.y ? ['Regulatory change', false] : it.x >= a.x ? ['AI opportunity', false] : ['Steadier', false];
+const xLab = () => xm === 'any' ? 'Share of activities AI could change' : 'Share of activities ready to start or scale with AI';
+const yLab = () => `Share of activities facing regulatory change within ${win === 12 ? '12 months' : '3 years'}`;
+
+function render() {
+  const its = items('area'), tits = items(lvl), a = avg();
+  if (sel && !its.find(i => i.id === sel) && !tits.find(i => i.id === sel)) sel = null;
+  const W = 900, H = 580, L = 64, R = 24, T = 24, B = 58, w = W - L - R, h = H - T - B;
+  // Fit the axes to the data (with room for bubbles), on round 10% steps
+  const ext = (vs, pad) => { let lo = Math.floor((Math.min(...vs) - pad) * 10) / 10, hi = Math.ceil((Math.max(...vs) + pad) * 10) / 10; return [Math.max(lo, -0.05), Math.min(hi, 1.05)]; };
+  const pad = .06;
+  const [x0, x1] = ext([...its.map(i => i.x), a.x], pad), [y0, y1] = ext([...its.map(i => i.y), a.y], pad);
+  const sx = v => L + (v - x0) / (x1 - x0) * w, sy = v => T + h - (v - y0) / (y1 - y0) * h;
+  const maxN = Math.max(...its.map(i => i.n)), rMax = 30, rMin = 9;
+  const rr = n => rMin + (rMax - rMin) * Math.sqrt(n / maxN);
+  const step = (hi, lo) => (hi - lo) > .6 ? .2 : .1;
+  const tk = (lo, hi) => { const st = step(hi, lo), out = []; for (let t = Math.max(0, Math.ceil(lo / st - 1e-9) * st); t <= Math.min(1, hi) + 1e-9; t += st) out.push(+t.toFixed(2)); return out; };
+  let s = `<svg class="pm" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(`Bubble chart: ${yLab()} against ${xLab()}`)}">`;
+  s += `<rect class="qbg" x="${sx(a.x)}" y="${T}" width="${L + w - sx(a.x)}" height="${sy(a.y) - T}"/>`;
+  s += tk(x0, x1).map(t => `<line class="grid" x1="${sx(t)}" x2="${sx(t)}" y1="${T}" y2="${T + h}"/><text class="tick" x="${sx(t)}" y="${T + h + 18}" text-anchor="middle">${Math.round(t * 100)}%</text>`).join('');
+  s += tk(y0, y1).map(t => `<line class="grid" x1="${L}" x2="${L + w}" y1="${sy(t)}" y2="${sy(t)}"/><text class="tick" x="${L - 8}" y="${sy(t) + 4}" text-anchor="end">${Math.round(t * 100)}%</text>`).join('');
+  s += `<line class="axis" x1="${L}" x2="${L + w}" y1="${T + h}" y2="${T + h}"/><line class="axis" x1="${L}" x2="${L}" y1="${T}" y2="${T + h}"/>`;
+  s += `<line class="avg" x1="${sx(a.x)}" x2="${sx(a.x)}" y1="${T}" y2="${T + h}"/><line class="avg" x1="${L}" x2="${L + w}" y1="${sy(a.y)}" y2="${sy(a.y)}"/>`;
+  s += `<text class="q hot" x="${L + w - 8}" y="${T + 18}" text-anchor="end">Change and opportunity</text><text class="q" x="${L + 8}" y="${T + 18}">Regulatory change</text><text class="q" x="${L + w - 8}" y="${T + h - 10}" text-anchor="end">AI opportunity</text><text class="q" x="${L + 8}" y="${T + h - 10}">Steadier</text>`;
+  s += `<text class="alab" x="${L + w / 2}" y="${H - 10}" text-anchor="middle">${esc(xLab())} →</text><text class="alab" transform="translate(16 ${T + h / 2}) rotate(-90)" text-anchor="middle">${esc(yLab())} →</text>`;
+  // Nudge overlapping bubbles apart so labels stay readable, pulling each back towards its true position
+  const pos = its.map(i => ({ i, x: sx(i.x), y: sy(i.y), x0: sx(i.x), y0: sy(i.y), r: rr(i.n) }));
+  for (let k = 0; k < 120; k++) {
+    for (let m = 0; m < pos.length; m++) for (let n = m + 1; n < pos.length; n++) {
+      const p = pos[m], q = pos[n]; let dx = q.x - p.x, dy = q.y - p.y; const d = Math.hypot(dx, dy) || .01, need = p.r + q.r + 1;
+      if (d < need) { const push = (need - d) / 2; dx /= d; dy /= d; if (Math.abs(dx) < .2 && Math.abs(dy) < .2) { dx = 1; } p.x -= dx * push; p.y -= dy * push; q.x += dx * push; q.y += dy * push; }
+    }
+    pos.forEach(p => { p.x += (p.x0 - p.x) * .08; p.y += (p.y0 - p.y) * .08; });
+  }
+  const at = Object.fromEntries(pos.map(p => [p.i.id, p]));
+  [...its].sort((p, q) => q.n - p.n).forEach(i => {
+    const [qn] = quad(i, a);
+    s += `<g class="b ${dc(i.d)}${sel && (i.id === sel || sel.startsWith(i.id + '.')) ? ' sel' : ''}" tabindex="0" role="button" data-id="${i.id}" aria-label="${esc(`${i.id} ${i.name}: ${pct(i.ny, i.n)}% changing, ${pct(i.nx, i.n)}% AI. ${qn}`)}" data-tip="${esc(`<b>${esc(i.id + ' ' + i.name)}</b><small>${i.n} activities · ${pct(i.ny, i.n)}% facing change · ${pct(i.nx, i.n)}% AI</small>`)}"><circle cx="${at[i.id].x.toFixed(1)}" cy="${at[i.id].y.toFixed(1)}" r="${rr(i.n).toFixed(1)}"/><text x="${at[i.id].x.toFixed(1)}" y="${at[i.id].y.toFixed(1)}">${i.id}</text></g>`;
+  });
+  s += `</svg>`;
+  $('#chart').innerHTML = s;
+  $('#qsub').textContent = 'Each bubble is one of the 22 function areas, sized by its number of activities. The shaded corner is where both pressures are above average. Axes are zoomed to fit the data, and overlapping bubbles are nudged apart slightly.';
+  $('#capq').textContent = `${its.length} function areas · averages: ${pct(a.y * 100, 100)}% changing, ${pct(a.x * 100, 100)}% AI`;
+  $('#asof').textContent = `Regulatory changes as at ${RG.asOf}.`;
+  renderSide([...its, ...items('fn')], a, its); renderTable(tits, a);
+}
+function renderSide(its, a, areas) {
+  const i = its.find(x => x.id === sel);
+  const isArea = i && !i.id.includes('.');
+  if (!i) {
+    const hot = areas.filter(x => quad(x, a)[1]).sort((p, q) => (q.x + q.y) - (p.x + p.y)).slice(0, 6);
+    $('#side').innerHTML = `<span class="lvl">Nothing selected</span><h3>Where both pressures are highest</h3><p class="note">Select a bubble, or one of these, to see the detail.</p><div class="btnrow">${hot.map(x => `<button type="button" class="btn" data-id="${x.id}">${x.id} ${esc(x.name)}</button>`).join('')}</div>`;
+    return;
+  }
+  const codes = new Set(i.codes);
+  // obligations linked to these activities with a change due in the window
+  const ob = new Map();
+  i.codes.forEach(c => (RG.links[c] || []).forEach(([ri]) => { const o = RG.register[ri]; (o.ch || []).filter(ch => inWindow(ch.d)).forEach(ch => { const k = o.id + ch.d; if (!ob.has(k)) ob.set(k, { o, ch, n: 0 }); ob.get(k).n++; }); }));
+  const obs = [...ob.values()].sort((p, q) => when(p.ch.d) - when(q.ch.d));
+  const rc = ROUTES.map((r, k) => i.codes.filter(c => AI.data[c][fRoute] === k).length);
+  const [qn] = quad(i, a);
+  $('#side').innerHTML = `<span class="lvl">${isArea ? 'Function area · ' + esc(i.sub) : 'Function · ' + esc(i.sub)}</span><h3>${i.id} ${esc(i.name)}</h3><span class="qtag${quad(i, a)[1] ? ' hot' : ''}" style="justify-self:start">${qn}</span>
+    <div class="mets"><div><span class="num">${pct(i.ny, i.n)}%</span><span>facing change within ${win === 12 ? '12 months' : '3 years'}</span></div><div><span class="num">${pct(i.nx, i.n)}%</span><span>${xm === 'any' ? 'AI could change' : 'ready for AI'}</span></div><div><span class="num">${pct(i.t3 * 100, 100)}%</span><span>tier 3: home, money, safety or rights</span></div></div>
+    <h4>What's changing</h4>${obs.length ? `<ul class="chg">${obs.map(x => `<li class="${x.ch.c === 'expected' ? 'exp' : ''}"><span class="when">${esc(x.ch.d)}${x.ch.c === 'expected' ? ' · expected' : ''}</span><br><b>${esc(x.o.n)}</b>: ${esc(x.ch.s)} <span class="note">(${x.n} activit${x.n === 1 ? 'y' : 'ies'})</span></li>`).join('')}</ul>` : `<p class="note">No dated changes in this window.</p>`}
+    <h4>Where AI could help (${i.n} activities)</h4><div class="stack">${rc.map((n, k) => n ? `<i style="width:${100 * n / i.n}%;background:${RCOL[k]}" data-tip="${esc(`<b>${esc(ROUTES[k].n)}</b><small>${n} activities</small>`)}"></i>` : '').join('')}</div>
+    <div class="legend">${rc.map((n, k) => n ? `<span><i style="background:${RCOL[k]}"></i>${esc(ROUTES[k].n)}: ${n}</span>` : '').join('')}</div>
+    <a href="index.html?layer=regulation:changing#fig3">See it in the atlas</a>`;
+}
+function renderTable(its, a) {
+  const keys = { name: x => x.id, n: x => -x.n, y: x => -x.y, x: x => -x.x, t3: x => -x.t3, both: x => -(x.x + x.y) };
+  const rows = [...its].sort((p, q) => { const f = keys[sortKey]; const u = f(p), v = f(q); return u < v ? -1 : u > v ? 1 : 0; });
+  const th = (k, t, n) => `<th class="${n ? 'n' : ''}" scope="col"><button type="button" data-sort="${k}"${sortKey === k ? ' aria-sort="descending"' : ''}>${t}</button></th>`;
+  $('#lvlname').textContent = lvl === 'area' ? 'function area' : 'function';
+  $('#tbl').innerHTML = `<table class="data"><thead><tr>${th('name', lvl === 'area' ? 'Function area' : 'Function')}${lvl === 'fn' ? '<th scope="col">Area</th>' : ''}${th('n', 'Activities', 1)}${th('y', 'Facing change', 1)}${th('x', 'AI', 1)}${th('t3', 'Tier 3', 1)}${th('both', 'Where it sits')}</tr></thead><tbody>${rows.map(i => { const [qn, hot] = quad(i, a); return `<tr data-id="${i.id}" class="${i.id === sel ? 'sel' : ''}"><td><span class="num" style="color:var(--muted)">${i.id}</span> ${esc(i.name)}</td>${lvl === 'fn' ? `<td class="note">${esc(i.sub)}</td>` : ''}<td class="n">${i.n}</td><td class="n">${pct(i.ny, i.n)}%</td><td class="n">${pct(i.nx, i.n)}%</td><td class="n">${pct(i.t3 * 100, 100)}%</td><td><span class="qtag${hot ? ' hot' : ''}">${qn}</span></td></tr>`; }).join('')}</tbody></table>`;
+}
+const pick = id => { sel = sel === id ? null : id; render(); };
+let lvl = 'area';
+seg('lvl', v => { lvl = v; sel = null; render(); });
+$('#ysel').addEventListener('change', e => { win = +e.target.value; render(); });
+$('#xsel').addEventListener('change', e => { xm = e.target.value; render(); });
+$('#chart').addEventListener('click', e => { const g = e.target.closest('.b'); if (g) pick(g.dataset.id); });
+$('#chart').addEventListener('keydown', e => { const g = e.target.closest('.b'); if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); pick(g.dataset.id); } });
+$('#side').addEventListener('click', e => { const b = e.target.closest('button[data-id]'); if (b) pick(b.dataset.id); });
+$('#tbl').addEventListener('click', e => { const s = e.target.closest('button[data-sort]'); if (s) { sortKey = s.dataset.sort; render(); return; } const tr = e.target.closest('tr[data-id]'); if (tr) { pick(tr.dataset.id); $('#figq1').scrollIntoView({ behavior: 'smooth' }); } });
+render();
+</script>
+</body>
+</html>

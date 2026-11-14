@@ -4,6 +4,13 @@ All notable changes to the model are recorded here. Versions follow the rules in
 
 ## Unreleased
 
+**Tools (new)**
+- The atlas is now one of four pages, with shared navigation and a "Use the model" section. Each tool page says who it's for and how to use it.
+- **Patterns & components:** the six interaction patterns, 15 shared components ranked by how many requests use them, and a grid of which services use which components.
+- **Pressure map:** function areas plotted by regulatory change against AI opportunity, with the detail for any area or function, and a sortable table.
+- **Assess:** rate your organisation's capability, or a product's coverage, by function or activity. See a heat map and how well the work behind each service is supported. Saved in the browser only, with CSV download and upload and a printable view.
+- New `model/components.yaml` and `open-housing-components.csv`.
+
 **Services**
 - 16 new requests and one new service, following a review of Anchor Housing's customer journey catalogue, with thanks:
   - S01 Rent a home: check my housing application, update my housing application, ask for a review of a housing decision

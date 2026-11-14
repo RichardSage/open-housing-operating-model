@@ -347,6 +347,74 @@ def load_layers(act_index, fn_index=None):
     return layers
 
 
+COMPONENT_KEYS = {"id", "name", "side", "description", "patterns", "also", "except", "notes"}
+
+
+def load_components(svc):
+    """Shared components: resolve each one's rules (patterns, also, except) to a list of request codes."""
+    path = MODEL / "components.yaml"
+    if not path.exists():
+        return []
+    reqs = {r["code"]: (s, r) for s in svc["services"] for r in s["requests"]}
+    pats = {p["id"] for p in svc["patterns"]}
+    out, ids = [], set()
+    for c in (load(path) or {}).get("components") or []:
+        w = f"components.yaml › {c.get('id', '?')}"
+        for k in c:
+            if k not in COMPONENT_KEYS:
+                err(w, f"unknown key '{k}'")
+        if not c.get("id") or not c.get("name"):
+            err(w, "needs an id and a name")
+            continue
+        if c["id"] in ids:
+            err(w, "id is used twice")
+        ids.add(c["id"])
+        if c.get("side") not in ("front", "back"):
+            err(w, "side must be front or back")
+        for pt in c.get("patterns") or []:
+            if pt not in pats:
+                err(w, f"pattern '{pt}' isn't one of {', '.join(sorted(pats))}")
+        for key in ("also", "except"):
+            for code in c.get(key) or []:
+                if str(code) not in reqs:
+                    err(w, f"{key}: no request {code}")
+        chosen = {code for code, (s_, r) in reqs.items() if r["pattern"] in (c.get("patterns") or [])}
+        chosen |= {str(x) for x in c.get("also") or [] if str(x) in reqs}
+        chosen -= {str(x) for x in c.get("except") or []}
+        if not chosen:
+            warn(w, "doesn't apply to any request")
+        out.append({**c, "_requests": sorted(chosen, key=num_key)})
+    return out
+
+
+PAGES = [  # (output file, template, label in the navigation)
+    ("index.html", "template.html", "Atlas"),
+    ("patterns.html", "pages/patterns.html", "Patterns & components"),
+    ("pressure.html", "pages/pressure.html", "Pressure map"),
+    ("assess.html", "pages/assess.html", "Assess"),
+]
+
+
+def render_pages(compact):
+    """Every page shares base.css, nav.html and the same data, so the site stays consistent and each page works offline."""
+    data = json.dumps(compact, ensure_ascii=False, separators=(",", ":"))
+    base_css = (SITE / "partials" / "base.css").read_text(encoding="utf-8")
+    nav_tpl = (SITE / "partials" / "nav.html").read_text(encoding="utf-8")
+    common_js = (SITE / "partials" / "common.js").read_text(encoding="utf-8")
+    for out, tpl_name, _ in PAGES:
+        tpl_path = SITE / tpl_name
+        if not tpl_path.exists():
+            continue
+        cur = ' aria-current="page"'
+        links = "".join(f'<a href="{o}"{cur if o == out else ""}>{label}</a>'
+                        for o, t, label in PAGES if (SITE / t).exists())
+        nav = nav_tpl.replace("__NAV_LINKS__", links)
+        html = (tpl_path.read_text(encoding="utf-8")
+                .replace("/*__BASE_CSS__*/", base_css).replace("<!--__NAV__-->", nav)
+                .replace("/*__COMMON_JS__*/", common_js).replace("__DATA__", data))
+        (SITE / out).write_text(html, encoding="utf-8")
+
+
 def replace_block(text, name, body):
     pat = re.compile(rf"(<!-- BEGIN:{name} -->).*?(<!-- END:{name} -->)", re.S)
     return pat.sub(lambda m: m.group(1) + "\n" + body + "\n" + m.group(2), text)
@@ -383,6 +451,7 @@ def main(check_only):
         check_spec(f"services.yaml › {s['code']}", s)
         for r in s["requests"]:
             check_spec(f"services.yaml › {r['code']}", r)
+    comps = load_components(svc)
     layers = load_layers(act_index, fn_index)
 
     for m in warnings:
@@ -458,7 +527,16 @@ def main(check_only):
                              s.get("goal", ""), r["name"], pname[r["pattern"]], " ".join(r["uses"]), "; ".join(fa),
                              "; ".join(sname[t] for t in dict.fromkeys(s["specialist"] + r["specialist"]))])
 
-    # Compact data for the atlas page
+    # CSV: one row per component and request
+    with open(DIST / "open-housing-components.csv", "w", newline="", encoding="utf-8") as f:
+        wr = csv.writer(f)
+        wr.writerow(["component_id", "component", "side", "request_code", "request", "pattern", "service_code", "service"])
+        for c in comps:
+            for code in c["_requests"]:
+                s_, r = next((s_, r) for s_ in svc["services"] for r in s_["requests"] if r["code"] == code)
+                wr.writerow([c["id"], c["name"], c["side"], code, r["name"], pname[r["pattern"]], s_["code"], s_["name"]])
+
+    # Compact data for the site pages
     aidx = {a["code"]: i for i, a in enumerate(areas)}
     compact = {
         "version": meta.get("version"), "released": str(meta.get("released", "")), "repo": meta.get("repo_url", ""),
@@ -472,6 +550,8 @@ def main(check_only):
         "users": [{"id": u["id"], "n": u["name"]} for u in svc["users"]],
         "groups": [{"id": g["id"], "n": g["name"]} for g in svc["groups"]],
         "specs": [{"id": x["id"], "n": x["name"], "desc": x.get("description", "")} for x in specs],
+        "components": [{"id": c["id"], "n": c["name"], "side": c["side"], "desc": c.get("description", ""), "r": c["_requests"]}
+                       for c in comps],
         "services": [{"c": s["code"], "n": s["name"], "g": s["group"], "u": s["users"], "goal": s.get("goal", ""),
                       "sp": [spec_ids.index(t) for t in s["specialist"]],
                       "r": [{"c": r["code"], "n": r["name"], "p": r["pattern"], "sp": [spec_ids.index(t) for t in r["specialist"]],
@@ -518,10 +598,8 @@ def main(check_only):
         for ext in ("json", "csv"):
             (SITE / "layers" / f"{ly['id']}.{ext}").write_bytes((DIST / "layers" / f"{ly['id']}.{ext}").read_bytes())
 
-    tpl = (SITE / "template.html").read_text(encoding="utf-8")
-    (SITE / "index.html").write_text(tpl.replace("__DATA__", json.dumps(compact, ensure_ascii=False, separators=(",", ":"))),
-                                     encoding="utf-8")
-    for name in (f"{SLUG}.csv", f"{SLUG}.json", "open-housing-services.csv"):
+    render_pages(compact)
+    for name in (f"{SLUG}.csv", f"{SLUG}.json", "open-housing-services.csv", "open-housing-components.csv"):
         (SITE / name).write_bytes((DIST / name).read_bytes())
 
     # Refresh the generated parts of README.md
@@ -540,7 +618,7 @@ def main(check_only):
         readme = replace_block(readme, "areas", "\n".join(area_rows))
         readme_path.write_text(readme, encoding="utf-8")
 
-    print(f"Wrote dist/ (2 CSVs and JSON), site/index.html and refreshed README.md")
+    print(f"Wrote dist/ (3 CSVs and JSON), the site pages and refreshed README.md")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Assess · Open Housing Operating Model</title>
+<meta name="description" content="Rate your organisation's capability, or a product's coverage, against the Open Housing Operating Model. Everything stays in your browser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/*__BASE_CSS__*/
+:root{--r0:#c0566b;--r1:#d98a4e;--r2:#d9b84e;--r3:#6aa88f;--r4:#2a7f6f;--rna:#c4ccc9}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--r0:#e07f92;--r1:#e8a46e;--r2:#e3c86a;--r3:#6fb89f;--r4:#4fb3a0;--rna:#46524e}}
+.wrap{max-width:1280px;margin:0 auto;padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:28px;grid-template-columns:minmax(0,1fr)}
+.modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.mode{font:inherit;text-align:left;cursor:pointer;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:4px}
+.mode b{font-size:16px}
+.mode span{font-size:13.5px;color:var(--muted);line-height:1.45}
+.mode[aria-pressed="true"]{border:2px solid var(--ink);padding:13px 15px}
+.mode:focus-visible{outline:2px solid var(--homes);outline-offset:2px}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:end;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.toolbar label{display:grid;gap:3px;font-size:12px;color:var(--muted);font-weight:600}
+.toolbar input[type=text]{min-width:240px}
+.saved{font-size:12.5px;color:var(--muted)}
+.privacy{font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:flex-start}
+.privacy::before{content:"🔒";font-size:13px}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line)}
+.tab{font:inherit;font-size:15px;font-weight:600;background:none;border:0;border-bottom:3px solid transparent;padding:8px 14px;color:var(--muted);cursor:pointer;margin-bottom:-1px}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+.tab:focus-visible{outline:2px solid var(--homes);outline-offset:2px}
+.progress{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:13.5px}
+.pbar{flex:1 1 240px;max-width:420px;height:10px;border-radius:5px;background:var(--faint);overflow:hidden;display:flex}
+.pbar i{display:block;height:100%}
+.scalekey{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--muted)}
+.scalekey span{display:inline-flex;gap:6px;align-items:center}
+.sw2{width:12px;height:12px;border-radius:3px;flex:none;background:var(--c)}
+.sw2.unset{background:var(--surface);border:1.5px dashed var(--muted)}
+.sw2.na,.na-bg{background:repeating-linear-gradient(135deg,var(--rna) 0 3px,transparent 3px 6px)}
+
+/* Rate view */
+details.area{background:var(--surface);border:1px solid var(--line);border-radius:10px}
+details.area+details.area{margin-top:8px}
+details.area>summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;padding:12px 14px}
+details.area>summary::-webkit-details-marker{display:none}
+details.area>summary::before{content:"▸";color:var(--muted);transition:transform .15s}
+details.area[open]>summary::before{transform:rotate(90deg)}
+details.area>summary:focus-visible{outline:2px solid var(--homes);outline-offset:-2px;border-radius:10px}
+.sumname{display:flex;gap:8px;align-items:baseline;font-weight:600}
+.sumname .num{font-size:12px;color:var(--dc)}
+.sumright{display:flex;gap:10px;align-items:center;font-size:12.5px;color:var(--muted);margin-left:auto}
+.mini{display:flex;gap:2px}
+.mini i{width:8px;height:14px;border-radius:2px;background:var(--c,var(--faint))}
+.mini i.unset{background:var(--faint)}
+.fns{border-top:1px solid var(--faint);padding:4px 14px 12px}
+.fn{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;align-items:center;padding:8px 0;border-bottom:1px solid var(--faint)}
+.fn:last-child{border-bottom:0}
+.fn .fname{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline;font-size:14px}
+.fn .fname .num{font-size:11.5px;color:var(--muted)}
+.fn .more{display:flex;gap:10px;font-size:12.5px}
+.linkbtn{font:inherit;font-size:12.5px;background:none;border:0;padding:0;color:var(--muted);text-decoration:underline;cursor:pointer}
+.linkbtn:focus-visible{outline:2px solid var(--homes);outline-offset:2px}
+.linkbtn.has{color:var(--ink);font-weight:600}
+.scale{display:inline-flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.scale button{font:inherit;font-size:12.5px;padding:5px 9px;border:0;background:var(--surface);color:var(--ink);cursor:pointer;display:inline-flex;gap:5px;align-items:center;white-space:nowrap}
+.scale button+button{border-left:1px solid var(--line)}
+.scale button i{width:9px;height:9px;border-radius:2px;background:var(--c)}
+.scale button[aria-checked="true"]{background:var(--c);color:#fff;font-weight:600}
+.scale button[aria-checked="true"] i{background:#fff}
+.scale button.na[aria-checked="true"]{background:var(--muted)}
+.scale button:focus-visible{outline:2px solid var(--homes);outline-offset:-2px}
+.scale.sm button{font-size:11.5px;padding:3px 7px}
+.derived{font-size:12px;color:var(--muted);font-style:italic}
+.acts{grid-column:1/-1;display:grid;gap:4px;background:var(--bg);border-radius:8px;padding:8px 10px}
+.act{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:center;font-size:13px}
+.act .num{font-size:11px;color:var(--muted);margin-right:6px}
+.notebox{grid-column:1/-1}
+.notebox textarea{width:100%;min-height:58px;resize:vertical}
+.fn.off{opacity:.55}
+.fn.off .scale{display:none}
+@media (max-width:760px){.fn{grid-template-columns:1fr}.act{grid-template-columns:1fr}}
+
+/* Results view */
+.headline{display:flex;flex-wrap:wrap;gap:12px 32px;align-items:end}
+.headline div{display:grid}
+.headline .num{font-size:30px;line-height:1.1}
+.headline span:last-child{font-size:13px;color:var(--muted)}
+.dist{display:grid;gap:4px;max-width:520px}
+.dist div{display:grid;grid-template-columns:140px minmax(0,1fr) 40px;gap:8px;align-items:center;font-size:13px}
+.dist .tr{height:12px;background:var(--faint);border-radius:3px;overflow:hidden}
+.dist .tr i{display:block;height:100%;background:var(--c)}
+.dist .n{font-family:var(--mono);font-size:12px;color:var(--muted);text-align:right}
+.hcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:10px}
+.hcard{border:1px solid var(--line);border-top:3px solid var(--dc);border-radius:8px;padding:10px 12px;display:grid;gap:3px;align-content:start;background:var(--surface)}
+.hcard h3{font-size:14px;display:flex;gap:6px;align-items:baseline}
+.hcard h3 .num{font-size:11.5px;color:var(--dc)}
+.hrow{display:grid;grid-template-columns:minmax(0,1fr) 28px;gap:8px;align-items:center;font-size:12.5px;line-height:1.3;padding:2px 4px;border-radius:4px}
+.hrow .cell{height:16px;border-radius:3px;background:var(--c);font-family:var(--mono);font-size:10px;color:#fff;display:grid;place-items:center}
+.hrow .cell.unset{background:var(--surface);border:1.5px dashed var(--line)}
+.hrow .cell.na{background:repeating-linear-gradient(135deg,var(--rna) 0 3px,transparent 3px 6px)}
+.svlist{columns:2 460px;column-gap:24px}
+.svbox{break-inside:avoid;margin-bottom:14px;display:grid;gap:4px}
+.svbox h3{font-size:14px;display:flex;gap:6px;align-items:baseline}
+.svbox h3 .num{font-size:11.5px;color:var(--muted)}
+.rqrow{display:grid;grid-template-columns:minmax(0,1fr) 150px 70px;gap:8px;align-items:center;font-size:12.5px}
+.stk{display:flex;height:10px;border-radius:3px;overflow:hidden;background:var(--faint)}
+.stk i{display:block;height:100%;background:var(--c)}
+.stk i.unset{background:transparent}
+.rqrow .lab{font-family:var(--mono);font-size:11px;color:var(--muted);text-align:right;white-space:nowrap}
+.empty{padding:24px;text-align:center;color:var(--muted);border:1.5px dashed var(--line);border-radius:10px}
+.printhead{display:none}
+@media print{.toolbar,.tabs,.modes,.privacy,.pagehead .howto,.pagehead .forwho,#rate,.btnrow{display:none!important}#results{display:grid!important}.printhead{display:block}.hcard,.svbox{break-inside:avoid}}
+</style>
+</head>
+<body>
+<!--__NAV__-->
+<main class="wrap" id="main">
+  <header class="pagehead">
+    <span class="eyebrow">Use the model · Assess</span>
+    <h1 id="title">Assess against the model</h1>
+    <p class="lede" id="lede"></p>
+    <div class="forwho" id="forwho"></div>
+  </header>
+
+  <div class="modes" role="group" aria-label="What are you assessing?">
+    <button type="button" class="mode" data-mode="capability"><b>Your organisation's capability</b><span>Rate how well each function works today, from not in place to leading. Get a heat map of strengths and gaps.</span></button>
+    <button type="button" class="mode" data-mode="product"><b>A product's coverage</b><span>Mark what a system or product supports. See which functions it covers, and which services and requests it helps with.</span></button>
+  </div>
+
+  <div class="toolbar">
+    <label><span id="nameLbl">Organisation</span><input type="text" id="name" autocomplete="off" placeholder="Name (optional)"></label>
+    <div class="btnrow">
+      <button type="button" class="btn" id="exportBtn">Download CSV</button>
+      <label class="btn" style="font-weight:500;color:var(--ink);font-size:13.5px">Load CSV<input type="file" id="importIn" accept=".csv,text/csv" hidden></label>
+      <button type="button" class="btn" id="printBtn">Print or save as PDF</button>
+      <button type="button" class="btn" id="clearBtn">Clear all</button>
+    </div>
+    <span class="saved" id="saved" aria-live="polite"></span>
+  </div>
+  <p class="privacy">Everything you enter stays in this browser. Nothing is sent anywhere. Download a CSV to keep a copy, share it, or carry on later on another device.</p>
+
+  <div class="specbar" role="region" aria-label="Specialist provision" style="display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center">
+    <span class="eyebrow">Specialist provision</span>
+    <div class="chips" id="specSeg" role="group" aria-label="Kinds of specialist provision that apply"></div>
+    <span class="note" id="specNote"></span>
+  </div>
+
+  <div class="tabs" role="tablist" aria-label="Steps">
+    <button type="button" class="tab" role="tab" id="tabRate" aria-controls="rate" aria-selected="true">1 · Rate</button>
+    <button type="button" class="tab" role="tab" id="tabRes" aria-controls="results" aria-selected="false">2 · See the results</button>
+  </div>
+
+  <section id="rate" role="tabpanel" aria-labelledby="tabRate" style="display:grid;gap:14px">
+    <div class="progress" id="progress"></div>
+    <div class="scalekey" id="scalekey"></div>
+    <p class="note" id="rateHelp"></p>
+    <div class="btnrow"><button type="button" class="btn" id="openAll">Open all areas</button><button type="button" class="btn" id="closeAll">Close all areas</button></div>
+    <div id="areas"></div>
+  </section>
+
+  <section id="results" role="tabpanel" aria-labelledby="tabRes" hidden style="display:grid;gap:24px">
+    <div class="printhead"><h2 id="printTitle"></h2></div>
+    <figure>
+      <div class="fighead"><span class="eyebrow">Figure A1</span><h2 id="ra1"></h2><p id="ra1p"></p></div>
+      <div class="headline" id="headline"></div>
+      <div class="dist" id="dist"></div>
+      <div class="scalekey" id="scalekey2"></div>
+      <div class="hcards" id="heat"></div>
+      <figcaption><span>Based on the Open Housing Operating Model (CC BY 4.0).</span><span id="capA1"></span></figcaption>
+    </figure>
+    <figure>
+      <div class="fighead"><span class="eyebrow">Figure A2</span><h2 id="ra2"></h2><p id="ra2p"></p></div>
+      <div class="controls">
+        <div class="seg" data-seg="aud" role="group" aria-label="Who the services are for"><button type="button" data-v="public" aria-pressed="true">Residents and communities</button><button type="button" data-v="colleagues" aria-pressed="false">Colleagues</button></div>
+        <div class="seg" data-seg="sort" role="group" aria-label="Order"><button type="button" data-v="model" aria-pressed="true">Model order</button><button type="button" data-v="weak" aria-pressed="false">Weakest first</button></div>
+      </div>
+      <div class="svlist" id="svlist"></div>
+      <figcaption><span>Each bar shows the ratings of the activities behind the request. Activities take their function's rating unless you rated them separately.</span><span id="capA2"></span></figcaption>
+    </figure>
+  </section>
+</main>
+<script>
+const D = __DATA__;
+/*__COMMON_JS__*/
+const MODES = {
+  capability: {
+    title: "Assess your organisation's capability", subject: 'Organisation',
+    lede: 'Rate how well each function works in your organisation today. Rate at function level for a quick picture, or open a function to rate its activities. The results show a heat map of strengths and gaps, and how well the work behind each service is supported.',
+    forwho: ['Operating model design', 'Transformation and change', 'Business strategy', 'Internal audit'],
+    help: 'Rate each function on how well it works today. Not applicable is for work your organisation genuinely doesn\'t do.',
+    levels: [
+      { id: '0', n: 'Not in place', v: 0, c: 'var(--r0)', d: "We don't do this, or only when something goes wrong" },
+      { id: '1', n: 'Basic', v: 1, c: 'var(--r1)', d: 'Done, but inconsistently and reliant on individuals' },
+      { id: '2', n: 'Developing', v: 2, c: 'var(--r2)', d: 'A defined way of working, not yet applied everywhere' },
+      { id: '3', n: 'Established', v: 3, c: 'var(--r3)', d: 'Consistent, measured and owned' },
+      { id: '4', n: 'Leading', v: 4, c: 'var(--r4)', d: 'Continuously improved, and good practice others learn from' }],
+    max: 4,
+  },
+  product: {
+    title: "Map a product's coverage", subject: 'Product',
+    lede: 'Mark what a system or product supports. Rate whole functions for a quick picture, or open a function to mark individual activities. The results show which parts of the operating model it covers, and which services and requests it helps people with.',
+    forwho: ['Software suppliers', 'IT and procurement teams', 'Product managers', 'Enterprise architects'],
+    help: 'Mark how far the product supports each function. Not applicable is for work the product isn\'t meant to cover.',
+    levels: [
+      { id: 'none', n: 'Not supported', v: 0, c: 'var(--r0)', d: 'The product doesn\'t help with this' },
+      { id: 'partial', n: 'Partly', v: .5, c: 'var(--r2)', d: 'Some of it, or with workarounds' },
+      { id: 'full', n: 'Supported', v: 1, c: 'var(--r4)', d: 'The product supports this as standard' }],
+    max: 1,
+  },
+};
+const NA = { id: 'na', n: 'Not applicable', c: 'var(--rna)' };
+let mode = new URLSearchParams(location.search).get('mode') === 'product' ? 'product' : 'capability';
+let st, aud = 'public', order = 'model', clearArm = false;
+const M = () => MODES[mode];
+const lv = id => M().levels.find(l => l.id === id);
+const key = () => `ohom-assess-v1-${mode}`;
+const blank = () => ({ name: '', off: [], f: {}, a: {}, notes: {}, open: {}, detail: {} });
+function load() { try { st = { ...blank(), ...JSON.parse(localStorage.getItem(key()) || '{}') }; } catch (e) { st = blank(); } }
+let saveT;
+function save() { clearTimeout(saveT); saveT = setTimeout(() => { try { localStorage.setItem(key(), JSON.stringify(st)); $('#saved').textContent = `Saved in this browser at ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`; } catch (e) { $('#saved').textContent = "Couldn't save in this browser. Download a CSV to keep your work."; } }, 250); }
+
+// Effective ratings
+const fnOff = f => (f.sp || []).some(i => st.off.includes(SPECS[i].id));
+const actsOf = f => f.a.map((_, k) => `${f.c}.${k + 1}`);
+function fnVal(f) { // returns {id, derived}
+  if (fnOff(f)) return { id: 'na', off: true };
+  const rated = actsOf(f).map(c => st.a[c]).filter(Boolean);
+  if (rated.length) {
+    const real = rated.filter(x => x !== 'na');
+    if (!real.length) return { id: 'na', derived: true };
+    const avg = real.reduce((s, x) => s + lv(x).v, 0) / real.length;
+    const near = M().levels.reduce((b, l) => Math.abs(l.v - avg) < Math.abs(b.v - avg) ? l : b);
+    return { id: near.id, derived: true, avg, n: rated.length };
+  }
+  return st.f[f.c] ? { id: st.f[f.c] } : null;
+}
+const actVal = c => { const f = FNI[c.split('.').slice(0, 2).join('.')]; if (fnOff(f)) return 'na'; return st.a[c] || st.f[f.c] || null; };
+const colOf = id => id === 'na' ? NA.c : (lv(id) || {}).c;
+const nameOf = id => id === 'na' ? NA.n : (lv(id) || {}).n;
+
+function scaleHtml(target, cur, small, label) {
+  const opts = [...M().levels, NA];
+  return `<span class="scale${small ? ' sm' : ''}" role="radiogroup" aria-label="${esc(label)}">${opts.map(l => `<button type="button" role="radio" class="${l.id === 'na' ? 'na' : ''}" style="--c:${l.c}" data-t="${target}" data-v="${l.id}" aria-checked="${cur === l.id}" data-tip="${esc(`<b>${esc(l.n)}</b>${l.d ? `<small>${esc(l.d)}</small>` : ''}`)}"><i></i>${esc(l.n)}</button>`).join('')}</span>`;
+}
+function keyHtml() { return [...M().levels, NA].map(l => `<span><i class="sw2${l.id === 'na' ? ' na' : ''}" style="--c:${l.c}"></i>${esc(l.n)}</span>`).join('') + '<span><i class="sw2 unset"></i>Not rated yet</span>'; }
+
+function renderHead() {
+  const m = M();
+  document.title = `${m.title} · Open Housing Operating Model`;
+  $('#title').textContent = m.title; $('#lede').textContent = m.lede;
+  $('#forwho').innerHTML = '<b>Useful for:</b>' + m.forwho.map(x => `<span class="persona">${esc(x)}</span>`).join('');
+  $$('.mode').forEach(b => b.setAttribute('aria-pressed', b.dataset.mode === mode));
+  $('#nameLbl').textContent = m.subject === 'Product' ? 'Product name' : 'Organisation name';
+  $('#name').value = st.name || '';
+  $('#rateHelp').textContent = m.help + ' Your rating for a function covers all its activities, unless you open it and rate activities separately.';
+  $('#scalekey').innerHTML = keyHtml(); $('#scalekey2').innerHTML = keyHtml();
+  $('#specSeg').innerHTML = SPECS.map(x => `<button type="button" class="chip" data-spec="${x.id}" aria-pressed="${!st.off.includes(x.id)}" data-tip="${esc(`<b>${esc(x.n)}</b><small>${esc(x.desc)}</small>`)}">${esc(x.n)}</button>`).join('');
+  $('#specNote').textContent = mode === 'product' ? "Untick anything the product isn't meant to cover." : "Untick anything your organisation doesn't provide. It's marked not applicable.";
+}
+function renderProgress() {
+  const fs = FN.filter(f => !fnOff(f)); const vals = fs.map(fnVal);
+  const done = vals.filter(Boolean).length;
+  const counts = [...M().levels, NA].map(l => vals.filter(v => v && v.id === l.id).length);
+  $('#progress').innerHTML = `<b>${done} of ${fs.length} functions rated</b><span class="pbar">${[...M().levels, NA].map((l, i) => counts[i] ? `<i class="${l.id === 'na' ? 'na-bg' : ''}" style="width:${100 * counts[i] / fs.length}%;background:${l.id === 'na' ? '' : l.c}"></i>` : '').join('')}</span>${done === fs.length ? '<span>All done. See the results.</span>' : ''}`;
+}
+function fnRow(f) {
+  const v = fnVal(f), off = fnOff(f), acts = actsOf(f);
+  const ratedActs = acts.filter(c => st.a[c]).length;
+  const open = !!st.detail[f.c], hasNote = !!(st.notes[f.c] || '').trim();
+  return `<div class="fn${off ? ' off' : ''}" data-fn="${f.c}">
+    <div class="fname"><span class="num">${f.c}</span><span>${esc(f.n)}</span>${spBadge(f.sp)}${off ? '<span class="derived">Not applicable: specialist provision switched off</span>' : ''}${v && v.derived ? `<span class="derived">From ${v.n} rated activit${v.n === 1 ? 'y' : 'ies'}: ${esc(nameOf(v.id))}</span>` : ''}</div>
+    <div>${off ? '' : v && v.derived ? '' : scaleHtml('f:' + f.c, st.f[f.c], false, `Rating for ${f.c} ${f.n}`)}</div>
+    ${off ? '' : `<div class="more"><button type="button" class="linkbtn${ratedActs ? ' has' : ''}" data-detail="${f.c}" aria-expanded="${open}">${open ? 'Hide activities' : `Rate its ${acts.length} activities${ratedActs ? ` (${ratedActs} rated)` : ''}`}</button><button type="button" class="linkbtn${hasNote ? ' has' : ''}" data-note="${f.c}" aria-expanded="${!!st.open['n' + f.c]}">${hasNote ? 'Edit note' : 'Add a note'}</button></div>`}
+    ${open && !off ? `<div class="acts">${acts.map((c, k) => `<div class="act"><span><span class="num">${c}</span>${esc(f.a[k])}</span>${scaleHtml('a:' + c, st.a[c], true, `Rating for ${c} ${f.a[k]}`)}</div>`).join('')}<div><button type="button" class="linkbtn" data-clearacts="${f.c}">Clear activity ratings and use the function rating</button></div></div>` : ''}
+    ${st.open['n' + f.c] && !off ? `<div class="notebox"><label class="note" for="note-${f.c}">Note or evidence for ${f.c}</label><textarea id="note-${f.c}" data-notefor="${f.c}">${esc(st.notes[f.c] || '')}</textarea></div>` : ''}
+  </div>`;
+}
+function areaSummary(a) {
+  const fs = a.s.map(f => FNI[f.c]); const vals = fs.map(fnVal);
+  const done = vals.filter(Boolean).length;
+  return `<span class="mini" aria-hidden="true">${vals.map(v => `<i class="${v ? (v.id === 'na' ? 'na-bg' : '') : 'unset'}" style="${v && v.id !== 'na' ? `--c:${colOf(v.id)}` : ''}"></i>`).join('')}</span><span>${done}/${fs.length} rated</span>`;
+}
+function renderRate() {
+  const openState = st.areasOpen || {};
+  $('#areas').innerHTML = D.areas.map((a, ai) => `<details class="area ${dc(a.d)}" data-area="${a.c}"${openState[a.c] ?? ai === 0 ? ' open' : ''}><summary><span class="sumname"><span class="num">${a.c}</span><span>${esc(a.n)}</span></span><span class="sumright" data-sum="${a.c}">${areaSummary(a)}</span></summary><div class="fns">${a.s.map(f => fnRow(FNI[f.c])).join('')}</div></details>`).join('');
+  renderProgress();
+}
+function rerenderFn(fc) {
+  const el = document.querySelector(`.fn[data-fn="${fc}"]`); if (el) el.outerHTML = fnRow(FNI[fc]);
+  const a = FNI[fc].area; const s = document.querySelector(`[data-sum="${a.c}"]`); if (s) s.innerHTML = areaSummary(a);
+  renderProgress();
+}
+
+// Results
+function renderResults() {
+  const m = M(), fs = FN.filter(f => !fnOff(f)), vals = fs.map(fnVal), rated = vals.filter(v => v && v.id !== 'na');
+  const any = rated.length > 0;
+  $('#printTitle').textContent = `${m.title}${st.name ? ': ' + st.name : ''}`;
+  $('#ra1').textContent = mode === 'product' ? `What ${st.name || 'the product'} covers in the operating model` : `${st.name ? st.name + "'s" : 'Your'} capability across the operating model`;
+  $('#ra1p').textContent = 'Every function, grouped by function area. Hatched means not applicable. Dashed means not rated yet.';
+  if (mode === 'product') {
+    const acts = Object.keys(ACT).filter(c => actVal(c) !== 'na');
+    const full = acts.filter(c => actVal(c) === 'full').length, part = acts.filter(c => actVal(c) === 'partial').length;
+    $('#headline').innerHTML = `<div><span class="num">${pct(full, acts.length)}%</span><span>of activities supported (${full} of ${acts.length})</span></div><div><span class="num">${pct(part, acts.length)}%</span><span>partly supported (${part})</span></div><div><span class="num">${vals.filter(Boolean).length}/${fs.length}</span><span>functions rated</span></div>`;
+  } else {
+    const avg = rated.length ? rated.reduce((s, v) => s + (v.avg ?? lv(v.id).v), 0) / rated.length : 0;
+    const near = rated.length ? m.levels.reduce((b, l) => Math.abs(l.v - avg) < Math.abs(b.v - avg) ? l : b) : null;
+    $('#headline').innerHTML = `<div><span class="num">${rated.length ? avg.toFixed(1) : '–'}<small style="font-size:14px;color:var(--muted)"> / ${m.max}</small></span><span>average rating${near ? ` (around ${esc(near.n.toLowerCase())})` : ''}</span></div><div><span class="num">${rated.filter(v => lv(v.id).v <= 1).length}</span><span>functions not in place or basic</span></div><div><span class="num">${vals.filter(Boolean).length}/${fs.length}</span><span>functions rated</span></div>`;
+  }
+  const dist = [...m.levels, NA].map(l => ({ l, n: vals.filter(v => v && v.id === l.id).length })); const unset = vals.filter(v => !v).length;
+  const dmax = Math.max(1, ...dist.map(d => d.n), unset);
+  $('#dist').innerHTML = dist.map(d => `<div><span>${esc(d.l.n)}</span><span class="tr"><i class="${d.l.id === 'na' ? 'na-bg' : ''}" style="width:${100 * d.n / dmax}%;--c:${d.l.c}"></i></span><span class="n">${d.n}</span></div>`).join('') + `<div><span>Not rated yet</span><span class="tr"><i style="width:${100 * unset / dmax}%;--c:var(--line)"></i></span><span class="n">${unset}</span></div>`;
+  $('#heat').innerHTML = D.areas.map(a => `<div class="hcard ${dc(a.d)}"><h3><span class="num">${a.c}</span>${esc(a.n)}</h3>${a.s.map(f0 => { const f = FNI[f0.c]; const v = fnVal(f); const note = (st.notes[f.c] || '').trim(); return `<div class="hrow" data-tip="${esc(`<b>${esc(f.c + ' ' + f.n)}</b><small>${v ? esc(nameOf(v.id)) + (v.derived && v.n ? ` (from ${v.n} activities)` : '') : 'Not rated yet'}${note ? '<br>' + esc(note.slice(0, 200)) : ''}</small>`)}"><span>${esc(f.n)}</span><span class="cell${!v ? ' unset' : v.id === 'na' ? ' na' : ''}" style="${v && v.id !== 'na' ? `--c:${colOf(v.id)}` : ''}">${v && v.id !== 'na' && mode === 'capability' ? lv(v.id).v : ''}</span></div>`; }).join('')}</div>`).join('');
+  $('#capA1').textContent = `${fs.length} functions in scope${st.name ? ' · ' + st.name : ''}`;
+  renderServices(any);
+}
+function reqStats(r) {
+  const codes = [...new Set(r.a.map(x => x[1]))]; const vs = codes.map(actVal);
+  const inScope = vs.filter(v => v !== 'na'); const ratedV = inScope.filter(Boolean);
+  const score = ratedV.length ? ratedV.reduce((s, v) => s + lv(v).v, 0) / ratedV.length / M().max : null;
+  const min = ratedV.length ? Math.min(...ratedV.map(v => lv(v).v)) : null;
+  return { codes, vs, inScope, ratedV, score, min };
+}
+function renderServices(any) {
+  const m = M();
+  $('#ra2').textContent = mode === 'product' ? 'Which services and requests it helps with' : 'How well the work behind each service is supported';
+  $('#ra2p').textContent = mode === 'product' ? 'For each request people make, how much of the work behind it the product supports.' : "For each request people make, the ratings of the activities behind it. A service is only as strong as its weakest part.";
+  const ss = D.services.filter(s => audOk(s, aud) && !(s.sp || []).some(i => st.off.includes(SPECS[i].id)));
+  let rows = ss.map(s => ({ s, rs: s.r.filter(r => !(r.sp || []).some(i => st.off.includes(SPECS[i].id))).map(r => ({ r, x: reqStats(r) })) })).filter(x => x.rs.length);
+  if (order === 'weak') rows = rows.map(x => ({ ...x, w: Math.min(...x.rs.map(y => y.x.score ?? 9)) })).sort((p, q) => p.w - q.w);
+  const lab = x => x.score == null ? 'not rated' : mode === 'product' ? `${Math.round(100 * x.score)}%` : `lowest ${x.min}`;
+  $('#svlist').innerHTML = any ? rows.map(({ s, rs }) => `<div class="svbox"><h3><span class="num">${s.c}</span>${esc(s.n)}</h3>${rs.map(({ r, x }) => { const counts = [...m.levels].map(l => x.vs.filter(v => v === l.id).length); const unset = x.vs.filter(v => !v).length; const tot = x.inScope.length || 1; return `<div class="rqrow" data-tip="${esc(`<b>${esc(r.c + ' ' + r.n)}</b><small>${x.codes.length} activities behind it: ${m.levels.map((l, i) => counts[i] ? `${counts[i]} ${l.n.toLowerCase()}` : '').filter(Boolean).join(', ') || 'none rated'}${unset ? `, ${unset} not rated` : ''}${x.codes.length - x.inScope.length ? `, ${x.codes.length - x.inScope.length} not applicable` : ''}</small>`)}"><span>${esc(r.n)}</span><span class="stk">${m.levels.map((l, i) => counts[i] ? `<i style="width:${100 * counts[i] / tot}%;--c:${l.c}"></i>` : '').join('')}</span><span class="lab">${lab(x)}</span></div>`; }).join('')}</div>`).join('') : `<div class="empty">Rate some functions first, then come back here to see how they support each service.</div>`;
+  const all = rows.flatMap(x => x.rs);
+  if (mode === 'product') { const full = all.filter(y => y.x.inScope.length && y.x.vs.every(v => v === 'full' || v === 'na')).length, some = all.filter(y => y.x.vs.some(v => v === 'full' || v === 'partial')).length; $('#capA2').textContent = `${full} of ${all.length} requests fully supported · ${some} helped at least in part`; }
+  else $('#capA2').textContent = `${all.length} requests`;
+}
+
+// CSV
+const csvCell = v => { v = String(v ?? ''); return /[",\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v; };
+function exportCsv() {
+  const rows = [['mode', 'name', 'level', 'code', 'item', 'function_area', 'rating', 'rating_label', 'note', 'model_version']];
+  FN.forEach(f => {
+    const v = fnVal(f);
+    rows.push([mode, st.name, 'function', f.c, f.n, `${f.area.c} ${f.area.n}`, v ? v.id : '', v ? nameOf(v.id) + (v.derived && v.n ? ' (from activities)' : '') : '', st.notes[f.c] || '', D.version]);
+    actsOf(f).forEach((c, k) => { if (st.a[c]) rows.push([mode, st.name, 'activity', c, f.a[k], `${f.area.c} ${f.area.n}`, st.a[c], nameOf(st.a[c]), '', D.version]); });
+  });
+  const blob = new Blob(['﻿' + rows.map(r => r.map(csvCell).join(',')).join('\r\n')], { type: 'text/csv' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = `${(st.name || (mode === 'product' ? 'product' : 'organisation')).replace(/[^\w-]+/g, '-').toLowerCase()}-${mode}-assessment.csv`;
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+function parseCsv(t) {
+  const rows = []; let row = [], cell = '', q = false;
+  for (let i = 0; i < t.length; i++) { const ch = t[i];
+    if (q) { if (ch === '"') { if (t[i + 1] === '"') { cell += '"'; i++; } else q = false; } else cell += ch; }
+    else if (ch === '"') q = true; else if (ch === ',') { row.push(cell); cell = ''; } else if (ch === '\n' || ch === '\r') { if (ch === '\r' && t[i + 1] === '\n') i++; row.push(cell); rows.push(row); row = []; cell = ''; } else cell += ch; }
+  if (cell || row.length) { row.push(cell); rows.push(row); }
+  return rows;
+}
+function importCsv(text) {
+  const rows = parseCsv(text.replace(/^﻿/, '')); const h = rows.shift().map(x => x.trim().toLowerCase());
+  const ix = n => h.indexOf(n); if (ix('code') < 0 || ix('rating') < 0) { $('#saved').textContent = "That file doesn't look like an assessment CSV: it needs code and rating columns."; return; }
+  const fileMode = rows[0] && ix('mode') >= 0 ? rows[0][ix('mode')] : mode;
+  if (fileMode && MODES[fileMode] && fileMode !== mode) { mode = fileMode; history.replaceState(null, '', `?mode=${mode}`); }
+  const ns = blank(); let n = 0;
+  rows.forEach(r => { const code = (r[ix('code')] || '').trim(); let v = (r[ix('rating')] || '').trim(); if (!code) return;
+    if (ix('name') >= 0 && r[ix('name')]) ns.name = r[ix('name')];
+    if (v && v !== 'na' && !lv(v)) { const byName = [...M().levels, NA].find(l => l.n.toLowerCase() === v.toLowerCase()); v = byName ? byName.id : ''; }
+    const isAct = code.split('.').length === 3, level = ix('level') >= 0 ? r[ix('level')] : (isAct ? 'activity' : 'function');
+    if (level === 'activity' && ACT[code] && v) { ns.a[code] = v; n++; }
+    else if (level === 'function' && FNI[code]) { const label = ix('rating_label') >= 0 ? r[ix('rating_label')] : ''; if (v && !/from activities/.test(label)) { ns.f[code] = v; n++; } if (ix('note') >= 0 && r[ix('note')]) ns.notes[code] = r[ix('note')]; }
+  });
+  st = { ...ns, off: st.off }; save(); renderAll(); $('#saved').textContent = `Loaded ${n} ratings from the file.`;
+}
+
+// Events
+function renderAll() { renderHead(); renderRate(); if (!$('#results').hidden) renderResults(); }
+function showTab(res) { $('#tabRate').setAttribute('aria-selected', !res); $('#tabRes').setAttribute('aria-selected', res); $('#rate').hidden = res; $('#results').hidden = !res; if (res) renderResults(); }
+$('#tabRate').addEventListener('click', () => showTab(false));
+$('#tabRes').addEventListener('click', () => showTab(true));
+$$('.mode').forEach(b => b.addEventListener('click', () => { if (b.dataset.mode === mode) return; mode = b.dataset.mode; history.replaceState(null, '', mode === 'product' ? '?mode=product' : location.pathname); load(); renderAll(); }));
+$('#name').addEventListener('input', e => { st.name = e.target.value; save(); });
+$('#specSeg').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; const id = b.dataset.spec; st.off = st.off.includes(id) ? st.off.filter(x => x !== id) : [...st.off, id]; save(); renderAll(); });
+$('#areas').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.t) { const [kind, code] = b.dataset.t.split(':'); const store = kind === 'f' ? st.f : st.a; if (store[code] === b.dataset.v) delete store[code]; else store[code] = b.dataset.v; save(); rerenderFn(kind === 'f' ? code : code.split('.').slice(0, 2).join('.')); const again = document.querySelector(`button[data-t="${b.dataset.t}"][data-v="${b.dataset.v}"]`); if (again) again.focus({ preventScroll: true }); return; }
+  if (b.dataset.detail) { st.detail[b.dataset.detail] = !st.detail[b.dataset.detail]; save(); rerenderFn(b.dataset.detail); return; }
+  if (b.dataset.note) { st.open['n' + b.dataset.note] = !st.open['n' + b.dataset.note]; save(); rerenderFn(b.dataset.note); const t = document.getElementById('note-' + b.dataset.note); if (t) t.focus(); return; }
+  if (b.dataset.clearacts) { actsOf(FNI[b.dataset.clearacts]).forEach(c => delete st.a[c]); save(); rerenderFn(b.dataset.clearacts); }
+});
+$('#areas').addEventListener('input', e => { const t = e.target.closest('textarea[data-notefor]'); if (t) { st.notes[t.dataset.notefor] = t.value; save(); } });
+$('#areas').addEventListener('toggle', e => { const d = e.target.closest('details.area'); if (d) { st.areasOpen = { ...(st.areasOpen || {}), [d.dataset.area]: d.open }; save(); } }, true);
+$('#openAll').addEventListener('click', () => $$('details.area').forEach(d => d.open = true));
+$('#closeAll').addEventListener('click', () => $$('details.area').forEach(d => d.open = false));
+$('#exportBtn').addEventListener('click', exportCsv);
+$('#importIn').addEventListener('change', e => { const f = e.target.files[0]; if (!f) return; f.text().then(importCsv); e.target.value = ''; });
+$('#printBtn').addEventListener('click', () => { showTab(true); setTimeout(() => window.print(), 50); });
+$('#clearBtn').addEventListener('click', () => { if (!clearArm) { clearArm = true; $('#clearBtn').textContent = 'Select again to clear everything'; setTimeout(() => { clearArm = false; $('#clearBtn').textContent = 'Clear all'; }, 4000); return; } clearArm = false; $('#clearBtn').textContent = 'Clear all'; st = blank(); save(); renderAll(); });
+seg('aud', v => { aud = v; renderResults(); });
+seg('sort', v => { order = v; renderResults(); });
+load(); renderAll();
+</script>
+</body>
+</html>

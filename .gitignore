@@ -1,6 +1,7 @@
 # Built outputs (CI builds these and publishes them to GitHub Pages and releases)
 dist/
-site/index.html
+site/*.html
+!site/template.html
 site/*.csv
 site/*.json
 __pycache__/

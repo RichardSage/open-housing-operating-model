@@ -96,6 +96,22 @@ functions:
 
 Any service, request, function area, function or activity can have `description` and `notes`. Most can have `references` (a list of links or citations). Activities and requests can have `aliases`: other names people use for the same thing.
 
+### Shared components
+
+`model/components.yaml` lists the building blocks requests rely on, such as signing in, booking a time or tracking a case. Each component applies to every request with the listed `patterns`, plus any requests under `also`, minus any under `except`:
+
+```yaml
+- id: scheduling
+  name: Book a time
+  side: front          # front: people see it. back: staff and systems.
+  description: Show real available slots, book, change or cancel them, and send reminders
+  patterns: [book]
+  also: []
+  except: []
+```
+
+If a request clearly needs a component it doesn't get from its pattern, add it to `also`. If it clearly doesn't need one, add it to `except`.
+
 ### Specialist provision
 
 Not every provider does everything. If a service, request or function only applies to providers that offer a particular kind of housing, tag it with `specialist`:

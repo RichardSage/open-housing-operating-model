@@ -1,0 +1,123 @@
+# Open Housing Operating Model - shared components
+#
+# The common building blocks that requests rely on, whatever the service. Requests that share an
+# interaction pattern need many of the same things: every "Book" request needs a way to pick a time,
+# every "Pay" request needs a way to take a payment. Build each component once and reuse it across
+# services.
+#
+# Each component applies to:
+#   patterns: every request with these interaction patterns
+#   also:     these extra requests
+#   except:   minus these requests
+#
+# side: front  something the person sees or uses
+#       back   something staff or systems do behind the scenes
+#
+# These are judgements about a typical association, not a technical specification. Suggest changes like
+# anything else in the model.
+
+components:
+- id: identity
+  name: Sign in and prove who I am
+  side: front
+  description: An account and identity check, so people don't have to prove who they are every time
+  patterns: [apply, book, pay, request, tell, check]
+  # Anyone can report these, without an account
+  except: [S21.5, S21.6, S22.1, S23.1, S27.1, S42.1, S28.4, S30.1, S30.2, S39.1, S24.2, S29.2]
+
+- id: forms
+  name: Fill in a form
+  side: front
+  description: Accessible forms that ask only what's needed, save progress, and work on any device
+  patterns: [apply, request, tell]
+
+- id: evidence
+  name: Upload documents and photos
+  side: front
+  description: Send photos, videos and documents as evidence, and reuse ones already provided
+  patterns: [apply]
+  also: [S08.1, S08.2, S08.3, S08.4, S08.5, S08.6, S09.5, S10.4, S10.5, S12.1, S13.3, S15.1, S15.4, S16.2, S17.1,
+         S20.5, S21.2, S21.5, S21.6, S22.1, S28.1, S40.1]
+
+- id: eligibility
+  name: Check eligibility and rules
+  side: back
+  description: Apply policy rules consistently, explain the outcome, and show what would change it
+  patterns: [apply]
+  also: [S10.4, S10.5, S13.3, S16.1, S16.2, S16.4, S16.5, S20.1]
+
+- id: scheduling
+  name: Book a time
+  side: front
+  description: Show real available slots, book, change or cancel them, and send reminders
+  patterns: [book]
+
+- id: dispatch
+  name: Send work to staff or contractors
+  side: back
+  description: Turn a request into a job for the right person or contractor, with a deadline and the details they need
+  patterns: [book]
+  also: [S08.3, S09.5, S09.7, S10.4, S21.5, S21.6]
+  except: [S21.8, S25.4]
+
+- id: payments
+  name: Take a payment
+  side: front
+  description: Card, direct debit and payment plans, with receipts and refunds
+  patterns: [pay]
+  also: [S19.1, S19.3, S21.7, S21.8, S25.4]
+
+- id: account
+  name: See my account and history
+  side: front
+  description: Balances, statements, past requests and documents in one place
+  patterns: [check, pay]
+  also: [S13.3, S18.1]
+
+- id: guidance
+  name: Find answers and guidance
+  side: front
+  description: Clear, searchable content that answers common questions before anyone has to get in touch
+  patterns: [check]
+  also: [S01.1, S06.1, S15.1, S15.2, S16.1, S20.4, S25.1]
+
+- id: case
+  name: Track a case
+  side: front
+  description: A reference, a named owner and visible progress for anything that takes more than one step
+  patterns: [apply, request, tell]
+  except: [S18.1, S24.2, S28.4, S29.2]
+
+- id: decisions
+  name: Record a decision and offer a review
+  side: back
+  description: Record who decided what and why, tell the person, and offer a review or appeal
+  patterns: [apply]
+  also: [S01.6, S10.4, S10.5, S13.3, S16.1, S16.2, S16.4, S16.5, S20.1, S20.5, S22.2, S28.2]
+
+- id: documents
+  name: Create letters and documents
+  side: back
+  description: Generate letters, agreements and statements from templates, in accessible formats
+  patterns: [apply]
+  also: [S04.1, S06.1, S14.1, S14.3, S16.1, S16.2, S20.2, S30.3, S30.4]
+
+- id: signing
+  name: Sign documents
+  side: front
+  description: Sign tenancies, leases and agreements online, with a record of who signed and when
+  also: [S02.1, S02.2, S02.3, S03.1, S04.1, S05.1, S07.1, S16.1, S16.2, S16.3, S19.1, S19.2, S19.3, S20.1, S21.7,
+         S25.2, S31.1]
+
+- id: notifications
+  name: Get updates and reminders
+  side: front
+  description: Tell people what's happening by their chosen channel, without them having to chase
+  patterns: [apply, book, pay, request, tell, check]
+  except: [S30.1, S29.2, S28.4]
+
+- id: contact-record
+  name: Keep a record of every contact
+  side: back
+  description: One history of every contact, whatever the channel, so nobody has to repeat themselves
+  patterns: [apply, book, pay, request, tell, check]
