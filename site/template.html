@@ -30,6 +30,7 @@
   --p-apply:#5fc0ad; --p-book:#7fa8e6; --p-pay:#e2b45a; --p-request:#c49be0; --p-tell:#ec8aa0; --p-check:#a3b4c4;
   --l0:#5fc0ad; --l1:#7fa8e6; --l2:#c49be0; --l3:#e6bd5a; --l4:#d9a271; --l5:#ec8aa0; --lnone:#46524e; --t1c:#5d9c8f; --t2c:#e2b45a; --t3c:#ec8aa0; --lens-bg:#262036; color-scheme:dark}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55}
 .wrap{max-width:1280px;margin:0 auto;padding-block:40px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:40px}
 h1,h2{font-family:var(--display);font-weight:650;text-wrap:balance;margin:0;line-height:1.18}
@@ -217,6 +218,13 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .lensbar{z-index:9;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
 .lensbar .lbl{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
 .lensbar .seg button[aria-pressed="true"].on{background:#5b3f8f;color:#fff}
+.lseg{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center}
+.lgrp{font-size:12px;color:var(--muted);font-weight:600;margin-left:4px}
+.coming{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.coming li{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:4px 12px;align-items:baseline;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--lc);border-radius:6px;padding:7px 10px;font-size:13px}
+.coming li .num{font-size:12px}
+.coming li small{color:var(--muted);font-size:12px;white-space:nowrap}
+@media (max-width:620px){.coming li{grid-template-columns:1fr}.coming li small{white-space:normal}}
 .lensbar .opt{font-size:12px;color:var(--muted)}
 .lensbar .key{flex-basis:100%}
 .lensbar .key:empty{display:none}
@@ -262,7 +270,7 @@ footer h2{color:var(--ink);font-size:20px}
 
   <div class="lensbar" id="lensbar" role="region" aria-label="Optional layers">
     <span class="lbl">Layer</span>
-    <div class="seg" role="group" aria-label="Apply an optional layer" id="lensSeg"></div>
+    <div class="lseg" role="group" aria-label="Apply an optional layer" id="lensSeg"></div>
     <span class="opt">Optional layers add a point of view on top of the model. They're not part of it.</span>
     <div class="key" id="lensKey"></div>
   </div>
@@ -403,24 +411,38 @@ const LCOL = {
   'impact': ['--l0', '--l1', '--l2', '--l3', '--lnone'],
   'tier': ['--t1c', '--t2c', '--t3c'],
   'route': ['--l0', '--l1', '--l4', '--l2', '--l5', '--lnone'],
+  'basis': ['--l1', '--l0', '--l3', '--lnone'],
+  'changing': ['--l5', '--l3', '--l1', '--lnone'],
 };
 const LENSES = (D.layers || []).flatMap(ly => ly.fields.map((f, fi) => ({ key: `${ly.id}:${f.id}`, ly, f, fi })).filter(x => x.f.vals.length > 2));
 let lens = null;
 const lensIdx = code => { if (!lens) return -1; const v = lens.ly.data[code]; return v ? v[lens.fi] : -1; };
-const lensCol = i => { const pal = LCOL[lens.f.id] || ['--l0', '--l1', '--l2', '--l3', '--l4', '--l5']; const none = /^(none|no-change|no)$/.test(lens.f.vals[i]?.id || ''); return `var(${none ? '--lnone' : (pal[i] || '--l' + (i % 6))})`; };
+const lensCol = i => { const pal = LCOL[lens.f.id] || ['--l0', '--l1', '--l2', '--l3', '--l4', '--l5']; const none = /^(none|no-change|no|stable)$/.test(lens.f.vals[i]?.id || ''); return `var(${none ? '--lnone' : (pal[i] || '--l' + (i % 6))})`; };
 const lensName = code => { const i = lensIdx(code); return i < 0 ? 'No value' : lens.f.vals[i].n; };
-const lensTip = code => lens ? `<br>${esc(lens.f.n)}: <b>${esc(lensName(code))}</b>` : '';
+const oblList = (code, rel) => (lens.ly.links?.[code] || []).filter(x => x[1] === rel).map(x => lens.ly.register[x[0]].n);
+const lensTip = code => { if (!lens) return ''; let t = `<br>${esc(lens.f.n)}: <b>${esc(lensName(code))}</b>`; if (lens.ly.links) { const r = oblList(code, 0), sh = oblList(code, 1); if (r.length) t += `<br>Required by: ${r.slice(0, 4).map(esc).join('; ')}${r.length > 4 ? ` +${r.length - 4} more` : ''}`; if (sh.length) t += `<br>Shaped by: ${sh.slice(0, 4).map(esc).join('; ')}${sh.length > 4 ? ` +${sh.length - 4} more` : ''}`; } return t; };
 const lensBar = codes => { if (!lens || !codes.length) return ''; const c = new Map(); codes.forEach(x => { const i = lensIdx(x); c.set(i, (c.get(i) || 0) + 1); }); return `<span class="lbar">${[...c.keys()].sort((a, b) => a - b).map(i => `<i style="flex:${c.get(i)};--lc:${i < 0 ? 'var(--lnone)' : lensCol(i)}" data-tip="${esc(`${i < 0 ? 'No value' : esc(lens.f.vals[i].n)}: ${c.get(i)} activit${c.get(i) === 1 ? 'y' : 'ies'}`)}"></i>`).join('')}</span>`; };
+function comingUp(ly) {
+  if (!ly.register) return '';
+  const asOf = ly.asOf || new Date().toISOString().slice(0, 10);
+  const when = d => { const m = /^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?$/.exec(d); return m ? `${m[1]}-${m[2] || '07'}-${m[3] || '01'}` : ''; };
+  const fmt = d => { const m = /^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?$/.exec(d); if (!m) return d; const mon = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; return m[3] ? `${+m[3]} ${mon[+m[2] - 1]} ${m[1]}` : m[2] ? `${mon[+m[2] - 1]} ${m[1]}` : m[1]; };
+  const reach = ly.register.map(() => 0); Object.values(ly.links || {}).forEach(ls => ls.forEach(([i]) => reach[i]++));
+  const items = ly.register.flatMap((o, i) => o.ch.map(c => ({ o, i, c, k: when(c.d) }))).filter(x => x.k >= asOf).sort((a, b) => a.k.localeCompare(b.k));
+  if (!items.length) return '';
+  const col = k => { const mo = (+k.slice(0, 4) - +asOf.slice(0, 4)) * 12 + (+k.slice(5, 7) - +asOf.slice(5, 7)); return mo <= 12 ? 'var(--l5)' : mo <= 36 ? 'var(--l3)' : 'var(--l1)'; };
+  return `<h3 style="font-size:16px;margin:4px 0 0">Coming up</h3><ul class="coming">${items.map(x => `<li style="--lc:${col(x.k)}"><span class="num">${esc(fmt(x.c.d))}${x.c.c === 'expected' ? ' (expected)' : ''}</span><span><b>${x.o.url ? `<a href="${esc(x.o.url)}">${esc(x.o.n)}</a>` : esc(x.o.n)}</b>: ${esc(x.c.s)}</span><small>${reach[x.i]} activities linked</small></li>`).join('')}</ul>`;
+}
 function renderLensUI() {
   $('#lensbar').hidden = !LENSES.length;
   $('#lensbar').classList.toggle('active', !!lens);
-  $('#lensSeg').innerHTML = `<button type="button" data-lens="" aria-pressed="${!lens}">Model only</button>` + LENSES.map(L => `<button type="button" class="on" data-lens="${L.key}" aria-pressed="${lens && lens.key === L.key}">${esc(L.f.n)}</button>`).join('');
+  $('#lensSeg').innerHTML = `<div class="seg"><button type="button" data-lens="" aria-pressed="${!lens}">Model only</button></div>` + (D.layers || []).map(ly => { const ls = LENSES.filter(L => L.ly === ly); return ls.length ? `<span class="lgrp">${esc(ly.n)}</span><div class="seg">${ls.map(L => `<button type="button" class="on" data-lens="${L.key}" aria-pressed="${lens && lens.key === L.key}">${esc(L.f.n)}</button>`).join('')}</div>` : ''; }).join('');
   if (!lens) { $('#lensKey').innerHTML = ''; $('#lensPanel').hidden = true; return; }
   const all = Object.keys(lens.ly.data); const counts = lens.f.vals.map((_, i) => all.filter(c => lensIdx(c) === i).length);
   $('#lensKey').innerHTML = `<div class="key">${lens.f.vals.map((v, i) => `<span style="--lc:${lensCol(i)}" data-tip="${esc(`<b>${esc(v.n)}</b><small>${esc(v.desc)}</small>`)}"><span class="lsw"></span>${esc(v.n)}</span>`).join('')}</div>`;
   const ly = lens.ly;
   $('#lensPanel').hidden = false;
-  $('#lensPanel').innerHTML = `<span class="eyebrow">Optional layer · version ${esc(ly.v)}</span><h2>${esc(ly.n)}: ${esc(lens.f.n)}</h2><p>${esc(ly.summary)} Activities in every figure below are now coloured by <strong>${esc(lens.f.n.toLowerCase())}</strong>. Switch back to "Model only" to hide it.</p><div class="vals">${lens.f.vals.map((v, i) => `<div class="val" style="--lc:${lensCol(i)}"><span class="lsw"></span><b>${esc(v.n)}</b><span class="num">${counts[i]}</span>${v.desc ? `<small>${esc(v.desc)}</small>` : ''}</div>`).join('')}</div><p class="src"><strong>${esc(ly.caveat)}</strong> Sources: ${ly.sources.map(x => x.url ? `<a href="${esc(x.url)}">${esc(x.name)}</a>` : esc(x.name)).join('; ')}. <a href="layers/${esc(ly.id)}.csv" download>Download this layer (CSV)</a>${D.repo ? ` · <a href="${esc(D.repo)}/tree/main/layers/${esc(ly.id)}">See or improve it on GitHub</a>` : ''}</p>`;
+  $('#lensPanel').innerHTML = `<span class="eyebrow">Optional layer · version ${esc(ly.v)}</span><h2>${esc(ly.n)}: ${esc(lens.f.n)}</h2><p>${esc(ly.summary)} Activities in every figure below are now coloured by <strong>${esc(lens.f.n.toLowerCase())}</strong>. Switch back to "Model only" to hide it.</p><div class="vals">${lens.f.vals.map((v, i) => `<div class="val" style="--lc:${lensCol(i)}"><span class="lsw"></span><b>${esc(v.n)}</b><span class="num">${counts[i]}</span>${v.desc ? `<small>${esc(v.desc)}</small>` : ''}</div>`).join('')}</div>${comingUp(ly)}<p class="src">${ly.asOf ? `Worked out as at ${esc(ly.asOf)}. ` : ''}<strong>${esc(ly.caveat)}</strong> Sources: ${ly.sources.map(x => x.url ? `<a href="${esc(x.url)}">${esc(x.name)}</a>` : esc(x.name)).join('; ')}. <a href="layers/${esc(ly.id)}.csv" download>Download this layer (CSV)</a>${D.repo ? ` · <a href="${esc(D.repo)}/tree/main/layers/${esc(ly.id)}">See or improve it on GitHub</a>` : ''}</p>`;
 }
 function setLens(key, push) {
   lens = LENSES.find(L => L.key === key) || null;

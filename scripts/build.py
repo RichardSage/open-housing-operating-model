@@ -25,6 +25,7 @@ from collections import defaultdict
 from pathlib import Path
 
 import yaml
+from datetime import date
 
 ROOT = Path(__file__).resolve().parent.parent
 MODEL = ROOT / "model"
@@ -197,7 +198,93 @@ def load_services(fn_index, act_index, retired, seen):
     return {"patterns": patterns, "users": users, "groups": groups, "services": services}
 
 
-def load_layers(act_index):
+OBL_TYPES = {"act": "law", "regulations": "law", "standard": "standard", "code": "code"}
+OBL_STATUS = {"in-force", "partly-in-force", "not-yet-in-force"}
+AS_OF = date.today()
+
+
+def parse_when(v):
+    """YYYY, YYYY-MM or YYYY-MM-DD -> date (YYYY means 1 July, YYYY-MM the 1st of the month)."""
+    m = re.fullmatch(r"(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?", str(v or ""))
+    if not m:
+        return None
+    y, mo, d = int(m.group(1)), m.group(2), m.group(3)
+    return date(y, int(mo) if mo else 7, int(d) if d else 1)
+
+
+def load_register_layer(ly, w, folder, fn_index, act_index):
+    """A register layer: obligations plus links to functions/activities. Lenses are derived, not hand-edited."""
+    reg = load(folder / str(ly.get("register", "register.yaml"))).get("obligations") or []
+    ids = {}
+    for i, o in enumerate(reg):
+        ow = f"{w}/register.yaml › {o.get('id', '?')}"
+        if not o.get("id") or not o.get("name"):
+            err(ow, "each obligation needs an id and a name")
+            continue
+        if o["id"] in ids:
+            err(ow, "duplicate obligation id")
+        ids[o["id"]] = i
+        if o.get("type") not in OBL_TYPES:
+            err(ow, f"type must be one of: {', '.join(OBL_TYPES)}")
+        if o.get("status") not in OBL_STATUS:
+            err(ow, f"status must be one of: {', '.join(sorted(OBL_STATUS))}")
+        for c in o.get("changes") or []:
+            if not parse_when(c.get("date")):
+                err(ow, f"change date '{c.get('date')}' must be YYYY, YYYY-MM or YYYY-MM-DD")
+            if c.get("certainty") not in ("confirmed", "expected"):
+                err(ow, "change certainty must be 'confirmed' or 'expected'")
+        if not o.get("last_checked"):
+            warn(ow, "has no last_checked date")
+    links = defaultdict(lambda: {"requires": set(), "shapes": set()})
+    lpath = folder / str(ly.get("links", "links.csv"))
+    if not lpath.is_file():
+        err(w, f"links file '{lpath.name}' not found")
+        return None
+    with open(lpath, newline="", encoding="utf-8") as f:
+        for i, row in enumerate(csv.DictReader(f), start=2):
+            rw = f"{w}/{lpath.name} line {i}"
+            code, ob, rel = (row.get("code") or "").strip(), (row.get("obligation") or "").strip(), (row.get("relation") or "").strip()
+            if ob not in ids:
+                err(rw, f"obligation '{ob}' is not in the register")
+                continue
+            if rel not in ("requires", "shapes"):
+                err(rw, "relation must be 'requires' or 'shapes'")
+                continue
+            if code in fn_index:
+                targets = [x["code"] for x in fn_index[code][1]["activities"]]
+            elif code in act_index:
+                targets = [code]
+            else:
+                err(rw, f"'{code}' is not a function or activity code in the model")
+                continue
+            for t in targets:
+                links[t][rel].add(ob)
+    rank = {"law": 0, "standard": 1, "code": 2}
+    values = {}
+    for code in act_index:
+        lk = links.get(code, {"requires": set(), "shapes": set()})
+        req_kinds = [OBL_TYPES[reg[ids[o]]["type"]] for o in lk["requires"]]
+        basis = min(req_kinds, key=lambda k: rank[k]) if req_kinds else "none"
+        soonest = None
+        for o in lk["requires"] | lk["shapes"]:
+            for c in reg[ids[o]].get("changes") or []:
+                d = parse_when(c.get("date"))
+                if d and d >= AS_OF and (soonest is None or d < soonest):
+                    soonest = d
+        if soonest is None:
+            changing = "stable"
+        else:
+            months = (soonest.year - AS_OF.year) * 12 + soonest.month - AS_OF.month
+            changing = "next-12" if months <= 12 else "1-3y" if months <= 36 else "later"
+        values[code] = {"basis": basis, "changing": changing}
+    ly["_register"] = reg
+    ly["_reg_ids"] = ids
+    ly["_links"] = {c: {k: sorted(v) for k, v in d.items()} for c, d in links.items()}
+    ly["as_of"] = AS_OF.isoformat()
+    return values
+
+
+def load_layers(act_index, fn_index=None):
     """Load optional activity layers. Each has layer.yaml (definitions) and a CSV keyed by activity code."""
     layers = []
     if not LAYERS.exists():
@@ -215,6 +302,11 @@ def load_layers(act_index):
             err(w, "layer.yaml needs at least one field under 'fields'")
             continue
         allowed = {f: [str(v["id"]) for v in (fd.get("values") or [])] for f, fd in fields.items()}
+        if ly.get("kind") == "register":
+            values = load_register_layer(ly, w, ly_path.parent, fn_index or {}, act_index)
+            if values is not None:
+                layers.append({**ly, "_values": values})
+            continue
         data_path = ly_path.parent / str(ly.get("data", ""))
         if not data_path.is_file():
             err(w, f"data file '{ly.get('data')}' not found")
@@ -269,7 +361,7 @@ def main(check_only):
     fn_index = {f["code"]: (a, f) for a in areas for f in a["functions"]}
     act_index = {x["code"]: (a, f, x) for a in areas for f in a["functions"] for x in f["activities"]}
     svc = load_services(fn_index, act_index, retired, seen)
-    layers = load_layers(act_index)
+    layers = load_layers(act_index, fn_index)
 
     for m in warnings:
         print("warning:", m)
@@ -363,7 +455,14 @@ def main(check_only):
                                                                            "desc": v.get("description", "")} for v in fd.get("values") or []]}
                                for f, fd in ly["fields"].items()],
                     "data": {c: [next((i for i, v in enumerate(fd.get("values") or []) if str(v["id"]) == rec[f]), -1)
-                                 for f, fd in ly["fields"].items()] for c, rec in ly["_values"].items()}}
+                                 for f, fd in ly["fields"].items()] for c, rec in ly["_values"].items()},
+                    **({"asOf": ly.get("as_of"),
+                        "register": [{"id": o["id"], "n": o["name"], "t": o.get("type"), "st": o.get("status"),
+                                      "enf": o.get("enforcer", ""), "url": o.get("url", ""), "chk": str(o.get("last_checked", "")),
+                                      "ch": [{"d": str(c.get("date")), "c": c.get("certainty"), "s": c.get("summary", "")}
+                                             for c in o.get("changes") or []]} for o in ly["_register"]],
+                        "links": {c: [[ly["_reg_ids"][o], 0] for o in d["requires"]] + [[ly["_reg_ids"][o], 1] for o in d["shapes"] if o not in d["requires"]]
+                                  for c, d in ly["_links"].items()}} if ly.get("kind") == "register" else {})}
                    for ly in layers],
     }
     # Layers: one JSON and one CSV each, kept apart from the core model outputs
@@ -372,15 +471,22 @@ def main(check_only):
         (SITE / "layers").mkdir(exist_ok=True)
     for ly in layers:
         out = {k: v for k, v in ly.items() if not k.startswith("_")}
-        out["activities"] = [{"code": c, "activity": act_index[c][2]["name"], **rec} for c, rec in
-                             sorted(ly["_values"].items(), key=lambda kv: num_key(kv[0]))]
+        lk = ly.get("_links", {})
+        out["activities"] = [{"code": c, "activity": act_index[c][2]["name"], **rec,
+                              **({"requires": lk.get(c, {}).get("requires", []), "shapes": lk.get(c, {}).get("shapes", [])} if lk else {})}
+                             for c, rec in sorted(ly["_values"].items(), key=lambda kv: num_key(kv[0]))]
+        if ly.get("_register"):
+            out["register"] = ly["_register"]
         (DIST / "layers" / f"{ly['id']}.json").write_text(json.dumps(out, indent=1, ensure_ascii=False), encoding="utf-8")
         with open(DIST / "layers" / f"{ly['id']}.csv", "w", newline="", encoding="utf-8") as f:
             wr = csv.writer(f)
-            wr.writerow(["activity_code", "function_area", "function", "activity", *ly["fields"].keys()])
+            lk = ly.get("_links", {})
+            wr.writerow(["activity_code", "function_area", "function", "activity", *ly["fields"].keys(),
+                         *(["requires", "shapes"] if lk else [])])
             for c, rec in sorted(ly["_values"].items(), key=lambda kv: num_key(kv[0])):
                 a, fn, x = act_index[c]
-                wr.writerow([c, a["name"], fn["name"], x["name"], *[rec[k] for k in ly["fields"]]])
+                wr.writerow([c, a["name"], fn["name"], x["name"], *[rec[k] for k in ly["fields"]],
+                             *([" ".join(lk.get(c, {}).get("requires", [])), " ".join(lk.get(c, {}).get("shapes", []))] if lk else [])])
         for ext in ("json", "csv"):
             (SITE / "layers" / f"{ly['id']}.{ext}").write_bytes((DIST / "layers" / f"{ly['id']}.{ext}").read_bytes())
 

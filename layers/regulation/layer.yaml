@@ -1,0 +1,66 @@
+# Optional layer: laws and regulation (England)
+#
+# A register of the laws, regulations, standards and codes that apply to a housing association
+# (register.yaml), linked to the functions and activities they require or shape (links.csv).
+# The two lenses below are worked out by the build from those files, so they're never edited by hand:
+#   basis     - the strongest kind of obligation an activity is REQUIRED by
+#   changing  - how soon any obligation linked to the activity is due to change, measured from the
+#               day the atlas is built
+#
+# NOT LEGAL ADVICE. See the caveat below.
+
+id: regulation
+name: Laws and regulation
+version: "2026.11"
+kind: register
+applies_to: activities
+register: register.yaml
+links: links.csv
+summary: >-
+  Which laws, regulatory standards and codes require or shape each activity, and what is due to change.
+  Covers registered providers in England.
+caveat: >-
+  Not legal advice. A first version for discussion, checked against public sources on the date shown for
+  each entry. Links are mostly at function level, so some activities inherit obligations that apply to
+  only part of their function. Corrections from housing lawyers and practitioners are very welcome.
+sources:
+- name: Regulator of Social Housing, regulatory standards
+  url: https://www.gov.uk/government/organisations/regulator-of-social-housing
+- name: legislation.gov.uk
+  url: https://www.legislation.gov.uk/
+- name: "MHCLG, Awaab's Law Phase 2: guidance for social landlords"
+  url: https://www.gov.uk/government/publications/awaabs-law-phase-2-guidance-for-social-housing-landlords/awaabs-law-phase-2-guidance-for-social-landlords
+- name: "MHCLG, Implementing the Renters' Rights Act: social housing"
+  url: https://www.gov.uk/government/publications/implementing-the-renters-rights-act-social-housing/implementing-the-renters-rights-act-social-housing
+
+fields:
+  basis:
+    name: Legal basis
+    values:
+    - id: law
+      name: Required by law
+      description: An Act or regulations requires this activity
+    - id: standard
+      name: Required by a regulatory standard
+      description: Required by a Regulator of Social Housing standard, or a government standard set through it
+    - id: code
+      name: Required by a code or protocol
+      description: Required by a statutory code, court protocol, funding conditions or an adopted sector code
+    - id: none
+      name: Not specifically required
+      description: Good practice or an organisational choice; it may still be shaped by obligations
+  changing:
+    name: What's changing
+    values:
+    - id: next-12
+      name: Changing within 12 months
+      description: A linked obligation has a change due in the next 12 months
+    - id: 1-3y
+      name: Changing in 1 to 3 years
+      description: The nearest change to a linked obligation is 1 to 3 years away
+    - id: later
+      name: Changing in more than 3 years
+      description: The nearest change to a linked obligation is more than 3 years away
+    - id: stable
+      name: No changes scheduled
+      description: No dated changes to any linked obligation

@@ -16,13 +16,25 @@ A layer's version changes independently of the model. Changing a layer never cha
 | Layer | What it adds | Version |
 |---|---|---|
 | [`ai-impact`](ai-impact/) | Where AI could change each activity (Rannoch's five impact categories), a governance tier, and a suggested route, based on the NHF AI code of practice and the Regulator's statements | 2026.11 |
+| [`regulation`](regulation/) | A register of 48 laws, regulatory standards and codes for registered providers in England, linked to the functions and activities they require or shape. Two lenses: the legal basis for each activity, and what's changing and when | 2026.11 |
 
 ## Ideas for new layers
 
 - Typical roles or teams that carry out each activity
 - The systems or data each activity depends on
-- The regulation or guidance that requires each activity
 - Performance measures, such as Tenant Satisfaction Measures, linked to activities
+
+## Two kinds of layer
+
+- **Value layers** (like `ai-impact`) give each activity one value per field, in a CSV keyed by activity code.
+- **Register layers** (like `regulation`, with `kind: register`) hold a list of things, such as obligations, in `register.yaml`, and link them to functions or activities in `links.csv`. A link to a function applies to all its activities. The build works out the lenses from those links, so nobody edits the lens values by hand.
+
+## Improving the regulation layer
+
+- **Add or correct an obligation** in `regulation/register.yaml`. Include a source link and update `last_checked`.
+- **Add a dated change** under an obligation's `changes`, marked `confirmed` or `expected`. The atlas's "Coming up" list and "What's changing" lens update themselves.
+- **Add or refine links** in `regulation/links.csv`. Use `requires` when the activity exists because of the obligation, and `shapes` when the obligation sets how it's done. Prefer activity-level links where only part of a function is affected.
+- It's **not legal advice**. If you're a housing lawyer or compliance specialist, a review of any section is especially welcome.
 
 ## Making a layer
 
