@@ -128,6 +128,12 @@ Codes are **permanent identifiers**: once published, a code always means the sam
 
 ![The whole operating model: every activity as one square](docs/images/3-operating-model.png)
 
+## Optional layers
+
+Layers add a point of view on top of the model without changing it. In the atlas, choose a layer from the **Layer** bar to colour every activity by it, and choose **Model only** to hide it again. Each layer lives in [`layers/`](layers), with its own version, sources and caveats.
+
+The first layer, [`ai-impact`](layers/ai-impact), shows where AI could change each activity and how carefully to approach it, drawing on the NHF's AI code of practice and the Regulator's statements. It's an independent judgement for discussion, not part of the model and not compliance advice. See [layers/README.md](layers/README.md) to suggest changes or propose a new layer.
+
 ## What it's based on
 
 The operating model draws on what every English provider has to do: the Regulator of Social Housing's consumer and economic standards, landlord safety duties (gas, electrical, fire, asbestos, water and lifts), the Building Safety Act, HHSRS, Awaab's Law, the Housing Ombudsman's Complaint Handling Code, the Tenant Satisfaction Measures and the Social Tenant Access to Information Requirements, plus how the sector usually organises its teams and costs.

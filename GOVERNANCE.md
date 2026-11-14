@@ -28,6 +28,16 @@ The model uses [semantic versioning](https://semver.org/):
 
 Each release updates `version` in `model/meta.yaml`, adds an entry to `CHANGELOG.md`, and is published as a GitHub release with the CSV and JSON attached. Version 1.0.0 should mark the point where the model has had broad review from people across the sector.
 
+## Optional layers
+
+Layers (in `layers/`) are points of view on top of the model, such as AI impact. They:
+- never change the model's structure, names or codes
+- have their own version, which doesn't change the model's version
+- must state their basis, sources and caveats in `layer.yaml`
+- are off by default in the atlas
+
+Changes to an existing layer follow the same review times as changes to activities. A new layer is proposed in Discussions first.
+
 ## Independence
 
 The model is vendor-neutral. Suggestions that promote a specific product, supplier or consultancy method won't be accepted. Optional layers that map products or methods to the model can live in separate repositories that reference its codes.

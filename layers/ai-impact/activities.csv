@@ -1,0 +1,668 @@
+code,activity,impact,tier,route,codified_knowledge
+01.1.1,Answer and triage inbound calls,augment,2,scale-with-safeguards,yes
+01.1.2,Log and route service requests,automate,2,scale-with-safeguards,no
+01.1.3,Resolve enquiries at first point of contact,augment,2,scale-with-safeguards,yes
+01.1.4,Manage call-back and missed contact queues,automate,2,scale-with-safeguards,no
+01.1.5,Forecast call volumes and staffing,augment,2,scale-with-safeguards,no
+01.2.1,Manage customer portal registration and verification,none,2,no-change,no
+01.2.2,Monitor and respond to web chat and messaging,agentic,2,pilot-with-controls,yes
+01.2.3,Maintain online forms and self-service content,augment,2,scale-with-safeguards,yes
+01.2.4,Analyse portal usage and drop-off,augment,2,scale-with-safeguards,no
+01.3.1,Triage the shared mailbox,automate,2,scale-with-safeguards,no
+01.3.2,Draft and send responses to written enquiries,augment,2,scale-with-safeguards,yes
+01.3.3,Track correspondence against response targets,none,2,no-change,no
+01.3.4,Scan and index incoming documents,automate,2,scale-with-safeguards,no
+01.4.1,Verify identity of customers and representatives,none,2,no-change,no
+01.4.2,Maintain household and contact records,none,2,no-change,no
+01.4.3,Record vulnerabilities and reasonable adjustments,augment,2,scale-with-safeguards,no
+01.4.4,Manage consent and communication preferences,none,2,no-change,no
+01.5.1,Run reception and drop-in sessions,none,2,no-change,no
+01.5.2,Book appointments with specialist officers,none,2,no-change,no
+01.5.3,Process post and documents received,automate,2,scale-with-safeguards,no
+01.5.4,Visit customers unable to use other channels,enable,2,scale-with-safeguards,yes
+01.6.1,Triage out-of-hours emergencies,augment,2,scale-with-safeguards,yes
+01.6.2,Dispatch emergency contractors,automate,2,scale-with-safeguards,no
+01.6.3,Hand over overnight incidents to day teams,automate,2,scale-with-safeguards,no
+01.7.1,Arrange interpreters and translation,automate,2,scale-with-safeguards,no
+01.7.2,Provide information in accessible formats,automate,2,scale-with-safeguards,no
+01.7.3,Maintain accessible communication standards,none,2,no-change,no
+01.8.1,Run transactional satisfaction surveys,none,1,no-change,no
+01.8.2,Analyse contact drivers and failure demand,augment,1,start-here,no
+01.8.3,Report customer service performance,automate,1,start-here,no
+01.8.4,Record and share compliments and feedback,automate,1,start-here,no
+02.1.1,Receive and process local authority nominations,automate,2,scale-with-safeguards,no
+02.1.2,Assess housing applications and eligibility,augment,3,human-decides,yes
+02.1.3,Maintain the housing register,none,2,no-change,no
+02.1.4,Review and close inactive applications,automate,3,redesign-first,no
+02.2.1,Prepare property adverts,automate,2,scale-with-safeguards,no
+02.2.2,Publish properties on choice-based lettings schemes,none,3,no-change,no
+02.2.3,Shortlist applicants against the allocations policy,none,3,no-change,no
+02.2.4,Verify bidder priority and banding,augment,3,human-decides,yes
+02.3.1,Verify applicant identity and right to rent,none,3,no-change,no
+02.3.2,Carry out affordability and income checks,augment,3,human-decides,no
+02.3.3,Assess support needs and tenancy readiness,augment,3,human-decides,yes
+02.3.4,Obtain references and previous landlord history,automate,3,redesign-first,no
+02.4.1,Arrange accompanied viewings,none,3,no-change,no
+02.4.2,Make and record formal offers,none,3,no-change,no
+02.4.3,Manage refusals and re-offers,none,3,no-change,no
+02.4.4,Handle offer appeals and reviews,augment,3,human-decides,yes
+02.5.1,Prepare tenancy agreement and welcome pack,automate,3,redesign-first,no
+02.5.2,Conduct sign-up meeting,enable,3,human-decides,yes
+02.5.3,Set up rent account and payment method,none,3,no-change,no
+02.5.4,Notify utilities and council tax of new tenancy,automate,2,scale-with-safeguards,no
+02.6.1,Carry out new tenancy visit,enable,3,human-decides,yes
+02.6.2,Resolve early tenancy issues,augment,3,human-decides,yes
+02.6.3,Check new tenant satisfaction after six weeks,none,3,no-change,no
+02.7.1,Process mutual exchange applications,agentic,3,redesign-first,yes
+02.7.2,Inspect properties for mutual exchange,none,3,no-change,no
+02.7.3,Manage internal transfer and management move requests,augment,3,human-decides,yes
+02.7.4,Carry out exchange checks with other landlords,automate,3,redesign-first,no
+02.8.1,Maintain allocations and lettings policy,augment,1,start-here,yes
+02.8.2,Monitor relet times and lettings outcomes,none,1,no-change,no
+02.8.3,Agree and review local lettings plans,augment,1,start-here,no
+03.1.1,Receive and acknowledge notice to end tenancy,automate,2,scale-with-safeguards,no
+03.1.2,Carry out pre-termination inspection,augment,2,scale-with-safeguards,no
+03.1.3,Agree recharges and clearance with outgoing tenant,augment,2,scale-with-safeguards,yes
+03.1.4,Collect keys and confirm end of tenancy,none,2,no-change,no
+03.2.1,Inspect empty property,augment,1,start-here,no
+03.2.2,Specify works against the lettable standard,augment,1,start-here,yes
+03.2.3,Estimate void works cost,automate,1,start-here,yes
+03.3.1,Raise and issue void works orders,automate,1,start-here,no
+03.3.2,Monitor contractor progress on voids,augment,1,start-here,no
+03.3.3,Manage major void works,augment,1,start-here,no
+03.3.4,Agree variations to void works,augment,1,start-here,yes
+03.4.1,Complete void gas and electrical safety checks,none,1,no-change,no
+03.4.2,Commission asbestos surveys for void works,none,1,no-change,no
+03.4.3,Secure empty properties,none,1,no-change,no
+03.4.4,Clear items left in empty homes,none,1,no-change,no
+03.5.1,Carry out post-works void inspection,augment,1,start-here,no
+03.5.2,Confirm lettable standard and hand over to lettings,augment,1,start-here,no
+03.5.3,Update property attributes and EPC data,automate,1,start-here,no
+03.5.4,Manage void utility accounts and meter readings,automate,1,start-here,no
+03.5.5,Notify council tax of empty periods,automate,1,start-here,no
+03.6.1,Track void durations and costs,none,1,no-change,no
+03.6.2,Analyse void causes and recurring defects,augment,1,start-here,no
+03.6.3,Report rent loss from voids,automate,1,start-here,no
+03.6.4,Agree void targets with contractors,augment,1,start-here,no
+04.1.1,Manage starter tenancy reviews,augment,3,human-decides,yes
+04.1.2,Manage fixed-term tenancy reviews,augment,3,human-decides,yes
+04.1.3,Extend or end probationary tenancies,none,3,no-change,no
+04.1.4,Maintain tenancy agreement templates,augment,2,scale-with-safeguards,yes
+04.2.1,Process succession requests,augment,3,human-decides,yes
+04.2.2,Process assignments and joint-to-sole changes,augment,3,human-decides,yes
+04.2.3,Update household composition,none,3,no-change,no
+04.2.4,Approve lodgers and subletting of rooms,enable,3,human-decides,yes
+04.3.1,Investigate tenancy breaches,augment,3,human-decides,no
+04.3.2,Issue warnings and agreements,augment,3,human-decides,yes
+04.3.3,Serve notices for breach,automate,3,redesign-first,yes
+04.3.4,Prepare breach cases for court,augment,3,human-decides,yes
+04.4.1,Investigate subletting and fraud referrals,augment,3,human-decides,no
+04.4.2,Carry out tenancy audits,augment,3,human-decides,no
+04.4.3,Recover unlawfully occupied properties,none,3,no-change,no
+04.4.4,Run data-matching exercises,automate,3,redesign-first,no
+04.5.1,Process requests for tenant alterations,augment,2,scale-with-safeguards,yes
+04.5.2,Process pet and parking permissions,automate,2,scale-with-safeguards,yes
+04.5.3,Inspect completed tenant alterations,none,2,no-change,no
+04.5.4,Remove unauthorised alterations,none,2,no-change,no
+04.6.1,Investigate suspected abandonment,augment,3,human-decides,no
+04.6.2,End tenancies following a death,augment,3,human-decides,yes
+04.6.3,Liaise with next of kin and executors,none,3,no-change,no
+04.6.4,Clear and secure the property,none,3,no-change,no
+04.7.1,Plan patch officer caseloads,augment,2,scale-with-safeguards,no
+04.7.2,Carry out tenancy visits,enable,2,scale-with-safeguards,yes
+04.7.3,Record visit outcomes and household data,automate,2,scale-with-safeguards,no
+04.7.4,Provide tenancy advice and information,enable,2,scale-with-safeguards,yes
+04.8.1,Obtain possession orders,augment,3,human-decides,yes
+04.8.2,Apply for bailiff warrants,automate,3,redesign-first,no
+04.8.3,Carry out eviction and secure the property,none,3,no-change,no
+05.1.1,Carry out scheduled estate inspections,augment,1,start-here,no
+05.1.2,Record and action estate defects,automate,1,start-here,no
+05.1.3,Run resident estate walkabouts,none,1,no-change,no
+05.1.4,Publish estate inspection results to residents,automate,1,start-here,no
+05.2.1,Schedule communal cleaning,none,1,no-change,no
+05.2.2,Monitor cleaning quality,augment,1,start-here,no
+05.2.3,Manage caretaking rotas,none,1,no-change,no
+05.2.4,Arrange deep cleans and graffiti removal,none,1,no-change,no
+05.3.1,Schedule grounds maintenance,none,1,no-change,no
+05.3.2,Monitor grounds contractor quality,augment,1,start-here,no
+05.3.3,Manage tree surveys and works,none,1,no-change,no
+05.4.1,Manage bin stores and waste contracts,none,1,no-change,no
+05.4.2,Remove fly-tipping and bulky items,none,1,no-change,no
+05.4.3,Recharge waste removal costs,automate,1,start-here,no
+05.5.1,Manage community room bookings,none,1,no-change,no
+05.5.2,Maintain communal facilities,none,1,no-change,no
+05.5.3,Manage door entry and fob access,none,1,no-change,no
+05.5.4,Inspect play areas,none,1,no-change,no
+05.6.1,Manage garage lettings,automate,2,scale-with-safeguards,no
+05.6.2,Manage parking permits and enforcement,none,2,no-change,no
+05.6.3,Remove abandoned vehicles,none,2,no-change,no
+05.6.4,Manage visitor parking,none,2,no-change,no
+05.7.1,Log pest control requests,automate,1,start-here,no
+05.7.2,Arrange pest treatments,automate,1,start-here,no
+05.7.3,Prevent recurring infestations,augment,1,start-here,no
+05.8.1,Identify community needs,augment,2,scale-with-safeguards,no
+05.8.2,Deliver community projects and grants,none,2,no-change,no
+05.8.3,Manage local partnerships,none,2,no-change,no
+05.8.4,Measure social value,augment,2,scale-with-safeguards,no
+05.8.5,Apply for external community funding,augment,2,scale-with-safeguards,yes
+06.1.1,Receive and log ASB reports,automate,2,scale-with-safeguards,no
+06.1.2,Risk-assess victims and cases,augment,3,human-decides,yes
+06.1.3,Categorise cases and set response targets,automate,3,redesign-first,yes
+06.1.4,Close cases and record outcomes,augment,3,human-decides,no
+06.2.1,Gather evidence and witness statements,augment,3,human-decides,no
+06.2.2,Interview alleged perpetrators,none,3,no-change,no
+06.2.3,Review noise monitoring and CCTV evidence,augment,3,human-decides,no
+06.2.4,Maintain case action plans,augment,2,scale-with-safeguards,yes
+06.3.1,Agree support plans with victims,augment,3,human-decides,no
+06.3.2,Keep complainants updated,automate,2,scale-with-safeguards,no
+06.3.3,Refer to victim support services,augment,3,human-decides,no
+06.3.4,Survey complainant satisfaction,none,3,no-change,no
+06.4.1,Issue warning letters,augment,3,human-decides,yes
+06.4.2,Agree acceptable behaviour contracts,augment,3,human-decides,no
+06.4.3,Arrange mediation,none,3,no-change,no
+06.4.4,Carry out joint visits with police,none,3,no-change,no
+06.5.1,Apply for injunctions,augment,3,human-decides,yes
+06.5.2,Seek closure orders,augment,3,human-decides,yes
+06.5.3,Pursue possession on ASB grounds,augment,3,human-decides,yes
+06.5.4,Monitor and enforce court orders,augment,2,scale-with-safeguards,no
+06.6.1,Attend community safety partnership meetings,none,3,no-change,no
+06.6.2,Share information with police and council,augment,3,human-decides,yes
+06.6.3,Manage ASB case reviews,augment,3,human-decides,yes
+06.6.4,Coordinate with youth services and community groups,none,3,no-change,no
+06.7.1,Respond to hate crime reports,augment,3,human-decides,yes
+06.7.2,Respond to domestic abuse disclosures,enable,3,human-decides,yes
+06.7.3,Arrange management transfers and sanctuary measures,augment,3,human-decides,no
+06.7.4,Refer high-risk cases to MARAC,augment,3,human-decides,yes
+07.1.1,Post rent and service charge debits,none,2,no-change,no
+07.1.2,Allocate payments to accounts,automate,2,scale-with-safeguards,no
+07.1.3,Process adjustments and refunds,augment,2,scale-with-safeguards,yes
+07.1.4,Reconcile rent accounts,automate,2,scale-with-safeguards,no
+07.2.1,Set up direct debits,none,2,no-change,no
+07.2.2,Manage payment cards and channels,none,2,no-change,no
+07.2.3,Process failed payments,automate,2,scale-with-safeguards,no
+07.2.4,Monitor payment channel costs,none,2,no-change,no
+07.3.1,Identify tenants at risk before arrears build,augment,2,scale-with-safeguards,no
+07.3.2,Contact new tenants at risk,automate,2,scale-with-safeguards,no
+07.3.3,Run predictive arrears analysis,automate,2,scale-with-safeguards,no
+07.3.4,Support residents moving onto Universal Credit,augment,2,scale-with-safeguards,yes
+07.4.1,Contact tenants in arrears,agentic,3,redesign-first,yes
+07.4.2,Agree repayment arrangements,augment,3,human-decides,yes
+07.4.3,Monitor arrangements,automate,2,scale-with-safeguards,no
+07.4.4,Escalate arrears cases,automate,3,redesign-first,no
+07.4.5,Segment arrears caseloads and prioritise contact,automate,3,redesign-first,no
+07.5.1,Verify Universal Credit housing costs,agentic,3,redesign-first,yes
+07.5.2,Apply for managed payments to landlord,automate,3,redesign-first,no
+07.5.3,Reconcile Housing Benefit schedules,automate,2,scale-with-safeguards,no
+07.5.4,Process third-party deductions,automate,3,redesign-first,no
+07.5.5,Challenge Housing Benefit overpayments,augment,3,human-decides,yes
+07.6.1,Serve notices for arrears,automate,3,redesign-first,yes
+07.6.2,Prepare possession claims,augment,3,human-decides,yes
+07.6.3,Attend court hearings,none,3,no-change,no
+07.6.4,Enforce suspended possession orders,augment,3,human-decides,no
+07.7.1,Pursue former tenant arrears,agentic,3,redesign-first,no
+07.7.2,Raise and collect recharges,automate,3,redesign-first,no
+07.7.3,Write off irrecoverable debt,none,3,no-change,no
+07.7.4,Instruct debt collection agencies,automate,3,redesign-first,no
+07.8.1,Calculate annual rent increase,none,2,no-change,no
+07.8.2,Apply rent standard and caps,automate,2,scale-with-safeguards,yes
+07.8.3,Issue rent increase notices,none,2,no-change,no
+07.8.4,Set rents for new lettings,automate,2,scale-with-safeguards,yes
+07.9.1,Calculate service charge estimates,augment,2,scale-with-safeguards,no
+07.9.2,Reconcile estimates with actuals,automate,2,scale-with-safeguards,no
+07.9.3,Issue service charge statements and credits,none,2,no-change,no
+07.9.4,Identify service charges eligible for Housing Benefit,enable,2,scale-with-safeguards,yes
+08.1.1,Carry out benefit checks,automate,3,redesign-first,yes
+08.1.2,Support benefit applications,augment,3,human-decides,yes
+08.1.3,Provide budgeting advice,enable,3,human-decides,yes
+08.1.4,Refer to debt advice services,automate,3,redesign-first,no
+08.1.5,Administer hardship funds,augment,3,human-decides,no
+08.1.6,Provide fuel vouchers,none,3,no-change,no
+08.1.7,Advise on energy use,enable,3,human-decides,yes
+08.1.8,Run financial inclusion campaigns,augment,3,human-decides,no
+08.1.9,Promote home contents insurance,augment,3,human-decides,no
+08.2.1,Identify and raise safeguarding concerns,augment,3,human-decides,no
+08.2.2,Make safeguarding referrals,augment,3,human-decides,yes
+08.2.3,Manage safeguarding cases,augment,3,human-decides,no
+08.2.4,Train colleagues on safeguarding,none,3,no-change,no
+08.3.1,Assess support needs,augment,3,human-decides,yes
+08.3.2,Maintain support plans,augment,2,scale-with-safeguards,no
+08.3.3,Coordinate with health and social care,none,3,no-change,no
+08.3.4,Review vulnerability records,automate,3,redesign-first,no
+08.4.1,Deliver employment support,none,2,no-change,no
+08.4.2,Run training and digital inclusion programmes,none,2,no-change,no
+08.4.3,Manage resident apprenticeships,none,2,no-change,no
+08.4.4,Track employment outcomes,automate,2,scale-with-safeguards,no
+08.5.1,Respond to mental health crises,enable,3,human-decides,yes
+08.5.2,Coordinate multi-agency support,none,3,no-change,no
+08.5.3,Refer to specialist services,augment,3,human-decides,yes
+08.5.4,Hold multi-agency case conferences,augment,3,human-decides,no
+08.6.1,Identify hoarding cases,augment,3,human-decides,no
+08.6.2,Agree hoarding intervention plans,augment,3,human-decides,no
+08.6.3,Coordinate clearance and support,none,3,no-change,no
+08.7.1,Receive adaptation requests and OT assessments,automate,3,redesign-first,no
+08.7.2,Approve and order adaptations,augment,3,human-decides,yes
+08.7.3,Install minor adaptations,none,3,no-change,no
+08.7.4,Manage Disabled Facilities Grant cases,augment,3,human-decides,yes
+08.7.5,Inspect completed adaptations,none,3,no-change,no
+09.1.1,Carry out wellbeing checks,automate,3,redesign-first,no
+09.1.2,Manage scheme communal facilities,none,3,no-change,no
+09.1.3,Run social activities,none,3,no-change,no
+09.1.4,Carry out scheme health and safety checks,none,3,no-change,no
+09.2.1,Manage referrals to supported schemes,augment,3,human-decides,no
+09.2.2,Deliver key working and support plans,enable,3,human-decides,yes
+09.2.3,Plan move-on,augment,3,human-decides,no
+09.2.4,Assess referral risk and suitability,augment,3,human-decides,yes
+09.3.1,Manage commissioned support contracts,augment,1,start-here,no
+09.3.2,Report outcomes to commissioners,automate,1,start-here,no
+09.3.3,Bid for support contracts,augment,1,start-here,yes
+09.4.1,Monitor alarm calls,augment,2,scale-with-safeguards,no
+09.4.2,Install and maintain telecare equipment,none,3,no-change,no
+09.4.3,Respond to alarm activations,none,3,no-change,no
+09.4.4,Migrate alarm equipment to digital lines,none,3,no-change,no
+09.5.1,Coordinate with care providers,none,3,no-change,no
+09.5.2,Manage extra care allocations,augment,3,human-decides,no
+09.5.3,Manage care and support charges,automate,3,redesign-first,no
+09.5.4,Review care quality with providers,augment,3,human-decides,no
+09.6.1,Oversee managing agents,augment,1,start-here,no
+09.6.2,Audit managing agent compliance,automate,1,start-here,yes
+09.6.3,Manage leases with support providers,augment,1,start-here,yes
+09.7.1,Evidence enhanced Housing Benefit claims,augment,2,scale-with-safeguards,yes
+09.7.2,Maintain exempt accommodation standards,augment,2,scale-with-safeguards,no
+09.7.3,Report to local authorities,automate,2,scale-with-safeguards,no
+09.7.4,Evidence the support provided,automate,2,scale-with-safeguards,no
+10.1.1,Market shared ownership homes,automate,2,scale-with-safeguards,no
+10.1.2,Assess purchaser eligibility,automate,2,scale-with-safeguards,yes
+10.1.3,Progress sales,agentic,2,pilot-with-controls,no
+10.1.4,Complete sales,none,2,no-change,no
+10.1.5,Respond to sales enquiries,augment,2,scale-with-safeguards,yes
+10.2.1,Process staircasing applications,automate,2,scale-with-safeguards,no
+10.2.2,Arrange valuations,none,2,no-change,no
+10.2.3,Complete staircasing transactions,none,2,no-change,no
+10.2.4,Calculate staircasing premiums,automate,2,scale-with-safeguards,no
+10.3.1,Manage resales and nominations,augment,2,scale-with-safeguards,no
+10.3.2,Process lease extensions,augment,2,scale-with-safeguards,yes
+10.3.3,Respond to enfranchisement claims,augment,2,scale-with-safeguards,yes
+10.4.1,Respond to leasehold enquiries,augment,2,scale-with-safeguards,yes
+10.4.2,Issue pre-sale information packs,agentic,2,pilot-with-controls,yes
+10.4.3,Process leaseholder consents,augment,2,scale-with-safeguards,yes
+10.4.4,Investigate lease breaches,augment,2,scale-with-safeguards,no
+10.5.1,Issue notices of intention,automate,2,scale-with-safeguards,yes
+10.5.2,Consider leaseholder observations,augment,2,scale-with-safeguards,yes
+10.5.3,Issue estimates and award notices,automate,2,scale-with-safeguards,yes
+10.5.4,Consult on long-term agreements,augment,2,scale-with-safeguards,yes
+10.6.1,Prepare leasehold service charge budgets,augment,2,scale-with-safeguards,no
+10.6.2,Issue service charge demands,none,2,no-change,no
+10.6.3,Respond to service charge challenges,augment,2,scale-with-safeguards,yes
+10.6.4,Collect ground rent,none,2,no-change,no
+10.6.5,Pursue leasehold arrears,automate,2,scale-with-safeguards,no
+10.6.6,Pursue forfeiture,augment,2,scale-with-safeguards,yes
+10.6.7,Prepare year-end service charge accounts,automate,2,scale-with-safeguards,no
+10.7.1,Recover remediation costs,augment,3,human-decides,yes
+10.7.2,Issue building safety information,automate,3,redesign-first,no
+10.7.3,Apply leaseholder protections,enable,3,human-decides,yes
+10.7.4,Respond to leaseholder building safety queries,augment,3,human-decides,yes
+10.8.1,Receive and acknowledge Right to Buy and Right to Acquire applications,automate,2,scale-with-safeguards,no
+10.8.2,Check eligibility and calculate discount,automate,3,redesign-first,yes
+10.8.3,Arrange valuations for Right to Buy sales,none,3,no-change,no
+10.8.4,Issue offer notices,automate,3,redesign-first,yes
+10.8.5,Complete Right to Buy and Right to Acquire sales,none,3,no-change,no
+10.8.6,Recover discount on early resale,augment,3,human-decides,no
+10.9.1,Market homes for outright sale,augment,2,scale-with-safeguards,no
+10.9.2,Progress outright sales,agentic,2,pilot-with-controls,no
+10.9.3,Let Rent to Buy homes,augment,2,scale-with-safeguards,yes
+10.9.4,Manage Rent to Buy purchase options,augment,2,scale-with-safeguards,yes
+11.1.1,Take repair reports,agentic,2,pilot-with-controls,yes
+11.1.2,Diagnose repair and determine trade,augment,2,scale-with-safeguards,yes
+11.1.3,Assign priority and target time,automate,2,scale-with-safeguards,yes
+11.1.4,Confirm landlord or tenant responsibility,automate,2,scale-with-safeguards,yes
+11.1.5,Capture photos and video of reported repairs,automate,2,scale-with-safeguards,no
+11.2.1,Book repair appointments,automate,2,scale-with-safeguards,no
+11.2.2,Optimise operative schedules,automate,2,scale-with-safeguards,no
+11.2.3,Send appointment reminders,none,2,no-change,no
+11.2.4,Rearrange missed appointments,automate,2,scale-with-safeguards,no
+11.3.1,Attend and complete repairs,enable,2,scale-with-safeguards,yes
+11.3.2,Order materials and manage van stock,automate,2,scale-with-safeguards,no
+11.3.3,Raise follow-on works,augment,2,scale-with-safeguards,no
+11.3.4,Record job completion,none,2,no-change,no
+11.3.5,Monitor operative productivity,augment,2,scale-with-safeguards,no
+11.4.1,Make safe emergency repairs,none,3,no-change,no
+11.4.2,Monitor emergency response times,none,2,no-change,no
+11.4.3,Manage major incidents such as floods and fires,augment,3,human-decides,no
+11.4.4,Arrange temporary accommodation during major incidents,augment,3,human-decides,no
+11.5.1,Triage damp and mould reports,augment,3,human-decides,yes
+11.5.2,Inspect and diagnose cause,augment,3,human-decides,no
+11.5.3,Complete remedial works,none,3,no-change,no
+11.5.4,Monitor against Awaab's Law timescales,automate,2,scale-with-safeguards,no
+11.5.5,Keep residents updated throughout damp cases,automate,2,scale-with-safeguards,no
+11.6.1,Receive pre-action protocol letters,automate,2,scale-with-safeguards,no
+11.6.2,Inspect and schedule disrepair works,augment,3,human-decides,no
+11.6.3,Manage claims to settlement,augment,3,human-decides,yes
+11.6.4,Analyse root causes of disrepair claims,augment,3,human-decides,no
+11.7.1,Issue works orders to contractors,none,1,no-change,no
+11.7.2,Validate contractor invoices against schedule of rates,automate,1,start-here,yes
+11.7.3,Monitor contractor KPIs,automate,1,start-here,no
+11.7.4,Approve subcontractors,augment,1,start-here,no
+11.8.1,Carry out post-inspections,augment,2,scale-with-safeguards,no
+11.8.2,Manage recalls and right-first-time,augment,2,scale-with-safeguards,no
+11.8.3,Collect repairs satisfaction,none,2,no-change,no
+11.8.4,Analyse repeat repairs,augment,2,scale-with-safeguards,no
+11.9.1,Identify rechargeable repairs,augment,2,scale-with-safeguards,yes
+11.9.2,Calculate and raise recharges,automate,2,scale-with-safeguards,yes
+11.9.3,Recover recharge debts,automate,2,scale-with-safeguards,no
+12.1.1,Schedule annual gas safety checks,none,3,no-change,no
+12.1.2,Manage access and no-access process,agentic,3,redesign-first,no
+12.1.3,Record gas safety certificates,automate,2,scale-with-safeguards,yes
+12.1.4,Manage gas servicing contractor,augment,3,human-decides,no
+12.1.5,Carry out gas cappings and uncappings,none,3,no-change,no
+12.2.1,Schedule electrical installation testing,none,3,no-change,no
+12.2.2,Action electrical remedial works,augment,3,human-decides,no
+12.2.3,Test communal electrics,none,3,no-change,no
+12.2.4,Record electrical certificates,automate,2,scale-with-safeguards,yes
+12.3.1,Commission fire risk assessments,none,3,no-change,no
+12.3.2,Action fire risk assessment recommendations,augment,3,human-decides,yes
+12.3.3,Inspect fire doors,augment,3,human-decides,no
+12.3.4,Maintain fire alarms and emergency lighting,none,2,no-change,no
+12.3.5,Maintain fire-stopping and compartmentation,none,2,no-change,no
+12.4.1,Maintain asbestos register,automate,2,scale-with-safeguards,no
+12.4.2,Commission asbestos surveys,none,3,no-change,no
+12.4.3,Manage asbestos removal,none,3,no-change,no
+12.4.4,Re-inspect asbestos-containing materials,none,3,no-change,no
+12.5.1,Commission legionella risk assessments,none,3,no-change,no
+12.5.2,Carry out water temperature monitoring,automate,3,redesign-first,no
+12.5.3,Manage water hygiene remedial actions,augment,3,human-decides,no
+12.5.4,Inspect and clean water tanks,none,3,no-change,no
+12.6.1,Schedule LOLER inspections,none,3,no-change,no
+12.6.2,Manage lift servicing and breakdowns,augment,3,human-decides,no
+12.6.3,Action lift inspection findings,augment,3,human-decides,yes
+12.6.4,Service stairlifts and hoists,none,3,no-change,no
+12.7.1,Register higher-risk buildings,none,3,no-change,no
+12.7.2,Maintain safety case reports,augment,2,scale-with-safeguards,yes
+12.7.3,Maintain golden thread information,augment,2,scale-with-safeguards,yes
+12.7.4,Run resident engagement for higher-risk buildings,none,3,no-change,no
+12.7.5,Submit mandatory occurrence reports,augment,3,human-decides,no
+12.8.1,Install and test smoke and carbon monoxide alarms,none,3,no-change,no
+12.8.2,Record alarm compliance,automate,2,scale-with-safeguards,no
+12.8.3,Fit alarms in empty homes before letting,none,3,no-change,no
+12.9.1,Carry out HHSRS assessments,augment,3,human-decides,yes
+12.9.2,Remedy category 1 hazards,none,3,no-change,no
+12.9.3,Train colleagues on hazard identification,none,3,no-change,no
+12.10.1,Maintain compliance data and certificates,automate,2,scale-with-safeguards,yes
+12.10.2,Report compliance to board,automate,2,scale-with-safeguards,no
+12.10.3,Audit compliance contractors,automate,2,scale-with-safeguards,yes
+12.10.4,Investigate compliance failures,augment,2,scale-with-safeguards,no
+13.1.1,Plan stock condition surveys,augment,1,start-here,no
+13.1.2,Carry out stock condition surveys,augment,1,start-here,no
+13.1.3,Validate and load survey data,automate,1,start-here,yes
+13.1.4,Commission specialist structural surveys,none,1,no-change,no
+13.2.1,Maintain asset register and attributes,none,1,no-change,no
+13.2.2,Maintain component lifecycle data,automate,1,start-here,no
+13.2.3,Maintain property hierarchy,none,1,no-change,no
+13.2.4,Monitor property data quality,automate,1,start-here,no
+13.3.1,Develop 30-year investment plan,augment,1,start-here,no
+13.3.2,Prioritise investment programmes,augment,1,start-here,no
+13.3.3,Model investment scenarios,augment,1,start-here,no
+13.3.4,Align investment plan with financial plan,augment,1,start-here,no
+13.4.1,Programme planned component replacements,augment,1,start-here,no
+13.4.2,Consult residents on planned works,augment,1,start-here,no
+13.4.3,Manage planned works contractors,augment,1,start-here,no
+13.4.4,Hand over completed planned works,none,1,no-change,no
+13.4.5,Carry out pre-works surveys,none,1,no-change,no
+13.5.1,Schedule cyclical decorations,none,1,no-change,no
+13.5.2,Schedule gutter clearance and roof inspections,none,1,no-change,no
+13.6.1,Assess energy performance,augment,1,start-here,no
+13.6.2,Plan retrofit programmes,augment,1,start-here,no
+13.6.3,Bid for decarbonisation funding,augment,1,start-here,yes
+13.6.4,Monitor post-retrofit performance,automate,1,start-here,no
+13.6.5,Engage residents on retrofit,none,1,no-change,no
+13.7.1,Evaluate asset performance,augment,1,start-here,no
+13.7.2,Identify homes for disposal or regeneration,augment,1,start-here,no
+13.7.3,Maintain asset management strategy,augment,1,start-here,no
+13.7.4,Carry out option appraisals for poor-performing homes,augment,1,start-here,no
+13.8.1,Develop regeneration masterplans,none,2,no-change,no
+13.8.2,Consult residents on regeneration,augment,2,scale-with-safeguards,no
+13.8.3,Manage decanting and rehousing,augment,2,scale-with-safeguards,no
+13.8.4,Manage leaseholder buybacks,none,2,no-change,no
+13.9.1,Appraise stock acquisitions,augment,1,start-here,no
+13.9.2,Manage property disposals,augment,1,start-here,no
+13.9.3,Manage stock transfers,none,1,no-change,no
+13.10.1,Let commercial units,augment,1,start-here,no
+13.10.2,Manage commercial leases,augment,1,start-here,yes
+13.10.3,Collect commercial rent and charges,automate,1,start-here,no
+13.10.4,Arrange repairs to commercial property,automate,1,start-here,no
+14.1.1,Receive and log complaints,automate,2,scale-with-safeguards,no
+14.1.2,Acknowledge and assess complaints,automate,3,redesign-first,yes
+14.1.3,Investigate stage 1 complaints,augment,3,human-decides,yes
+14.1.4,Issue stage 1 responses,augment,3,human-decides,yes
+14.1.5,Agree complaint extensions with residents,none,3,no-change,no
+14.2.1,Review escalation requests,augment,3,human-decides,no
+14.2.2,Investigate stage 2 complaints,augment,3,human-decides,yes
+14.2.3,Issue final responses,augment,3,human-decides,yes
+14.3.1,Respond to Ombudsman information requests,agentic,3,redesign-first,yes
+14.3.2,Implement Ombudsman determinations,augment,3,human-decides,no
+14.3.3,Publish self-assessment against the Complaint Handling Code,augment,3,human-decides,yes
+14.4.1,Calculate compensation,automate,3,redesign-first,yes
+14.4.2,Approve and pay remedies,none,3,no-change,no
+14.4.3,Track remedy actions,automate,2,scale-with-safeguards,no
+14.4.4,Record goodwill payments,none,2,no-change,no
+14.5.1,Analyse complaint themes,augment,1,start-here,no
+14.5.2,Implement service improvements,none,1,no-change,no
+14.5.3,Report learning to board,automate,1,start-here,no
+14.5.4,Track improvement actions to completion,automate,1,start-here,no
+14.6.1,Recruit involved residents,none,2,no-change,no
+14.6.2,Support resident panels and scrutiny groups,none,2,no-change,no
+14.6.3,Run resident consultations,augment,2,scale-with-safeguards,no
+14.6.4,Respond to scrutiny recommendations,augment,2,scale-with-safeguards,no
+14.6.5,Report the impact of resident involvement,augment,2,scale-with-safeguards,no
+14.7.1,Run TSM perception survey,none,2,no-change,no
+14.7.2,Calculate TSM results,none,2,no-change,no
+14.7.3,Publish TSM results,none,2,no-change,no
+14.7.4,Analyse drivers of satisfaction,augment,2,scale-with-safeguards,no
+14.8.1,Log MP and councillor enquiries,automate,2,scale-with-safeguards,no
+14.8.2,Respond to member enquiries,augment,2,scale-with-safeguards,yes
+14.9.1,Maintain and publish the information publication scheme,augment,2,scale-with-safeguards,yes
+14.9.2,"Receive, log and acknowledge tenant information requests",automate,2,scale-with-safeguards,no
+14.9.3,Locate and collate requested information,agentic,3,redesign-first,yes
+14.9.4,Assess requests against refusal grounds,augment,3,human-decides,yes
+14.9.5,Redact and issue responses within 30 days,automate,3,redesign-first,yes
+14.9.6,Review challenges to information decisions,augment,3,human-decides,yes
+14.9.7,Report information request volumes and timeliness,automate,2,scale-with-safeguards,no
+15.1.1,Identify development sites,augment,1,start-here,no
+15.1.2,Carry out site due diligence,augment,1,start-here,no
+15.1.3,Negotiate land acquisitions,none,1,no-change,no
+15.2.1,Build financial appraisals,augment,1,start-here,no
+15.2.2,Seek investment committee approval,none,1,no-change,no
+15.2.3,Manage scheme budgets,augment,1,start-here,no
+15.3.1,Appoint design teams,none,1,no-change,no
+15.3.2,Submit planning applications,augment,1,start-here,no
+15.3.3,Develop employer's requirements,augment,1,start-here,yes
+15.4.1,Bid for grant funding,augment,1,start-here,yes
+15.4.2,Manage grant claims and milestones,automate,1,start-here,no
+15.4.3,Prepare for grant compliance audits,automate,1,start-here,yes
+15.5.1,Procure build contractors,augment,1,start-here,no
+15.5.2,Manage construction contracts,augment,1,start-here,no
+15.5.3,Monitor build quality through clerk of works,none,1,no-change,no
+15.6.1,Negotiate Section 106 package deals,none,1,no-change,no
+15.6.2,Manage joint ventures,none,1,no-change,no
+15.7.1,Manage practical completion and handover,augment,1,start-here,no
+15.7.2,Manage defects liability period,augment,1,start-here,no
+15.7.3,Manage new home warranty claims,augment,1,start-here,yes
+15.7.4,Prepare new homes for first let,none,1,no-change,no
+15.8.1,Report development pipeline,automate,1,start-here,no
+15.8.2,Carry out post-occupancy evaluation,augment,1,start-here,no
+16.1.1,Plan board and committee cycles,none,1,no-change,no
+16.1.2,Prepare and circulate board papers,augment,1,start-here,no
+16.1.3,Minute meetings and track actions,automate,1,start-here,no
+16.1.4,Recruit and appraise board members,none,1,no-change,no
+16.2.1,Self-assess against regulatory standards,augment,2,scale-with-safeguards,yes
+16.2.2,Prepare for regulatory inspection,augment,2,scale-with-safeguards,yes
+16.2.3,Submit regulatory returns,automate,2,scale-with-safeguards,no
+16.2.4,Maintain regulatory compliance register,augment,2,scale-with-safeguards,no
+16.3.1,Maintain strategic and operational risk registers,augment,1,start-here,no
+16.3.2,Run risk workshops,none,1,no-change,no
+16.3.3,Report risk to audit committee,automate,1,start-here,no
+16.4.1,Agree internal audit plan,augment,1,start-here,no
+16.4.2,Coordinate audits,none,1,no-change,no
+16.4.3,Track audit actions,automate,1,start-here,no
+16.5.1,Map assurance across the three lines,augment,1,start-here,no
+16.5.2,Report assurance to board,automate,1,start-here,no
+16.6.1,Assess against the code of governance,augment,1,start-here,yes
+16.6.2,Maintain standing orders and delegations,enable,1,start-here,yes
+16.6.3,Manage declarations of interest,none,1,no-change,no
+16.7.1,Maintain statutory registers,none,1,no-change,no
+16.7.2,File statutory returns,none,1,no-change,no
+16.7.3,Manage group structure and subsidiaries,none,1,no-change,no
+16.8.1,Investigate whistleblowing concerns,none,3,no-change,no
+16.8.2,Maintain fraud register,none,2,no-change,no
+16.8.3,Report fraud to the regulator,none,2,no-change,no
+17.1.1,Develop corporate strategy,augment,1,start-here,no
+17.1.2,Prepare annual business plan,augment,1,start-here,no
+17.1.3,Develop directorate service plans,augment,1,start-here,no
+17.2.1,Define KPIs,none,1,no-change,no
+17.2.2,Produce performance reports,automate,1,start-here,no
+17.2.3,Run performance reviews,augment,1,start-here,no
+17.2.4,Benchmark against peers,augment,1,start-here,no
+17.3.1,Maintain reporting dashboards,none,1,no-change,no
+17.3.2,Analyse customer and stock data,augment,1,start-here,no
+17.3.3,Produce insight reports,augment,1,start-here,no
+17.4.1,Produce VfM metrics,automate,1,start-here,no
+17.4.2,Prepare VfM statement,augment,1,start-here,no
+17.4.3,Identify efficiency opportunities,augment,1,start-here,no
+17.5.1,Manage transformation portfolio,augment,1,start-here,no
+17.5.2,Run business case process,augment,1,start-here,no
+17.5.3,Track benefits realisation,augment,1,start-here,no
+17.6.1,Produce resident newsletters and communications,augment,2,scale-with-safeguards,no
+17.6.2,Manage website content,augment,2,scale-with-safeguards,yes
+17.6.3,Manage social media,augment,2,scale-with-safeguards,no
+17.6.4,Run internal communications,augment,2,scale-with-safeguards,no
+17.7.1,Respond to media enquiries,augment,1,start-here,no
+17.7.2,Manage reputational incidents,none,1,no-change,no
+17.7.3,Engage stakeholders and politicians,none,1,no-change,no
+18.1.1,Maintain long-term financial plan,augment,1,start-here,no
+18.1.2,Run stress testing and mitigation plans,augment,1,start-here,no
+18.1.3,Prepare annual budget,augment,1,start-here,no
+18.1.4,Monitor golden rules and covenants,automate,1,start-here,no
+18.2.1,Produce monthly management accounts,automate,1,start-here,no
+18.2.2,Run budget monitoring with managers,augment,1,start-here,no
+18.2.3,Forecast outturn,augment,1,start-here,no
+18.3.1,Close month-end ledgers,automate,1,start-here,no
+18.3.2,Prepare statutory accounts,augment,1,start-here,no
+18.3.3,Coordinate external audit,augment,1,start-here,no
+18.3.4,Prepare SORP disclosures,enable,1,start-here,yes
+18.4.1,Process supplier invoices,automate,1,start-here,no
+18.4.2,Match invoices to purchase orders,none,1,no-change,no
+18.4.3,Run supplier payment runs,none,1,no-change,no
+18.4.4,Maintain supplier records,none,1,no-change,no
+18.5.1,Raise sundry invoices,none,1,no-change,no
+18.5.2,Chase sundry debtors,automate,1,start-here,no
+18.5.3,Reconcile receivables,automate,1,start-here,no
+18.6.1,Manage cash flow forecasts,augment,1,start-here,no
+18.6.2,Monitor loan covenants,automate,1,start-here,no
+18.6.3,Arrange funding and refinancing,none,1,no-change,no
+18.6.4,Manage property security and charging,augment,1,start-here,no
+18.7.1,Prepare VAT returns,none,1,no-change,no
+18.7.2,Manage corporation tax,enable,1,start-here,yes
+18.7.3,Calculate partial exemption,augment,1,start-here,no
+18.8.1,Process monthly payroll,none,2,no-change,no
+18.8.2,Manage pension contributions,none,2,no-change,no
+18.8.3,Process expenses,automate,2,scale-with-safeguards,no
+18.9.1,Maintain fixed asset register,none,1,no-change,no
+18.9.2,Apply componentisation,none,1,no-change,no
+18.9.3,Calculate depreciation and impairment,none,1,no-change,no
+19.1.1,Approve and raise vacancies,none,3,no-change,no
+19.1.2,Advertise roles,augment,3,human-decides,no
+19.1.3,Shortlist and interview,augment,3,human-decides,no
+19.1.4,Issue offers and pre-employment checks,automate,3,redesign-first,no
+19.2.1,Prepare starter contracts,automate,2,scale-with-safeguards,no
+19.2.2,Run inductions,enable,2,scale-with-safeguards,yes
+19.2.3,Complete probation reviews,augment,2,scale-with-safeguards,no
+19.3.1,Identify training needs,augment,2,scale-with-safeguards,no
+19.3.2,Deliver mandatory training,augment,2,scale-with-safeguards,no
+19.3.3,Support professional qualifications,none,2,no-change,no
+19.3.4,Track training compliance,none,2,no-change,no
+19.4.1,Run appraisals,augment,2,scale-with-safeguards,no
+19.4.2,Manage pay and grading,augment,2,scale-with-safeguards,no
+19.4.3,Benchmark reward,augment,2,scale-with-safeguards,no
+19.5.1,Manage absence,augment,3,human-decides,no
+19.5.2,Handle grievances,augment,3,human-decides,yes
+19.5.3,Handle disciplinaries,augment,3,human-decides,yes
+19.5.4,Consult unions and staff forums,none,3,no-change,no
+19.6.1,Maintain establishment and structure,none,2,no-change,no
+19.6.2,Plan workforce needs,augment,2,scale-with-safeguards,no
+19.6.3,Manage restructures and TUPE,augment,2,scale-with-safeguards,yes
+19.7.1,Run wellbeing programmes,none,2,no-change,no
+19.7.2,"Monitor equality, diversity and inclusion data",augment,2,scale-with-safeguards,no
+19.7.3,Run colleague engagement surveys,augment,2,scale-with-safeguards,no
+19.8.1,Maintain HR records,none,2,no-change,no
+19.8.2,Process contract changes,automate,2,scale-with-safeguards,no
+19.8.3,Process leavers and exit interviews,automate,2,scale-with-safeguards,no
+20.1.1,Log and resolve IT tickets,agentic,1,pilot-with-controls,yes
+20.1.2,Manage user accounts and access,automate,1,start-here,no
+20.1.3,Manage devices and equipment,none,1,no-change,no
+20.2.1,Manage networks and hosting,none,1,no-change,no
+20.2.2,Manage backups and disaster recovery,none,1,no-change,no
+20.2.3,Monitor system availability,automate,1,start-here,no
+20.3.1,Monitor security threats,augment,1,start-here,no
+20.3.2,Run security awareness training,none,1,no-change,no
+20.3.3,Manage patching and vulnerabilities,automate,1,start-here,no
+20.3.4,Respond to cyber incidents,augment,1,start-here,no
+20.4.1,Administer the housing management system,augment,1,start-here,yes
+20.4.2,Manage system configuration and upgrades,augment,1,start-here,no
+20.4.3,Manage application suppliers,none,1,no-change,no
+20.5.1,Maintain data standards,augment,1,start-here,no
+20.5.2,Cleanse and validate data,automate,1,start-here,no
+20.5.3,Manage master data for properties and people,automate,1,start-here,no
+20.6.1,Maintain system integrations,augment,1,start-here,no
+20.6.2,Maintain enterprise architecture,augment,1,start-here,no
+20.6.3,Assess new technology,augment,1,start-here,no
+20.7.1,Gather digital requirements,augment,1,start-here,no
+20.7.2,Design and build digital services,augment,1,start-here,no
+20.7.3,Test and release changes,augment,1,start-here,no
+20.8.1,Maintain IT roadmap,augment,1,start-here,no
+20.8.2,Manage software licences,automate,1,start-here,no
+20.8.3,Manage IT budget,none,1,no-change,no
+21.1.1,Maintain procurement pipeline,automate,1,start-here,no
+21.1.2,Develop procurement strategies,augment,1,start-here,no
+21.1.3,Engage the market,none,1,no-change,no
+21.2.1,Prepare tender documents,augment,1,start-here,yes
+21.2.2,Run compliant tender processes,automate,1,start-here,no
+21.2.3,Evaluate bids,augment,1,start-here,no
+21.2.4,Award contracts and manage standstill,automate,1,start-here,no
+21.3.1,Maintain contract register,automate,1,start-here,no
+21.3.2,Run contract performance reviews,augment,1,start-here,no
+21.3.3,Manage contract variations,augment,1,start-here,yes
+21.3.4,Manage contract renewals and exits,augment,1,start-here,no
+21.4.1,Onboard suppliers,automate,1,start-here,no
+21.4.2,Carry out supplier due diligence,agentic,1,pilot-with-controls,yes
+21.4.3,Monitor supplier risk,automate,1,start-here,no
+21.5.1,Value works against contracts,automate,1,start-here,yes
+21.5.2,Agree final accounts,augment,1,start-here,yes
+21.5.3,Resolve commercial disputes,augment,1,start-here,no
+21.6.1,Set social value requirements,augment,1,start-here,yes
+21.6.2,Monitor social value delivery,automate,1,start-here,no
+21.7.1,Raise purchase orders,none,1,no-change,no
+21.7.2,Manage framework call-offs,enable,1,start-here,yes
+21.7.3,Monitor spend compliance,automate,1,start-here,no
+22.1.1,Provide legal advice,augment,2,scale-with-safeguards,yes
+22.1.2,Manage external solicitors,none,2,no-change,no
+22.1.3,Manage litigation,augment,2,scale-with-safeguards,no
+22.1.4,Manage property legal work,augment,2,scale-with-safeguards,yes
+22.2.1,Arrange insurance cover,none,2,no-change,no
+22.2.2,Manage insurance claims,augment,2,scale-with-safeguards,no
+22.2.3,Handle liability claims,augment,2,scale-with-safeguards,yes
+22.2.4,Handle residents' claims for damage to their belongings,augment,2,scale-with-safeguards,yes
+22.3.1,Respond to subject access requests,agentic,3,redesign-first,yes
+22.3.2,Manage data breaches,augment,3,human-decides,yes
+22.3.3,Maintain records retention,automate,2,scale-with-safeguards,no
+22.3.4,Carry out data protection impact assessments,augment,3,human-decides,yes
+22.4.1,Maintain health and safety risk assessments,augment,2,scale-with-safeguards,yes
+22.4.2,Investigate accidents and near misses,augment,2,scale-with-safeguards,no
+22.4.3,Manage lone working,none,2,no-change,no
+22.5.1,Manage office premises,none,1,no-change,no
+22.5.2,Manage fleet vehicles,none,1,no-change,no
+22.5.3,Manage office services,none,1,no-change,no
+22.6.1,Maintain business continuity plans,augment,1,start-here,no
+22.6.2,Test business continuity arrangements,none,1,no-change,no
+22.6.3,Coordinate major incident response,augment,1,start-here,no
+22.7.1,Maintain policy library,enable,1,start-here,yes
+22.7.2,Schedule policy reviews,automate,1,start-here,no
+22.7.3,Run equality impact assessments,augment,1,start-here,no

@@ -2,6 +2,14 @@
 
 All notable changes to the model are recorded here. Versions follow the rules in [GOVERNANCE.md](GOVERNANCE.md).
 
+## Unreleased
+
+The model itself is unchanged.
+
+- New optional layers: a point of view on top of the model, kept in `layers/` with its own version, sources and caveats. Layers are validated against the model and published separately (`layers/<id>.csv` and `.json`).
+- First layer: `ai-impact` v2026.11. AI impact, a governance tier and a suggested route for all 667 activities, drawing on the NHF AI code of practice and the Regulator's statements.
+- Atlas: a new **Layer** bar, off by default. Choosing a layer colours activities in every figure, and links can open with a layer applied (for example `?layer=ai-impact:route`).
+
 ## 0.2.0 - 2026-10-30
 
 Adds an outside-in view of services, following feedback from a service designer.

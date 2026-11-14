@@ -96,6 +96,10 @@ functions:
 
 Any service, request, function area, function or activity can have `description` and `notes`. Most can have `references` (a list of links or citations). Activities and requests can have `aliases`: other names people use for the same thing.
 
+## Optional layers
+
+Layers such as `layers/ai-impact/` add a point of view about the activities without changing the model. Suggest changes to a layer the same way as to the model. Say which layer you mean, because a layer is an opinion and is reviewed as one. To propose a new layer, see [layers/README.md](layers/README.md).
+
 ## How to edit
 
 **On GitHub:** open the file, click the pencil icon, make your change, then choose **Propose changes**. An automatic check runs on every pull request and tells you if anything needs fixing.

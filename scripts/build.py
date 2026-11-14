@@ -13,6 +13,9 @@ The model has two views of the same organisation:
   - Operating model (model/function-areas/*.yaml): the inside-out view of how the work is done.
     Domain > Function area > Function > Activity.
 Requests link to the functions or activities they rely on through `uses`.
+
+Optional layers (layers/<id>/layer.yaml) add a point of view about activities, such as AI impact,
+without changing the model. They are validated against the model and published separately.
 """
 import csv
 import json
@@ -26,6 +29,7 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 MODEL = ROOT / "model"
 DIST = ROOT / "dist"
+LAYERS = ROOT / "layers"
 SITE = ROOT / "site"
 SLUG = "open-housing-operating-model"
 
@@ -193,6 +197,60 @@ def load_services(fn_index, act_index, retired, seen):
     return {"patterns": patterns, "users": users, "groups": groups, "services": services}
 
 
+def load_layers(act_index):
+    """Load optional activity layers. Each has layer.yaml (definitions) and a CSV keyed by activity code."""
+    layers = []
+    if not LAYERS.exists():
+        return layers
+    for ly_path in sorted(LAYERS.glob("*/layer.yaml")):
+        ly = load(ly_path)
+        w = f"layers/{ly_path.parent.name}"
+        if not ly:
+            continue
+        fields = ly.get("fields") or {}
+        if ly.get("applies_to") != "activities":
+            err(w, "only layers that apply to 'activities' are supported")
+            continue
+        if not fields:
+            err(w, "layer.yaml needs at least one field under 'fields'")
+            continue
+        allowed = {f: [str(v["id"]) for v in (fd.get("values") or [])] for f, fd in fields.items()}
+        data_path = ly_path.parent / str(ly.get("data", ""))
+        if not data_path.is_file():
+            err(w, f"data file '{ly.get('data')}' not found")
+            continue
+        values, missing_cols = {}, []
+        with open(data_path, newline="", encoding="utf-8") as f:
+            rd = csv.DictReader(f)
+            missing_cols = [c for c in ["code", *fields] if c not in (rd.fieldnames or [])]
+            if missing_cols:
+                err(w, f"{data_path.name} is missing columns: {', '.join(missing_cols)}")
+                continue
+            for i, row in enumerate(rd, start=2):
+                code = (row.get("code") or "").strip()
+                rw = f"{w}/{data_path.name} line {i}"
+                if code not in act_index:
+                    err(rw, f"'{code}' is not an activity code in the model")
+                    continue
+                if code in values:
+                    err(rw, f"activity {code} appears more than once")
+                    continue
+                if row.get("activity") and row["activity"].strip() != act_index[code][2]["name"]:
+                    warn(rw, f"activity name differs from the model ('{act_index[code][2]['name']}'); the model's name is used")
+                rec = {}
+                for fld, ok in allowed.items():
+                    v = (row.get(fld) or "").strip()
+                    if ok and v not in ok:
+                        err(rw, f"{fld} '{v}' must be one of: {', '.join(ok)}")
+                    rec[fld] = v
+                values[code] = rec
+        gaps = [c for c in act_index if c not in values]
+        if gaps:
+            warn(w, f"{len(gaps)} activities have no values in this layer yet (e.g. {', '.join(gaps[:5])})")
+        layers.append({**{k: v for k, v in ly.items() if k != "data"}, "_values": values})
+    return layers
+
+
 def replace_block(text, name, body):
     pat = re.compile(rf"(<!-- BEGIN:{name} -->).*?(<!-- END:{name} -->)", re.S)
     return pat.sub(lambda m: m.group(1) + "\n" + body + "\n" + m.group(2), text)
@@ -211,6 +269,7 @@ def main(check_only):
     fn_index = {f["code"]: (a, f) for a in areas for f in a["functions"]}
     act_index = {x["code"]: (a, f, x) for a in areas for f in a["functions"] for x in f["activities"]}
     svc = load_services(fn_index, act_index, retired, seen)
+    layers = load_layers(act_index)
 
     for m in warnings:
         print("warning:", m)
@@ -238,6 +297,8 @@ def main(check_only):
     n_used = len(used_by)
     print(f"OK: {n_s} services, {n_r} requests | {len(domains)} domains, {len(areas)} function areas, "
           f"{n_f} functions, {n_a} activities | {n_used} activities support a service (v{meta.get('version')})")
+    for ly in layers:
+        print(f"Layer '{ly['id']}' v{ly.get('version')}: values for {len(ly['_values'])} of {n_a} activities")
     if check_only:
         return
 
@@ -296,7 +357,33 @@ def main(check_only):
                       "r": [{"c": r["code"], "n": r["name"], "p": r["pattern"],
                              "a": [[aidx[act_index[c][0]["code"]], c] for c in r["_acts"]]} for r in s["requests"]]}
                      for s in svc["services"]],
+        "layers": [{"id": ly["id"], "n": ly.get("name", ly["id"]), "v": str(ly.get("version", "")), "summary": ly.get("summary", ""),
+                    "caveat": ly.get("caveat", ""), "sources": ly.get("sources") or [],
+                    "fields": [{"id": f, "n": fd.get("name", f), "vals": [{"id": str(v["id"]), "n": v.get("name", str(v["id"])),
+                                                                           "desc": v.get("description", "")} for v in fd.get("values") or []]}
+                               for f, fd in ly["fields"].items()],
+                    "data": {c: [next((i for i, v in enumerate(fd.get("values") or []) if str(v["id"]) == rec[f]), -1)
+                                 for f, fd in ly["fields"].items()] for c, rec in ly["_values"].items()}}
+                   for ly in layers],
     }
+    # Layers: one JSON and one CSV each, kept apart from the core model outputs
+    if layers:
+        (DIST / "layers").mkdir(exist_ok=True)
+        (SITE / "layers").mkdir(exist_ok=True)
+    for ly in layers:
+        out = {k: v for k, v in ly.items() if not k.startswith("_")}
+        out["activities"] = [{"code": c, "activity": act_index[c][2]["name"], **rec} for c, rec in
+                             sorted(ly["_values"].items(), key=lambda kv: num_key(kv[0]))]
+        (DIST / "layers" / f"{ly['id']}.json").write_text(json.dumps(out, indent=1, ensure_ascii=False), encoding="utf-8")
+        with open(DIST / "layers" / f"{ly['id']}.csv", "w", newline="", encoding="utf-8") as f:
+            wr = csv.writer(f)
+            wr.writerow(["activity_code", "function_area", "function", "activity", *ly["fields"].keys()])
+            for c, rec in sorted(ly["_values"].items(), key=lambda kv: num_key(kv[0])):
+                a, fn, x = act_index[c]
+                wr.writerow([c, a["name"], fn["name"], x["name"], *[rec[k] for k in ly["fields"]]])
+        for ext in ("json", "csv"):
+            (SITE / "layers" / f"{ly['id']}.{ext}").write_bytes((DIST / "layers" / f"{ly['id']}.{ext}").read_bytes())
+
     tpl = (SITE / "template.html").read_text(encoding="utf-8")
     (SITE / "index.html").write_text(tpl.replace("__DATA__", json.dumps(compact, ensure_ascii=False, separators=(",", ":"))),
                                      encoding="utf-8")

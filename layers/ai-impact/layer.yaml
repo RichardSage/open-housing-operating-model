@@ -1,0 +1,88 @@
+# Optional layer: AI impact and governance
+#
+# Layers sit on top of the Open Housing Operating Model. They add a point of view about the
+# activities without changing the model itself. This one is an opinion about where AI could
+# change the work and how carefully each piece of work should be approached.
+# The core model's version doesn't change when a layer changes; layers have their own version.
+
+id: ai-impact
+name: AI impact and governance
+version: "2026.11"
+applies_to: activities
+data: activities.csv
+summary: >-
+  Where AI could change each activity, and how carefully to approach it, judged against a
+  well-run housing association that already has modern core systems.
+caveat: >-
+  An independent judgement for discussion, not a measurement or compliance advice.
+  Check against your own policies, data protection impact assessments and the full NHF code.
+sources:
+- name: Rannoch Associates, The impact of AI on Housing Associations (October 2026)
+  note: Source of the five impact categories
+- name: National Housing Federation, AI code of practice
+  url: https://www.housing.org.uk/resources/ai-code-of-practice/
+  note: Voluntary code; governance tiers draw on its public summary
+- name: "Kate Dodsworth, The regulator's approach to AI, Inside Housing (13 October 2026)"
+  url: https://www.insidehousing.co.uk/comment/kate-dodsworth-the-regulators-approach-to-ai-98977
+- name: National Housing Federation, How housing associations are adapting to AI
+  url: https://www.housing.org.uk/globalassets/files/ai-programme-group/5890---nhf-adapting-to-ai-report-a4-2026-v7-accessible.pdf
+
+fields:
+  impact:
+    name: AI impact
+    values:
+    - id: augment
+      name: Augment
+      description: A person does the work; AI improves analysis, drafting or prediction
+    - id: automate
+      name: Automate
+      description: A system does a bounded task within rules; a person handles exceptions
+    - id: agentic
+      name: Agentic
+      description: Multi-step work carried through to completion; a person stays accountable
+    - id: enable
+      name: Enable
+      description: AI provides knowledge a person lacks at the point of need
+    - id: none
+      name: No material impact
+      description: Already handled by existing systems, physical work, or work that stays human
+  tier:
+    name: Governance tier
+    values:
+    - id: "1"
+      name: Internal, low risk
+      description: No direct effect on a resident or colleague
+    - id: "2"
+      name: Personal data or resident-facing support
+      description: Uses personal data or supports someone's case; a person decides and communicates
+    - id: "3"
+      name: Affects a home, money, safety or rights
+      description: Decisions and communications that change someone's tenancy, money, safety or legal rights
+  route:
+    name: Suggested route
+    values:
+    - id: start-here
+      name: Start here
+      description: Low-risk internal work AI can help with now, with a person checking outputs
+    - id: scale-with-safeguards
+      name: Scale with safeguards
+      description: Worth doing at scale with a DPIA, accuracy and bias testing, training, and telling residents
+    - id: human-decides
+      name: Human decides, AI assists
+      description: AI prepares, summarises or recommends; a named person makes and owns the decision
+    - id: pilot-with-controls
+      name: Pilot with controls
+      description: Agentic work on lower-stakes processes, piloted with tight limits and logging
+    - id: redesign-first
+      name: Redesign before automating
+      description: Automation would decide things about homes, money, safety or rights; let AI handle the admin steps instead
+    - id: no-change
+      name: No material change
+      description: No meaningful role for AI at the moment
+  codified_knowledge:
+    name: Uses codified knowledge
+    values:
+    - id: "yes"
+      name: "Yes"
+    - id: "no"
+      name: "No"
