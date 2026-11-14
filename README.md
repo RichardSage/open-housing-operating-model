@@ -47,6 +47,12 @@ Each request lists the functions or activities it `uses`. That shows what sits b
 
 ![What sits behind each service](docs/images/2-behind-each-service.png)
 
+### Specialist provision
+
+Not every housing association does everything. Services, requests and functions that only some providers offer are tagged as **specialist**, in four kinds: retirement and extra care, supported housing, shared ownership and sales, and commercial property. Everything else applies to every provider.
+
+In the atlas you can untick any kind your organisation doesn't provide, and it drops out of every figure. Links can open that way too, for example [without retirement and extra care](https://richardsage.github.io/open-housing-operating-model/?without=older-people). The kinds are listed in [`model/specialist.yaml`](model/specialist.yaml).
+
 Codes are **permanent identifiers**: once published, a code always means the same thing, even if the item later moves or is retired. That lets other people's spreadsheets, products and analyses link to the model safely.
 
 ### Services
@@ -149,8 +155,6 @@ Several requests, including those for housing applications, decants, eviction su
 
 The service list and interaction patterns are adapted, with thanks, from the [social housing service list](https://www.designpatternsforsocialhousing.co.uk/Social-housing-service-list-89c36fb8921944f79088b03c830c8584) by Design Patterns for Social Housing (Dave Skinner), whose pattern groups were mapped from TPXImpact's work on local government services. The approach follows the GOV.UK Service Manual's guidance on [creating a list of services](https://www.gov.uk/service-manual/design/create-a-list-of-services).
 
-**Specialist provision:** parts of the model that only some providers offer (retirement and extra care, supported housing, shared ownership and sales, and commercial property) are tagged as specialist. In the atlas you can switch each one off to see the model for your organisation, for example [without retirement and extra care](https://richardsage.github.io/open-housing-operating-model/?without=older-people).
-
 **Scope today:** a generic housing association in England. Scotland, Wales and Northern Ireland have different regulators and rules, and specialist providers (supported housing, almshouses, stock-transfer landlords, large developers) will weight things differently. Help with these is especially welcome.
 
 ## Contribute
@@ -168,9 +172,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for naming rules and how codes work, and 
 - Testing service and request names with residents, and against real contact-reason data
 - Services for councils, contractors and other partners
 - Mapping the backstage dependencies behind each service (procurement, finance, data)
-- Short descriptions and examples for every activity, and links to the regulation that requires them
-- Versions for Scotland, Wales and Northern Ireland, and variants for specialist providers
-- Optional layers others can add, such as roles, systems, data or performance measures, kept separate from the core model
+- Short descriptions and examples for every activity
+- Versions for Scotland, Wales and Northern Ireland, and more kinds of specialist provision (such as almshouses or student housing)
+- More optional layers alongside AI and regulation, such as roles, systems, data or performance measures
 
 ## Use and licence
 
