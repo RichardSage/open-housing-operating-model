@@ -8,7 +8,7 @@ An open map of what a housing association does, in two views:
 Every request a resident makes is linked to the activities it relies on.
 
 <!-- BEGIN:counts -->
-Version 0.2.0 has **42 services** made up of **117 requests**, delivered through **22 function areas, 177 functions and 667 activities**.
+Version 0.3.0 has **42 services** made up of **117 requests**, delivered through **22 function areas, 177 functions and 667 activities**.
 <!-- END:counts -->
 
 It gives people across social housing a shared vocabulary for the work: for designing services, choosing systems, planning change, benchmarking or building products. It's a starting point built on judgement, published openly so the sector can improve it together.

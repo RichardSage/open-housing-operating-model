@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you use this model, please credit it as below."
 title: "Open Housing Operating Model"
 type: dataset
-version: "0.2.0"
-date-released: "2026-10-30"
+version: "0.3.0"
+date-released: "2026-11-21"
 license: CC-BY-4.0
 authors:
   - name: "Open Housing Operating Model contributors"

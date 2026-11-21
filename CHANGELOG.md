@@ -2,7 +2,7 @@
 
 All notable changes to the model are recorded here. Versions follow the rules in [GOVERNANCE.md](GOVERNANCE.md).
 
-## Unreleased
+## 0.3.0 - 2026-11-21
 
 **Tools (new)**
 - The atlas is now one of four pages, with shared navigation and a "Use the model" section. Each tool page says who it's for and how to use it.
