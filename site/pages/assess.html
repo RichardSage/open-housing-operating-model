@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Assess · Open Housing Operating Model</title>
-<meta name="description" content="Rate your organisation's capability, or a product's coverage, against the Open Housing Operating Model. Everything stays in your browser.">
+<meta name="description" content="Rate your organisation's capability, or your products' coverage, against the Open Housing Operating Model. Everything stays in your browser.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
@@ -108,7 +108,33 @@ details.area>summary:focus-visible{outline:2px solid var(--homes);outline-offset
 .rqrow .lab{font-family:var(--mono);font-size:11px;color:var(--muted);text-align:right;white-space:nowrap}
 .empty{padding:24px;text-align:center;color:var(--muted);border:1.5px dashed var(--line);border-radius:10px}
 .printhead{display:none}
-@media print{.toolbar,.tabs,.modes,.privacy,.pagehead .howto,.pagehead .forwho,#rate,.btnrow{display:none!important}#results{display:grid!important}.printhead{display:block}.hcard,.svbox{break-inside:avoid}}
+.prodbar{display:grid;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.prodtabs{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.ptab{font:inherit;font-size:13.5px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.ptab[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink);font-weight:600}
+.ptab .cnt{font-family:var(--mono);font-size:11px;opacity:.75}
+.ptab:focus-visible{outline:2px solid var(--homes);outline-offset:2px}
+.ptab.add{border-style:dashed;color:var(--muted);background:transparent}
+.prodedit{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:end}
+.prodedit label{display:grid;gap:3px;font-size:12px;color:var(--muted);font-weight:600}
+.viewsel{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13.5px}
+.pm-scroll{overflow-x:auto}
+table.pmx{border-collapse:separate;border-spacing:2px;font-size:12.5px;min-width:100%}
+.pmx th,.pmx td{padding:3px 6px;text-align:left;vertical-align:middle}
+.pmx thead th{font-weight:600;font-size:12px;color:var(--ink);white-space:nowrap;text-align:center;min-width:92px}
+.pmx thead th.fcol{text-align:left;min-width:220px}
+.pmx tbody th{font-weight:400;white-space:nowrap}
+.pmx tbody th .num{color:var(--muted);font-size:11px;margin-right:6px}
+.pmx tr.ah th{padding-top:10px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.pmx tr.sumrow th,.pmx tr.sumrow td{font-weight:600;border-bottom:1px solid var(--line);padding-bottom:6px}
+.pmx td.c{height:20px;border-radius:3px;text-align:center;font-size:11px;background:var(--c);color:#fff;min-width:92px}
+.pmx td.c.unset{background:transparent;border:1.5px dashed var(--line);color:var(--muted)}
+.pmx td.c.na{background:repeating-linear-gradient(135deg,var(--rna) 0 3px,transparent 3px 6px);color:var(--muted)}
+.pmx td.cov{font-family:var(--mono);font-size:11.5px;text-align:center;white-space:nowrap}
+.pmx td.cov.gap{color:var(--r0);font-weight:600}
+.pmx td.cov.over{color:var(--ink);font-weight:600}
+.pmx td.pc{font-family:var(--mono);text-align:center}
+@media print{.toolbar,.tabs,.modes,.privacy,.pagehead .howto,.pagehead .forwho,#rate,.btnrow,.viewsel,.controls{display:none!important}#results{display:grid!important}.printhead{display:block}.hcard,.svbox{break-inside:avoid}}
 </style>
 </head>
 <body>
@@ -123,7 +149,7 @@ details.area>summary:focus-visible{outline:2px solid var(--homes);outline-offset
 
   <div class="modes" role="group" aria-label="What are you assessing?">
     <button type="button" class="mode" data-mode="capability"><b>Your organisation's capability</b><span>Rate how well each function works today, from not in place to leading. Get a heat map of strengths and gaps.</span></button>
-    <button type="button" class="mode" data-mode="product"><b>A product's coverage</b><span>Mark what a system or product supports. See which functions it covers, and which services and requests it helps with.</span></button>
+    <button type="button" class="mode" data-mode="product"><b>Your products' coverage</b><span>Add one or more systems or products and mark what each supports. See what they cover between them, where they overlap, and where the gaps are.</span></button>
   </div>
 
   <div class="toolbar">
@@ -150,6 +176,11 @@ details.area>summary:focus-visible{outline:2px solid var(--homes);outline-offset
   </div>
 
   <section id="rate" role="tabpanel" aria-labelledby="tabRate" style="display:grid;gap:14px">
+    <div class="prodbar" id="prodbar" hidden>
+      <div class="prodtabs" id="prodtabs" role="group" aria-label="Product you're rating"></div>
+      <div class="prodedit"><label>Name of this product<input type="text" id="prodName" autocomplete="off" placeholder="For example, housing management system"></label><button type="button" class="btn" id="prodDel">Remove this product</button></div>
+      <p class="note" style="margin:0">Rate one product at a time. Switch between them with the buttons above. The results combine them, and show each one side by side.</p>
+    </div>
     <div class="progress" id="progress"></div>
     <div class="scalekey" id="scalekey"></div>
     <p class="note" id="rateHelp"></p>
@@ -159,6 +190,7 @@ details.area>summary:focus-visible{outline:2px solid var(--homes);outline-offset
 
   <section id="results" role="tabpanel" aria-labelledby="tabRes" hidden style="display:grid;gap:24px">
     <div class="printhead"><h2 id="printTitle"></h2></div>
+    <div class="viewsel" id="viewsel" hidden><label for="viewSel"><b>Show results for</b></label><select id="viewSel"></select><span class="note">The figures below use this. Figure A3 always shows every product.</span></div>
     <figure>
       <div class="fighead"><span class="eyebrow">Figure A1</span><h2 id="ra1"></h2><p id="ra1p"></p></div>
       <div class="headline" id="headline"></div>
@@ -175,6 +207,12 @@ details.area>summary:focus-visible{outline:2px solid var(--homes);outline-offset
       </div>
       <div class="svlist" id="svlist"></div>
       <figcaption><span>Each bar shows the ratings of the activities behind the request. Activities take their function's rating unless you rated them separately.</span><span id="capA2"></span></figcaption>
+    </figure>
+    <figure id="figA3" hidden>
+      <div class="fighead"><span class="eyebrow">Figure A3</span><h2>Each product, function by function</h2><p>How well each product supports each function, side by side. The last column counts the products that support it at least partly. Gaps are functions you've rated where no product gives any support. Overlaps are functions two or more products fully support.</p></div>
+      <div class="controls"><div class="seg" data-seg="pmf" role="group" aria-label="Which functions to show"><button type="button" data-v="all" aria-pressed="true">All functions</button><button type="button" data-v="gaps" aria-pressed="false">Gaps</button><button type="button" data-v="over" aria-pressed="false">Overlaps</button><button type="button" data-v="rated" aria-pressed="false">Rated by any product</button></div></div>
+      <div class="pm-scroll" id="pmx"></div>
+      <figcaption><span>Based on the Open Housing Operating Model (CC BY 4.0).</span><span id="capA3"></span></figcaption>
     </figure>
   </section>
 </main>
@@ -196,10 +234,10 @@ const MODES = {
     max: 4,
   },
   product: {
-    title: "Map a product's coverage", subject: 'Product',
-    lede: 'Mark what a system or product supports. Rate whole functions for a quick picture, or open a function to mark individual activities. The results show which parts of the operating model it covers, and which services and requests it helps people with.',
+    title: "Map your products' coverage", subject: 'Product',
+    lede: 'Add the systems and products you use, or one you sell, and mark what each supports. Rate whole functions for a quick picture, or open a function to mark individual activities. The results show what your products cover between them, where they overlap, where the gaps are, and which services and requests they help people with.',
     forwho: ['Software suppliers', 'IT and procurement teams', 'Product managers', 'Enterprise architects'],
-    help: 'Mark how far the product supports each function. Not applicable is for work the product isn\'t meant to cover.',
+    help: 'Mark how far this product supports each function. Not applicable is for work the product isn\'t meant to cover.',
     levels: [
       { id: 'none', n: 'Not supported', v: 0, c: 'var(--r0)', d: 'The product doesn\'t help with this' },
       { id: 'partial', n: 'Partly', v: .5, c: 'var(--r2)', d: 'Some of it, or with workarounds' },
@@ -209,21 +247,39 @@ const MODES = {
 };
 const NA = { id: 'na', n: 'Not applicable', c: 'var(--rna)' };
 let mode = new URLSearchParams(location.search).get('mode') === 'product' ? 'product' : 'capability';
-let st, aud = 'public', order = 'model', clearArm = false;
+let st, aud = 'public', order = 'model', clearArm = false, view = 'all', pmf = 'all', delArm = false;
 const M = () => MODES[mode];
 const lv = id => M().levels.find(l => l.id === id);
 const key = () => `ohom-assess-v1-${mode}`;
 const blank = () => ({ name: '', off: [], f: {}, a: {}, notes: {}, open: {}, detail: {} });
-function load() { try { st = { ...blank(), ...JSON.parse(localStorage.getItem(key()) || '{}') }; } catch (e) { st = blank(); } }
+const blankProd = (n) => ({ id: 'p' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), name: `Product ${n}`, f: {}, a: {}, notes: {}, open: {}, detail: {} });
+function load() {
+  try { st = { ...blank(), ...JSON.parse(localStorage.getItem(key()) || '{}') }; } catch (e) { st = blank(); }
+  if (mode === 'product') {
+    if (!Array.isArray(st.products)) { // older single-product saves become the first product
+      const had = Object.keys(st.f).length || Object.keys(st.a).length;
+      st.products = [{ ...blankProd(1), name: (had && st.name) || 'Product 1', f: st.f, a: st.a, notes: st.notes, open: st.open, detail: st.detail }];
+      if (had) st.name = '';
+    }
+    if (!st.products.length) st.products.push(blankProd(1));
+    if (!st.products.some(p => p.id === st.cur)) st.cur = st.products[0].id;
+    st.f = {}; st.a = {}; st.notes = {}; st.open = {}; st.detail = {};
+  }
+  if (view !== 'all' && !(st.products || []).some(p => p.id === view)) view = 'all';
+}
+// The ratings being edited: the organisation's in capability mode, the current product's in product mode
+const R = () => mode === 'product' ? (st.products.find(p => p.id === st.cur) || st.products[0]) : st;
+const prods = () => mode === 'product' ? st.products : [];
 let saveT;
-function save() { clearTimeout(saveT); saveT = setTimeout(() => { try { localStorage.setItem(key(), JSON.stringify(st)); $('#saved').textContent = `Saved in this browser at ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`; } catch (e) { $('#saved').textContent = "Couldn't save in this browser. Download a CSV to keep your work."; } }, 250); }
+let held = '', holdUntil = 0;
+function save(msg) { if (msg) { held = msg; holdUntil = Date.now() + 2000; } clearTimeout(saveT); saveT = setTimeout(() => { try { localStorage.setItem(key(), JSON.stringify(st)); $('#saved').textContent = Date.now() < holdUntil ? held : `Saved in this browser at ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`; } catch (e) { $('#saved').textContent = "Couldn't save in this browser. Download a CSV to keep your work."; } }, 250); }
 
 // Effective ratings
 const fnOff = f => (f.sp || []).some(i => st.off.includes(SPECS[i].id));
 const actsOf = f => f.a.map((_, k) => `${f.c}.${k + 1}`);
-function fnVal(f) { // returns {id, derived}
+function fnVal(f, src = R()) { // returns {id, derived}
   if (fnOff(f)) return { id: 'na', off: true };
-  const rated = actsOf(f).map(c => st.a[c]).filter(Boolean);
+  const rated = actsOf(f).map(c => src.a[c]).filter(Boolean);
   if (rated.length) {
     const real = rated.filter(x => x !== 'na');
     if (!real.length) return { id: 'na', derived: true };
@@ -231,9 +287,20 @@ function fnVal(f) { // returns {id, derived}
     const near = M().levels.reduce((b, l) => Math.abs(l.v - avg) < Math.abs(b.v - avg) ? l : b);
     return { id: near.id, derived: true, avg, n: rated.length };
   }
-  return st.f[f.c] ? { id: st.f[f.c] } : null;
+  return src.f[f.c] ? { id: src.f[f.c] } : null;
 }
-const actVal = c => { const f = FNI[c.split('.').slice(0, 2).join('.')]; if (fnOff(f)) return 'na'; return st.a[c] || st.f[f.c] || null; };
+const actVal = (c, src = R()) => { const f = FNI[c.split('.').slice(0, 2).join('.')]; if (fnOff(f)) return 'na'; return src.a[c] || src.f[f.c] || null; };
+// Combining products: the best support any product gives. Not applicable only if no product has a rating.
+const best = ids => { const real = ids.filter(x => x && x !== 'na'); if (real.length) return real.reduce((b, x) => lv(x).v > lv(b).v ? x : b); return ids.includes('na') ? 'na' : null; };
+const viewSrc = () => mode === 'product' && view !== 'all' ? st.products.find(p => p.id === view) : null;
+function vF(f) {
+  if (mode !== 'product') return fnVal(f, st);
+  const one = viewSrc(); if (one) return fnVal(f, one);
+  if (fnOff(f)) return { id: 'na', off: true };
+  const per = st.products.map(p => fnVal(f, p)); const id = best(per.map(v => v && v.id));
+  return id ? { id, combined: true, per } : null;
+}
+const vA = c => { if (mode !== 'product') return actVal(c, st); const one = viewSrc(); if (one) return actVal(c, one); return best(st.products.map(p => actVal(c, p))); };
 const colOf = id => id === 'na' ? NA.c : (lv(id) || {}).c;
 const nameOf = id => id === 'na' ? NA.n : (lv(id) || {}).n;
 
@@ -249,33 +316,44 @@ function renderHead() {
   $('#title').textContent = m.title; $('#lede').textContent = m.lede;
   $('#forwho').innerHTML = '<b>Useful for:</b>' + m.forwho.map(x => `<span class="persona">${esc(x)}</span>`).join('');
   $$('.mode').forEach(b => b.setAttribute('aria-pressed', b.dataset.mode === mode));
-  $('#nameLbl').textContent = m.subject === 'Product' ? 'Product name' : 'Organisation name';
+  $('#nameLbl').textContent = mode === 'product' ? 'Your organisation (optional)' : 'Organisation name';
   $('#name').value = st.name || '';
   $('#rateHelp').textContent = m.help + ' Your rating for a function covers all its activities, unless you open it and rate activities separately.';
   $('#scalekey').innerHTML = keyHtml(); $('#scalekey2').innerHTML = keyHtml();
   $('#specSeg').innerHTML = SPECS.map(x => `<button type="button" class="chip" data-spec="${x.id}" aria-pressed="${!st.off.includes(x.id)}" data-tip="${esc(`<b>${esc(x.n)}</b><small>${esc(x.desc)}</small>`)}">${esc(x.n)}</button>`).join('');
-  $('#specNote').textContent = mode === 'product' ? "Untick anything the product isn't meant to cover." : "Untick anything your organisation doesn't provide. It's marked not applicable.";
+  $('#specNote').textContent = mode === 'product' ? "Untick any provision your organisation doesn't offer. It's left out for every product." : "Untick anything your organisation doesn't provide. It's marked not applicable.";
+  renderProdbar();
+}
+function renderProdbar() {
+  $('#prodbar').hidden = mode !== 'product';
+  if (mode !== 'product') return;
+  const ratedCount = p => FN.filter(f => !fnOff(f) && fnVal(f, p)).length;
+  $('#prodtabs').innerHTML = `<span class="note">Rating:</span>` + st.products.map(p => `<button type="button" class="ptab" data-prod="${p.id}" aria-pressed="${p.id === st.cur}">${esc(p.name || 'Untitled product')} <span class="cnt">${ratedCount(p)}</span></button>`).join('') + `<button type="button" class="ptab add" id="prodAdd">+ Add a product</button>`;
+  $('#prodName').value = R().name || '';
+  $('#prodDel').hidden = st.products.length < 2;
+  $('#prodDel').textContent = 'Remove this product'; delArm = false;
 }
 function renderProgress() {
-  const fs = FN.filter(f => !fnOff(f)); const vals = fs.map(fnVal);
+  const fs = FN.filter(f => !fnOff(f)); const vals = fs.map(f => fnVal(f));
   const done = vals.filter(Boolean).length;
   const counts = [...M().levels, NA].map(l => vals.filter(v => v && v.id === l.id).length);
   $('#progress').innerHTML = `<b>${done} of ${fs.length} functions rated</b><span class="pbar">${[...M().levels, NA].map((l, i) => counts[i] ? `<i class="${l.id === 'na' ? 'na-bg' : ''}" style="width:${100 * counts[i] / fs.length}%;background:${l.id === 'na' ? '' : l.c}"></i>` : '').join('')}</span>${done === fs.length ? '<span>All done. See the results.</span>' : ''}`;
 }
 function fnRow(f) {
   const v = fnVal(f), off = fnOff(f), acts = actsOf(f);
-  const ratedActs = acts.filter(c => st.a[c]).length;
-  const open = !!st.detail[f.c], hasNote = !!(st.notes[f.c] || '').trim();
+  const src = R();
+  const ratedActs = acts.filter(c => src.a[c]).length;
+  const open = !!src.detail[f.c], hasNote = !!(src.notes[f.c] || '').trim();
   return `<div class="fn${off ? ' off' : ''}" data-fn="${f.c}">
     <div class="fname"><span class="num">${f.c}</span><span>${esc(f.n)}</span>${spBadge(f.sp)}${off ? '<span class="derived">Not applicable: specialist provision switched off</span>' : ''}${v && v.derived ? `<span class="derived">From ${v.n} rated activit${v.n === 1 ? 'y' : 'ies'}: ${esc(nameOf(v.id))}</span>` : ''}</div>
-    <div>${off ? '' : v && v.derived ? '' : scaleHtml('f:' + f.c, st.f[f.c], false, `Rating for ${f.c} ${f.n}`)}</div>
-    ${off ? '' : `<div class="more"><button type="button" class="linkbtn${ratedActs ? ' has' : ''}" data-detail="${f.c}" aria-expanded="${open}">${open ? 'Hide activities' : `Rate its ${acts.length} activities${ratedActs ? ` (${ratedActs} rated)` : ''}`}</button><button type="button" class="linkbtn${hasNote ? ' has' : ''}" data-note="${f.c}" aria-expanded="${!!st.open['n' + f.c]}">${hasNote ? 'Edit note' : 'Add a note'}</button></div>`}
-    ${open && !off ? `<div class="acts">${acts.map((c, k) => `<div class="act"><span><span class="num">${c}</span>${esc(f.a[k])}</span>${scaleHtml('a:' + c, st.a[c], true, `Rating for ${c} ${f.a[k]}`)}</div>`).join('')}<div><button type="button" class="linkbtn" data-clearacts="${f.c}">Clear activity ratings and use the function rating</button></div></div>` : ''}
-    ${st.open['n' + f.c] && !off ? `<div class="notebox"><label class="note" for="note-${f.c}">Note or evidence for ${f.c}</label><textarea id="note-${f.c}" data-notefor="${f.c}">${esc(st.notes[f.c] || '')}</textarea></div>` : ''}
+    <div>${off ? '' : v && v.derived ? '' : scaleHtml('f:' + f.c, src.f[f.c], false, `Rating for ${f.c} ${f.n}`)}</div>
+    ${off ? '' : `<div class="more"><button type="button" class="linkbtn${ratedActs ? ' has' : ''}" data-detail="${f.c}" aria-expanded="${open}">${open ? 'Hide activities' : `Rate its ${acts.length} activities${ratedActs ? ` (${ratedActs} rated)` : ''}`}</button><button type="button" class="linkbtn${hasNote ? ' has' : ''}" data-note="${f.c}" aria-expanded="${!!src.open['n' + f.c]}">${hasNote ? 'Edit note' : 'Add a note'}</button></div>`}
+    ${open && !off ? `<div class="acts">${acts.map((c, k) => `<div class="act"><span><span class="num">${c}</span>${esc(f.a[k])}</span>${scaleHtml('a:' + c, src.a[c], true, `Rating for ${c} ${f.a[k]}`)}</div>`).join('')}<div><button type="button" class="linkbtn" data-clearacts="${f.c}">Clear activity ratings and use the function rating</button></div></div>` : ''}
+    ${src.open['n' + f.c] && !off ? `<div class="notebox"><label class="note" for="note-${f.c}">Note or evidence for ${f.c}</label><textarea id="note-${f.c}" data-notefor="${f.c}">${esc(src.notes[f.c] || '')}</textarea></div>` : ''}
   </div>`;
 }
 function areaSummary(a) {
-  const fs = a.s.map(f => FNI[f.c]); const vals = fs.map(fnVal);
+  const fs = a.s.map(f => FNI[f.c]); const vals = fs.map(f => fnVal(f));
   const done = vals.filter(Boolean).length;
   return `<span class="mini" aria-hidden="true">${vals.map(v => `<i class="${v ? (v.id === 'na' ? 'na-bg' : '') : 'unset'}" style="${v && v.id !== 'na' ? `--c:${colOf(v.id)}` : ''}"></i>`).join('')}</span><span>${done}/${fs.length} rated</span>`;
 }
@@ -288,19 +366,30 @@ function rerenderFn(fc) {
   const el = document.querySelector(`.fn[data-fn="${fc}"]`); if (el) el.outerHTML = fnRow(FNI[fc]);
   const a = FNI[fc].area; const s = document.querySelector(`[data-sum="${a.c}"]`); if (s) s.innerHTML = areaSummary(a);
   renderProgress();
+  if (mode === 'product') renderProdbar();
 }
 
 // Results
 function renderResults() {
-  const m = M(), fs = FN.filter(f => !fnOff(f)), vals = fs.map(fnVal), rated = vals.filter(v => v && v.id !== 'na');
+  const m = M(), fs = FN.filter(f => !fnOff(f)), vals = fs.map(vF), rated = vals.filter(v => v && v.id !== 'na');
   const any = rated.length > 0;
-  $('#printTitle').textContent = `${m.title}${st.name ? ': ' + st.name : ''}`;
-  $('#ra1').textContent = mode === 'product' ? `What ${st.name || 'the product'} covers in the operating model` : `${st.name ? st.name + "'s" : 'Your'} capability across the operating model`;
-  $('#ra1p').textContent = 'Every function, grouped by function area. Hatched means not applicable. Dashed means not rated yet.';
+  const one = viewSrc(), multi = mode === 'product' && !one;
+  const subject = mode === 'product' ? (one ? one.name : st.products.length > 1 ? 'your products' : st.products[0].name) : '';
+  $('#viewsel').hidden = mode !== 'product' || st.products.length < 2;
+  $('#viewSel').innerHTML = mode === 'product' ? `<option value="all">All products combined</option>` + st.products.map(p => `<option value="${p.id}"${p.id === view ? ' selected' : ''}>${esc(p.name || 'Untitled product')}</option>`).join('') : '';
+  $('#printTitle').textContent = `${m.title}${st.name ? ': ' + st.name : ''}${mode === 'product' ? ' · ' + (one ? one.name : 'all products combined') : ''}`;
+  $('#ra1').textContent = mode === 'product' ? `What ${subject || 'the product'} cover${multi && st.products.length > 1 ? '' : 's'} in the operating model` : `${st.name ? st.name + "'s" : 'Your'} capability across the operating model`;
+  $('#ra1p').textContent = 'Every function, grouped by function area. Hatched means not applicable. Dashed means not rated yet.' + (multi && st.products.length > 1 ? ' Each function shows the best support any product gives, and the number is how many products support it at least partly.' : '');
   if (mode === 'product') {
-    const acts = Object.keys(ACT).filter(c => actVal(c) !== 'na');
-    const full = acts.filter(c => actVal(c) === 'full').length, part = acts.filter(c => actVal(c) === 'partial').length;
-    $('#headline').innerHTML = `<div><span class="num">${pct(full, acts.length)}%</span><span>of activities supported (${full} of ${acts.length})</span></div><div><span class="num">${pct(part, acts.length)}%</span><span>partly supported (${part})</span></div><div><span class="num">${vals.filter(Boolean).length}/${fs.length}</span><span>functions rated</span></div>`;
+    const acts = Object.keys(ACT).filter(c => vA(c) !== 'na');
+    const full = acts.filter(c => vA(c) === 'full').length, part = acts.filter(c => vA(c) === 'partial').length;
+    let extra = '';
+    if (multi && st.products.length > 1) {
+      const gaps = fs.filter(f => { const v = vF(f); return v && v.id === 'none'; }).length;
+      const over = fs.filter(f => st.products.filter(p => { const v = fnVal(f, p); return v && v.id === 'full'; }).length >= 2).length;
+      extra = `<div><span class="num">${gaps}</span><span>gaps: rated functions no product supports</span></div><div><span class="num">${over}</span><span>overlaps: functions 2+ products fully support</span></div>`;
+    }
+    $('#headline').innerHTML = `<div><span class="num">${pct(full, acts.length)}%</span><span>of activities supported (${full} of ${acts.length})</span></div><div><span class="num">${pct(part, acts.length)}%</span><span>partly supported (${part})</span></div>${extra}<div><span class="num">${vals.filter(Boolean).length}/${fs.length}</span><span>functions rated</span></div>`;
   } else {
     const avg = rated.length ? rated.reduce((s, v) => s + (v.avg ?? lv(v.id).v), 0) / rated.length : 0;
     const near = rated.length ? m.levels.reduce((b, l) => Math.abs(l.v - avg) < Math.abs(b.v - avg) ? l : b) : null;
@@ -309,12 +398,29 @@ function renderResults() {
   const dist = [...m.levels, NA].map(l => ({ l, n: vals.filter(v => v && v.id === l.id).length })); const unset = vals.filter(v => !v).length;
   const dmax = Math.max(1, ...dist.map(d => d.n), unset);
   $('#dist').innerHTML = dist.map(d => `<div><span>${esc(d.l.n)}</span><span class="tr"><i class="${d.l.id === 'na' ? 'na-bg' : ''}" style="width:${100 * d.n / dmax}%;--c:${d.l.c}"></i></span><span class="n">${d.n}</span></div>`).join('') + `<div><span>Not rated yet</span><span class="tr"><i style="width:${100 * unset / dmax}%;--c:var(--line)"></i></span><span class="n">${unset}</span></div>`;
-  $('#heat').innerHTML = D.areas.map(a => `<div class="hcard ${dc(a.d)}"><h3><span class="num">${a.c}</span>${esc(a.n)}</h3>${a.s.map(f0 => { const f = FNI[f0.c]; const v = fnVal(f); const note = (st.notes[f.c] || '').trim(); return `<div class="hrow" data-tip="${esc(`<b>${esc(f.c + ' ' + f.n)}</b><small>${v ? esc(nameOf(v.id)) + (v.derived && v.n ? ` (from ${v.n} activities)` : '') : 'Not rated yet'}${note ? '<br>' + esc(note.slice(0, 200)) : ''}</small>`)}"><span>${esc(f.n)}</span><span class="cell${!v ? ' unset' : v.id === 'na' ? ' na' : ''}" style="${v && v.id !== 'na' ? `--c:${colOf(v.id)}` : ''}">${v && v.id !== 'na' && mode === 'capability' ? lv(v.id).v : ''}</span></div>`; }).join('')}</div>`).join('');
-  $('#capA1').textContent = `${fs.length} functions in scope${st.name ? ' · ' + st.name : ''}`;
+  $('#heat').innerHTML = D.areas.map(a => `<div class="hcard ${dc(a.d)}"><h3><span class="num">${a.c}</span>${esc(a.n)}</h3>${a.s.map(f0 => { const f = FNI[f0.c]; const v = vF(f); const src = mode === 'product' ? (one || null) : st; const note = src ? (src.notes[f.c] || '').trim() : ''; const perTip = v && v.per ? '<br>' + st.products.map((p, i) => `${esc(p.name)}: ${v.per[i] ? esc(nameOf(v.per[i].id)) : 'not rated'}`).join('<br>') : ''; const nSup = v && v.per ? v.per.filter(x => x && (x.id === 'full' || x.id === 'partial')).length : 0; return `<div class="hrow" data-tip="${esc(`<b>${esc(f.c + ' ' + f.n)}</b><small>${v ? esc(nameOf(v.id)) + (v.derived && v.n ? ` (from ${v.n} activities)` : '') + (v.per ? ' (best of your products)' : '') : 'Not rated yet'}${perTip}${note ? '<br>' + esc(note.slice(0, 200)) : ''}</small>`)}"><span>${esc(f.n)}</span><span class="cell${!v ? ' unset' : v.id === 'na' ? ' na' : ''}" style="${v && v.id !== 'na' ? `--c:${colOf(v.id)}` : ''}">${v && v.id !== 'na' ? (mode === 'capability' ? lv(v.id).v : v.per && st.products.length > 1 ? nSup : '') : ''}</span></div>`; }).join('')}</div>`).join('');
+  $('#capA1').textContent = `${fs.length} functions in scope${st.name ? ' · ' + st.name : ''}${mode === 'product' ? ' · ' + (one ? one.name : `${st.products.length} product${st.products.length === 1 ? '' : 's'} combined`) : ''}`;
   renderServices(any);
+  renderMatrix();
+}
+function renderMatrix() {
+  const show = mode === 'product' && st.products.length > 0;
+  $('#figA3').hidden = !show; if (!show) return;
+  const ps = st.products, fs = FN.filter(f => !fnOff(f));
+  const supp = (f, p) => { const v = fnVal(f, p); return v && (v.id === 'full' || v.id === 'partial'); };
+  const isGap = f => { const ids = ps.map(p => (fnVal(f, p) || {}).id); return ids.some(x => x === 'none') && !ids.some(x => x === 'full' || x === 'partial'); };
+  const isOver = f => ps.filter(p => (fnVal(f, p) || {}).id === 'full').length >= 2;
+  const keep = f => pmf === 'gaps' ? isGap(f) : pmf === 'over' ? isOver(f) : pmf === 'rated' ? ps.some(p => fnVal(f, p)) : true;
+  const actPct = p => { const acts = Object.keys(ACT).filter(c => actVal(c, p) !== 'na'); const sc = acts.reduce((s, c) => s + (lv(actVal(c, p)) || { v: 0 }).v, 0); return acts.length ? Math.round(100 * sc / acts.length) : 0; };
+  const cell = (f, p) => { const v = fnVal(f, p); if (!v) return `<td class="c unset" data-tip="${esc(`<b>${esc(p.name)}</b><small>${esc(f.c + ' ' + f.n)}: not rated</small>`)}">·</td>`; if (v.id === 'na') return `<td class="c na" data-tip="${esc(`<b>${esc(p.name)}</b><small>${esc(f.c + ' ' + f.n)}: not applicable</small>`)}"></td>`; return `<td class="c" style="--c:${colOf(v.id)}" data-tip="${esc(`<b>${esc(p.name)}</b><small>${esc(f.c + ' ' + f.n)}: ${esc(nameOf(v.id))}${v.derived && v.n ? ` (from ${v.n} activities)` : ''}${(p.notes[f.c] || '').trim() ? '<br>' + esc(p.notes[f.c].trim().slice(0, 200)) : ''}</small>`)}">${esc(v.id === 'full' ? '✓' : v.id === 'partial' ? '½' : '✕')}</td>`; };
+  let body = `<tr class="sumrow"><th>Weighted share of activities supported</th>${ps.map(p => `<td class="pc">${actPct(p)}%</td>`).join('')}<td></td></tr>`, shown = 0;
+  D.areas.forEach(a => { const rows = a.s.map(x => FNI[x.c]).filter(f => !fnOff(f) && keep(f)); if (!rows.length) return; shown += rows.length;
+    body += `<tr class="ah"><th colspan="${ps.length + 2}">${a.c} ${esc(a.n)}</th></tr>` + rows.map(f => { const n = ps.filter(p => supp(f, p)).length; const g = isGap(f), o = isOver(f); return `<tr><th scope="row"><span class="num">${f.c}</span>${esc(f.n)}</th>${ps.map(p => cell(f, p)).join('')}<td class="cov${g ? ' gap' : o ? ' over' : ''}">${g ? 'Gap' : o ? `${n} · overlap` : n}</td></tr>`; }).join(''); });
+  $('#pmx').innerHTML = `<table class="pmx"><thead><tr><th class="fcol" scope="col">Function</th>${ps.map(p => `<th scope="col">${esc(p.name || 'Untitled product')}</th>`).join('')}<th scope="col">Products</th></tr></thead><tbody>${body}</tbody></table>${shown ? '' : '<p class="note">Nothing to show for this filter yet.</p>'}`;
+  $('#capA3').textContent = `${ps.length} product${ps.length === 1 ? '' : 's'} · ${shown} of ${fs.length} functions shown · ✓ supported, ½ partly, ✕ not supported`;
 }
 function reqStats(r) {
-  const codes = [...new Set(r.a.map(x => x[1]))]; const vs = codes.map(actVal);
+  const codes = [...new Set(r.a.map(x => x[1]))]; const vs = codes.map(vA);
   const inScope = vs.filter(v => v !== 'na'); const ratedV = inScope.filter(Boolean);
   const score = ratedV.length ? ratedV.reduce((s, v) => s + lv(v).v, 0) / ratedV.length / M().max : null;
   const min = ratedV.length ? Math.min(...ratedV.map(v => lv(v).v)) : null;
@@ -322,8 +428,9 @@ function reqStats(r) {
 }
 function renderServices(any) {
   const m = M();
-  $('#ra2').textContent = mode === 'product' ? 'Which services and requests it helps with' : 'How well the work behind each service is supported';
-  $('#ra2p').textContent = mode === 'product' ? 'For each request people make, how much of the work behind it the product supports.' : "For each request people make, the ratings of the activities behind it. A service is only as strong as its weakest part.";
+  const multi = mode === 'product' && !viewSrc() && st.products.length > 1;
+  $('#ra2').textContent = mode === 'product' ? (multi ? 'Which services and requests your products help with' : 'Which services and requests it helps with') : 'How well the work behind each service is supported';
+  $('#ra2p').textContent = mode === 'product' ? (multi ? 'For each request people make, how much of the work behind it your products support between them.' : 'For each request people make, how much of the work behind it the product supports.') : "For each request people make, the ratings of the activities behind it. A service is only as strong as its weakest part.";
   const ss = D.services.filter(s => audOk(s, aud) && !(s.sp || []).some(i => st.off.includes(SPECS[i].id)));
   let rows = ss.map(s => ({ s, rs: s.r.filter(r => !(r.sp || []).some(i => st.off.includes(SPECS[i].id))).map(r => ({ r, x: reqStats(r) })) })).filter(x => x.rs.length);
   if (order === 'weak') rows = rows.map(x => ({ ...x, w: Math.min(...x.rs.map(y => y.x.score ?? 9)) })).sort((p, q) => p.w - q.w);
@@ -337,15 +444,18 @@ function renderServices(any) {
 // CSV
 const csvCell = v => { v = String(v ?? ''); return /[",\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v; };
 function exportCsv() {
-  const rows = [['mode', 'name', 'level', 'code', 'item', 'function_area', 'rating', 'rating_label', 'note', 'model_version']];
-  FN.forEach(f => {
-    const v = fnVal(f);
-    rows.push([mode, st.name, 'function', f.c, f.n, `${f.area.c} ${f.area.n}`, v ? v.id : '', v ? nameOf(v.id) + (v.derived && v.n ? ' (from activities)' : '') : '', st.notes[f.c] || '', D.version]);
-    actsOf(f).forEach((c, k) => { if (st.a[c]) rows.push([mode, st.name, 'activity', c, f.a[k], `${f.area.c} ${f.area.n}`, st.a[c], nameOf(st.a[c]), '', D.version]); });
+  const rows = [['mode', 'name', 'product', 'level', 'code', 'item', 'function_area', 'rating', 'rating_label', 'note', 'model_version']];
+  (mode === 'product' ? st.products : [st]).forEach(src => {
+    const pn = mode === 'product' ? src.name : '';
+    FN.forEach(f => {
+      const v = fnVal(f, src);
+      rows.push([mode, st.name, pn, 'function', f.c, f.n, `${f.area.c} ${f.area.n}`, v ? v.id : '', v ? nameOf(v.id) + (v.derived && v.n ? ' (from activities)' : '') : '', src.notes[f.c] || '', D.version]);
+      actsOf(f).forEach((c, k) => { if (src.a[c]) rows.push([mode, st.name, pn, 'activity', c, f.a[k], `${f.area.c} ${f.area.n}`, src.a[c], nameOf(src.a[c]), '', D.version]); });
+    });
   });
   const blob = new Blob(['﻿' + rows.map(r => r.map(csvCell).join(',')).join('\r\n')], { type: 'text/csv' });
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-  a.download = `${(st.name || (mode === 'product' ? 'product' : 'organisation')).replace(/[^\w-]+/g, '-').toLowerCase()}-${mode}-assessment.csv`;
+  a.download = `${(st.name || (mode === 'product' ? 'products' : 'organisation')).replace(/[^\w-]+/g, '-').toLowerCase()}-${mode}-assessment.csv`;
   document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
 function parseCsv(t) {
@@ -361,15 +471,20 @@ function importCsv(text) {
   const ix = n => h.indexOf(n); if (ix('code') < 0 || ix('rating') < 0) { $('#saved').textContent = "That file doesn't look like an assessment CSV: it needs code and rating columns."; return; }
   const fileMode = rows[0] && ix('mode') >= 0 ? rows[0][ix('mode')] : mode;
   if (fileMode && MODES[fileMode] && fileMode !== mode) { mode = fileMode; history.replaceState(null, '', `?mode=${mode}`); }
-  const ns = blank(); let n = 0;
+  const ns = blank(); let n = 0; const byProd = new Map();
+  // Older single-product files have no product column: the name column was the product's name
+  const target = r => { if (mode !== 'product') return ns; const pn = (ix('product') >= 0 ? r[ix('product')] : '') || (ix('product') < 0 && ix('name') >= 0 ? r[ix('name')] : '') || 'Product 1'; if (!byProd.has(pn)) byProd.set(pn, { ...blankProd(byProd.size + 1), name: pn }); return byProd.get(pn); };
   rows.forEach(r => { const code = (r[ix('code')] || '').trim(); let v = (r[ix('rating')] || '').trim(); if (!code) return;
-    if (ix('name') >= 0 && r[ix('name')]) ns.name = r[ix('name')];
+    if (ix('name') >= 0 && r[ix('name')] && (mode !== 'product' || ix('product') >= 0)) ns.name = r[ix('name')];
+    const t = target(r);
     if (v && v !== 'na' && !lv(v)) { const byName = [...M().levels, NA].find(l => l.n.toLowerCase() === v.toLowerCase()); v = byName ? byName.id : ''; }
     const isAct = code.split('.').length === 3, level = ix('level') >= 0 ? r[ix('level')] : (isAct ? 'activity' : 'function');
-    if (level === 'activity' && ACT[code] && v) { ns.a[code] = v; n++; }
-    else if (level === 'function' && FNI[code]) { const label = ix('rating_label') >= 0 ? r[ix('rating_label')] : ''; if (v && !/from activities/.test(label)) { ns.f[code] = v; n++; } if (ix('note') >= 0 && r[ix('note')]) ns.notes[code] = r[ix('note')]; }
+    if (level === 'activity' && ACT[code] && v) { t.a[code] = v; n++; }
+    else if (level === 'function' && FNI[code]) { const label = ix('rating_label') >= 0 ? r[ix('rating_label')] : ''; if (v && !/from activities/.test(label)) { t.f[code] = v; n++; } if (ix('note') >= 0 && r[ix('note')]) t.notes[code] = r[ix('note')]; }
   });
-  st = { ...ns, off: st.off }; save(); renderAll(); $('#saved').textContent = `Loaded ${n} ratings from the file.`;
+  st = { ...ns, off: st.off };
+  if (mode === 'product') { st.products = [...byProd.values()]; if (!st.products.length) st.products.push(blankProd(1)); st.cur = st.products[0].id; view = 'all'; }
+  save(`Loaded ${n} ratings${mode === 'product' ? ` for ${st.products.length} product${st.products.length === 1 ? '' : 's'}` : ''} from the file, and saved them in this browser.`); renderAll();
 }
 
 // Events
@@ -382,21 +497,34 @@ $('#name').addEventListener('input', e => { st.name = e.target.value; save(); })
 $('#specSeg').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; const id = b.dataset.spec; st.off = st.off.includes(id) ? st.off.filter(x => x !== id) : [...st.off, id]; save(); renderAll(); });
 $('#areas').addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b) return;
-  if (b.dataset.t) { const [kind, code] = b.dataset.t.split(':'); const store = kind === 'f' ? st.f : st.a; if (store[code] === b.dataset.v) delete store[code]; else store[code] = b.dataset.v; save(); rerenderFn(kind === 'f' ? code : code.split('.').slice(0, 2).join('.')); const again = document.querySelector(`button[data-t="${b.dataset.t}"][data-v="${b.dataset.v}"]`); if (again) again.focus({ preventScroll: true }); return; }
-  if (b.dataset.detail) { st.detail[b.dataset.detail] = !st.detail[b.dataset.detail]; save(); rerenderFn(b.dataset.detail); return; }
-  if (b.dataset.note) { st.open['n' + b.dataset.note] = !st.open['n' + b.dataset.note]; save(); rerenderFn(b.dataset.note); const t = document.getElementById('note-' + b.dataset.note); if (t) t.focus(); return; }
-  if (b.dataset.clearacts) { actsOf(FNI[b.dataset.clearacts]).forEach(c => delete st.a[c]); save(); rerenderFn(b.dataset.clearacts); }
+  if (b.dataset.t) { const [kind, code] = b.dataset.t.split(':'); const store = kind === 'f' ? R().f : R().a; if (store[code] === b.dataset.v) delete store[code]; else store[code] = b.dataset.v; save(); rerenderFn(kind === 'f' ? code : code.split('.').slice(0, 2).join('.')); const again = document.querySelector(`button[data-t="${b.dataset.t}"][data-v="${b.dataset.v}"]`); if (again) again.focus({ preventScroll: true }); return; }
+  if (b.dataset.detail) { R().detail[b.dataset.detail] = !R().detail[b.dataset.detail]; save(); rerenderFn(b.dataset.detail); return; }
+  if (b.dataset.note) { R().open['n' + b.dataset.note] = !R().open['n' + b.dataset.note]; save(); rerenderFn(b.dataset.note); const t = document.getElementById('note-' + b.dataset.note); if (t) t.focus(); return; }
+  if (b.dataset.clearacts) { actsOf(FNI[b.dataset.clearacts]).forEach(c => delete R().a[c]); save(); rerenderFn(b.dataset.clearacts); }
 });
-$('#areas').addEventListener('input', e => { const t = e.target.closest('textarea[data-notefor]'); if (t) { st.notes[t.dataset.notefor] = t.value; save(); } });
+$('#areas').addEventListener('input', e => { const t = e.target.closest('textarea[data-notefor]'); if (t) { R().notes[t.dataset.notefor] = t.value; save(); } });
 $('#areas').addEventListener('toggle', e => { const d = e.target.closest('details.area'); if (d) { st.areasOpen = { ...(st.areasOpen || {}), [d.dataset.area]: d.open }; save(); } }, true);
 $('#openAll').addEventListener('click', () => $$('details.area').forEach(d => d.open = true));
 $('#closeAll').addEventListener('click', () => $$('details.area').forEach(d => d.open = false));
 $('#exportBtn').addEventListener('click', exportCsv);
 $('#importIn').addEventListener('change', e => { const f = e.target.files[0]; if (!f) return; f.text().then(importCsv); e.target.value = ''; });
 $('#printBtn').addEventListener('click', () => { showTab(true); setTimeout(() => window.print(), 50); });
-$('#clearBtn').addEventListener('click', () => { if (!clearArm) { clearArm = true; $('#clearBtn').textContent = 'Select again to clear everything'; setTimeout(() => { clearArm = false; $('#clearBtn').textContent = 'Clear all'; }, 4000); return; } clearArm = false; $('#clearBtn').textContent = 'Clear all'; st = blank(); save(); renderAll(); });
+$('#clearBtn').addEventListener('click', () => { if (!clearArm) { clearArm = true; $('#clearBtn').textContent = 'Select again to clear everything'; setTimeout(() => { clearArm = false; $('#clearBtn').textContent = 'Clear all'; }, 4000); return; } clearArm = false; $('#clearBtn').textContent = 'Clear all'; st = blank(); if (mode === 'product') { st.products = [blankProd(1)]; st.cur = st.products[0].id; view = 'all'; } save(); renderAll(); });
 seg('aud', v => { aud = v; renderResults(); });
 seg('sort', v => { order = v; renderResults(); });
+seg('pmf', v => { pmf = v; renderMatrix(); });
+$('#viewSel').addEventListener('change', e => { view = e.target.value; renderResults(); });
+$('#prodtabs').addEventListener('click', e => {
+  if (e.target.closest('#prodAdd')) { const p = blankProd(st.products.length + 1); st.products.push(p); st.cur = p.id; save(); renderRate(); renderProdbar(); $('#prodName').focus(); $('#prodName').select(); return; }
+  const b = e.target.closest('.ptab[data-prod]'); if (!b || b.dataset.prod === st.cur) return;
+  st.cur = b.dataset.prod; save(); renderRate(); const nb = document.querySelector(`.ptab[data-prod="${st.cur}"]`); if (nb) nb.focus({ preventScroll: true });
+});
+$('#prodName').addEventListener('input', e => { R().name = e.target.value; save(); const t = document.querySelector(`.ptab[data-prod="${st.cur}"]`); if (t) t.firstChild.textContent = (e.target.value || 'Untitled product') + ' '; });
+$('#prodDel').addEventListener('click', () => {
+  if (st.products.length < 2) return;
+  if (!delArm) { delArm = true; $('#prodDel').textContent = `Select again to remove ${R().name || 'this product'} and its ratings`; setTimeout(() => { delArm = false; $('#prodDel').textContent = 'Remove this product'; }, 4000); return; }
+  st.products = st.products.filter(p => p.id !== st.cur); st.cur = st.products[0].id; if (view !== 'all' && !st.products.some(p => p.id === view)) view = 'all'; save(); renderRate(); renderProdbar();
+});
 load(); renderAll();
 </script>
 </body>
