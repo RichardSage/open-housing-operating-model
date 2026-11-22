@@ -10,6 +10,7 @@ All notable changes to the model are recorded here. Versions follow the rules in
 
 **Tools**
 - **Assess:** product coverage now handles several products. Add, rename and remove products, and rate one at a time. The results combine them (the best support any product gives), with a new Figure A3 comparing every product function by function and filters for gaps and overlaps. You can also view the results for one product. Downloads gain a `product` column, and older single-product saves and CSVs still load.
+- **Assess:** add a product by typing its name and selecting Add product, rather than getting a numbered placeholder. Each product has its own colour. While you rate, a bar stays at the top of the screen showing which product you're rating, with a quick way to switch, and the function list is edged in that product's colour.
 
 ## 0.3.0 - 2026-11-21
 

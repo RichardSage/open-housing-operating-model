@@ -110,6 +110,23 @@ details.area>summary:focus-visible{outline:2px solid var(--homes);outline-offset
 .printhead{display:none}
 .prodbar{display:grid;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
 .prodtabs{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.pbhead{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+.pbhead b{font-size:15px}
+.ptab .dot{width:10px;height:10px;border-radius:50%;background:var(--pc);flex:none}
+.ptab[aria-pressed="true"]{background:var(--pc)!important;border-color:var(--pc)!important;color:#fff!important}
+.ptab[aria-pressed="true"] .dot{background:#fff}
+.prodadd{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:end;margin:0}
+.prodadd label{display:grid;gap:3px;font-size:12px;color:var(--muted);font-weight:600}
+.prodadd input{min-width:280px}
+.prodedit{border-top:1px solid var(--faint);padding-top:10px}
+.ratebar{position:sticky;top:0;z-index:6;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;background:color-mix(in srgb,var(--pc) 10%,var(--surface));border:1px solid color-mix(in srgb,var(--pc) 45%,var(--line));border-left:8px solid var(--pc);border-radius:10px;padding:10px 14px;box-shadow:0 6px 16px -10px rgba(0,0,0,.35)}
+.ratebar .who{display:grid;gap:1px;margin-right:auto}
+.ratebar .who .eyebrow{font-size:11px}
+.ratebar .who b{font-family:var(--display);font-size:20px;font-weight:650;line-height:1.2;color:var(--ink)}
+.ratebar .prog{font-size:13px;color:var(--muted);font-family:var(--mono)}
+.ratebar label{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--muted)}
+.scope{border-left:5px solid var(--pc);padding-left:14px;border-radius:2px}
+.emptyprod{padding:28px;text-align:center;color:var(--muted);border:1.5px dashed var(--line);border-radius:10px;font-size:15px}
 .ptab{font:inherit;font-size:13.5px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
 .ptab[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink);font-weight:600}
 .ptab .cnt{font-family:var(--mono);font-size:11px;opacity:.75}
@@ -177,14 +194,16 @@ table.pmx{border-collapse:separate;border-spacing:2px;font-size:12.5px;min-width
 
   <section id="rate" role="tabpanel" aria-labelledby="tabRate" style="display:grid;gap:14px">
     <div class="prodbar" id="prodbar" hidden>
-      <div class="prodtabs" id="prodtabs" role="group" aria-label="Product you're rating"></div>
-      <div class="prodedit"><label>Name of this product<input type="text" id="prodName" autocomplete="off" placeholder="For example, housing management system"></label><button type="button" class="btn" id="prodDel">Remove this product</button></div>
-      <p class="note" style="margin:0">Rate one product at a time. Switch between them with the buttons above. The results combine them, and show each one side by side.</p>
+      <div class="pbhead"><b>Your products</b><span class="note">Add each system or product you want to map, then choose one to rate.</span></div>
+      <div class="prodtabs" id="prodtabs" role="group" aria-label="Choose the product to rate"></div>
+      <form class="prodadd" id="prodAddForm"><label>New product<input type="text" id="newProd" autocomplete="off" placeholder="For example, housing management system"></label><button type="submit" class="btn primary" id="prodAdd">Add product</button></form>
+      <div class="prodedit" id="prodEdit"><label>Rename the selected product<input type="text" id="prodName" autocomplete="off"></label><button type="button" class="btn" id="prodDel">Remove this product</button></div>
     </div>
     <div class="progress" id="progress"></div>
     <div class="scalekey" id="scalekey"></div>
     <p class="note" id="rateHelp"></p>
     <div class="btnrow"><button type="button" class="btn" id="openAll">Open all areas</button><button type="button" class="btn" id="closeAll">Close all areas</button></div>
+    <div class="ratebar" id="ratebar" hidden aria-live="polite"></div>
     <div id="areas"></div>
   </section>
 
@@ -252,23 +271,28 @@ const M = () => MODES[mode];
 const lv = id => M().levels.find(l => l.id === id);
 const key = () => `ohom-assess-v1-${mode}`;
 const blank = () => ({ name: '', off: [], f: {}, a: {}, notes: {}, open: {}, detail: {} });
-const blankProd = (n) => ({ id: 'p' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), name: `Product ${n}`, f: {}, a: {}, notes: {}, open: {}, detail: {} });
+// Each product gets its own colour, kept apart from the rating colours
+const PCOLS = ['#3d6fb6', '#8a4fb0', '#56687a', '#a0448c', '#5a4fcf', '#8a5a2b', '#2f6f8f', '#6b5b95'];
+const nextCi = () => { const used = new Set(((st && st.products) || []).map(p => p.ci)); for (let i = 0; i < PCOLS.length; i++) if (!used.has(i)) return i; return ((st && st.products) || []).length % PCOLS.length; };
+const pcol = p => PCOLS[(p && p.ci != null ? p.ci : 0) % PCOLS.length];
+const blankProd = (name) => ({ id: 'p' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), name: name || 'Untitled product', ci: nextCi(), f: {}, a: {}, notes: {}, open: {}, detail: {} });
 function load() {
   try { st = { ...blank(), ...JSON.parse(localStorage.getItem(key()) || '{}') }; } catch (e) { st = blank(); }
   if (mode === 'product') {
     if (!Array.isArray(st.products)) { // older single-product saves become the first product
       const had = Object.keys(st.f).length || Object.keys(st.a).length;
-      st.products = [{ ...blankProd(1), name: (had && st.name) || 'Product 1', f: st.f, a: st.a, notes: st.notes, open: st.open, detail: st.detail }];
+      st.products = had ? [{ ...blankProd(st.name || 'Product 1'), ci: 0, f: st.f, a: st.a, notes: st.notes, open: st.open, detail: st.detail }] : [];
       if (had) st.name = '';
     }
-    if (!st.products.length) st.products.push(blankProd(1));
-    if (!st.products.some(p => p.id === st.cur)) st.cur = st.products[0].id;
+    st.products.forEach((p, i) => { if (p.ci == null) p.ci = i % PCOLS.length; });
+    if (!st.products.some(p => p.id === st.cur)) st.cur = st.products.length ? st.products[0].id : null;
     st.f = {}; st.a = {}; st.notes = {}; st.open = {}; st.detail = {};
   }
   if (view !== 'all' && !(st.products || []).some(p => p.id === view)) view = 'all';
 }
 // The ratings being edited: the organisation's in capability mode, the current product's in product mode
 const R = () => mode === 'product' ? (st.products.find(p => p.id === st.cur) || st.products[0]) : st;
+const noProducts = () => mode === 'product' && !st.products.length;
 const prods = () => mode === 'product' ? st.products : [];
 let saveT;
 let held = '', holdUntil = 0;
@@ -326,12 +350,21 @@ function renderHead() {
 }
 function renderProdbar() {
   $('#prodbar').hidden = mode !== 'product';
-  if (mode !== 'product') return;
+  if (mode !== 'product') { $('#ratebar').hidden = true; return; }
   const ratedCount = p => FN.filter(f => !fnOff(f) && fnVal(f, p)).length;
-  $('#prodtabs').innerHTML = `<span class="note">Rating:</span>` + st.products.map(p => `<button type="button" class="ptab" data-prod="${p.id}" aria-pressed="${p.id === st.cur}">${esc(p.name || 'Untitled product')} <span class="cnt">${ratedCount(p)}</span></button>`).join('') + `<button type="button" class="ptab add" id="prodAdd">+ Add a product</button>`;
-  $('#prodName').value = R().name || '';
-  $('#prodDel').hidden = st.products.length < 2;
+  $('#prodtabs').innerHTML = st.products.length ? st.products.map(p => `<button type="button" class="ptab" style="--pc:${pcol(p)}" data-prod="${p.id}" aria-pressed="${p.id === st.cur}"><span class="dot" aria-hidden="true"></span><span class="pn">${esc(p.name || 'Untitled product')}</span> <span class="cnt">${ratedCount(p)}</span></button>`).join('') : '<span class="note">No products yet. Add your first one below.</span>';
+  $('#prodEdit').hidden = !st.products.length;
+  if (st.products.length) $('#prodName').value = R().name || '';
   $('#prodDel').textContent = 'Remove this product'; delArm = false;
+  renderRatebar();
+}
+function renderRatebar() {
+  const rb = $('#ratebar');
+  if (mode !== 'product' || !st.products.length) { rb.hidden = true; return; }
+  const p = R(), fs = FN.filter(f => !fnOff(f)), done = fs.filter(f => fnVal(f, p)).length;
+  rb.hidden = false; rb.style.setProperty('--pc', pcol(p));
+  $('#areas').style.setProperty('--pc', pcol(p));
+  rb.innerHTML = `<div class="who"><span class="eyebrow">You're rating</span><b>${esc(p.name || 'Untitled product')}</b></div><span class="prog">${done} of ${fs.length} functions rated</span>${st.products.length > 1 ? `<label>Switch to<select id="rbSel">${st.products.map(x => `<option value="${x.id}"${x.id === p.id ? ' selected' : ''}>${esc(x.name || 'Untitled product')}</option>`).join('')}</select></label>` : ''}`;
 }
 function renderProgress() {
   const fs = FN.filter(f => !fnOff(f)); const vals = fs.map(f => fnVal(f));
@@ -359,10 +392,13 @@ function areaSummary(a) {
 }
 function renderRate() {
   const openState = st.areasOpen || {};
+  $('#areas').classList.toggle('scope', mode === 'product');
+  if (noProducts()) { $('#areas').innerHTML = '<div class="emptyprod">Add a product above to start rating it against the model.</div>'; $('#progress').innerHTML = ''; renderRatebar(); return; }
   $('#areas').innerHTML = D.areas.map((a, ai) => `<details class="area ${dc(a.d)}" data-area="${a.c}"${openState[a.c] ?? ai === 0 ? ' open' : ''}><summary><span class="sumname"><span class="num">${a.c}</span><span>${esc(a.n)}</span></span><span class="sumright" data-sum="${a.c}">${areaSummary(a)}</span></summary><div class="fns">${a.s.map(f => fnRow(FNI[f.c])).join('')}</div></details>`).join('');
   renderProgress();
 }
 function rerenderFn(fc) {
+  if (mode === 'product') { renderRatebar(); const t = document.querySelector(`.ptab[data-prod="${st.cur}"] .cnt`); if (t) t.textContent = FN.filter(f => !fnOff(f) && fnVal(f, R())).length; }
   const el = document.querySelector(`.fn[data-fn="${fc}"]`); if (el) el.outerHTML = fnRow(FNI[fc]);
   const a = FNI[fc].area; const s = document.querySelector(`[data-sum="${a.c}"]`); if (s) s.innerHTML = areaSummary(a);
   renderProgress();
@@ -371,6 +407,7 @@ function rerenderFn(fc) {
 
 // Results
 function renderResults() {
+  if (noProducts()) { $('#viewsel').hidden = true; $('#ra1').textContent = 'No products yet'; $('#ra1p').textContent = ''; $('#headline').innerHTML = ''; $('#dist').innerHTML = ''; $('#heat').innerHTML = '<div class="empty">Add a product on the Rate tab, then come back here.</div>'; $('#svlist').innerHTML = ''; $('#figA3').hidden = true; $('#capA1').textContent = ''; $('#capA2').textContent = ''; return; }
   const m = M(), fs = FN.filter(f => !fnOff(f)), vals = fs.map(vF), rated = vals.filter(v => v && v.id !== 'na');
   const any = rated.length > 0;
   const one = viewSrc(), multi = mode === 'product' && !one;
@@ -416,7 +453,7 @@ function renderMatrix() {
   let body = `<tr class="sumrow"><th>Weighted share of activities supported</th>${ps.map(p => `<td class="pc">${actPct(p)}%</td>`).join('')}<td></td></tr>`, shown = 0;
   D.areas.forEach(a => { const rows = a.s.map(x => FNI[x.c]).filter(f => !fnOff(f) && keep(f)); if (!rows.length) return; shown += rows.length;
     body += `<tr class="ah"><th colspan="${ps.length + 2}">${a.c} ${esc(a.n)}</th></tr>` + rows.map(f => { const n = ps.filter(p => supp(f, p)).length; const g = isGap(f), o = isOver(f); return `<tr><th scope="row"><span class="num">${f.c}</span>${esc(f.n)}</th>${ps.map(p => cell(f, p)).join('')}<td class="cov${g ? ' gap' : o ? ' over' : ''}">${g ? 'Gap' : o ? `${n} · overlap` : n}</td></tr>`; }).join(''); });
-  $('#pmx').innerHTML = `<table class="pmx"><thead><tr><th class="fcol" scope="col">Function</th>${ps.map(p => `<th scope="col">${esc(p.name || 'Untitled product')}</th>`).join('')}<th scope="col">Products</th></tr></thead><tbody>${body}</tbody></table>${shown ? '' : '<p class="note">Nothing to show for this filter yet.</p>'}`;
+  $('#pmx').innerHTML = `<table class="pmx"><thead><tr><th class="fcol" scope="col">Function</th>${ps.map(p => `<th scope="col" style="border-bottom: 4px solid ${pcol(p)}">${esc(p.name || 'Untitled product')}</th>`).join('')}<th scope="col">Products</th></tr></thead><tbody>${body}</tbody></table>${shown ? '' : '<p class="note">Nothing to show for this filter yet.</p>'}`;
   $('#capA3').textContent = `${ps.length} product${ps.length === 1 ? '' : 's'} · ${shown} of ${fs.length} functions shown · ✓ supported, ½ partly, ✕ not supported`;
 }
 function reqStats(r) {
@@ -473,7 +510,7 @@ function importCsv(text) {
   if (fileMode && MODES[fileMode] && fileMode !== mode) { mode = fileMode; history.replaceState(null, '', `?mode=${mode}`); }
   const ns = blank(); let n = 0; const byProd = new Map();
   // Older single-product files have no product column: the name column was the product's name
-  const target = r => { if (mode !== 'product') return ns; const pn = (ix('product') >= 0 ? r[ix('product')] : '') || (ix('product') < 0 && ix('name') >= 0 ? r[ix('name')] : '') || 'Product 1'; if (!byProd.has(pn)) byProd.set(pn, { ...blankProd(byProd.size + 1), name: pn }); return byProd.get(pn); };
+  const target = r => { if (mode !== 'product') return ns; const pn = (ix('product') >= 0 ? r[ix('product')] : '') || (ix('product') < 0 && ix('name') >= 0 ? r[ix('name')] : '') || 'Product 1'; if (!byProd.has(pn)) byProd.set(pn, blankProd(pn)); return byProd.get(pn); };
   rows.forEach(r => { const code = (r[ix('code')] || '').trim(); let v = (r[ix('rating')] || '').trim(); if (!code) return;
     if (ix('name') >= 0 && r[ix('name')] && (mode !== 'product' || ix('product') >= 0)) ns.name = r[ix('name')];
     const t = target(r);
@@ -483,7 +520,7 @@ function importCsv(text) {
     else if (level === 'function' && FNI[code]) { const label = ix('rating_label') >= 0 ? r[ix('rating_label')] : ''; if (v && !/from activities/.test(label)) { t.f[code] = v; n++; } if (ix('note') >= 0 && r[ix('note')]) t.notes[code] = r[ix('note')]; }
   });
   st = { ...ns, off: st.off };
-  if (mode === 'product') { st.products = [...byProd.values()]; if (!st.products.length) st.products.push(blankProd(1)); st.cur = st.products[0].id; view = 'all'; }
+  if (mode === 'product') { st.products = [...byProd.values()]; st.products.forEach((p, i) => { p.ci = i % PCOLS.length; }); st.cur = st.products.length ? st.products[0].id : null; view = 'all'; }
   save(`Loaded ${n} ratings${mode === 'product' ? ` for ${st.products.length} product${st.products.length === 1 ? '' : 's'}` : ''} from the file, and saved them in this browser.`); renderAll();
 }
 
@@ -509,21 +546,31 @@ $('#closeAll').addEventListener('click', () => $$('details.area').forEach(d => d
 $('#exportBtn').addEventListener('click', exportCsv);
 $('#importIn').addEventListener('change', e => { const f = e.target.files[0]; if (!f) return; f.text().then(importCsv); e.target.value = ''; });
 $('#printBtn').addEventListener('click', () => { showTab(true); setTimeout(() => window.print(), 50); });
-$('#clearBtn').addEventListener('click', () => { if (!clearArm) { clearArm = true; $('#clearBtn').textContent = 'Select again to clear everything'; setTimeout(() => { clearArm = false; $('#clearBtn').textContent = 'Clear all'; }, 4000); return; } clearArm = false; $('#clearBtn').textContent = 'Clear all'; st = blank(); if (mode === 'product') { st.products = [blankProd(1)]; st.cur = st.products[0].id; view = 'all'; } save(); renderAll(); });
+$('#clearBtn').addEventListener('click', () => { if (!clearArm) { clearArm = true; $('#clearBtn').textContent = 'Select again to clear everything'; setTimeout(() => { clearArm = false; $('#clearBtn').textContent = 'Clear all'; }, 4000); return; } clearArm = false; $('#clearBtn').textContent = 'Clear all'; st = blank(); if (mode === 'product') { st.products = []; st.cur = null; view = 'all'; } save(); renderAll(); });
 seg('aud', v => { aud = v; renderResults(); });
 seg('sort', v => { order = v; renderResults(); });
 seg('pmf', v => { pmf = v; renderMatrix(); });
 $('#viewSel').addEventListener('change', e => { view = e.target.value; renderResults(); });
-$('#prodtabs').addEventListener('click', e => {
-  if (e.target.closest('#prodAdd')) { const p = blankProd(st.products.length + 1); st.products.push(p); st.cur = p.id; save(); renderRate(); renderProdbar(); $('#prodName').focus(); $('#prodName').select(); return; }
-  const b = e.target.closest('.ptab[data-prod]'); if (!b || b.dataset.prod === st.cur) return;
-  st.cur = b.dataset.prod; save(); renderRate(); const nb = document.querySelector(`.ptab[data-prod="${st.cur}"]`); if (nb) nb.focus({ preventScroll: true });
+function pickProduct(id, focusTab) {
+  if (!id || id === st.cur) return;
+  st.cur = id; save(); renderRate(); renderProdbar();
+  if (focusTab) { const nb = document.querySelector(`.ptab[data-prod="${st.cur}"]`); if (nb) nb.focus({ preventScroll: true }); }
+}
+$('#prodtabs').addEventListener('click', e => { const b = e.target.closest('.ptab[data-prod]'); if (b) pickProduct(b.dataset.prod, true); });
+$('#ratebar').addEventListener('change', e => { if (e.target.id === 'rbSel') { pickProduct(e.target.value); const s2 = $('#rbSel'); if (s2) s2.focus(); } });
+$('#prodAddForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = $('#newProd').value.trim();
+  if (!name) { $('#newProd').focus(); $('#saved').textContent = 'Type a name for the product, then select Add product.'; return; }
+  const p = blankProd(name); st.products.push(p); st.cur = p.id; $('#newProd').value = '';
+  save(`Added ${name}. You're now rating it.`); renderRate(); renderProdbar();
+  const nb = document.querySelector(`.ptab[data-prod="${p.id}"]`); if (nb) nb.focus({ preventScroll: true });
 });
-$('#prodName').addEventListener('input', e => { R().name = e.target.value; save(); const t = document.querySelector(`.ptab[data-prod="${st.cur}"]`); if (t) t.firstChild.textContent = (e.target.value || 'Untitled product') + ' '; });
+$('#prodName').addEventListener('input', e => { if (!R()) return; R().name = e.target.value; save(); const t = document.querySelector(`.ptab[data-prod="${st.cur}"] .pn`); if (t) t.textContent = e.target.value || 'Untitled product'; renderRatebar(); });
 $('#prodDel').addEventListener('click', () => {
-  if (st.products.length < 2) return;
+  if (!st.products.length) return;
   if (!delArm) { delArm = true; $('#prodDel').textContent = `Select again to remove ${R().name || 'this product'} and its ratings`; setTimeout(() => { delArm = false; $('#prodDel').textContent = 'Remove this product'; }, 4000); return; }
-  st.products = st.products.filter(p => p.id !== st.cur); st.cur = st.products[0].id; if (view !== 'all' && !st.products.some(p => p.id === view)) view = 'all'; save(); renderRate(); renderProdbar();
+  st.products = st.products.filter(p => p.id !== st.cur); st.cur = st.products.length ? st.products[0].id : null; if (view !== 'all' && !st.products.some(p => p.id === view)) view = 'all'; save(); renderRate(); renderProdbar();
 });
 load(); renderAll();
 </script>
