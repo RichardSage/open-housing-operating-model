@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Data · Open Housing Operating Model</title>
+<meta name="description" content="Download the Open Housing Operating Model and its layers as CSV and JSON, free to use under CC BY 4.0.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/*__BASE_CSS__*/
+.wrap{max-width:1080px;margin:0 auto;padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:36px;grid-template-columns:minmax(0,1fr)}
+.sec{display:grid;gap:14px}
+.files{display:grid;gap:10px}
+.file{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 18px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.file b{font-size:15px}
+.file p{font-size:14px;color:var(--muted);margin:2px 0 0}
+.file .num{font-size:12px;color:var(--muted)}
+.file .btnrow{justify-content:flex-end}
+@media (max-width:640px){.file{grid-template-columns:1fr}.file .btnrow{justify-content:flex-start}}
+.cite{font-family:var(--mono);font-size:13px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;line-height:1.5}
+</style>
+</head>
+<body>
+<!--__NAV__-->
+<main class="wrap" id="main">
+  <header class="pagehead">
+    <span class="eyebrow">Data</span>
+    <h1>Download the data</h1>
+    <p class="lede" id="lede">Everything in the atlas, as spreadsheets and JSON. Free to use, change and share under CC BY 4.0. Just credit the Open Housing Operating Model.</p>
+  </header>
+
+  <section class="sec" aria-labelledby="h-model">
+    <h2 id="h-model">The model</h2>
+    <div class="files">
+      <div class="file"><div><b>Services</b><p>One row per request: the service it belongs to, who it's for, its interaction pattern, and the functions and activities it uses.</p></div><div class="btnrow"><a class="btn" href="open-housing-services.csv" download>CSV</a></div></div>
+      <div class="file"><div><b>Operating model</b><p>One row per activity, with its function and function area, the services it supports, and any specialist provision.</p></div><div class="btnrow"><a class="btn" href="open-housing-operating-model.csv" download>CSV</a></div></div>
+      <div class="file"><div><b>Shared components</b><p>One row per component and request: which building blocks each request needs.</p></div><div class="btnrow"><a class="btn" href="open-housing-components.csv" download>CSV</a></div></div>
+      <div class="file"><div><b>Everything, nested</b><p>The whole model as one JSON file: domains, function areas, functions, activities, services and requests, with descriptions.</p></div><div class="btnrow"><a class="btn" href="open-housing-operating-model.json" download>JSON</a></div></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-layers">
+    <h2 id="h-layers">Layers</h2>
+    <p class="note">Optional overlays, kept separate from the model. Each has one row per activity.</p>
+    <div class="files" id="layers"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-more">
+    <h2 id="h-more">Versions, licence and citing</h2>
+    <p id="ver"></p>
+    <p>The model and its data are licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. The code is MIT. Logo files and usage rules are in the <span id="brandlink">brand folder</span>.</p>
+    <div class="cite" id="cite"></div>
+  </section>
+</main>
+<script>
+const D = __DATA__;
+/*__COMMON_JS__*/
+$('#layers').innerHTML = (D.layers || []).map(ly => `<div class="file"><div><b>${esc(ly.n)}</b> <span class="num">version ${esc(ly.v)}</span><p>${esc(ly.summary)}</p></div><div class="btnrow"><a class="btn" href="layers/${esc(ly.id)}.csv" download>CSV</a><a class="btn" href="layers/${esc(ly.id)}.json" download>JSON</a></div></div>`).join('');
+$('#ver').innerHTML = `This is version <b>${esc(D.version)}</b>${D.released ? `, released ${esc(D.released)}` : ''}.` + (D.repo ? ` Every release, with its files, is on <a href="${esc(D.repo)}/releases">GitHub</a>, and the <a href="${esc(D.repo)}/blob/main/CHANGELOG.md">changelog</a> lists what changed.` : '');
+if (D.repo) $('#brandlink').innerHTML = `<a href="${esc(D.repo)}/tree/main/site/brand">brand folder</a>`;
+$('#cite').textContent = `Open Housing Operating Model, version ${D.version}${D.released ? ' (' + D.released.slice(0, 4) + ')' : ''}. ${location.origin}${location.pathname.replace(/data\.html$/, '')}. Licensed under CC BY 4.0.`;
+</script>
+</body>
+</html>

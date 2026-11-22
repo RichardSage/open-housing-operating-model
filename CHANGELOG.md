@@ -4,6 +4,15 @@ All notable changes to the model are recorded here. Versions follow the rules in
 
 ## Unreleased
 
+**Layers**
+- New layer `tsm` v2026.11: the 22 Tenant Satisfaction Measures, linked to the work that drives or influences each one. Three lenses (TSM theme, link strength and how it's measured), and a list of the measures in the atlas's layer panel. Adds a third layer kind, `measures`.
+
+**TSM data**
+- A new **TSM data** GitHub Action finds every edition of the Regulator of Social Housing's Tenant Satisfaction Measures on GOV.UK, converts each year's full dataset to CSV in `data/tsm/` (results by landlord, tenure and measure, plus landlord details and how each survey was run), and opens a pull request when the data change. Tested against the 2025/26 full dataset: 9,918 results for 356 landlords, all 22 measures. `scripts/fetch_tsm.py --file` converts a dataset you've downloaded yourself. It runs on Mondays in November and December, and monthly to catch revisions. See `data/tsm/README.md`.
+
+**Navigation**
+- The main navigation is now Atlas, Tools, Data and Contribute. A new Tools page lists every tool and overlay with who it's for, and the tool pages share a second row of tabs. A new Data page brings together every download, the layers, versions and how to cite the model.
+
 **Branding**
 - A logo: an open outline of a house with tiles inside. The gap is the open part. It's in the navigation bar on every page and at the top of the README, with files and usage rules in `site/brand/`.
 - Browser tab and home screen icons, and a preview image with title and description tags, so links to any page show a proper card when shared.

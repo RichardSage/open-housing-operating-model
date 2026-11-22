@@ -16,18 +16,20 @@ A layer's version changes independently of the model. Changing a layer never cha
 | Layer | What it adds | Version |
 |---|---|---|
 | [`ai-impact`](ai-impact/) | Where AI could change each activity (Rannoch's five impact categories), a governance tier, and a suggested route, based on the NHF AI code of practice and the Regulator's statements | 2026.11 |
+| [`tsm`](tsm/) | The 22 Tenant Satisfaction Measures, linked to the functions and activities that drive or influence each one. Three lenses: TSM theme, how strongly the work is linked to a measure, and whether it's measured by the tenant survey or landlord records | 2026.11 |
 | [`regulation`](regulation/) | A register of 48 laws, regulatory standards and codes for registered providers in England, linked to the functions and activities they require or shape. Two lenses: the legal basis for each activity, and what's changing and when | 2026.11 |
 
 ## Ideas for new layers
 
 - Typical roles or teams that carry out each activity
 - The systems or data each activity depends on
-- Performance measures, such as Tenant Satisfaction Measures, linked to activities
+- Other performance measures, such as a landlord's own KPIs
 
-## Two kinds of layer
+## Three kinds of layer
 
 - **Value layers** (like `ai-impact`) give each activity one value per field, in a CSV keyed by activity code.
 - **Register layers** (like `regulation`, with `kind: register`) hold a list of things, such as obligations, in `register.yaml`, and link them to functions or activities in `links.csv`. A link to a function applies to all its activities. The build works out the lenses from those links, so nobody edits the lens values by hand.
+- **Measures layers** (like `tsm`, with `kind: measures`) list performance measures in `measures.yaml` and link them to functions or activities in `links.csv`, using `drives` when the work directly produces the measured result and `influences` when it affects it less directly. Again, the build works out the lenses.
 
 ## Improving the regulation layer
 

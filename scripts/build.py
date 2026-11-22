@@ -288,6 +288,66 @@ def load_register_layer(ly, w, folder, fn_index, act_index):
     return values
 
 
+TSM_THEMES = ["repairs", "safety", "engagement", "complaints", "neighbourhood"]
+
+
+def load_measures_layer(ly, w, folder, fn_index, act_index):
+    """A measures layer: performance measures plus links to the work that drives or influences them."""
+    ms = load(folder / str(ly.get("measures", "measures.yaml"))).get("measures") or []
+    ids = {}
+    for i, m in enumerate(ms):
+        mw = f"{w}/measures.yaml › {m.get('id', '?')}"
+        if not m.get("id") or not m.get("name"):
+            err(mw, "each measure needs an id and a name")
+            continue
+        if m["id"] in ids:
+            err(mw, "duplicate measure id")
+        ids[m["id"]] = i
+        if m.get("kind") not in ("perception", "management"):
+            err(mw, "kind must be 'perception' or 'management'")
+        if m.get("theme") not in TSM_THEMES + ["overall"]:
+            err(mw, f"theme must be one of: {', '.join(TSM_THEMES + ['overall'])}")
+    links = defaultdict(lambda: {"drives": set(), "influences": set()})
+    lpath = folder / str(ly.get("links", "links.csv"))
+    if not lpath.is_file():
+        err(w, f"links file '{lpath.name}' not found")
+        return None
+    with open(lpath, newline="", encoding="utf-8") as f:
+        for i, row in enumerate(csv.DictReader(f), start=2):
+            rw = f"{w}/{lpath.name} line {i}"
+            code, mid, rel = (row.get("code") or "").strip(), (row.get("measure") or "").strip(), (row.get("relation") or "").strip()
+            if mid not in ids:
+                err(rw, f"measure '{mid}' is not in measures.yaml")
+                continue
+            if rel not in ("drives", "influences"):
+                err(rw, "relation must be 'drives' or 'influences'")
+                continue
+            if code in fn_index:
+                targets = [x["code"] for x in fn_index[code][1]["activities"]]
+            elif code in act_index:
+                targets = [code]
+            else:
+                err(rw, f"'{code}' is not a function or activity code in the model")
+                continue
+            for t in targets:
+                links[t][rel].add(mid)
+    values = {}
+    for code in act_index:
+        lk = links.get(code, {"drives": set(), "influences": set()})
+        themes = {ms[ids[m]]["theme"] for m in lk["drives"]}
+        theme = "none" if not themes else themes.pop() if len(themes) == 1 else "several"
+        strength = "drives" if lk["drives"] else "influences" if lk["influences"] else "none"
+        kinds = {ms[ids[m]]["kind"] for m in lk["drives"] | lk["influences"]}
+        source = "none" if not kinds else "both" if len(kinds) == 2 else kinds.pop()
+        values[code] = {"theme": theme, "strength": strength, "source": source}
+    # Keep the register shape so the atlas and outputs can treat it like the regulation layer
+    ly["_register"] = ms
+    ly["_reg_ids"] = ids
+    ly["_links"] = {c: {"requires": sorted(d["drives"]), "shapes": sorted(d["influences"])} for c, d in links.items()}
+    ly["_rel_names"] = ["drives", "influences"]
+    return values
+
+
 def load_layers(act_index, fn_index=None):
     """Load optional activity layers. Each has layer.yaml (definitions) and a CSV keyed by activity code."""
     layers = []
@@ -306,8 +366,9 @@ def load_layers(act_index, fn_index=None):
             err(w, "layer.yaml needs at least one field under 'fields'")
             continue
         allowed = {f: [str(v["id"]) for v in (fd.get("values") or [])] for f, fd in fields.items()}
-        if ly.get("kind") == "register":
-            values = load_register_layer(ly, w, ly_path.parent, fn_index or {}, act_index)
+        if ly.get("kind") in ("register", "measures"):
+            loader = load_register_layer if ly.get("kind") == "register" else load_measures_layer
+            values = loader(ly, w, ly_path.parent, fn_index or {}, act_index)
             if values is not None:
                 layers.append({**ly, "_values": values})
             continue
@@ -387,12 +448,30 @@ def load_components(svc):
     return out
 
 
-PAGES = [  # (output file, template, label in the navigation)
-    ("index.html", "template.html", "Atlas"),
-    ("patterns.html", "pages/patterns.html", "Patterns & components"),
-    ("pressure.html", "pages/pressure.html", "Pressure map"),
-    ("assess.html", "pages/assess.html", "Assess"),
+PAGES = [  # (output file, template, label, section). Section "tool" pages share the Tools tab and its sub-navigation.
+    ("index.html", "template.html", "Atlas", "atlas"),
+    ("tools.html", "pages/tools.html", "Tools", "tools"),
+    ("patterns.html", "pages/patterns.html", "Patterns & components", "tool"),
+    ("pressure.html", "pages/pressure.html", "Pressure map", "tool"),
+    ("assess.html", "pages/assess.html", "Assess", "tool"),
+    ("data.html", "pages/data.html", "Data", "data"),
 ]
+
+
+def nav_html(out, section, repo):
+    """Main navigation (Atlas, Tools, Data, Contribute), plus a second row of tool tabs on the Tools pages."""
+    cur = ' aria-current="page"'
+    main = [("index.html", "Atlas", section == "atlas"), ("tools.html", "Tools", section in ("tools", "tool")),
+            ("data.html", "Data", section == "data")]
+    links = "".join(f'<a href="{h}"{cur if on else ""}>{t}</a>' for h, t, on in main)
+    if repo:
+        links += f'<a href="{repo}/blob/main/HOW-TO-CONTRIBUTE.md">Contribute</a>'
+    sub = ""
+    if section in ("tools", "tool"):
+        tabs = [("tools.html", "All tools")] + [(o, label) for o, t, label, sec in PAGES if sec == "tool" and (SITE / t).exists()]
+        sub = ('<nav class="subnav" aria-label="Tools"><div class="in">'
+               + "".join(f'<a href="{h}"{cur if h == out else ""}>{t}</a>' for h, t in tabs) + "</div></nav>")
+    return links, sub
 
 
 def render_pages(compact):
@@ -409,14 +488,13 @@ def render_pages(compact):
         site_url = f"https://{m_.group(1).lower()}.github.io/{m_.group(2)}/" if m_ else ""
     if site_url and not site_url.endswith("/"):
         site_url += "/"
-    for out, tpl_name, _ in PAGES:
+    repo = (load(MODEL / "meta.yaml") or {}).get("repo_url", "")
+    for out, tpl_name, _, section in PAGES:
         tpl_path = SITE / tpl_name
         if not tpl_path.exists():
             continue
-        cur = ' aria-current="page"'
-        links = "".join(f'<a href="{o}"{cur if o == out else ""}>{label}</a>'
-                        for o, t, label in PAGES if (SITE / t).exists())
-        nav = nav_tpl.replace("__NAV_LINKS__", links)
+        links, sub = nav_html(out, section, repo)
+        nav = nav_tpl.replace("__NAV_LINKS__", links).replace("<!--__SUBNAV__-->", sub)
         raw = tpl_path.read_text(encoding="utf-8")
         t_ = re.search(r"<title>(.*?)</title>", raw, re.S)
         d_ = re.search(r'<meta name="description" content="([^"]*)"', raw)
@@ -585,7 +663,12 @@ def main(check_only):
                                       "ch": [{"d": str(c.get("date")), "c": c.get("certainty"), "s": c.get("summary", "")}
                                              for c in o.get("changes") or []]} for o in ly["_register"]],
                         "links": {c: [[ly["_reg_ids"][o], 0] for o in d["requires"]] + [[ly["_reg_ids"][o], 1] for o in d["shapes"] if o not in d["requires"]]
-                                  for c, d in ly["_links"].items()}} if ly.get("kind") == "register" else {})}
+                                  for c, d in ly["_links"].items()}} if ly.get("kind") == "register" else {}),
+                    **({"kind": "measures", "rel": ["Drives", "Influences"],
+                        "register": [{"id": m["id"], "n": f"{m['id']} {m['name']}", "t": m.get("kind"), "th": m.get("theme"),
+                                      "u": m.get("unit", ""), "note": m.get("note", ""), "ch": []} for m in ly["_register"]],
+                        "links": {c: [[ly["_reg_ids"][o], 0] for o in d["requires"]] + [[ly["_reg_ids"][o], 1] for o in d["shapes"] if o not in d["requires"]]
+                                  for c, d in ly["_links"].items()}} if ly.get("kind") == "measures" else {})}
                    for ly in layers],
     }
     # Layers: one JSON and one CSV each, kept apart from the core model outputs
@@ -595,17 +678,18 @@ def main(check_only):
     for ly in layers:
         out = {k: v for k, v in ly.items() if not k.startswith("_")}
         lk = ly.get("_links", {})
+        rn = ly.get("_rel_names", ["requires", "shapes"])
         out["activities"] = [{"code": c, "activity": act_index[c][2]["name"], **rec,
-                              **({"requires": lk.get(c, {}).get("requires", []), "shapes": lk.get(c, {}).get("shapes", [])} if lk else {})}
+                              **({rn[0]: lk.get(c, {}).get("requires", []), rn[1]: lk.get(c, {}).get("shapes", [])} if lk else {})}
                              for c, rec in sorted(ly["_values"].items(), key=lambda kv: num_key(kv[0]))]
         if ly.get("_register"):
-            out["register"] = ly["_register"]
+            out["measures" if ly.get("kind") == "measures" else "register"] = ly["_register"]
         (DIST / "layers" / f"{ly['id']}.json").write_text(json.dumps(out, indent=1, ensure_ascii=False), encoding="utf-8")
         with open(DIST / "layers" / f"{ly['id']}.csv", "w", newline="", encoding="utf-8") as f:
             wr = csv.writer(f)
             lk = ly.get("_links", {})
             wr.writerow(["activity_code", "function_area", "function", "activity", *ly["fields"].keys(),
-                         *(["requires", "shapes"] if lk else [])])
+                         *(ly.get("_rel_names", ["requires", "shapes"]) if lk else [])])
             for c, rec in sorted(ly["_values"].items(), key=lambda kv: num_key(kv[0])):
                 a, fn, x = act_index[c]
                 wr.writerow([c, a["name"], fn["name"], x["name"], *[rec[k] for k in ly["fields"]],

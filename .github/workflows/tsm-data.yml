@@ -1,0 +1,56 @@
+name: TSM data
+
+# Downloads the Regulator of Social Housing's Tenant Satisfaction Measures datasets from GOV.UK,
+# converts them to CSV in data/tsm/, and opens a pull request when anything has changed.
+# The regulator publishes each year's results in November, and sometimes revises earlier years.
+# See data/tsm/README.md.
+
+on:
+  schedule:
+    - cron: "41 6 * 11,12 1"   # Mondays in November and December
+    - cron: "41 6 3 * *"       # and on the 3rd of every month, to catch revisions
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: tsm-data
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml openpyxl
+      - name: Download and convert
+        run: python scripts/fetch_tsm.py
+      - name: Summary
+        run: |
+          echo "## TSM data" >> "$GITHUB_STEP_SUMMARY"
+          cat data/tsm/SUMMARY.md >> "$GITHUB_STEP_SUMMARY" || true
+      - name: Open a pull request if the data changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -z "$(git status --porcelain data/tsm)" ]; then
+            echo "No changes to the TSM data." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          branch="tsm-data/$(date -u +%Y-%m-%d)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add data/tsm
+          git commit -m "Update TSM data from the Regulator of Social Housing"
+          git push -f origin "$branch"
+          if ! gh pr view "$branch" >/dev/null 2>&1; then
+            gh pr create --head "$branch" --title "Update TSM data from the Regulator of Social Housing" \
+              --body "$(printf 'The TSM data Action found new or changed data on GOV.UK.\n\n%s\n\nBefore merging, check `data/tsm/STRUCTURE.md`: if the regulator changed its layout, the conversion in `scripts/fetch_tsm.py` may need adjusting.\n\nSource: Regulator of Social Housing, under the Open Government Licence v3.0.' "$(cat data/tsm/SUMMARY.md)")"
+          fi

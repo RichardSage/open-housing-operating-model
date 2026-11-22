@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tools · Open Housing Operating Model</title>
+<meta name="description" content="Tools that put the Open Housing Operating Model to work: shared building blocks, where change and opportunity meet, capability and product assessments, and overlays on the atlas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/*__BASE_CSS__*/
+.wrap{max-width:1280px;margin:0 auto;padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:36px;grid-template-columns:minmax(0,1fr)}
+.sec{display:grid;gap:14px}
+.sec>p{color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.tcard{display:grid;gap:10px;align-content:start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;text-decoration:none;color:var(--ink)}
+a.tcard:hover{border-color:var(--ink)}
+.tcard:focus-visible{outline:2px solid var(--homes);outline-offset:2px}
+.tcard h3{font-family:var(--display);font-size:20px;font-weight:650;line-height:1.25}
+a.tcard h3::after{content:" →";color:var(--muted)}
+.tcard .q{font-size:14.5px;line-height:1.5;color:var(--ink)}
+.tcard .who{display:flex;flex-wrap:wrap;gap:6px}
+.tcard .lenses{display:flex;flex-wrap:wrap;gap:6px}
+.tcard .lenses a{font-size:13px;border:1px solid var(--line);border-radius:999px;padding:3px 10px;text-decoration:none;background:var(--bg)}
+.tcard .lenses a:hover{border-color:var(--ink)}
+.tcard.next{border-style:dashed;background:transparent}
+</style>
+</head>
+<body>
+<!--__NAV__-->
+<main class="wrap" id="main">
+  <header class="pagehead">
+    <span class="eyebrow">Tools</span>
+    <h1>Put the model to work</h1>
+    <p class="lede">The atlas shows what a housing association does. These tools help you decide what to do about it: where to invest, what to build once, where the pressure is, and how well you're doing. Each one says who it's for.</p>
+  </header>
+
+  <section class="sec" aria-labelledby="h-tools">
+    <h2 id="h-tools">Tools</h2>
+    <div class="cards">
+      <a class="tcard" href="patterns.html"><h3>Patterns &amp; components</h3><p class="q">Which shared building blocks would serve the most services, so you build them once?</p><div class="who"><span class="persona">Digital transformation</span><span class="persona">Product owners</span><span class="persona">Architects</span></div></a>
+      <a class="tcard" href="pressure.html"><h3>Pressure map</h3><p class="q">Where do regulatory change and AI opportunity land on the same work?</p><div class="who"><span class="persona">Business strategy</span><span class="persona">Executive teams</span><span class="persona">Compliance leads</span></div></a>
+      <a class="tcard" href="assess.html"><h3>Assess your capability</h3><p class="q">How well does each function work in your organisation today, and what does that mean for the services residents use?</p><div class="who"><span class="persona">Operating model design</span><span class="persona">Transformation teams</span></div></a>
+      <a class="tcard" href="assess.html?mode=product"><h3>Map your products</h3><p class="q">What do your systems cover between them, where do they overlap, and where are the gaps?</p><div class="who"><span class="persona">IT and procurement</span><span class="persona">Software suppliers</span></div></a>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-layers">
+    <h2 id="h-layers">Overlays in the atlas</h2>
+    <p>Optional layers you can switch on in the atlas. Each colours every figure by a different question. Choose a view to open the atlas with it on.</p>
+    <div class="cards" id="layers"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-next">
+    <h2 id="h-next">Coming next</h2>
+    <div class="cards">
+      <div class="tcard next"><h3>Your TSM results on the model</h3><p class="q">Pick your landlord from the regulator's published Tenant Satisfaction Measures, see how you compare with the sector, and see where on the model tenants feel the strain.</p><div class="who"><span class="persona">Boards and executives</span><span class="persona">Performance teams</span><span class="persona">Tenant panels</span></div></div>
+    </div>
+  </section>
+</main>
+<script>
+const D = __DATA__;
+/*__COMMON_JS__*/
+$('#layers').innerHTML = (D.layers || []).map(ly => `<div class="tcard"><h3>${esc(ly.n)}</h3><p class="q">${esc(ly.summary)}</p><div class="lenses">${ly.fields.filter(f => f.vals.length > 2).map(f => `<a href="index.html?layer=${encodeURIComponent(ly.id + ':' + f.id)}">${esc(f.n)}</a>`).join('')}</div><span class="note">Version ${esc(ly.v)}</span></div>`).join('');
+</script>
+</body>
+</html>

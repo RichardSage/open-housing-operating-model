@@ -170,6 +170,12 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .spoff{opacity:.28}
 .dot.spoff{opacity:.18}
 .coming{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.mlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px 24px}
+.mlist b{font-size:13px;display:block;margin-bottom:4px}
+.mlist ul{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.mlist li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:6px;font-size:13px;line-height:1.35}
+.mlist li .num{font-size:12px;color:var(--muted)}
+.mlist small{display:block;color:var(--muted);font-size:11.5px}
 .coming li{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:4px 12px;align-items:baseline;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--lc);border-radius:6px;padding:7px 10px;font-size:13px}
 .coming li .num{font-size:12px}
 .coming li small{color:var(--muted);font-size:12px;white-space:nowrap}
@@ -215,7 +221,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   </header>
 
   <section class="usemodel" aria-labelledby="hu">
-    <div class="ushead"><span class="eyebrow">Use the model</span><h2 id="hu">Tools that put the model to work</h2></div>
+    <div class="ushead"><span class="eyebrow">Use the model</span><h2 id="hu">Tools that put the model to work</h2><a href="tools.html">See all tools and overlays →</a></div>
     <div class="ucards">
       <a class="ucard" href="patterns.html"><b>Patterns &amp; components</b><span>Which shared building blocks would serve the most services, so you build them once.</span><small>For digital and product teams</small></a>
       <a class="ucard" href="pressure.html"><b>Pressure map</b><span>Where regulatory change and AI opportunity land on the same work.</span><small>For strategy and leadership teams</small></a>
@@ -382,6 +388,9 @@ const LCOL = {
   'route': ['--l0', '--l1', '--l4', '--l2', '--l5', '--lnone'],
   'basis': ['--l1', '--l0', '--l3', '--lnone'],
   'changing': ['--l5', '--l3', '--l1', '--lnone'],
+  'theme': ['--l3', '--l5', '--l1', '--l2', '--l0', '--l4', '--lnone'],
+  'strength': ['--l0', '--t1c', '--lnone'],
+  'source': ['--l1', '--l4', '--l2', '--lnone'],
 };
 const LENSES = (D.layers || []).flatMap(ly => ly.fields.map((f, fi) => ({ key: `${ly.id}:${f.id}`, ly, f, fi })).filter(x => x.f.vals.length > 2));
 let lens = null;
@@ -389,10 +398,16 @@ const lensIdx = code => { if (!lens) return -1; const v = lens.ly.data[code]; re
 const lensCol = i => { const pal = LCOL[lens.f.id] || ['--l0', '--l1', '--l2', '--l3', '--l4', '--l5']; const none = /^(none|no-change|no|stable)$/.test(lens.f.vals[i]?.id || ''); return `var(${none ? '--lnone' : (pal[i] || '--l' + (i % 6))})`; };
 const lensName = code => { const i = lensIdx(code); return i < 0 ? 'No value' : lens.f.vals[i].n; };
 const oblList = (code, rel) => (lens.ly.links?.[code] || []).filter(x => x[1] === rel).map(x => lens.ly.register[x[0]].n);
-const lensTip = code => { if (!lens) return ''; let t = `<br>${esc(lens.f.n)}: <b>${esc(lensName(code))}</b>`; if (lens.ly.links) { const r = oblList(code, 0), sh = oblList(code, 1); if (r.length) t += `<br>Required by: ${r.slice(0, 4).map(esc).join('; ')}${r.length > 4 ? ` +${r.length - 4} more` : ''}`; if (sh.length) t += `<br>Shaped by: ${sh.slice(0, 4).map(esc).join('; ')}${sh.length > 4 ? ` +${sh.length - 4} more` : ''}`; } return t; };
+const lensTip = code => { if (!lens) return ''; let t = `<br>${esc(lens.f.n)}: <b>${esc(lensName(code))}</b>`; if (lens.ly.links) { const r = oblList(code, 0), sh = oblList(code, 1); const RL = lens.ly.rel || ['Required by', 'Shaped by']; if (r.length) t += `<br>${RL[0]}: ${r.slice(0, 4).map(esc).join('; ')}${r.length > 4 ? ` +${r.length - 4} more` : ''}`; if (sh.length) t += `<br>${RL[1]}: ${sh.slice(0, 4).map(esc).join('; ')}${sh.length > 4 ? ` +${sh.length - 4} more` : ''}`; } return t; };
 const lensBar = codes => { if (!lens || !codes.length) return ''; const c = new Map(); codes.forEach(x => { const i = lensIdx(x); c.set(i, (c.get(i) || 0) + 1); }); return `<span class="lbar">${[...c.keys()].sort((a, b) => a - b).map(i => `<i style="flex:${c.get(i)};--lc:${i < 0 ? 'var(--lnone)' : lensCol(i)}" data-tip="${esc(`${i < 0 ? 'No value' : esc(lens.f.vals[i].n)}: ${c.get(i)} activit${c.get(i) === 1 ? 'y' : 'ies'}`)}"></i>`).join('')}</span>`; };
+function measureList(ly) {
+  if (ly.kind !== 'measures') return '';
+  const reach = ly.register.map(() => [0, 0]); Object.values(ly.links || {}).forEach(ls => ls.forEach(([i, r]) => reach[i][r]++));
+  const TH = [['overall', 'Overall'], ['repairs', 'Keeping properties in good repair'], ['safety', 'Maintaining building safety'], ['engagement', 'Respectful and helpful engagement'], ['complaints', 'Effective handling of complaints'], ['neighbourhood', 'Responsible neighbourhood management']];
+  return `<h3 style="font-size:16px;margin:4px 0 0">The 22 measures</h3><div class="mlist">${TH.map(([id, n]) => { const ms = ly.register.map((m, i) => ({ m, i })).filter(x => x.m.th === id); return ms.length ? `<div><b>${esc(n)}</b><ul>${ms.map(({ m, i }) => `<li><span class="num">${esc(m.id)}</span><span>${esc(m.n.slice(m.id.length + 1))}<small>${m.t === 'perception' ? 'Tenant survey' : 'Landlord records'} · ${esc(m.u)}${reach[i][0] ? ` · driven by ${reach[i][0]} activities` : m.id === 'TP01' ? ' · reflects everything' : ''}</small></span></li>`).join('')}</ul></div>` : ''; }).join('')}</div>`;
+}
 function comingUp(ly) {
-  if (!ly.register) return '';
+  if (!ly.register || ly.kind === 'measures') return '';
   const asOf = ly.asOf || new Date().toISOString().slice(0, 10);
   const when = d => { const m = /^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?$/.exec(d); return m ? `${m[1]}-${m[2] || '07'}-${m[3] || '01'}` : ''; };
   const fmt = d => { const m = /^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?$/.exec(d); if (!m) return d; const mon = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; return m[3] ? `${+m[3]} ${mon[+m[2] - 1]} ${m[1]}` : m[2] ? `${mon[+m[2] - 1]} ${m[1]}` : m[1]; };
@@ -411,7 +426,7 @@ function renderLensUI() {
   $('#lensKey').innerHTML = `<div class="key">${lens.f.vals.map((v, i) => `<span style="--lc:${lensCol(i)}" data-tip="${esc(`<b>${esc(v.n)}</b><small>${esc(v.desc)}</small>`)}"><span class="lsw"></span>${esc(v.n)}</span>`).join('')}</div>`;
   const ly = lens.ly;
   $('#lensPanel').hidden = false;
-  $('#lensPanel').innerHTML = `<span class="eyebrow">Optional layer · version ${esc(ly.v)}</span><h2>${esc(ly.n)}: ${esc(lens.f.n)}</h2><p>${esc(ly.summary)} Activities in every figure below are now coloured by <strong>${esc(lens.f.n.toLowerCase())}</strong>. Switch back to "Model only" to hide it.</p><div class="vals">${lens.f.vals.map((v, i) => `<div class="val" style="--lc:${lensCol(i)}"><span class="lsw"></span><b>${esc(v.n)}</b><span class="num">${counts[i]}</span>${v.desc ? `<small>${esc(v.desc)}</small>` : ''}</div>`).join('')}</div>${comingUp(ly)}<p class="src">${ly.asOf ? `Worked out as at ${esc(ly.asOf)}. ` : ''}<strong>${esc(ly.caveat)}</strong> Sources: ${ly.sources.map(x => x.url ? `<a href="${esc(x.url)}">${esc(x.name)}</a>` : esc(x.name)).join('; ')}. <a href="layers/${esc(ly.id)}.csv" download>Download this layer (CSV)</a>${D.repo ? ` · <a href="${esc(D.repo)}/tree/main/layers/${esc(ly.id)}">See or improve it on GitHub</a>` : ''}</p>`;
+  $('#lensPanel').innerHTML = `<span class="eyebrow">Optional layer · version ${esc(ly.v)}</span><h2>${esc(ly.n)}: ${esc(lens.f.n)}</h2><p>${esc(ly.summary)} Activities in every figure below are now coloured by <strong>${esc(lens.f.n.toLowerCase())}</strong>. Switch back to "Model only" to hide it.</p><div class="vals">${lens.f.vals.map((v, i) => `<div class="val" style="--lc:${lensCol(i)}"><span class="lsw"></span><b>${esc(v.n)}</b><span class="num">${counts[i]}</span>${v.desc ? `<small>${esc(v.desc)}</small>` : ''}</div>`).join('')}</div>${measureList(ly) + comingUp(ly)}<p class="src">${ly.asOf ? `Worked out as at ${esc(ly.asOf)}. ` : ''}<strong>${esc(ly.caveat)}</strong> Sources: ${ly.sources.map(x => x.url ? `<a href="${esc(x.url)}">${esc(x.name)}</a>` : esc(x.name)).join('; ')}. <a href="layers/${esc(ly.id)}.csv" download>Download this layer (CSV)</a>${D.repo ? ` · <a href="${esc(D.repo)}/tree/main/layers/${esc(ly.id)}">See or improve it on GitHub</a>` : ''}</p>`;
 }
 function setLens(key, push) {
   lens = LENSES.find(L => L.key === key) || null;

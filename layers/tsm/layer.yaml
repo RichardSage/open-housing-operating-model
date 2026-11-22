@@ -1,0 +1,83 @@
+# Optional layer: Tenant Satisfaction Measures (England)
+#
+# The 22 measures the Regulator of Social Housing requires every registered provider to report
+# (measures.yaml), linked to the functions and activities that most affect each one (links.csv):
+#   drives      - the work directly produces the result being measured
+#   influences  - the work affects the result, but less directly
+# The lenses below are worked out by the build from those files, so they're never edited by hand.
+# TP01 (overall satisfaction) reflects everything a landlord does, so it isn't linked to particular work.
+
+id: tsm
+name: Tenant Satisfaction Measures
+version: "2026.11"
+kind: measures
+applies_to: activities
+measures: measures.yaml
+links: links.csv
+summary: >-
+  Which work drives or influences each of the 22 Tenant Satisfaction Measures that landlords in England
+  report every year. Overall satisfaction (TP01) reflects everything, so it isn't linked to particular work.
+caveat: >-
+  A judgement about which work most affects each measure, not a formula. Results are shaped by many
+  things, including tenant mix and how the survey was carried out, so a measure is never a score for
+  one team. Links are mostly at function level.
+sources:
+- name: "Regulator of Social Housing, Tenant Satisfaction Measures: technical requirements"
+  url: https://www.gov.uk/government/publications/tenant-satisfaction-measures-technical-requirements
+- name: "Regulator of Social Housing, Transparency, influence and accountability (including TSMs)"
+  url: https://www.gov.uk/government/collections/transparency-influence-and-accountability-including-tenant-satisfaction-measures
+- name: Regulator of Social Housing, Tenant Satisfaction Measures 2025/26 (statistics and full dataset)
+  url: https://www.gov.uk/government/statistics/tenant-satisfaction-measures-202526
+
+fields:
+  theme:
+    name: TSM theme
+    values:
+    - id: repairs
+      name: Keeping properties in good repair
+      description: Drives TP02, TP03, TP04, RP01 or RP02
+    - id: safety
+      name: Maintaining building safety
+      description: Drives TP05 or the building safety checks BS01 to BS05
+    - id: engagement
+      name: Respectful and helpful engagement
+      description: Drives TP06, TP07 or TP08
+    - id: complaints
+      name: Effective handling of complaints
+      description: Drives TP09, CH01 or CH02
+    - id: neighbourhood
+      name: Responsible neighbourhood management
+      description: Drives TP10, TP11, TP12 or NM01
+    - id: several
+      name: More than one theme
+      description: Drives measures in two or more themes
+    - id: none
+      name: No direct link
+      description: Doesn't directly drive a measure, though it may influence one
+  strength:
+    name: Link to the measures
+    values:
+    - id: drives
+      name: Drives a measure
+      description: The work directly produces a result that's measured
+    - id: influences
+      name: Influences a measure
+      description: The work affects a measured result, but less directly
+    - id: none
+      name: Not linked
+      description: Not linked to a specific measure (overall satisfaction still reflects it)
+  source:
+    name: How it's measured
+    values:
+    - id: perception
+      name: Tenant survey only
+      description: Linked only to perception measures from the tenant survey (TP)
+    - id: management
+      name: Landlord records only
+      description: Linked only to management information measures (CH, NM, RP, BS)
+    - id: both
+      name: Both
+      description: Linked to survey and management information measures
+    - id: none
+      name: Not linked
+      description: Not linked to a specific measure

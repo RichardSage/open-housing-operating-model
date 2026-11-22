@@ -20,11 +20,11 @@ It gives people across social housing a shared vocabulary for the work: for desi
 ## Explore it
 
 - **Interactive atlas:** [richardsage.github.io/open-housing-operating-model](https://richardsage.github.io/open-housing-operating-model/). Browse the services, see what sits behind each one, and explore every activity.
-- **Use the tools:** three pages that put the model to work. Each says who it's for.
+- **Use the tools:** the [Tools](https://richardsage.github.io/open-housing-operating-model/tools.html) page lists them all, with who each one is for.
   - [Patterns & components](https://richardsage.github.io/open-housing-operating-model/patterns.html): which shared building blocks would serve the most services, so you build them once.
   - [Pressure map](https://richardsage.github.io/open-housing-operating-model/pressure.html): where regulatory change and AI opportunity land on the same work.
   - [Assess](https://richardsage.github.io/open-housing-operating-model/assess.html): rate your organisation's capability, or [map your products' coverage](https://richardsage.github.io/open-housing-operating-model/assess.html?mode=product), against the model. Add several products to see what they cover between them, where they overlap and where the gaps are. Everything stays in your browser, and you can download it as a CSV.
-- **Download the data:** `open-housing-services.csv` (one row per request), `open-housing-operating-model.csv` (one row per activity), `open-housing-components.csv` (which shared components each request uses) and the full `open-housing-operating-model.json` are published alongside the atlas and attached to each [release](../../releases).
+- **Download the data:** from the [Data](https://richardsage.github.io/open-housing-operating-model/data.html) page. `open-housing-services.csv` (one row per request), `open-housing-operating-model.csv` (one row per activity), `open-housing-components.csv` (which shared components each request uses) and the full `open-housing-operating-model.json` are published alongside the atlas and attached to each [release](../../releases).
 - **Read the source:** the service list is in [`model/services.yaml`](model/services.yaml), and there's one file per function area in [`model/function-areas/`](model/function-areas).
 
 ## How the model is structured
@@ -149,8 +149,9 @@ Codes are **permanent identifiers**: once published, a code always means the sam
 
 Layers add a point of view on top of the model without changing it. In the atlas, choose a layer from the **Layer** bar to colour every activity by it, and choose **Model only** to hide it again. Each layer lives in [`layers/`](layers), with its own version, sources and caveats.
 
-There are two layers so far:
+There are three layers so far:
 - [`regulation`](layers/regulation): a register of the laws, regulatory standards and codes that apply to registered providers in England, linked to the activities they require or shape. It shows the **legal basis** for each activity and **what's changing**, with a "Coming up" timeline of dated changes. A [weekly watcher](layers/regulation/WATCH.md) flags changes to its sources for review. Not legal advice.
+- [`tsm`](layers/tsm): the 22 Tenant Satisfaction Measures every landlord in England reports, linked to the work that **drives** or **influences** each one. It shows which TSM theme each activity serves and whether it's measured by the tenant survey, landlord records or both.
 - [`ai-impact`](layers/ai-impact): where AI could change each activity and how carefully to approach it, drawing on the NHF's AI code of practice and the Regulator's statements. An independent judgement for discussion, not compliance advice.
 
 See [layers/README.md](layers/README.md) to suggest changes or propose a new layer.
@@ -184,7 +185,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for naming rules and how codes work, and 
 - Mapping the backstage dependencies behind each service (procurement, finance, data)
 - Short descriptions and examples for every activity
 - Versions for Scotland, Wales and Northern Ireland, and more kinds of specialist provision (such as almshouses or student housing)
-- More optional layers alongside AI and regulation, such as roles, systems, data or performance measures
+- More optional layers, such as roles, systems or data
+- Your TSM results on the model, using the Regulator's published data that the [TSM data Action](data/tsm/README.md) downloads and converts: pick a landlord from the Regulator's published data and see how it compares, function by function
 - More tools: a service blueprint for each request, and comparing a tailored version with the reference model
 
 ## Use and licence

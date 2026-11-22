@@ -1,0 +1,31 @@
+# The 22 Tenant Satisfaction Measures (TSMs) set by the Regulator of Social Housing
+#
+# id:     the regulator's code
+# kind:   perception (from the tenant perception survey) or management (from the landlord's own records)
+# theme:  the regulator's theme for the measure
+# unit:   how the result is reported
+# Names follow "Tenant Satisfaction Measures: Technical requirements" (Table 1).
+
+measures:
+- {id: TP01, name: Overall satisfaction, kind: perception, theme: overall, unit: "% satisfied"}
+- {id: TP02, name: Satisfaction with repairs, kind: perception, theme: repairs, unit: "% satisfied", note: Asked of tenants who had a repair in the last 12 months}
+- {id: TP03, name: Satisfaction with time taken to complete most recent repair, kind: perception, theme: repairs, unit: "% satisfied", note: Asked of tenants who had a repair in the last 12 months}
+- {id: TP04, name: Satisfaction that the home is well maintained, kind: perception, theme: repairs, unit: "% satisfied", note: Not asked of shared owners}
+- {id: TP05, name: Satisfaction that the home is safe, kind: perception, theme: safety, unit: "% satisfied"}
+- {id: TP06, name: Satisfaction that the landlord listens to tenant views and acts upon them, kind: perception, theme: engagement, unit: "% satisfied"}
+- {id: TP07, name: Satisfaction that the landlord keeps tenants informed about things that matter to them, kind: perception, theme: engagement, unit: "% satisfied"}
+- {id: TP08, name: Agreement that the landlord treats tenants fairly and with respect, kind: perception, theme: engagement, unit: "% agree"}
+- {id: TP09, name: Satisfaction with the landlord's approach to handling complaints, kind: perception, theme: complaints, unit: "% satisfied", note: Asked of tenants who made a complaint in the last 12 months}
+- {id: TP10, name: Satisfaction that the landlord keeps communal areas clean and well maintained, kind: perception, theme: neighbourhood, unit: "% satisfied", note: Asked of tenants who live in a building with communal areas}
+- {id: TP11, name: Satisfaction that the landlord makes a positive contribution to neighbourhoods, kind: perception, theme: neighbourhood, unit: "% satisfied"}
+- {id: TP12, name: Satisfaction with the landlord's approach to handling anti-social behaviour, kind: perception, theme: neighbourhood, unit: "% satisfied"}
+- {id: CH01, name: Complaints relative to the size of the landlord, kind: management, theme: complaints, unit: "per 1,000 homes", note: Stage one and stage two reported separately}
+- {id: CH02, name: Complaints responded to within Complaint Handling Code timescales, kind: management, theme: complaints, unit: "%"}
+- {id: NM01, name: Anti-social behaviour cases relative to the size of the landlord, kind: management, theme: neighbourhood, unit: "per 1,000 homes"}
+- {id: RP01, name: Homes that do not meet the Decent Homes Standard, kind: management, theme: repairs, unit: "% of homes"}
+- {id: RP02, name: Repairs completed within target timescale, kind: management, theme: repairs, unit: "%"}
+- {id: BS01, name: Gas safety checks, kind: management, theme: safety, unit: "% of homes"}
+- {id: BS02, name: Fire safety checks, kind: management, theme: safety, unit: "% of homes"}
+- {id: BS03, name: Asbestos safety checks, kind: management, theme: safety, unit: "% of homes"}
+- {id: BS04, name: Water safety checks, kind: management, theme: safety, unit: "% of homes"}
+- {id: BS05, name: Lift safety checks, kind: management, theme: safety, unit: "% of homes"}
