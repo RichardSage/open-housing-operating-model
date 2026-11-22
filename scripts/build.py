@@ -401,6 +401,14 @@ def render_pages(compact):
     base_css = (SITE / "partials" / "base.css").read_text(encoding="utf-8")
     nav_tpl = (SITE / "partials" / "nav.html").read_text(encoding="utf-8")
     common_js = (SITE / "partials" / "common.js").read_text(encoding="utf-8")
+    head_tpl = (SITE / "partials" / "head.html").read_text(encoding="utf-8")
+    meta = load(MODEL / "meta.yaml") or {}
+    site_url = meta.get("site_url") or ""
+    if not site_url:  # https://github.com/owner/repo -> https://owner.github.io/repo/
+        m_ = re.match(r"https://github\.com/([^/]+)/([^/]+?)/?$", str(meta.get("repo_url") or ""))
+        site_url = f"https://{m_.group(1).lower()}.github.io/{m_.group(2)}/" if m_ else ""
+    if site_url and not site_url.endswith("/"):
+        site_url += "/"
     for out, tpl_name, _ in PAGES:
         tpl_path = SITE / tpl_name
         if not tpl_path.exists():
@@ -409,8 +417,15 @@ def render_pages(compact):
         links = "".join(f'<a href="{o}"{cur if o == out else ""}>{label}</a>'
                         for o, t, label in PAGES if (SITE / t).exists())
         nav = nav_tpl.replace("__NAV_LINKS__", links)
-        html = (tpl_path.read_text(encoding="utf-8")
-                .replace("/*__BASE_CSS__*/", base_css).replace("<!--__NAV__-->", nav)
+        raw = tpl_path.read_text(encoding="utf-8")
+        t_ = re.search(r"<title>(.*?)</title>", raw, re.S)
+        d_ = re.search(r'<meta name="description" content="([^"]*)"', raw)
+        head = (head_tpl.replace("__OG_TITLE__", t_.group(1).strip() if t_ else "Open Housing Operating Model")
+                .replace("__OG_DESC__", d_.group(1) if d_ else "An open map of what a housing association does.")
+                .replace("__PAGE_URL__", site_url + ("" if out == "index.html" else out))
+                .replace("__SITE_URL__", site_url))
+        raw = raw.replace("</head>", head + "</head>", 1)
+        html = (raw.replace("/*__BASE_CSS__*/", base_css).replace("<!--__NAV__-->", nav)
                 .replace("/*__COMMON_JS__*/", common_js).replace("__DATA__", data))
         (SITE / out).write_text(html, encoding="utf-8")
 

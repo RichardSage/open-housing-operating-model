@@ -4,6 +4,10 @@ All notable changes to the model are recorded here. Versions follow the rules in
 
 ## Unreleased
 
+**Branding**
+- A logo: an open outline of a house with tiles inside. The gap is the open part. It's in the navigation bar on every page and at the top of the README, with files and usage rules in `site/brand/`.
+- Browser tab and home screen icons, and a preview image with title and description tags, so links to any page show a proper card when shared.
+
 **Tools**
 - **Assess:** product coverage now handles several products. Add, rename and remove products, and rate one at a time. The results combine them (the best support any product gives), with a new Figure A3 comparing every product function by function and filters for gaps and overlaps. You can also view the results for one product. Downloads gain a `product` column, and older single-product saves and CSVs still load.
 

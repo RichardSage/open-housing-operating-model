@@ -1,3 +1,5 @@
+<img src="site/brand/logo.svg" alt="Open Housing Operating Model logo" width="72">
+
 # Open Housing Operating Model
 
 An open map of what a housing association does, in two views:

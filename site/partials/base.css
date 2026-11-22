@@ -81,6 +81,13 @@ footer h2{color:var(--ink);font-size:20px}
 .sitenav{background:var(--ink);color:var(--surface)}
 .sitenav .in{max-width:1280px;margin:0 auto;padding:10px max(16px,env(safe-area-inset-left,0px));display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}
 .sitenav .brand{font-family:var(--display);font-weight:650;font-size:15px;color:var(--surface);text-decoration:none;margin-right:auto}
+.sitenav .brand{display:inline-flex;align-items:center;gap:10px}
+.sitenav .mark{width:24px;height:25px;flex:none;display:block}
+/* Logo colours: the navigation bar is dark in light mode and light in dark mode */
+.mark .mk-f{fill:none;stroke:#6cc2b3;stroke-width:5.5;stroke-linecap:round;stroke-linejoin:round}
+.mark .mk-t{fill:#6cc2b3}.mark .mk-s{fill:#3f7d72}.mark .mk-a{fill:#e2a65c}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .mark .mk-f{stroke:#1f6a5f}:root:not([data-theme="light"]) .mark .mk-t{fill:#1f6a5f}:root:not([data-theme="light"]) .mark .mk-s{fill:#7fb8ab}:root:not([data-theme="light"]) .mark .mk-a{fill:#a0600f}}
+:root[data-theme="dark"] .mark .mk-f{stroke:#1f6a5f}:root[data-theme="dark"] .mark .mk-t{fill:#1f6a5f}:root[data-theme="dark"] .mark .mk-s{fill:#7fb8ab}:root[data-theme="dark"] .mark .mk-a{fill:#a0600f}
 .sitenav nav{display:flex;flex-wrap:wrap;gap:2px}
 .sitenav nav a{color:var(--surface);opacity:.78;text-decoration:none;font-size:14px;padding:6px 10px;border-radius:6px}
 .sitenav nav a:hover{opacity:1;background:color-mix(in srgb,var(--surface) 12%,transparent)}
