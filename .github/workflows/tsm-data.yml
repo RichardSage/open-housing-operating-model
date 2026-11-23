@@ -50,7 +50,8 @@ jobs:
           git add data/tsm
           git commit -m "Update TSM data from the Regulator of Social Housing"
           git push -f origin "$branch"
-          if ! gh pr view "$branch" >/dev/null 2>&1; then
+          # Only an open pull request counts: one merged earlier the same day shares the branch name
+          if [ -z "$(gh pr list --head "$branch" --state open --json number --jq '.[].number')" ]; then
             gh pr create --head "$branch" --title "Update TSM data from the Regulator of Social Housing" \
               --body "$(printf 'The TSM data Action found new or changed data on GOV.UK.\n\n%s\n\nBefore merging, check `data/tsm/STRUCTURE.md`: if the regulator changed its layout, the conversion in `scripts/fetch_tsm.py` may need adjusting.\n\nSource: Regulator of Social Housing, under the Open Government Licence v3.0.' "$(cat data/tsm/SUMMARY.md)")"
           fi
