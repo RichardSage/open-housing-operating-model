@@ -41,8 +41,8 @@ a.tcard h3::after{content:" →";color:var(--muted)}
       <a class="tcard" href="patterns.html"><h3>Patterns &amp; components</h3><p class="q">Which shared building blocks would serve the most services, so you build them once?</p><div class="who"><span class="persona">Digital transformation</span><span class="persona">Product owners</span><span class="persona">Architects</span></div></a>
       <a class="tcard" href="pressure.html"><h3>Pressure map</h3><p class="q">Where do regulatory change and AI opportunity land on the same work?</p><div class="who"><span class="persona">Business strategy</span><span class="persona">Executive teams</span><span class="persona">Compliance leads</span></div></a>
       <a class="tcard" href="assess.html"><h3>Assess your capability</h3><p class="q">How well does each function work in your organisation today, and what does that mean for the services residents use?</p><div class="who"><span class="persona">Operating model design</span><span class="persona">Transformation teams</span></div></a>
-      <a class="tcard" href="index.html?layer=tsm%3Aresults"><h3>Your TSM results on the model</h3><p class="q">Pick a landlord, see its published Tenant Satisfaction Measures against other landlords, and see which work on the model drives the results that need attention.</p><div class="who"><span class="persona">Boards and executives</span><span class="persona">Performance teams</span><span class="persona">Tenant panels</span></div></a>
       <a class="tcard" href="assess.html?mode=product"><h3>Map your products</h3><p class="q">What do your systems cover between them, where do they overlap, and where are the gaps?</p><div class="who"><span class="persona">IT and procurement</span><span class="persona">Software suppliers</span></div></a>
+      <a class="tcard" href="index.html?layer=tsm%3Aresults"><h3>Your TSM results on the model</h3><p class="q">Pick a landlord, see its published Tenant Satisfaction Measures against other landlords, and see which work on the model drives the results that need attention.</p><span class="note">Uses the Tenant Satisfaction Measures overlay, below</span><div class="who"><span class="persona">Boards and executives</span><span class="persona">Performance teams</span><span class="persona">Tenant panels</span></div></a>
     </div>
   </section>
 
@@ -62,7 +62,7 @@ a.tcard h3::after{content:" →";color:var(--muted)}
 <script>
 const D = __DATA__;
 /*__COMMON_JS__*/
-$('#layers').innerHTML = (D.layers || []).map(ly => `<div class="tcard"><h3>${esc(ly.n)}</h3><p class="q">${esc(ly.summary)}</p><div class="lenses">${ly.fields.filter(f => f.vals.length > 2).map(f => `<a href="index.html?layer=${encodeURIComponent(ly.id + ':' + f.id)}">${esc(f.n)}</a>`).join('')}</div><span class="note">Version ${esc(ly.v)}</span></div>`).join('');
+$('#layers').innerHTML = (D.layers || []).map(ly => `<div class="tcard"><h3>${esc(ly.n)}</h3><p class="q">${esc(ly.summary)}</p><div class="lenses">${ly.fields.filter(f => f.vals.length > 2).map(f => `<a href="index.html?layer=${encodeURIComponent(ly.id + ':' + f.id)}">${esc(f.n)}</a>`).join('')}${ly.res ? `<a href="index.html?layer=${encodeURIComponent(ly.id + ':results')}">Landlord results</a>` : ''}</div><span class="note">Version ${esc(ly.v)}</span></div>`).join('');
 </script>
 </body>
 </html>
