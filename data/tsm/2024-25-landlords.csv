@@ -1,723 +1,364 @@
 year,provider_code,provider_name,provider_type,group_size,region,supported_housing_over_30pc,publication_url,rsh_notes,nonemergency_target_max,nonemergency_more_than_one_target,emergency_target_max,emergency_more_than_one_target
 2024-25,L4240,A2Dominion Housing Group Limited,PRP,"5,000-40,000",South,No,https://a2dominion.co.uk/about-us/tsm,,20,Yes,24,Yes
-2024-25,,A2Dominion Housing Group Limited,,"5,000-40,000",South,,,,,,,
 2024-25,L4172,Abri Group Limited,PRP,">40,000",South,No,www.abri.co.uk/customer-support/tenant-satisfaction-measures,,64,Yes,24,No
-2024-25,,Abri Group Limited,,">40,000",South,,,,,,,
 2024-25,L4511,Accent Group Limited,PRP,"5,000-40,000",North,No,https://www.accentgroup.org/about-us/performance-and-tenant-satisfaction-measures-tsms/,,28,No,24,No
-2024-25,,Accent Group Limited,,"5,000-40,000",North,,,,,,,
 2024-25,L4229,Acis Group Limited,PRP,"5,000-40,000",Midlands,No,https://www.acisgroup.co.uk/about-us/our-performance/tsms/,,28,Yes,24,No
-2024-25,,Acis Group Limited,,"5,000-40,000",Midlands,,,,,,,
 2024-25,45UB,Adur District Council,LA,"<5,000",South,No,https://www.adur-worthing.gov.uk/adur-homes/information-and-publications/tenant-satisfaction-measures/2024-25/,Management information metric RP02_1 (non emergency repairs) has been excluded from the analysis as sufficient data quality assurance could not be obtained in time for publication. They also could not provide all contextual information on repairs. We will use this information in our ongoing engagement with the landlord.,90,Yes,24,Yes
-2024-25,,Adur District Council,,"<5,000",South,,,,,,,
 2024-25,LH0280,Advance Housing and Support Limited,PRP,"<5,000",South,Yes,https://www.advanceuk.org/existing-customers/meeting-the-standard,,28,Yes,24,No
-2024-25,,Advance Housing and Support Limited,,"<5,000",South,,,,,,,
 2024-25,5060,Amplius Living,PRP,"5,000-40,000",Midlands,No,https://www.guhg.co.uk/manage-a-home/our-performance/tenant-satisfaction-measures/            https://www.longhurst-group.org.uk/about-us/performance/tsm-summary-202425/ Combined results -  https://www.guhg.co.uk/wp-content/uploads/2025/08/amplius-tsms-24-25.pdf,,90,Yes,24,Yes
-2024-25,,Amplius Living,,"5,000-40,000",Midlands,,,,,,,
 2024-25,LH4095,Anchor Hanover Group,PRP,"5,000-40,000",Mixed,Yes,https://www.anchor.org.uk/existing-residents/our-performance,,20,Yes,24,Yes
-2024-25,,Anchor Hanover Group,,"5,000-40,000",Mixed,,,,,,,
 2024-25,L3713,Arawak Walton Housing Association Limited,PRP,"<5,000",North,No,https://arawakwalton.com/tenant-satisfaction-measures/,,21,Yes,24,No
-2024-25,,Arawak Walton Housing Association Limited,,"<5,000",North,,,,,,,
 2024-25,LH0884,Arches Housing Limited,PRP,"<5,000",North,No,https://www.archeshousing.org.uk/about/20242025-tsm-results/,,28,Yes,24,No
-2024-25,,Arches Housing Limited,,"<5,000",North,,,,,,,
 2024-25,45UC,Arun District Council,LA,"<5,000",South,No,https://www.arun.gov.uk/tenant-satisfaction-measures,,20,No,24,No
-2024-25,,Arun District Council,,"<5,000",South,,,,,,,
 2024-25,37UB,Ashfield District Council,LA,"5,000-40,000",Midlands,No,https://www.ashfield.gov.uk/tenant-satisfaction-measures-2024-to-2025/,,90,Yes,24,No
-2024-25,,Ashfield District Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,29UB,Ashford Borough Council,LA,"5,000-40,000",South,No,https://www.ashford.gov.uk/housing/council-tenant/existing-council-tenants/tenant-engagement/annual-tenant-satisfaction-survey-2024-2025/,,28,No,4,No
-2024-25,,Ashford Borough Council,,"5,000-40,000",South,,,,,,,
 2024-25,L4238,Aspire Housing Limited,PRP,"5,000-40,000",Midlands,No,https://www.aspirehousing.co.uk/tsms,,64,Yes,24,Yes
-2024-25,,Aspire Housing Limited,,"5,000-40,000",Midlands,,,,,,,
 2024-25,L4393,Aster Group Limited,PRP,"5,000-40,000",South,No,https://www.aster.co.uk/corporate/about-us/our-reports,,20,Yes,36,Yes
-2024-25,,Aster Group Limited,,"5,000-40,000",South,,,,,,,
 2024-25,L4455,B3 Living Limited,PRP,"<5,000",South,No,https://www.b3living.org.uk/tsm,,20,No,24,No
-2024-25,,B3 Living Limited,,"<5,000",South,,,,,,,
 2024-25,42UB,Babergh District Council,LA,"<5,000",South,No,www.babergh.gov.uk/tenant-feedback-and-performance,,20,Yes,24,Yes
-2024-25,,Babergh District Council,,"<5,000",South,,,,,,,
 2024-25,00CC,Barnsley Metropolitan Borough Council,LA,"5,000-40,000",North,No,https://www.berneslaihomes.co.uk/about-us/how-were-performing/tenant-satisfaction-measures-tsms/,,25,Yes,24,No
-2024-25,,Barnsley Metropolitan Borough Council,,"5,000-40,000",North,,,,,,,
 2024-25,22UB,Basildon Borough Council,LA,"5,000-40,000",South,No,New URL. Currently under construction.  Document will be published following Cabinet and Housing Scruitiny Approval,,28,No,2,No
-2024-25,,Basildon Borough Council,,"5,000-40,000",South,,,,,,,
 2024-25,37UC,Bassetlaw District Council,LA,"5,000-40,000",Midlands,No,https://www.bassetlaw.gov.uk/council-housing/tenant-satisfaction-measures/,,15,Yes,24,Yes
-2024-25,,Bassetlaw District Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,5071,Believe Housing Limited,PRP,"5,000-40,000",North,No,https://www.believehousing.co.uk/about-us/tenant-satisfaction-measures,,40,Yes,24,No
-2024-25,,Believe Housing Limited,,"5,000-40,000",North,,,,,,,
 2024-25,4868,Bernicia Group,PRP,"5,000-40,000",North,No,https://www.bernicia.com/corporate/transparency-reports/performance-reports/,,60,Yes,24,No
-2024-25,,Bernicia Group,,"5,000-40,000",North,,,,,,,
 2024-25,4718,Bespoke Supportive Tenancies Ltd,PRP,"<5,000",Mixed,Yes,www.bestha.co.uk/tsm.php,,20,Yes,24,No
-2024-25,,Bespoke Supportive Tenancies Ltd,,"<5,000",Mixed,,,,,,,
 2024-25,LH4401,Beyond Housing Limited,PRP,"5,000-40,000",North,No,https://beyondhousing.co.uk/about-us/tenant-satisfaction-measures/,,60,Yes,24,No
-2024-25,,Beyond Housing Limited,,"5,000-40,000",North,,,,,,,
 2024-25,00CN,Birmingham City Council,LA,">40,000",Midlands,No,https://www.birmingham.gov.uk/info/20006/housing/2659/tenant_satisfaction_measures/3,,30,Yes,48,Yes
-2024-25,,Birmingham City Council,,">40,000",Midlands,,,,,,,
 2024-25,L1668,Black Country Housing Group Limited,PRP,"<5,000",Midlands,No,Performance: https://www.bchg.co.uk/information-and-publications/ TSM results:  https://www.bchg.co.uk/media/uxyddtzq/tenant-satisfaction-measures-performance-2024-2025.pdf,,28,No,24,No
-2024-25,,Black Country Housing Group Limited,,"<5,000",Midlands,,,,,,,
 2024-25,00EY,Blackpool Borough Council,LA,"<5,000",North,No,https://www.bch.co.uk/about-us/our-performance/tenant-satisfaction-measures,,28,Yes,24,No
-2024-25,,Blackpool Borough Council,,"<5,000",North,,,,,,,
 2024-25,17UC,Bolsover District Council,LA,"<5,000",Midlands,Yes,https://www.bolsover.gov.uk/services/h/housing/tenant-participation/tenant-satisfaction-measures,,60,Yes,24,No
-2024-25,,Bolsover District Council,,"<5,000",Midlands,,,,,,,
 2024-25,4568,Bolton at Home Limited,PRP,"5,000-40,000",North,No,https://www.boltonathome.org.uk/our-performance,,64,Yes,36,Yes
-2024-25,,Bolton at Home Limited,,"5,000-40,000",North,,,,,,,
 2024-25,LH0155,Bournemouth Churches Housing Association Limited,PRP,"<5,000",South,Yes,https://www.bcha.org.uk/our-services/bcha-home/tenant-satisfaction-measures/,,21,Yes,24,No
-2024-25,,Bournemouth Churches Housing Association Limited,,"<5,000",South,,,,,,,
 2024-25,5069,"Bournemouth, Christchurch and Poole Council",LA,"5,000-40,000",South,No,https://www.bcpcouncil.gov.uk/housing/bcp-homes-tenants-and-leaseholders/about-bcp-homes/bcp-homes-performance,,30,Yes,24,No
-2024-25,,"Bournemouth, Christchurch and Poole Council",,"5,000-40,000",South,,,,,,,
 2024-25,L0702,Bournville Village Trust,PRP,"<5,000",Midlands,No,https://www.bvt.org.uk/about-us/how-are-we-performing/,,35,Yes,12,No
-2024-25,,Bournville Village Trust,,"<5,000",Midlands,,,,,,,
 2024-25,LH3887,bpha Limited,PRP,"5,000-40,000",South,No,https://www.bpha.org.uk/about-us/our-performance/,,20,No,24,No
-2024-25,,bpha Limited,,"5,000-40,000",South,,,,,,,
 2024-25,22UD,Brentwood Borough Council,LA,"<5,000",South,No,https://www.brentwood.gov.uk/housing-performance,,28,Yes,24,Yes
-2024-25,,Brentwood Borough Council,,"<5,000",South,,,,,,,
 2024-25,L3758,Brighter Places,PRP,"<5,000",South,No,https://www.brighterplaces.co.uk/how-we-are-doing/,,90,Yes,24,Yes
-2024-25,,Brighter Places,,"<5,000",South,,,,,,,
 2024-25,00ML,Brighton and Hove City Council,LA,"5,000-40,000",South,No,https://www.brighton-hove.gov.uk/housing/council-housing/housing-performance-how-are-we-doing,,20,No,24,No
-2024-25,,Brighton and Hove City Council,,"5,000-40,000",South,,,,,,,
 2024-25,00HB,Bristol City Council,LA,"5,000-40,000",South,No,https://www.bristol.gov.uk/council/policies-plans-and-strategies/housing/our-performance-council-housing,,35,Yes,24,Yes
-2024-25,,Bristol City Council,,"5,000-40,000",South,,,,,,,
 2024-25,LH4014,Broadacres Housing Association Limited,PRP,"5,000-40,000",North,No,https://www.broadacres.org.uk/about-us/how-are-we-performing/tsms/,,30,Yes,24,No
-2024-25,,Broadacres Housing Association Limited,,"5,000-40,000",North,,,,,,,
 2024-25,L0026,Broadland Housing Association Limited,PRP,"5,000-40,000",South,No,https://www.broadlandgroup.org/manage-your-home/tenant-perception-survey,,86,Yes,24,Yes
-2024-25,,Broadland Housing Association Limited,,"5,000-40,000",South,,,,,,,
 2024-25,L4449,Bromford Flagship Limited,PRP,">40,000",South,No,https://www.bromford.co.uk/how-were-doing/tenant-satisfaction-measures-2025/,,90,Yes,24,No
-2024-25,,Bromford Flagship Limited,,">40,000",South,,,,,,,
 2024-25,LH4415,Bromsgrove District Housing Trust Limited,PRP,"<5,000",Midlands,No,chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://www.bdht.co.uk/wp-content/uploads/2025/07/TSMs-June-2025-publication-to-customers.pdf.pdf,,90,Yes,24,No
-2024-25,,Bromsgrove District Housing Trust Limited,,"<5,000",Midlands,,,,,,,
 2024-25,37UD,Broxtowe Borough Council,LA,"<5,000",Midlands,No,https://www.broxtowe.gov.uk/for-you/housing/housing-strategy-performance-and-delivery/tenant-satisfaction-measures-tsms/,,40,Yes,24,Yes
-2024-25,,Broxtowe Borough Council,,"<5,000",Midlands,,,,,,,
 2024-25,LH0269,Brunelcare,PRP,"<5,000",South,Yes,Tenant Perception Survey is set out on: https://www.brunelcare.org.uk/about-us/reports-publications/customer-satisfaction-survey/  Above above webpage contains a link to the TSM Management Information which is held on our performance reports page  https://www.brunelcare.org.uk/about-us/our-performance/our-performance-reports/,,14,Yes,4,No
-2024-25,,Brunelcare,,"<5,000",South,,,,,,,
 2024-25,00BM,Bury Metropolitan Borough Council,LA,"5,000-40,000",North,No,https://www.bury.gov.uk/housing/housing-services/about-us/our-performance,,60,Yes,24,No
-2024-25,,Bury Metropolitan Borough Council,,"5,000-40,000",North,,,,,,,
 2024-25,L4254,Calico Homes Limited,PRP,"5,000-40,000",North,No,https://calicohomes.org.uk/performance/  https://calicohomes.org.uk/report-a-repair/  https://calicohomes.org.uk/make-a-complaint/  https://calicohomes.org.uk/tenant-satisfaction-measures-tsms-2025/,,130,Yes,24,No
-2024-25,,Calico Homes Limited,,"5,000-40,000",North,,,,,,,
 2024-25,12UB,Cambridge City Council,LA,"5,000-40,000",South,No,https://www.cambridge.gov.uk/tenant-satisfaction-measures,,20,Yes,24,No
-2024-25,,Cambridge City Council,,"5,000-40,000",South,,,,,,,
 2024-25,41UB,Cannock Chase District Council,LA,"5,000-40,000",Midlands,No,https://www.cannockchasedc.gov.uk/residents/housing/tenant-and-resident-engagement/tenant-satisfaction-measures-and-performance,,38,Yes,24,No
-2024-25,,Cannock Chase District Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,29UC,Canterbury City Council,LA,"5,000-40,000",South,No,https://www.canterbury.gov.uk/housing/council-tenant-services/tenant-satisfaction-measures-report,Management information metric RP01 has been excluded from the analysis as sufficient data quality assurance could not be obtained in time for publication. We will use this information in our ongoing engagement with the landlord.,25,Yes,24,Yes
-2024-25,,Canterbury City Council,,"5,000-40,000",South,,,,,,,
 2024-25,22UE,Castle Point Borough Council,LA,"<5,000",South,No,https://www.castlepoint.gov.uk/tenant-satisfaction-measures,,20,No,24,No
-2024-25,,Castle Point Borough Council,,"<5,000",South,,,,,,,
 2024-25,4858,Castles & Coasts Housing Association Limited,PRP,"5,000-40,000",North,No,https://castlesandcoasts.co.uk/about-us/tenant-satisfaction-measures/  https://castlesandcoasts.co.uk/about-us/standards-and-transparency/tenant-satisfaction-measures/,,21,Yes,24,No
-2024-25,,Castles & Coasts Housing Association Limited,,"5,000-40,000",North,,,,,,,
 2024-25,00KC,Central Bedfordshire Council,LA,"5,000-40,000",South,No,https://www.centralbedfordshire.gov.uk/info/361/tenant_involvement/1989/tenant_satisfaction_measures_survey,,20,No,24,No
-2024-25,,Central Bedfordshire Council,,"5,000-40,000",South,,,,,,,
 2024-25,31UC,Charnwood Borough Council,LA,"5,000-40,000",Midlands,No,https://www.charnwood.gov.uk/pages/tsm,,90,Yes,24,No
-2024-25,,Charnwood Borough Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,L4331,Chelmer Housing Partnership Limited,PRP,"5,000-40,000",South,No,https://www.chp.org.uk/tenant-satisfaction-measures,,65,Yes,24,Yes
-2024-25,,Chelmer Housing Partnership Limited,,"5,000-40,000",South,,,,,,,
 2024-25,23UB,Cheltenham Borough Council,LA,"<5,000",South,No,https://www.cbh.org/tenant-satisfaction-measures/,TSMs do not include results for an entity. We will use this information in our ongoing engagement with the landlord.,15,Yes,24,No
-2024-25,,Cheltenham Borough Council,,"<5,000",South,,,,,,,
 2024-25,L4472,Cheshire Peaks & Plains Housing Trust Limited,PRP,"5,000-40,000",North,No,https://www.peaksplains.org/about-us/how-we-are-doing/tenant-satisfaction-measures/,,64,Yes,4,No
-2024-25,,Cheshire Peaks & Plains Housing Trust Limited,,"5,000-40,000",North,,,,,,,
 2024-25,00EW,Cheshire West and Chester Council,LA,"5,000-40,000",North,No,"Apologies, it wont allow me to copy and paste the link into this box, our information is available from: https://www.cheshirewestandchester.gov.uk/residents/housing/council-housing/performance-how-are-we-doing",,20,Yes,24,No
-2024-25,,Cheshire West and Chester Council,,"5,000-40,000",North,,,,,,,
 2024-25,17UD,Chesterfield Borough Council,LA,"5,000-40,000",Midlands,No,https://www.chesterfield.gov.uk/housing/about-our-housing-service/our-performance/tenant-satisfaction-measures-tsms/,,30,No,168,Yes
-2024-25,,Chesterfield Borough Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,LH0676,Christian Action (Enfield) Housing Association Limited,PRP,"<5,000",London,Yes,https://www.christianaction.org.uk/news/our-tenant-satisfaction-measures-tsms-performance-202425-971,,20,Yes,24,No
-2024-25,,Christian Action (Enfield) Housing Association Limited,,"<5,000",London,,,,,,,
 2024-25,5075,Citizen Housing Group Limited,PRP,"5,000-40,000",Midlands,No,https://www.citizenhousing.org.uk/tenant-satisfaction-measures/,,28,No,24,No
-2024-25,,Citizen Housing Group Limited,,"5,000-40,000",Midlands,,,,,,,
 2024-25,00CE,City of Doncaster Council,LA,"5,000-40,000",North,No,https://doncaster.moderngov.co.uk/documents/s46537/SLHD%20Q2%20Cabinet%20Perf.%20Rep%202024-25%20FINAL.pdf  https://www.stlegerhomes.co.uk/media/zdxjrrko/tsm-summary-2425-and-2324.pdf  https://www.stlegerhomes.co.uk/about-us/our-performance/,,20,Yes,24,Yes
-2024-25,,City of Doncaster Council,,"5,000-40,000",North,,,,,,,
 2024-25,32UD,City of Lincoln Council,LA,"5,000-40,000",Midlands,No,https://www.lincoln.gov.uk/resident-involvement-1/resident-involvement/6,,45,Yes,24,No
-2024-25,,City of Lincoln Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,00AA,City of London Corporation,LA,"<5,000",London,No,https://tinyurl.com/CoL-TSM-page,,20,Yes,24,Yes
-2024-25,,City of London Corporation,,"<5,000",London,,,,,,,
 2024-25,00BK,City of Westminster Council,LA,"5,000-40,000",London,No,https://www.westminster.gov.uk/housing/tenant-satisfaction-measures,,28,Yes,24,Yes
-2024-25,,City of Westminster Council,,"5,000-40,000",London,,,,,,,
 2024-25,00FF,City of York Council,LA,"5,000-40,000",North,No,https://data.yorkopendata.org/dataset/tenant-satisfaction-measures,,20,No,24,No
-2024-25,,City of York Council,,"5,000-40,000",North,,,,,,,
 2024-25,LH4087,Clarion Housing Group Limited,PRP,">40,000",South,No,https://www.myclarionhousing.com/TSM,,28,No,24,No
-2024-25,,Clarion Housing Group Limited,,">40,000",South,,,,,,,
 2024-25,LH4165,Coastline Housing Limited,PRP,"5,000-40,000",South,No,https://www.coastlinehousing.co.uk/our-performance/customer-survey-202425/,,60,Yes,24,No
-2024-25,,Coastline Housing Limited,,"5,000-40,000",South,,,,,,,
 2024-25,L4361,Cobalt Housing Limited,PRP,"5,000-40,000",North,No,https://cobalthousing.org.uk/about-us/performance/,,20,Yes,24,No
-2024-25,,Cobalt Housing Limited,,"5,000-40,000",North,,,,,,,
 2024-25,22UG,Colchester City Council,LA,"5,000-40,000",South,No,https://cbhomes.org.uk/tenant-satisfaction-measures/,,86,Yes,24,No
-2024-25,,Colchester City Council,,"5,000-40,000",South,,,,,,,
 2024-25,L4457,Community Gateway Association Limited,PRP,"5,000-40,000",North,No,https://www.communitygateway.co.uk/how-we-are-performing,,20,No,24,Yes
-2024-25,,Community Gateway Association Limited,,"5,000-40,000",North,,,,,,,
 2024-25,L2285,Connect Housing Association Limited,PRP,"<5,000",North,Yes,https://www.connecthousing.org.uk/be-involved/tenant-satisfaction-measures-tsms/,,90,Yes,24,Yes
-2024-25,,Connect Housing Association Limited,,"<5,000",North,,,,,,,
 2024-25,LH4353,Connexus Homes Limited,PRP,"5,000-40,000",Midlands,No,https://connexus-group.co.uk/aboutcontact/corporate/how-were-performing,,20,Yes,24,Yes
-2024-25,,Connexus Homes Limited,,"5,000-40,000",Midlands,,,,,,,
 2024-25,L0147,Cornerstone Housing Limited,PRP,"<5,000",South,No,https://www.cornerstonehousing.net/tenant-satisfaction-measures-2024-2025/,,90,Yes,24,No
-2024-25,,Cornerstone Housing Limited,,"<5,000",South,,,,,,,
 2024-25,00HE,Cornwall Council,LA,"5,000-40,000",South,No,https://www.cornwallhousing.org.uk/about-us/our-performance/,,20,Yes,24,No
-2024-25,,Cornwall Council,,"5,000-40,000",South,,,,,,,
 2024-25,L4312,Cottsway Housing Association Limited,PRP,"5,000-40,000",South,No,www.cottsway.co.uk/TSM,,64,Yes,24,No
-2024-25,,Cottsway Housing Association Limited,,"5,000-40,000",South,,,,,,,
 2024-25,45UE,Crawley Borough Council,LA,"5,000-40,000",South,No,https://crawley.gov.uk/housing/council-tenants/tenant-and-resident-engagement/tenant-satisfaction-measures,,20,Yes,24,Yes
-2024-25,,Crawley Borough Council,,"5,000-40,000",South,,,,,,,
 2024-25,LH4428,Cross Keys Homes Limited,PRP,"5,000-40,000",South,No,https://www.crosskeyshomes.co.uk/tsm,,20,Yes,24,No
-2024-25,,Cross Keys Homes Limited,,"5,000-40,000",South,,,,,,,
 2024-25,LH0495,Croydon Churches Housing Association Limited,PRP,"<5,000",London,Yes,https://ccha.biz/our-performance/tenant-satisfaction-measures/,,20,Yes,24,No
-2024-25,,Croydon Churches Housing Association Limited,,"<5,000",London,,,,,,,
 2024-25,LH4336,Curo Group (Albion) Limited,PRP,"5,000-40,000",South,No,https://www.curo-group.co.uk/about-us/what-we-do/our-service-performance/tenant-satisfaction-measures-tsms/,,43,Yes,48,Yes
-2024-25,,Curo Group (Albion) Limited,,"5,000-40,000",South,,,,,,,
 2024-25,26UC,Dacorum Borough Council,LA,"5,000-40,000",South,No,https://www.dacorum.gov.uk/home/housing/current-tenant/transparency-influence-and-accountability,,45,Yes,4,No
-2024-25,,Dacorum Borough Council,,"5,000-40,000",South,,,,,,,
 2024-25,00EH,Darlington Borough Council,LA,"5,000-40,000",North,No,Our management information is published here https://www.darlington.gov.uk/housing/our-performance-and-reports/tenant-satisfaction-measures/  Our tenant perception measures will also be linked on the same page once finished.,,40,Yes,24,Yes
-2024-25,,Darlington Borough Council,,"5,000-40,000",North,,,,,,,
 2024-25,29UD,Dartford Borough Council,LA,"<5,000",South,No,https://www.dartford.gov.uk/tsms,,40,Yes,2,No
-2024-25,,Dartford Borough Council,,"<5,000",South,,,,,,,
 2024-25,00FK,Derby City Council,LA,"5,000-40,000",Midlands,No,https://www.derbyhomes.org/about-us/transparency/performance/#page-3,,130,Yes,24,Yes
-2024-25,,Derby City Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,29UE,Dover District Council,LA,"<5,000",South,No,https://www.dover.gov.uk/Housing/Housing-for-Tenants/Transparency/Housing-Performance.aspx,,15,Yes,24,Yes
-2024-25,,Dover District Council,,"<5,000",South,,,,,,,
 2024-25,00CR,Dudley Metropolitan Borough Council,LA,"5,000-40,000",Midlands,No,https://www.dudley.gov.uk/residents/housing/housing-advice-information-and-support/housing-performance/,Landlord has not been able to provide all contextual information on repairs.,28,Yes,24,No
-2024-25,,Dudley Metropolitan Borough Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,5125,Durham Aged Mineworkers' Homes Association,PRP,"<5,000",North,No,https://www.durhamhomes.org.uk/publications/tenant-satisfaction-measures/,,21,Yes,24,No
-2024-25,,Durham Aged Mineworkers' Homes Association,,"<5,000",North,,,,,,,
 2024-25,18UB,East Devon District Council,LA,"<5,000",South,Yes,https://eastdevon.gov.uk/housing-and-homelessness/existing-council-tenants/information-about-the-housing-service/housing-performance-and-research/tenant-satisfaction-measures/,,28,Yes,24,Yes
-2024-25,,East Devon District Council,,"<5,000",South,,,,,,,
 2024-25,L4434,East End Homes Limited,PRP,"<5,000",London,No,https://www.eastendhomes.net/tsms,,20,Yes,24,No
-2024-25,,East End Homes Limited,,"<5,000",London,,,,,,,
 2024-25,L4530,East Midlands Housing Group Limited,PRP,"5,000-40,000",Midlands,No,https://www.emh.co.uk/housing/for-residents/you-said-we-did/tenant-satisfaction-measures-tsms-and-performance/,,28,No,24,No
-2024-25,,East Midlands Housing Group Limited,,"5,000-40,000",Midlands,,,,,,,
 2024-25,00FB,East Riding Of Yorkshire Council,LA,"5,000-40,000",North,No,https://www.eastriding.gov.uk/housing/council-tenants/keeping-our-tenants-informed-and-involved/tenant-satisfaction-measures/,,56,Yes,24,No
-2024-25,,East Riding Of Yorkshire Council,,"5,000-40,000",North,,,,,,,
 2024-25,5070,East Suffolk Council,LA,"<5,000",South,No,https://www.eastsuffolk.gov.uk/housing/council-housing/tenant-satisfaction/,Landlord has reported a part B/denominator for RP01 based on their recent stock condition surveys. We will use this information in our ongoing engagement with the landlord.,90,Yes,24,No
-2024-25,,East Suffolk Council,,"<5,000",South,,,,,,,
 2024-25,21UC,Eastbourne Borough Council,LA,"<5,000",South,No,https://www.lewes-eastbourne.gov.uk/housing-performance,,85,Yes,24,No
-2024-25,,Eastbourne Borough Council,,"<5,000",South,,,,,,,
 2024-25,L4499,Eastlight Community Homes Limited,PRP,"5,000-40,000",South,No,https://www.eastlighthomes.co.uk/about-us/corporate-publications/tenant-satisfaction-measures/,,64,Yes,24,Yes
-2024-25,,Eastlight Community Homes Limited,,"5,000-40,000",South,,,,,,,
 2024-25,L4140,Eden Housing Association Limited,PRP,"<5,000",North,No,https://www.edenha.org.uk/find-a-home/about-us/performance-information/,,60,Yes,24,No
-2024-25,,Eden Housing Association Limited,,"<5,000",North,,,,,,,
 2024-25,L4167,Empowering People Inspiring Communities Limited,PRP,"<5,000",Midlands,No,https://epichousing.co.uk/about/performance/,,14,Yes,24,Yes
-2024-25,,Empowering People Inspiring Communities Limited,,"<5,000",Midlands,,,,,,,
 2024-25,L4004,English Rural Housing Association Limited,PRP,"<5,000",South,No,https://englishrural.org.uk/myhomeandtenancy/tenant-satisfaction-measures/,,22,No,24,No
-2024-25,,English Rural Housing Association Limited,,"<5,000",South,,,,,,,
 2024-25,22UH,Epping Forest District Council,LA,"5,000-40,000",South,No,https://www.eppingforestdc.gov.uk/housing/housing-key-reports-and-consultations/,,30,Yes,4,No
-2024-25,,Epping Forest District Council,,"5,000-40,000",South,,,,,,,
 2024-25,L3535,Estuary Housing Association Limited,PRP,"<5,000",South,No,https://estuary.co.uk/tenant-satisfaction-measures,,20,No,24,No
-2024-25,,Estuary Housing Association Limited,,"<5,000",South,,,,,,,
 2024-25,18UC,Exeter City Council,LA,"<5,000",South,No,https://exeter.gov.uk/housing/information-for-council-tenants/tenant-satisfaction-measures/,,28,No,2,No
-2024-25,,Exeter City Council,,"<5,000",South,,,,,,,
 2024-25,L4473,Fairhive Homes Limited,PRP,"5,000-40,000",South,No,https://www.fairhive.co.uk/annual-reports,,20,Yes,24,No
-2024-25,,Fairhive Homes Limited,,"5,000-40,000",South,,,,,,,
 2024-25,24UE,Fareham Borough Council,LA,"<5,000",South,No,https://www.fareham.gov.uk/housing/my_council_tenancy/tenant_engagement/tsmresults.aspx,,183,Yes,24,No
-2024-25,,Fareham Borough Council,,"<5,000",South,,,,,,,
 2024-25,4582,First Choice Homes Oldham Limited,PRP,"5,000-40,000",North,No,https://www.fcho.co.uk/who-we-are/our-finances-and-performance/tenant-satisfaction-measures/,,90,Yes,3,No
-2024-25,,First Choice Homes Oldham Limited,,"5,000-40,000",North,,,,,,,
 2024-25,5090,First Garden Cities Homes Limited,PRP,"<5,000",South,No,https://www.fgch.co.uk/resident-satisfaction,,28,No,24,No
-2024-25,,First Garden Cities Homes Limited,,"<5,000",South,,,,,,,
 2024-25,4651,Flagship Housing Limited,PRP,"5,000-40,000",South,No,Flagship Housing - https://www.flagship-housing.co.uk/about-us/flagships-tenant-satisfaction-measures/   Flagship Homes - https://flagship-homes.co.uk/existing-customers/home-owners-existing/shared-ownership-customers/tsm-results/  Newtide Homes - https://www.newtide-homes.co.uk/about-us/tenant-satisfaction-measures/tenant-satisfaction-measures-results/  Samphire Homes - https://www.samphire-homes.co.uk/about-us/tenant-satisfaction-measures/tenant-satisfaction-measures-results/  Victory Homes - https://www.victory-homes.co.uk/about-us/tenant-satisfaction-measures/tenant-satisfaction-measures-results/,,64,Yes,24,No
-2024-25,,Flagship Housing Limited,,"5,000-40,000",South,,,,,,,
 2024-25,29UL,Folkestone and Hythe District Council,LA,"<5,000",South,No,https://www.folkestone-hythe.gov.uk/council-tenants-leaseholder-service/tenant-satisfaction-measures,,16,Yes,4,No
-2024-25,,Folkestone and Hythe District Council,,"<5,000",South,,,,,,,
 2024-25,L4528,ForHousing Limited,PRP,"5,000-40,000",North,No,https://www.forhousing.co.uk/how-we-are-performing/,,56,Yes,24,No
-2024-25,,ForHousing Limited,,"5,000-40,000",North,,,,,,,
 2024-25,LH4184,Framework Housing Association,PRP,"<5,000",Midlands,Yes,https://www.frameworkha.org/about-us/publications-and-policies/,,60,Yes,24,No
-2024-25,,Framework Housing Association,,"<5,000",Midlands,,,,,,,
 2024-25,L4463,Freebridge Community Housing Limited,PRP,"5,000-40,000",South,No,https://www.freebridge.org.uk/who-we-are/our-performance-2025,,20,Yes,24,No
-2024-25,,Freebridge Community Housing Limited,,"5,000-40,000",South,,,,,,,
 2024-25,L4502,Futures Housing Group Limited,PRP,"5,000-40,000",Midlands,Yes,https://futureshg.co.uk/about-futures/our-performance/,,30,No,24,No
-2024-25,,Futures Housing Group Limited,,"5,000-40,000",Midlands,,,,,,,
 2024-25,00CH,Gateshead Metropolitan Borough Council,LA,"5,000-40,000",North,No,https://www.gateshead.gov.uk/article/33152/Tenant-Satisfaction-Measures-2024-25-results,,20,No,24,No
-2024-25,,Gateshead Metropolitan Borough Council,,"5,000-40,000",North,,,,,,,
 2024-25,L0517,Gateway Housing Association Limited,PRP,"<5,000",London,No,https://www.gatewayhousing.org.uk/tenant-satisfaction-measures,,24,Yes,24,No
-2024-25,,Gateway Housing Association Limited,,"<5,000",London,,,,,,,
 2024-25,L4313,Gentoo Group Limited,PRP,"5,000-40,000",North,No,https://www.gentoogroup.com/about-us/performance-and-transparency/tenant-satisfaction-measures/,,260,Yes,24,No
-2024-25,,Gentoo Group Limited,,"5,000-40,000",North,,,,,,,
 2024-25,4584,Gloucester City Homes Limited,PRP,"<5,000",South,No,https://www.gch.co.uk/performance/,,40,Yes,24,No
-2024-25,,Gloucester City Homes Limited,,"<5,000",South,,,,,,,
 2024-25,4803,Golden Lane Housing Limited,PRP,"<5,000",Mixed,Yes,https://www.glh.org.uk/tenant-satisfaction-measures/,,20,No,24,No
-2024-25,,Golden Lane Housing Limited,,"<5,000",Mixed,,,,,,,
 2024-25,LH4402,Golding Homes Limited,PRP,"5,000-40,000",South,No,https://www.goldinghomes.org.uk/tenant-satisfaction-measures,,20,Yes,24,No
-2024-25,,Golding Homes Limited,,"5,000-40,000",South,,,,,,,
 2024-25,24UF,Gosport Borough Council,LA,"<5,000",South,No,https://www.gosport.gov.uk/article/2987/Tenant-Satisfaction-Measures-2024,,20,Yes,24,Yes
-2024-25,,Gosport Borough Council,,"<5,000",South,,,,,,,
 2024-25,4743,Grainger Trust Limited,PRP,,,,,,,,,
 2024-25,29UG,Gravesham Borough Council,LA,"5,000-40,000",South,No,https://www.gravesham.gov.uk/directory-record/339/tenant-satisfaction-measures  https://www.gravesham.gov.uk/council-tenants-leaseholders/tenant-satisfaction-measures-survey/2  They will also be shared on: GoVocal In our Annual Report In the Gravesham Borough Council Tenants WhatsApp group,,20,No,24,No
-2024-25,,Gravesham Borough Council,,"5,000-40,000",South,,,,,,,
 2024-25,L4465,Great Places Housing Group Limited,PRP,"5,000-40,000",North,No,https://www.greatplaces.org.uk/customers/customer-performance/tenant-satisfaction-measures/,,20,No,24,No
-2024-25,,Great Places Housing Group Limited,,"5,000-40,000",North,,,,,,,
 2024-25,33UD,Great Yarmouth Borough Council,LA,"5,000-40,000",South,No,https://www.great-yarmouth.gov.uk/article/10395/Tenant-Satisfaction-Measures,,28,Yes,24,No
-2024-25,,Great Yarmouth Borough Council,,"5,000-40,000",South,,,,,,,
 2024-25,L4509,Greatwell Homes Limited,PRP,"5,000-40,000",Midlands,No,https://www.greatwellhomes.org.uk/about/tenant-satisfaction-measures,,20,Yes,24,No
-2024-25,,Greatwell Homes Limited,,"5,000-40,000",Midlands,,,,,,,
 2024-25,LH3902,GreenSquareAccord Limited,PRP,"5,000-40,000",South,No,https://greensquareaccord.co.uk/about/our-performance/tenant-satisfaction-measures,,28,Yes,24,Yes
-2024-25,,GreenSquareAccord Limited,,"5,000-40,000",South,,,,,,,
 2024-25,43UD,Guildford Borough Council,LA,"5,000-40,000",South,No,https://www.guildford.gov.uk/media/37002/TSM-Report-2024-2025/pdf/Tenant_Satisfaction_Measures_2024-25_Report.pdf?m=1754049919680,,30,No,4,Yes
-2024-25,,Guildford Borough Council,,"5,000-40,000",South,,,,,,,
 2024-25,LH0459,Habinteg Housing Association Limited,PRP,"<5,000",Mixed,No,https://www.habinteg.org.uk/our-performance,,20,Yes,24,No
-2024-25,,Habinteg Housing Association Limited,,"<5,000",Mixed,,,,,,,
 2024-25,L4456,Halton Housing,PRP,"5,000-40,000",North,No,https://www.haltonhousing.co.uk/about-us/our-performance/tenant-satisfaction-measures/results,,90,Yes,24,Yes
-2024-25,,Halton Housing,,"5,000-40,000",North,,,,,,,
 2024-25,00AP,Haringey London Borough Council,LA,"5,000-40,000",London,No,https://www.haringey.gov.uk/housing/housing-news-policies/tenant-satisfaction-measures-202425,,28,No,24,Yes
-2024-25,,Haringey London Borough Council,,"5,000-40,000",London,,,,,,,
 2024-25,22UJ,Harlow District Council,LA,"5,000-40,000",South,No,https://issuu.com/harlowcouncil/docs/harlow_times_autumn_2025,,5,No,2,No
-2024-25,,Harlow District Council,,"5,000-40,000",South,,,,,,,
 2024-25,L0018,Hastoe Housing Association Limited,PRP,"5,000-40,000",South,No,https://www.hastoe.com/about-us/performance/tenant-satisfaction-measures/,,90,Yes,24,No
-2024-25,,Hastoe Housing Association Limited,,"5,000-40,000",South,,,,,,,
 2024-25,4634,Heart of Medway Housing Association Limited,PRP,"<5,000",South,No,https://mhs.org.uk/about-us/our-performance/how-our-customers-think-we-are-doing-mhs-homes-group/how-our-customers-think-we-are-doing-heart-of-medway/,,20,Yes,24,No
-2024-25,,Heart of Medway Housing Association Limited,,"<5,000",South,,,,,,,
 2024-25,L1538,Hexagon Housing Association Limited,PRP,"<5,000",London,No,https://hexagon.org.uk/news2/publications/,,20,No,24,No
-2024-25,,Hexagon Housing Association Limited,,"<5,000",London,,,,,,,
 2024-25,4668,Heylo Housing Registered Provider Limited,PRP,"5,000-40,000",Mixed,No,"Yes, Please find below:  https://heylohousing.com/performance",,[Z],[Z],[Z],[Z]
-2024-25,,Heylo Housing Registered Provider Limited,,"5,000-40,000",Mixed,,,,,,,
 2024-25,17UH,High Peak Borough Council,LA,"<5,000",Midlands,No,https://www.highpeak.gov.uk/Tenant-Satisfaction-Measures,,20,Yes,24,No
-2024-25,,High Peak Borough Council,,"<5,000",Midlands,,,,,,,
 2024-25,L2179,Hightown Housing Association Limited,PRP,"5,000-40,000",South,No,https://www.hightownha.org.uk/about-us/performance/tsm-results/,,20,Yes,24,No
-2024-25,,Hightown Housing Association Limited,,"5,000-40,000",South,,,,,,,
 2024-25,4760,Hilldale Housing Association Limited,PRP,"<5,000",North,Yes,https://hilldale.org.uk/about/our-performance-and-satisfaction/,,7,No,24,Yes
-2024-25,,Hilldale Housing Association Limited,,"<5,000",North,,,,,,,
 2024-25,31UE,Hinckley and Bosworth Borough Council,LA,"<5,000",Midlands,No,https://www.hinckley-bosworth.gov.uk/downloads/file/8274/summary_of_results,,28,Yes,24,Yes
-2024-25,,Hinckley and Bosworth Borough Council,,"<5,000",Midlands,,,,,,,
 2024-25,L3076,Home Group Limited,PRP,">40,000",North,No,www.homegroup.org.uk/about-us/corporate/transparency/tenant-satisfaction-measures,,28,Yes,24,No
-2024-25,,Home Group Limited,,">40,000",North,,,,,,,
 2024-25,LH2162,Honeycomb Group Limited,PRP,"<5,000",Midlands,No,www.honeycombgroup.org.uk/tsm,,28,No,24,No
-2024-25,,Honeycomb Group Limited,,"<5,000",Midlands,,,,,,,
 2024-25,L0055,Housing 21,PRP,"5,000-40,000",Mixed,Yes,https://www.housing21.org.uk/residents/our-performance/,,28,Yes,24,Yes
-2024-25,,Housing 21,,"5,000-40,000",Mixed,,,,,,,
 2024-25,L4073,Housing Solutions,PRP,"5,000-40,000",South,No,https://www.housingsolutions.co.uk/about/how-are-we-performing/tsm/,,21,Yes,4,No
-2024-25,,Housing Solutions,,"5,000-40,000",South,,,,,,,
 2024-25,L0718,Hundred Houses Society Limited,PRP,"<5,000",South,No,https://www.hhs.org.uk/news/tenant-satisfaction-measures-your-views-on-our-performance-1498,,20,Yes,24,Yes
-2024-25,,Hundred Houses Society Limited,,"<5,000",South,,,,,,,
 2024-25,LH0032,Hyde Housing Association Limited,PRP,"5,000-40,000",South,No,https://www.hyde-housing.co.uk/the-hyde-group/who-we-are/our-performance/tenant-satisfaction-measures/,,120,Yes,24,Yes
-2024-25,,Hyde Housing Association Limited,,"5,000-40,000",South,,,,,,,
 2024-25,4662,Inclusion Housing Community Interest Company,PRP,"<5,000",Mixed,Yes,https://www.inclusion-group.org.uk/inclusion-housing/companypublications/tenant-satisfaction-measures/,Landlord has included a small amount of non-English stock in their submission. We will use this information in our ongoing engagement with the landlord.,42,Yes,24,No
-2024-25,,Inclusion Housing Community Interest Company,,"<5,000",Mixed,,,,,,,
 2024-25,L4476,Incommunities Limited,PRP,"5,000-40,000",North,No,https://www.incommunities.co.uk/tsm,,40,Yes,24,No
-2024-25,,Incommunities Limited,,"5,000-40,000",North,,,,,,,
 2024-25,42UD,Ipswich Borough Council,LA,"5,000-40,000",South,No,https://www.ipswich.gov.uk/housing/our-tenant-satisfaction-measures-tsms-results,,60,Yes,5,Yes
-2024-25,,Ipswich Borough Council,,"5,000-40,000",South,,,,,,,
 2024-25,L0061,Irwell Valley Housing Association Limited,PRP,"5,000-40,000",North,No,https://www.irwellvalley.co.uk/for-customers/tenant-information/service-standards-and-policies/tenant-satisfaction-measures-tsm-results-202324/,,60,Yes,24,No
-2024-25,,Irwell Valley Housing Association Limited,,"5,000-40,000",North,,,,,,,
 2024-25,L0457,Islington and Shoreditch Housing Association Limited,PRP,"<5,000",London,No,https://www.isha.co.uk/about_isha/performance/tenant-satisfaction-measures-reporting.html,,28,No,24,No
-2024-25,,Islington and Shoreditch Housing Association Limited,,"<5,000",London,,,,,,,
 2024-25,LH4345,Jigsaw Homes Group Limited,PRP,"5,000-40,000",North,No,https://www.jigsawhomes.org.uk/tenant-satisfaction-measures/,,90,Yes,24,No
-2024-25,,Jigsaw Homes Group Limited,,"5,000-40,000",North,,,,,,,
 2024-25,5079,Joseph Rowntree Housing Trust,PRP,"<5,000",North,No,https://www.jrht.org.uk/about-us/performance-information/tenant-satisfaction-measures,,28,Yes,24,No
-2024-25,,Joseph Rowntree Housing Trust,,"<5,000",North,,,,,,,
 2024-25,4846,Karbon Homes Limited,PRP,"5,000-40,000",North,No,Karbon: https://www.karbonhomes.co.uk/about-us/open-and-transparent/tenant-satisfaction-measures/ Byker: https://bykercommunitytrust.org/about-us/tenant-satisfaction-measures/ Leazes: https://www.leazeshomes.org.uk/how-we-are-performing/tenant-satisfaction-measures/ 54North: https://54northhomes.co.uk/about-us/our-performance/tsm/  TPM results where published online on 21 May 2025. We intend to publish the MIM results on our websites on 30 June 2025.,,60,Yes,24,No
-2024-25,,Karbon Homes Limited,,"5,000-40,000",North,,,,,,,
 2024-25,LH3728,Karibu Community Homes Limited,PRP,"<5,000",London,No,- https://karibu.org.uk/about-us/our-performance,,20,No,24,No
-2024-25,,Karibu Community Homes Limited,,"<5,000",London,,,,,,,
 2024-25,00FA,Kingston upon Hull City Council,LA,"5,000-40,000",North,No,https://www.hull.gov.uk/housing-services/housing-performance,,20,No,24,No
-2024-25,,Kingston upon Hull City Council,,"5,000-40,000",North,,,,,,,
 2024-25,00CZ,Kirklees Metropolitan Borough Council,LA,"5,000-40,000",North,No,https://www.kirklees.gov.uk/beta/council-housing/policies-and-procedures/council-housing-performance.aspx,,25,Yes,48,Yes
-2024-25,,Kirklees Metropolitan Borough Council,,"5,000-40,000",North,,,,,,,
 2024-25,30UH,Lancaster City Council,LA,"<5,000",North,No,https://www.lancaster.gov.uk/housing/council-housing/about-us/tenant-satisfaction,,20,Yes,24,No
-2024-25,,Lancaster City Council,,"<5,000",North,,,,,,,
 2024-25,00DA,Leeds City Council,LA,">40,000",North,No,https://www.leeds.gov.uk/housing/council-housing-information-for-tenants/social-housing-regulation,,60,Yes,24,No
-2024-25,,Leeds City Council,,">40,000",North,,,,,,,
 2024-25,LH0989,Leeds Federated Housing Association Limited,PRP,"<5,000",North,No,https://www.lfha.co.uk/about-us/performance/,,20,No,24,Yes
-2024-25,,Leeds Federated Housing Association Limited,,"<5,000",North,,,,,,,
 2024-25,5149,Legal & General Affordable Homes (AR) LLP,PRP,"<5,000",South,No,https://landgah.com/get-to-know-us/tenant-satisfaction-measures/,Landlord has not been able to provide all contextual information on repairs.,28,No,24,No
-2024-25,,Legal & General Affordable Homes (AR) LLP,,"<5,000",South,,,,,,,
 2024-25,5062,Legal & General Affordable Homes Limited,PRP,"<5,000",Mixed,No,https://landgah.com/get-to-know-us/tenant-satisfaction-measures/,Landlord has not been able to provide all contextual information on repairs.,28,No,24,No
-2024-25,,Legal & General Affordable Homes Limited,,"<5,000",Mixed,,,,,,,
 2024-25,00FN,Leicester City Council,LA,"5,000-40,000",Midlands,No,https://www.leicester.gov.uk/your-community/housing/council-tenants/your-tenancy/tenant-satisfaction-measures/,,260,Yes,24,No
-2024-25,,Leicester City Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,21UF,Lewes District Council,LA,"<5,000",South,No,https://www.lewes-eastbourne.gov.uk/housing-performance,,85,Yes,24,No
-2024-25,,Lewes District Council,,"<5,000",South,,,,,,,
 2024-25,4877,Lincolnshire Housing Partnership Limited,PRP,"5,000-40,000",North,No,https://www.lincolnshirehp.com/our-performance/how-were-doing/,,60,Yes,24,Yes
-2024-25,,Lincolnshire Housing Partnership Limited,,"5,000-40,000",North,,,,,,,
 2024-25,4873,LiveWest Homes Limited,PRP,"5,000-40,000",South,No,https://www.livewest.co.uk/tenant-satisfaction-measures,,64,Yes,24,No
-2024-25,,LiveWest Homes Limited,,"5,000-40,000",South,,,,,,,
 2024-25,L4538,Livin Housing Limited,PRP,"5,000-40,000",North,No,https://www.livin.co.uk/about-us/tenant-satisfaction-measures/,,25,Yes,24,Yes
-2024-25,,Livin Housing Limited,,"5,000-40,000",North,,,,,,,
 2024-25,LH4343,Livv Housing Group,PRP,"5,000-40,000",North,No,https://livvhousinggroup.com/about-us/tenant-satisfaction-measures/,,40,Yes,24,Yes
-2024-25,,Livv Housing Group,,"5,000-40,000",North,,,,,,,
 2024-25,LH4454,Local Space,PRP,"<5,000",London,No,https://www.localspace.co.uk/tenant-satisfaction-measures/,,20,Yes,24,No
-2024-25,,Local Space,,"<5,000",London,,,,,,,
 2024-25,L4517,London & Quadrant Housing Trust,PRP,">40,000",London,No,The TSM results will be accessible via the 'About us' section of our website:  https://www.lqgroup.org.uk/about-landq,,40,Yes,24,Yes
-2024-25,,London & Quadrant Housing Trust,,">40,000",London,,,,,,,
 2024-25,00AB,London Borough of Barking and Dagenham,LA,"5,000-40,000",London,No,https://www.lbbd.gov.uk/,,65,Yes,4,Yes
-2024-25,,London Borough of Barking and Dagenham,,"5,000-40,000",London,,,,,,,
 2024-25,00AC,London Borough of Barnet,LA,"5,000-40,000",London,No,https://www.barnethomes.org/download/barnet-homes-tsm-report-2024-25-web/,,60,Yes,24,No
-2024-25,,London Borough of Barnet,,"5,000-40,000",London,,,,,,,
 2024-25,00AE,London Borough of Brent,LA,"5,000-40,000",London,No,https://data.brent.gov.uk/dataset/2j396/tenant-satisfaction-measures-tsm-for-2023-2024,"Management information metrics BS02, BS03, BS04 and BS05 have been excluded from the analysis as sufficient data quality assurance could not be obtained in time for publication. We will use this information in our ongoing engagement with the landlord.",60,Yes,24,Yes
-2024-25,,London Borough of Brent,,"5,000-40,000",London,,,,,,,
 2024-25,00AG,London Borough of Camden Council,LA,"5,000-40,000",London,No,https://www.camden.gov.uk/tenant-satisfaction-measures-2024-to-2025,,125,Yes,24,Yes
-2024-25,,London Borough of Camden Council,,"5,000-40,000",London,,,,,,,
 2024-25,00AH,London Borough of Croydon,LA,"5,000-40,000",London,No,https://www.croydon.gov.uk/housing/information-council-tenants/tenants-satisfaction-measures,,30,Yes,24,Yes
-2024-25,,London Borough of Croydon,,"5,000-40,000",London,,,,,,,
 2024-25,00AJ,London Borough of Ealing,LA,"5,000-40,000",London,No,https://www.ealing.gov.uk/info/201343/housing_performance/3387/how_we_are_performing_as_a_landlord,,20,Yes,24,No
-2024-25,,London Borough of Ealing,,"5,000-40,000",London,,,,,,,
 2024-25,00AK,London Borough of Enfield,LA,"5,000-40,000",London,No,https://www.enfield.gov.uk/services/housing/council-housing-performance,,22,Yes,24,Yes
-2024-25,,London Borough of Enfield,,"5,000-40,000",London,,,,,,,
 2024-25,00AM,London Borough of Hackney,LA,"5,000-40,000",London,No,https://hackney.gov.uk/tenant-satisfaction-measures#star,,21,Yes,24,Yes
-2024-25,,London Borough of Hackney,,"5,000-40,000",London,,,,,,,
 2024-25,00AN,London Borough of Hammersmith and Fulham,LA,"5,000-40,000",London,No,https://www.lbhf.gov.uk/housing/council-tenants/tenant-satisfaction-measures,,20,Yes,24,Yes
-2024-25,,London Borough of Hammersmith and Fulham,,"5,000-40,000",London,,,,,,,
 2024-25,00AQ,London Borough of Harrow,LA,"<5,000",London,No,https://www.harrow.gov.uk/housing-property/performance-regulation,,20,Yes,120,Yes
-2024-25,,London Borough of Harrow,,"<5,000",London,,,,,,,
 2024-25,00AR,London Borough of Havering Council,LA,"5,000-40,000",London,No,https://www.havering.gov.uk/downloads/download/942/housing-survey-feedback,,28,Yes,24,No
-2024-25,,London Borough of Havering Council,,"5,000-40,000",London,,,,,,,
 2024-25,00AS,London Borough of Hillingdon,LA,"5,000-40,000",London,No,www.hillingdon.gov.uk/tsm-survey-2024-2025,,90,Yes,24,Yes
-2024-25,,London Borough of Hillingdon,,"5,000-40,000",London,,,,,,,
 2024-25,00AT,London Borough of Hounslow,LA,"5,000-40,000",London,No,https://beta.hounslow.gov.uk/council-tenants/measure-tenant-satisfaction,,40,Yes,24,No
-2024-25,,London Borough of Hounslow,,"5,000-40,000",London,,,,,,,
 2024-25,00AU,London Borough of Islington,LA,"5,000-40,000",London,No,https://www.islington.gov.uk/housing/council-landlord-performance/tenant-satisfaction-measures,Management information metric CH02_1 (stage one complaints timeliness) has been excluded from the analysis as sufficient data quality assurance could not be obtained in time for publication. We will use this information in our ongoing engagement with the landlord.,20,Yes,24,Yes
-2024-25,,London Borough of Islington,,"5,000-40,000",London,,,,,,,
 2024-25,00AY,London Borough of Lambeth,LA,"5,000-40,000",London,No,www.lambeth.gov.uk/housing,,28,Yes,24,Yes
-2024-25,,London Borough of Lambeth,,"5,000-40,000",London,,,,,,,
 2024-25,00AZ,London Borough of Lewisham,LA,"5,000-40,000",London,No,https://lewisham.gov.uk/myservices/housing/council-tenants/our-performance,,21,Yes,24,Yes
-2024-25,,London Borough of Lewisham,,"5,000-40,000",London,,,,,,,
 2024-25,00BB,London Borough of Newham,LA,"5,000-40,000",London,No,https://www.newham.gov.uk/housing-homes-homelessness/housing-performance,,42,Yes,24,No
-2024-25,,London Borough of Newham,,"5,000-40,000",London,,,,,,,
 2024-25,00BC,London Borough of Redbridge,LA,"<5,000",London,No,https://www.redbridge.gov.uk/housing/how-our-tenants-think-were-doing/,,28,No,24,No
-2024-25,,London Borough of Redbridge,,"<5,000",London,,,,,,,
 2024-25,00BF,London Borough of Sutton,LA,"5,000-40,000",London,No,https://www.suttonhousingpartnership.org.uk/our-recent-performance,,20,Yes,24,Yes
-2024-25,,London Borough of Sutton,,"5,000-40,000",London,,,,,,,
 2024-25,00BG,London Borough of Tower Hamlets,LA,"5,000-40,000",London,No,https://www.towerhamlets.gov.uk/lgnl/housing/Council-Tenants-and-Leaseholders/How-we-are-performing-as-a-landlord/Performance-and-TSMs.aspx,,60,Yes,24,No
-2024-25,,London Borough of Tower Hamlets,,"5,000-40,000",London,,,,,,,
 2024-25,00BH,London Borough of Waltham Forest,LA,"5,000-40,000",London,No,https://www.walthamforest.gov.uk/housing/how-we-are-performing,,20,No,24,Yes
-2024-25,,London Borough of Waltham Forest,,"5,000-40,000",London,,,,,,,
 2024-25,00BJ,London Borough of Wandsworth,LA,"5,000-40,000",London,No,https://www.wandsworth.gov.uk/tenant-satisfaction-measures,,60,Yes,24,Yes
-2024-25,,London Borough of Wandsworth,,"5,000-40,000",London,,,,,,,
 2024-25,LH0013,Look Ahead Care and Support Limited,PRP,"<5,000",London,Yes,https://www.lookahead.org.uk/our-performance/,,20,Yes,4,Yes
-2024-25,,Look Ahead Care and Support Limited,,"<5,000",London,,,,,,,
 2024-25,00KA,Luton Borough Council,LA,"5,000-40,000",South,No,https://www.luton.gov.uk/Housing/Lists/LutonDocuments/PDF/tenants/tenants-satisfaction-survey-results-2024-2025.pdf  https://www.luton.gov.uk/Housing/Lists/LutonDocuments/Excel/tenant-satisfaction-measures-management-information.xlsx,,30,Yes,24,Yes
-2024-25,,Luton Borough Council,,"5,000-40,000",South,,,,,,,
 2024-25,5115,M&G UK Shared Ownership Limited,PRP,"<5,000",South,No,Our website- https://www.mandg.com/realestate/en-gb/shared-ownership,,[Z],[Z],[Z],[Z]
-2024-25,,M&G UK Shared Ownership Limited,,"<5,000",South,,,,,,,
 2024-25,L4435,Magenta Living,PRP,"5,000-40,000",North,No,https://www.magentaliving.org.uk/our-performance,,21,Yes,24,No
-2024-25,,Magenta Living,,"5,000-40,000",North,,,,,,,
 2024-25,4844,Magna Housing Limited,PRP,"5,000-40,000",South,No,https://www.magna.org.uk/about-us/facts-and-figures/tenant-satisfaction-measures,,64,Yes,24,No
-2024-25,,Magna Housing Limited,,"5,000-40,000",South,,,,,,,
 2024-25,00BN,Manchester City Council,LA,"5,000-40,000",North,No,https://www.mcchousingservices.co.uk/about-us/tenant-satisfaction-measures/,,90,Yes,48,Yes
-2024-25,,Manchester City Council,,"5,000-40,000",North,,,,,,,
 2024-25,L3736,Manningham Housing Association Limited,PRP,"<5,000",North,No,www.manninghamha.co.uk,,22,Yes,24,No
-2024-25,,Manningham Housing Association Limited,,"<5,000",North,,,,,,,
 2024-25,37UF,Mansfield District Council,LA,"5,000-40,000",Midlands,Yes,https://www.mansfield.gov.uk/housing/perform/2,,20,Yes,24,No
-2024-25,,Mansfield District Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,00LC,Medway Council,LA,"<5,000",South,No,https://www.medway.gov.uk/tenantsatisfactionmeasures,,20,Yes,24,Yes
-2024-25,,Medway Council,,"<5,000",South,,,,,,,
 2024-25,31UG,Melton Borough Council,LA,"<5,000",Midlands,No,https://www.melton.gov.uk/housing/council-tenants/how-are-we-performing/tenant-satisfaction-measures/,,28,Yes,24,Yes
-2024-25,,Melton Borough Council,,"<5,000",Midlands,,,,,,,
 2024-25,L0726,Metropolitan Housing Trust Limited,PRP,">40,000",Mixed,No,https://www.mtvh.co.uk/about-us/our-performance/,,90,Yes,24,Yes
-2024-25,,Metropolitan Housing Trust Limited,,">40,000",Mixed,,,,,,,
 2024-25,18UD,Mid Devon District Council,LA,"<5,000",South,No,https://www.middevon.gov.uk/residents/mid-devon-housing/our-performance/tenant-satisfaction-measures/,,34,Yes,24,Yes
-2024-25,,Mid Devon District Council,,"<5,000",South,,,,,,,
 2024-25,42UE,Mid Suffolk District Council,LA,"<5,000",South,No,www.midsuffolk.gov.uk/tenant-feedback-and-performance,,20,Yes,24,Yes
-2024-25,,Mid Suffolk District Council,,"<5,000",South,,,,,,,
 2024-25,L4466,Midland Heart Limited,PRP,"5,000-40,000",Midlands,No,https://www.midlandheart.org.uk/about-us/how-were-performing/tsm-results/,,90,Yes,24,Yes
-2024-25,,Midland Heart Limited,,"5,000-40,000",Midlands,,,,,,,
 2024-25,00MG,Milton Keynes Council,LA,"5,000-40,000",South,No,https://www.milton-keynes.gov.uk/housing/tps,,28,No,4,No
-2024-25,,Milton Keynes Council,,"5,000-40,000",South,,,,,,,
 2024-25,L0386,Moat Homes Limited,PRP,"5,000-40,000",South,No,https://www.moat.co.uk/about-us/our-performance,,21,Yes,24,No
-2024-25,,Moat Homes Limited,,"5,000-40,000",South,,,,,,,
 2024-25,4857,Mosscare St. Vincent's Housing Group Limited,PRP,"5,000-40,000",North,No,https://www.msvhousing.co.uk/about-us/how-we-are-doing,,64,Yes,24,No
-2024-25,,Mosscare St. Vincent's Housing Group Limited,,"5,000-40,000",North,,,,,,,
 2024-25,L2194,Muir Group Housing Association Limited,PRP,"5,000-40,000",North,No,https://www.muir.org.uk/publications,,20,Yes,24,Yes
-2024-25,,Muir Group Housing Association Limited,,"5,000-40,000",North,,,,,,,
 2024-25,L3833,Nehemiah United Churches Housing Association Limited,PRP,"<5,000",Midlands,No,https://nehemiah.co.uk/about-us/tenant-satisfaction-measures,,14,Yes,48,Yes
-2024-25,,Nehemiah United Churches Housing Association Limited,,"<5,000",Midlands,,,,,,,
 2024-25,24UJ,New Forest District Council,LA,"5,000-40,000",South,No,https://newforest.gov.uk/tenantengagement#h24,,63,Yes,3,Yes
-2024-25,,New Forest District Council,,"5,000-40,000",South,,,,,,,
 2024-25,37UG,Newark and Sherwood District Council,LA,"5,000-40,000",Midlands,Yes,https://www.newark-sherwooddc.gov.uk/housingperformance/,,30,Yes,24,No
-2024-25,,Newark and Sherwood District Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,00CJ,Newcastle City Council,LA,"5,000-40,000",North,No,https://new.newcastle.gov.uk/housing/have-your-say-council-tenant/tsm-results-202425,,21,Yes,24,No
-2024-25,,Newcastle City Council,,"5,000-40,000",North,,,,,,,
 2024-25,L0006,Newlon Housing Trust,PRP,"5,000-40,000",London,No,https://www.newlon.org.uk/residents/tsms/,,20,No,24,No
-2024-25,,Newlon Housing Trust,,"5,000-40,000",London,,,,,,,
 2024-25,LH4249,North Devon Homes,PRP,"<5,000",South,No,https://www.ndh-ltd.co.uk/TSM2425,,20,Yes,24,No
-2024-25,,North Devon Homes,,"<5,000",South,,,,,,,
 2024-25,17UJ,North East Derbyshire District Council,LA,"5,000-40,000",Midlands,No,https://www.rykneldhomes.org.uk/corporate/tenant-satisfaction-measures-2025/,,45,Yes,24,No
-2024-25,,North East Derbyshire District Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,32UE,North Kesteven District Council,LA,"<5,000",Midlands,No,https://www.n-kesteven.gov.uk/homes-property/i-am-council-tenant-north-kesteven/our-accountability-you/tenant-satisfaction-measures  https://www.n-kesteven.gov.uk/homes-property/i-am-council-tenant-north-kesteven/our-accountability-you/tenant-satisfaction-measures/tenant-satisfaction-measures-survey-202425  https://www.n-kesteven.gov.uk/homes-property/i-am-council-tenant-north-kesteven/our-accountability-you/tenant-satisfaction-measures/tenant-satisfaction-measures-results-202425,,20,Yes,24,No
-2024-25,,North Kesteven District Council,,"<5,000",Midlands,,,,,,,
 2024-25,LH3859,North London Muslim Housing Association Limited,PRP,"<5,000",London,No,https://www.nlmha.com/tenant-surveys/,,28,Yes,24,No
-2024-25,,North London Muslim Housing Association Limited,,"<5,000",London,,,,,,,
 2024-25,5129,North Northamptonshire Council,LA,"5,000-40,000",Midlands,No,https://www.northnorthants.gov.uk/council-housing/housing-performance/tenant-satisfaction-measures-202425,,30,No,24,No
-2024-25,,North Northamptonshire Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,LH0084,North Star Housing Group,PRP,"<5,000",North,No,https://www.northstarhg.co.uk/customer-engagement/tenant-satisfaction-measures/,,30,Yes,24,Yes
-2024-25,,North Star Housing Group,,"<5,000",North,,,,,,,
 2024-25,00CK,North Tyneside Council,LA,"5,000-40,000",North,No,https://my.northtyneside.gov.uk/category/1267/housing,,45,Yes,24,Yes
-2024-25,,North Tyneside Council,,"5,000-40,000",North,,,,,,,
 2024-25,44UB,North Warwickshire Borough Council,LA,"<5,000",Midlands,No,https://www.northwarks.gov.uk/homelessness/housing-performance,,20,No,24,No
-2024-25,,North Warwickshire Borough Council,,"<5,000",Midlands,,,,,,,
 2024-25,31UH,North West Leicestershire District Council,LA,"<5,000",Midlands,No,https://www.nwleics.gov.uk/pages/tenant_satisfaction_measures,,60,Yes,24,Yes
-2024-25,,North West Leicestershire District Council,,"<5,000",Midlands,,,,,,,
 2024-25,5179,North Yorkshire Council,LA,"5,000-40,000",North,No,https://eur02.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.northyorks.gov.uk%2FTenantInvolvement&data=05%7C02%7CRichard.Mair%40northyorks.gov.uk%7Ca9b941417daa449af95408ddafdb8131%7Cad3d9c73983044a1b487e1055441c70e%7C0%7C0%7C638860079477767759%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=VNdLYuNsXnvN2MbqSs9Wmulhee%2BQrrTF0NvhhbLyQck%3D&reserved=0,,20,Yes,24,No
-2024-25,,North Yorkshire Council,,"5,000-40,000",North,,,,,,,
 2024-25,00EM,Northumberland County Council,LA,"5,000-40,000",North,No,https://www.northumberland.gov.uk/NorthumberlandCountyCouncil/media/Housing/Your%20Council%20House/NCC-TSM-survey-2024-25-report.pdf  https://www.northumberland.gov.uk/NorthumberlandCountyCouncil/media/Housing/Your%20Council%20House/Northumberland-Council-TSM-survey-2024-5-infographic-summary-v2.pdf   https://www.northumberland.gov.uk/NorthumberlandCountyCouncil/media/Housing/Technical-TSM-for-website.pdf,,30,Yes,24,No
-2024-25,,Northumberland County Council,,"5,000-40,000",North,,,,,,,
 2024-25,33UG,Norwich City Council,LA,"5,000-40,000",South,No,www.norwich.gov.uk/tsm,,60,Yes,24,No
-2024-25,,Norwich City Council,,"5,000-40,000",South,,,,,,,
 2024-25,4880,Notting Hill Genesis,PRP,">40,000",London,No,https://www.nhg.org.uk/your-community/how-we-are-performing/tenant-satisfaction-measures/,,20,Yes,24,Yes
-2024-25,,Notting Hill Genesis,,">40,000",London,,,,,,,
 2024-25,00FY,Nottingham City Council,LA,"5,000-40,000",Midlands,No,https://www.ncchousing.org.uk/about-us/performance-and-standards/tenant-satisfaction-measures/,,90,Yes,24,No
-2024-25,,Nottingham City Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,4817,Nottingham Community Housing Association Limited,PRP,"5,000-40,000",Midlands,No,https://www.ncha.org.uk/about-ncha/our-performance/,,20,Yes,24,No
-2024-25,,Nottingham Community Housing Association Limited,,"5,000-40,000",Midlands,,,,,,,
 2024-25,L4459,NSAH (Alliance Homes) Limited,PRP,"5,000-40,000",South,No,https://www.alliancehomes.org.uk/2850,,90,Yes,24,Yes
-2024-25,,NSAH (Alliance Homes) Limited,,"5,000-40,000",South,,,,,,,
 2024-25,44UC,Nuneaton And Bedworth Borough Council,LA,"5,000-40,000",Midlands,No,https://www.nuneatonandbedworth.gov.uk/site-search/results/?q=tenant+satisfaction+measures,,247,Yes,24,No
-2024-25,,Nuneaton And Bedworth Borough Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,31UJ,Oadby and Wigston Borough Council,LA,"<5,000",Midlands,No,https://www.oadby-wigston.gov.uk/tenantsatisfaction,,25,Yes,4,No
-2024-25,,Oadby and Wigston Borough Council,,"<5,000",Midlands,,,,,,,
 2024-25,L4422,Ocean Housing Group Limited,PRP,"<5,000",South,No,https://www.oceanhousing.com/tsm/,,40,Yes,24,No
-2024-25,,Ocean Housing Group Limited,,"<5,000",South,,,,,,,
 2024-25,L0717,Octavia Housing,PRP,"<5,000",London,No,https://www.octaviahousing.org.uk/for-tenants/feedback-and-general-information/tenant-satisfaction-measures,Management information metric RP02 has been removed as the landlord could not provide results for a significant number of repairs. We will use this information in our ongoing engagement with the landlord.,90,Yes,144,Yes
-2024-25,,Octavia Housing,,"<5,000",London,,,,,,,
 2024-25,00BP,Oldham Metropolitan Borough Council,LA,"<5,000",North,Yes,https://www.oldham.gov.uk/info/201272/oldham_council_homes,,21,Yes,72,Yes
-2024-25,,Oldham Metropolitan Borough Council,,"<5,000",North,,,,,,,
 2024-25,4808,One Manchester Limited,PRP,"5,000-40,000",North,No,https://www.onemanchester.co.uk/our-performance/tenant-satisfaction-measures/2425,,45,Yes,24,No
-2024-25,,One Manchester Limited,,"5,000-40,000",North,,,,,,,
 2024-25,4804,One Vision Housing Limited,PRP,"5,000-40,000",North,No,https://ovh.org.uk/about-us/our-performance/tenant-satisfaction-measures-tsms/,,60,Yes,24,No
-2024-25,,One Vision Housing Limited,,"5,000-40,000",North,,,,,,,
 2024-25,L4486,Ongo Homes Limited,PRP,"5,000-40,000",North,No,https://www.ongo.co.uk/about-ongo/corporate-documents/tenant-satisfaction-measures/,,60,Yes,24,No
-2024-25,,Ongo Homes Limited,,"5,000-40,000",North,,,,,,,
 2024-25,4649,Onward Group Limited,PRP,"5,000-40,000",North,No,https://www.onward.co.uk/about-us/policies-publications/tsm-results/,,90,Yes,24,No
-2024-25,,Onward Group Limited,,"5,000-40,000",North,,,,,,,
 2024-25,L4123,Orbit Group Limited,PRP,">40,000",Mixed,No,https://www.orbitcustomerhub.org.uk/how-were-doing/,,65,Yes,24,Yes
-2024-25,,Orbit Group Limited,,">40,000",Mixed,,,,,,,
 2024-25,L0871,Origin Housing Limited,PRP,"5,000-40,000",London,No,https://www.originhousing.org.uk/about/performance/,,28,Yes,24,Yes
-2024-25,,Origin Housing Limited,,"5,000-40,000",London,,,,,,,
 2024-25,L0028,Orwell Housing Association Limited,PRP,"<5,000",South,No,https://www.orwell-housing.co.uk/i-am-a-customer/get-involved/tenant-satisfaction-measures/tenant-satisfaction-measures-20242025/,,260,Yes,6,No
-2024-25,,Orwell Housing Association Limited,,"<5,000",South,,,,,,,
 2024-25,38UC,Oxford City Council,LA,"5,000-40,000",South,No,https://www.oxford.gov.uk/council-housing/performance-landlord,,28,Yes,24,No
-2024-25,,Oxford City Council,,"5,000-40,000",South,,,,,,,
 2024-25,L4215,Paradigm Housing Group Limited,PRP,"5,000-40,000",South,No,https://www.paradigmhousing.co.uk/about-paradigm/our-performance/tenant-satisfaction-measures-2/,,60,Yes,24,No
-2024-25,,Paradigm Housing Group Limited,,"5,000-40,000",South,,,,,,,
 2024-25,4849,Paragon Asra Housing Limited,PRP,"5,000-40,000",Mixed,No,https://www.pahousing.co.uk/about-us/tenant-satisfaction-measures/our-tenant-satisfaction-measures-2024/,,15,No,24,No
-2024-25,,Paragon Asra Housing Limited,,"5,000-40,000",Mixed,,,,,,,
 2024-25,4878,Peabody Trust,PRP,">40,000",London,No,https://www.peabody.org.uk/your-community/our-performance/tenant-satisfaction-measures/,,22,Yes,24,Yes
-2024-25,,Peabody Trust,,">40,000",London,,,,,,,
 2024-25,L4505,Phoenix Community Housing Association (Bellingham and Downham) Limited,PRP,"5,000-40,000",London,No,https://www.phoenixch.org.uk/about/our-performance,,20,Yes,24,Yes
-2024-25,,Phoenix Community Housing Association (Bellingham and Downham) Limited,,"5,000-40,000",London,,,,,,,
 2024-25,A4020,Pickering and Ferens Homes,PRP,"<5,000",North,No,https://www.pfh.org.uk/residents/how-we-are-performing/tenant-satisfaction-measures/,,20,Yes,24,No
-2024-25,,Pickering and Ferens Homes,,"<5,000",North,,,,,,,
 2024-25,L4236,Places for People Group Limited,PRP,">40,000",Mixed,No,https://www.placesforpeople.co.uk/about-us/who-we-are/tenant-satisfaction-measures-report/,,28,Yes,24,No
-2024-25,,Places for People Group Limited,,">40,000",Mixed,,,,,,,
 2024-25,4789,Platform Housing Group Limited,PRP,">40,000",Midlands,No,https://www.platformhg.com/2024-25-performance,,28,No,24,No
-2024-25,,Platform Housing Group Limited,,">40,000",Midlands,,,,,,,
 2024-25,L4556,Plus Dane Housing Limited,PRP,"5,000-40,000",North,No,https://www.plusdane.co.uk/you-and-your-home/your-voice/tenant-satisfaction-measures/,,65,Yes,24,No
-2024-25,,Plus Dane Housing Limited,,"5,000-40,000",North,,,,,,,
 2024-25,L4543,Plymouth Community Homes Limited,PRP,"5,000-40,000",South,No,https://www.plymouthcommunityhomes.co.uk/about/our-performance,,20,Yes,24,No
-2024-25,,Plymouth Community Homes Limited,,"5,000-40,000",South,,,,,,,
 2024-25,L4170,Poplar Housing And Regeneration Community Association Limited,PRP,"5,000-40,000",London,No,https://www.poplarharca.co.uk/about-us/tenant-satisfaction-measures/,,10,No,24,No
-2024-25,,Poplar Housing And Regeneration Community Association Limited,,"5,000-40,000",London,,,,,,,
 2024-25,00MR,Portsmouth City Council,LA,"5,000-40,000",South,No,"https://www.portsmouth.gov.uk/services/housing/council-tenants-and-leaseholders/our-landlord-performance/  We will also publish the full perception survey results https://yourcityyoursay.portsmouth.gov.uk/portsmouth-city-council-tenant-satisfaction-measures-consultation-2024/ https://www.portsmouth.gov.uk/services/housing/council-tenants-and-leaseholders/house-talk/  and they will be in our annual report which will be linked on our above performance page, with a printed copy distributed to all residents via our resident magazine.",,28,No,24,No
-2024-25,,Portsmouth City Council,,"5,000-40,000",South,,,,,,,
 2024-25,L1001,Prima Housing Group Limited,PRP,"<5,000",North,No,https://www.primagroup.org/tenant-satisfaction-measures,,40,Yes,24,Yes
-2024-25,,Prima Housing Group Limited,,"<5,000",North,,,,,,,
 2024-25,LH4189,Progress Housing Group Limited,PRP,"5,000-40,000",North,Yes,https://corporate.progressgroup.org.uk/policies-and-reports/performance-reports/tenant-satisfaction-measures/,,60,Yes,24,No
-2024-25,,Progress Housing Group Limited,,"5,000-40,000",North,,,,,,,
 2024-25,A1855,Railway Housing Association and Benefit Fund,PRP,"<5,000",North,Yes,https://www.railwayha.co.uk/about/publications/,,31,Yes,24,No
-2024-25,,Railway Housing Association and Benefit Fund,,"<5,000",North,,,,,,,
 2024-25,L4334,Raven Housing Trust Limited,PRP,"5,000-40,000",South,No,https://www.ravenht.org.uk/how-are-we-doing/our-performance/tenant-satisfaction-measures/,,28,Yes,24,No
-2024-25,,Raven Housing Trust Limited,,"5,000-40,000",South,,,,,,,
 2024-25,00MC,Reading Borough Council,LA,"5,000-40,000",South,No,https://www.reading.gov.uk/housing/council-homes/housing-performance-information/,,40,Yes,3,No
-2024-25,,Reading Borough Council,,"5,000-40,000",South,,,,,,,
 2024-25,4682,Red Kite Community Housing Limited,PRP,"5,000-40,000",South,Yes,https://redkitehousing.org.uk/about-us/our-performance/tenant-satisfaction-measures/,,20,Yes,24,Yes
-2024-25,,Red Kite Community Housing Limited,,"5,000-40,000",South,,,,,,,
 2024-25,47UD,Redditch Borough Council,LA,"5,000-40,000",Midlands,No,https://www.redditchbc.gov.uk/media/qafclwxa/tsm-infographic-2025.pdf  https://www.redditchbc.gov.uk/media/wc3n4r5f/tsm-landlord-2025.pdf,,20,Yes,2,Yes
-2024-25,,Redditch Borough Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,4653,Regenda Limited,PRP,"5,000-40,000",North,No,https://www.regenda.org.uk/tenant-satisfaction-measures,,60,Yes,24,No
-2024-25,,Regenda Limited,,"5,000-40,000",North,,,,,,,
 2024-25,5092,ReSI Homes Limited,PRP,,,,,,,,,
 2024-25,L4279,Richmond Housing Partnership Limited,PRP,"5,000-40,000",London,No,https://www.rhp.org.uk/customer-engagement/tenant-satisfaction-measures,,28,Yes,24,No
-2024-25,,Richmond Housing Partnership Limited,,"5,000-40,000",London,,,,,,,
 2024-25,4607,Rochdale Boroughwide Housing Limited,PRP,"5,000-40,000",North,No,www.rbh.org.uk/performance,,60,Yes,24,No
-2024-25,,Rochdale Boroughwide Housing Limited,,"5,000-40,000",North,,,,,,,
 2024-25,L4404,Rooftop Housing Group Limited,PRP,"5,000-40,000",Midlands,No,https://www.rooftopgroup.org/about/reports-and-policies/reports,,20,No,24,No
-2024-25,,Rooftop Housing Group Limited,,"5,000-40,000",Midlands,,,,,,,
 2024-25,00CF,Rotherham Metropolitan Borough Council,LA,"5,000-40,000",North,No,https://www.rotherham.gov.uk/community-living/performance,,28,No,24,Yes
-2024-25,,Rotherham Metropolitan Borough Council,,"5,000-40,000",North,,,,,,,
 2024-25,00AL,Royal Borough of Greenwich,LA,"5,000-40,000",London,No,https://www.royalgreenwich.gov.uk/housing/view-our-housing-policies-and-performance/assessing-our-housing-performance,,20,Yes,2,No
-2024-25,,Royal Borough of Greenwich,,"5,000-40,000",London,,,,,,,
 2024-25,00AW,Royal Borough of Kensington and Chelsea,LA,"5,000-40,000",London,No,https://www.rbkc.gov.uk/housing/consultations-publications-and-policy/tenant-satisfaction-measures,,20,Yes,24,Yes
-2024-25,,Royal Borough of Kensington and Chelsea,,"5,000-40,000",London,,,,,,,
 2024-25,00AX,Royal Borough of Kingston Upon Thames,LA,"<5,000",London,No,https://www.kingston.gov.uk/housing-policies-reports/tenant-satisfaction-measures,,20,Yes,24,Yes
-2024-25,,Royal Borough of Kingston Upon Thames,,"<5,000",London,,,,,,,
 2024-25,44UD,Rugby Borough Council,LA,"<5,000",Midlands,No,https://www.rugby.gov.uk/w/tenant-satisfaction-measures-2023/24?p_l_back_url=%2Fsearch%3Fq%3Dtenant%2Bsatisfaction&p_l_back_url_title=Search,,20,No,24,Yes
-2024-25,,Rugby Borough Council,,"<5,000",Midlands,,,,,,,
 2024-25,43UG,Runnymede Borough Council,LA,"<5,000",South,No,https://www.runnymede.gov.uk/tenant-engagement-1/tenant-satisfaction-survey-2024,,15,No,4,No
-2024-25,,Runnymede Borough Council,,"<5,000",South,,,,,,,
 2024-25,LH4412,Saffron Housing Trust Limited,PRP,"5,000-40,000",South,No,https://www.saffronhousing.co.uk/about-us/our-performance-and-tsms/tenant-satisfaction-measures-survey-results/  https://www.saffronhousing.co.uk/about-us/our-performance-and-tsms/tenant-satisfaction-measures-survey-results/management-measures-results/,,28,Yes,24,No
-2024-25,,Saffron Housing Trust Limited,,"5,000-40,000",South,,,,,,,
 2024-25,5082,Sage Homes RP Limited,PRP,"5,000-40,000",South,No,https://www.sagehomes.co.uk/tsm-shrpl-2024-25/,,20,No,24,No
-2024-25,,Sage Homes RP Limited,,"5,000-40,000",South,,,,,,,
 2024-25,5083,Sage Rented Limited,PRP,"5,000-40,000",South,No,https://www.sagehomes.co.uk/tsm-srl/,,20,No,24,No
-2024-25,,Sage Rented Limited,,"5,000-40,000",South,,,,,,,
 2024-25,00BR,Salford City Council,LA,"<5,000",North,No,https://www.pendletontogether.co.uk/about-us/contract-performance/tsms,,21,Yes,24,No
-2024-25,,Salford City Council,,"<5,000",North,,,,,,,
 2024-25,4609,Salix Homes Limited,PRP,"5,000-40,000",North,No,https://www.salixhomes.co.uk/about-us/performance/,,60,Yes,8,No
-2024-25,,Salix Homes Limited,,"5,000-40,000",North,,,,,,,
 2024-25,LH2429,Salvation Army Housing Association,PRP,"<5,000",Mixed,Yes,https://www.salvationarmyhomes.org.uk/tsm,,28,Yes,24,Yes
-2024-25,,Salvation Army Housing Association,,"<5,000",Mixed,,,,,,,
 2024-25,L0247,Sanctuary Housing Association,PRP,">40,000",Mixed,No,https://www.sanctuary.co.uk/learning-from-our-customers/tenant-satisfaction-measures,,64,Yes,24,No
-2024-25,,Sanctuary Housing Association,,">40,000",Mixed,,,,,,,
 2024-25,00CS,Sandwell Metropolitan Borough Council,LA,"5,000-40,000",Midlands,No,https://www.sandwell.gov.uk/housing/tenant-satisfaction-measures-2024,,40,Yes,24,No
-2024-25,,Sandwell Metropolitan Borough Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,L4299,Saxon Weald,PRP,"5,000-40,000",South,No,https://www.saxonweald.com/your-voice/TSMs,,20,No,24,No
-2024-25,,Saxon Weald,,"5,000-40,000",South,,,,,,,
 2024-25,LH4097,Selwood Housing Society Limited,PRP,"5,000-40,000",South,No,https://www.selwoodhousing.com/about-us/how-were-doing/tenant-satisfaction-measures/,,43,Yes,24,No
-2024-25,,Selwood Housing Society Limited,,"5,000-40,000",South,,,,,,,
 2024-25,L4370,Settle Group,PRP,"5,000-40,000",South,No,https://www.settlegroup.org.uk/about-us/our-performance/tenant-satisfaction-measures-2/,,20,No,24,No
-2024-25,,Settle Group,,"5,000-40,000",South,,,,,,,
 2024-25,00CG,Sheffield City Council,LA,"5,000-40,000",North,No,https://www.sheffield.gov.uk/council-housing/housing-service-performance  A link to the document 'Tenant Satisfaction Measures 2024-25' can be found under the heading 'Tenant Satisfaction Measures'.,,55,Yes,24,Yes
-2024-25,,Sheffield City Council,,"5,000-40,000",North,,,,,,,
 2024-25,00GG,Shropshire Council,LA,"<5,000",Midlands,No,https://www.starhousing.org.uk/home/tenant-satisfaction-measures-year-end-2324/#,,132,Yes,24,No
-2024-25,,Shropshire Council,,"<5,000",Midlands,,,,,,,
 2024-25,00MD,Slough Borough Council,LA,"5,000-40,000",South,No,https://www.slough.gov.uk/performance-spending/performance-reporting/2,,28,No,24,No
-2024-25,,Slough Borough Council,,"5,000-40,000",South,,,,,,,
 2024-25,L4130,Soha Housing Limited,PRP,"5,000-40,000",South,No,https://soha.co.uk/tenant-satisfaction-measures,,28,Yes,24,Yes
-2024-25,,Soha Housing Limited,,"5,000-40,000",South,,,,,,,
 2024-25,00CT,Solihull Metropolitan Borough Council,LA,"5,000-40,000",Midlands,No,https://www.solihullcommunityhousing.org.uk/tenant-satisfaction-measures-2024-25/,,60,Yes,24,Yes
-2024-25,,Solihull Metropolitan Borough Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,5178,Somerset Council,LA,"5,000-40,000",South,No,https://www.somerset.gov.uk/housing-support/council-and-social-housing/our-housing-performance/#Somerset%20Council%20Tenant%20Satisfaction%20Measures%20(TSMs),,20,Yes,24,No
-2024-25,,Somerset Council,,"5,000-40,000",South,,,,,,,
 2024-25,12UG,South Cambridgeshire District Council,LA,"5,000-40,000",South,No,https://www.scambs.gov.uk/council-tenants/housing-performance-and-tenant-satisfaction-measures,,20,Yes,4,Yes
-2024-25,,South Cambridgeshire District Council,,"5,000-40,000",South,,,,,,,
 2024-25,17UK,South Derbyshire District Council,LA,"<5,000",Midlands,Yes,https://www.southderbyshire.gov.uk/our-services/housing/tenant-satisfaction-measures,,201,Yes,24,No
-2024-25,,South Derbyshire District Council,,"<5,000",Midlands,,,,,,,
 2024-25,32UF,South Holland District Council,LA,"<5,000",Midlands,No,https://www.sholland.gov.uk/about-your-landlord  Updated 7/8/25 following ammendment to RP01,,28,No,8,Yes
-2024-25,,South Holland District Council,,"<5,000",Midlands,,,,,,,
 2024-25,32UG,South Kesteven District Council,LA,"5,000-40,000",Midlands,No,https://www.southkesteven.gov.uk/housing/housing-faqs-and-service-standards/housing-reports,,60,Yes,24,Yes
-2024-25,,South Kesteven District Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,4686,South Lakes Housing,PRP,"<5,000",North,No,https://www.southlakeshousing.co.uk/view-our-tsm-customer-satisfaction-survey-results/,,60,Yes,24,No
-2024-25,,South Lakes Housing,,"<5,000",North,,,,,,,
 2024-25,L4230,South Liverpool Homes Limited,PRP,"<5,000",North,No,https://www.southliverpoolhomes.co.uk/news/news-details/?id=9668,,20,No,24,No
-2024-25,,South Liverpool Homes Limited,,"<5,000",North,,,,,,,
 2024-25,00CL,South Tyneside Council,LA,"5,000-40,000",North,No,https://housing.southtyneside.gov.uk/article/22731/Annual-Tenant-Satisfaction-Measures-Survey-and-how-we-re-performing,,20,No,4,No
-2024-25,,South Tyneside Council,,"5,000-40,000",North,,,,,,,
 2024-25,L0078,South Yorkshire Housing Association Limited,PRP,"5,000-40,000",North,No,https://www.syha.co.uk/who-we-are/how-were-doing/tenant-satisfaction-measures/,,56,Yes,24,No
-2024-25,,South Yorkshire Housing Association Limited,,"5,000-40,000",North,,,,,,,
 2024-25,00MS,Southampton City Council,LA,"5,000-40,000",South,No,www.southampton.gov.uk/housing/council-housing-tenants-and-leaseholders/your-tenancy-and-service-standards/our-performance-and-council-housing/,,60,Yes,4,No
-2024-25,,Southampton City Council,,"5,000-40,000",South,,,,,,,
 2024-25,00KF,Southend on Sea City Council,LA,"5,000-40,000",South,No,https://southessexhomes.co.uk/tsm,,20,Yes,24,No
-2024-25,,Southend on Sea City Council,,"5,000-40,000",South,,,,,,,
 2024-25,5171,Southern Housing,PRP,">40,000",South,No,www.southernhousing.org.uk/about-us/our-performance/tenant-satisfaction-measures-tsm,,20,Yes,6,Yes
-2024-25,,Southern Housing,,">40,000",South,,,,,,,
 2024-25,00BE,Southwark Council,LA,"5,000-40,000",London,No,https://www.southwark.gov.uk/housing/how-our-tenants-think-were-doing-landlord/management-information-measures,,20,Yes,4,Yes
-2024-25,,Southwark Council,,"5,000-40,000",London,,,,,,,
 2024-25,L4507,Southway Housing Trust (Manchester) Limited,PRP,"5,000-40,000",North,No,https://www.southwayhousing.co.uk/about-us/who-we-are-what-we-do/tsms-performance/,,20,Yes,24,No
-2024-25,,Southway Housing Trust (Manchester) Limited,,"5,000-40,000",North,,,,,,,
 2024-25,4837,Sovereign Network Group,PRP,">40,000",South,No,https://www.sng.org.uk/tenant-satisfaction-measures,,42,No,24,No
-2024-25,,Sovereign Network Group,,">40,000",South,,,,,,,
 2024-25,4636,Sparrow Shared Ownership Limited,PRP,"<5,000",South,No,https://www.sparrowsharedownership.co.uk/for-customers/tenant-satisfaction-measures/,,[Z],[Z],[Z],[Z]
-2024-25,,Sparrow Shared Ownership Limited,,"<5,000",South,,,,,,,
 2024-25,26UG,St Albans City and District Council,LA,"<5,000",South,No,https://www.stalbans.gov.uk/tenant-satisfaction-measures-tsms  https://stalbans.moderngov.co.uk/ieListMeetings.aspx?CId=612&Year=0,,28,No,24,No
-2024-25,,St Albans City and District Council,,"<5,000",South,,,,,,,
 2024-25,LH0279,St Mungo Community Housing Association,PRP,"<5,000",London,Yes,https://www.mungos.org/clients/#TSM_Report,"Perception measure TP09 has been removed as the wording differed materially from the TSM requirements, reducing its comparability to other landlords. We will use this information in our ongoing engagement with the landlord.",60,Yes,24,No
-2024-25,,St Mungo Community Housing Association,,"<5,000",London,,,,,,,
 2024-25,26UH,Stevenage Borough Council,LA,"5,000-40,000",South,No,www.stevenage.gov.uk/housing/council-housing/tenant-satisfaction-survey,,20,Yes,24,No
-2024-25,,Stevenage Borough Council,,"5,000-40,000",South,,,,,,,
 2024-25,00BS,Stockport Metropolitan Borough Council,LA,"5,000-40,000",North,No,https://www.stockporthomes.org/about-us/our-performance/tenant-satisfaction-measures/,,30,No,24,No
-2024-25,,Stockport Metropolitan Borough Council,,"5,000-40,000",North,,,,,,,
 2024-25,00GL,Stoke on Trent City Council,LA,"5,000-40,000",Midlands,No,https://www.stoke.gov.uk/info/20049/council_tenants/705/performance_rights_and_information/2,,20,No,24,No
-2024-25,,Stoke on Trent City Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,L1556,Stonewater Limited,PRP,"5,000-40,000",South,No,https://www.stonewater.org/customers/get-involved/tenant-satisfaction-measures/,,20,No,24,No
-2024-25,,Stonewater Limited,,"5,000-40,000",South,,,,,,,
 2024-25,23UF,Stroud District Council,LA,"<5,000",South,No,https://www.stroud.gov.uk/housing/im-an-existing-tenant-or-leaseholder/our-policies-and-plans/our-performance/,,28,No,24,No
-2024-25,,Stroud District Council,,"<5,000",South,,,,,,,
 2024-25,4687,Sustain (UK) Ltd,PRP,"<5,000",Midlands,Yes,https://sustainuk.org/tenants-portal/,,20,No,24,No
-2024-25,,Sustain (UK) Ltd,,"<5,000",Midlands,,,,,,,
 2024-25,00HX,Swindon Borough Council,LA,"5,000-40,000",South,No,https://www.swindon.gov.uk/info/20056/council_tenants/1713/housing_performance/3,,40,Yes,24,Yes
-2024-25,,Swindon Borough Council,,"5,000-40,000",South,,,,,,,
 2024-25,41UK,Tamworth Borough Council,LA,"<5,000",Midlands,No,https://www.tamworth.gov.uk/council/how-council-run/how-council-performing,,26,Yes,24,No
-2024-25,,Tamworth Borough Council,,"<5,000",Midlands,,,,,,,
 2024-25,43UK,Tandridge District Council,LA,"<5,000",South,No,https://www.tandridge.gov.uk/Housing/Council-housing/Resident-Engagement/Tenant-Satisfaction-Measures  See page for both Management and Tenant Perception TSM's,,,,,
 2024-25,LH4403,Teign Housing,PRP,"<5,000",South,No,https://www.teignhousing.co.uk/about-us/our-performance/tenant-satisfaction-measures/,,22,Yes,24,Yes
-2024-25,,Teign Housing,,"<5,000",South,,,,,,,
 2024-25,22UN,Tendring District Council,LA,"<5,000",South,No,https://www.tendringdc.gov.uk/content/our-performance,,56,Yes,24,No
-2024-25,,Tendring District Council,,"<5,000",South,,,,,,,
 2024-25,29UN,Thanet District Council,LA,"<5,000",South,No,https://www.thanet.gov.uk/info-pages/policies-and-reports/,,35,Yes,24,Yes
-2024-25,,Thanet District Council,,"<5,000",South,,,,,,,
 2024-25,H1046,The Abbeyfield Society,PRP,,,,,,,,,
 2024-25,L0992,The Cambridge Housing Society Limited,PRP,"<5,000",South,No,https://www.chsgroup.org.uk/tenant-satisfaction-2024-25/,,20,Yes,48,Yes
-2024-25,,The Cambridge Housing Society Limited,,"<5,000",South,,,,,,,
 2024-25,LH4264,The Community Housing Group Limited,PRP,"5,000-40,000",Midlands,Yes,https://www.communityhousing.co.uk/about/performance.php#Tenant,,20,Yes,24,No
-2024-25,,The Community Housing Group Limited,,"5,000-40,000",Midlands,,,,,,,
 2024-25,4729,The Guinness Partnership Limited,PRP,">40,000",Mixed,No,https://www.guinnesspartnership.com/,,60,Yes,24,Yes
-2024-25,,The Guinness Partnership Limited,,">40,000",Mixed,,,,,,,
 2024-25,LH4339,The Havebury Housing Partnership,PRP,"5,000-40,000",South,No,https://www.havebury.com/our-2024-25-tenant-satisfaction-measures-performance/,,35,Yes,24,No
-2024-25,,The Havebury Housing Partnership,,"5,000-40,000",South,,,,,,,
 2024-25,L4491,The Housing Plus Group Limited,PRP,"5,000-40,000",Midlands,No,https://url.uk.m.mimecastprotect.com/s/hY9OCwnWRCGnrl3SVfRhJYvIe?domain=housingplusgroup.co.uk/,,28,Yes,24,Yes
-2024-25,,The Housing Plus Group Limited,,"5,000-40,000",Midlands,,,,,,,
 2024-25,L0266,The Industrial Dwellings Society (1885) Limited,PRP,"<5,000",London,No,https://www.ids.org.uk/about-ids/tsm-2024-25/,,28,No,24,No
-2024-25,,The Industrial Dwellings Society (1885) Limited,,"<5,000",London,,,,,,,
 2024-25,L4118,The Pioneer Housing and Community Group Limited,PRP,"<5,000",Midlands,No,https://www.pioneergroup.org.uk/about-us/reports-policies/,,28,No,24,No
-2024-25,,The Pioneer Housing and Community Group Limited,,"<5,000",Midlands,,,,,,,
 2024-25,L4552,The Riverside Group Limited,PRP,">40,000",North,No,https://www.riverside.org.uk/about-us/how-were-doing/tenant-satisfaction-measures-tsms/,,40,Yes,24,Yes
-2024-25,,The Riverside Group Limited,,">40,000",North,,,,,,,
 2024-25,L4522,Thirteen Housing Group Limited,PRP,"5,000-40,000",North,No,https://www.thirteengroup.co.uk/page/tenant-satisfaction-measures,,28,Yes,24,No
-2024-25,,Thirteen Housing Group Limited,,"5,000-40,000",North,,,,,,,
 2024-25,L4520,Thrive Homes Limited,PRP,"5,000-40,000",South,No,https://www.thrivehomes.org.uk/tsm-2024-25/,,60,Yes,24,No
-2024-25,,Thrive Homes Limited,,"5,000-40,000",South,,,,,,,
 2024-25,00KG,Thurrock Council,LA,"5,000-40,000",South,No,www.thurrock.gov.uk/tenant-satisfaction/how-well-we-are-doing,,20,Yes,24,No
-2024-25,,Thurrock Council,,"5,000-40,000",South,,,,,,,
 2024-25,L4464,Together Housing Group Limited,PRP,"5,000-40,000",North,No,https://www.togetherhousing.co.uk/about-us/how-we-are-doing/tsms/,,45,Yes,24,No
-2024-25,,Together Housing Group Limited,,"5,000-40,000",North,,,,,,,
 2024-25,5065,Torus62 Limited,PRP,">40,000",North,No,https://www.torus.co.uk/my-torus/your-home/surveys-your-views-count/tsm,,40,Yes,24,No
-2024-25,,Torus62 Limited,,">40,000",North,,,,,,,
 2024-25,L4260,Tower Hamlets Community Housing,PRP,"<5,000",London,No,https://www.thch.org.uk/tenant-satisfaction-measures,,15,Yes,4,No
-2024-25,,Tower Hamlets Community Housing,,"<5,000",London,,,,,,,
 2024-25,L4311,Trent & Dove Housing Limited,PRP,"5,000-40,000",Midlands,No,https://www.trentanddove.org/voice-of-the-customer,,20,No,24,Yes
-2024-25,,Trent & Dove Housing Limited,,"5,000-40,000",Midlands,,,,,,,
 2024-25,L0979,Trident Housing Association Limited,PRP,"<5,000",Midlands,Yes,https://tridentgroup.org.uk/getting-involved/our-performance/tenant-satisfaction-measures-results-2024/,,28,No,24,No
-2024-25,,Trident Housing Association Limited,,"<5,000",Midlands,,,,,,,
 2024-25,L3808,Tuntum Housing Association Limited,PRP,"<5,000",Midlands,No,https://tuntum.co.uk/im-a-tuntum-resident/performance/tenant-satisfaction-measures-tsms-current/,,21,Yes,24,No
-2024-25,,Tuntum Housing Association Limited,,"<5,000",Midlands,,,,,,,
 2024-25,L4385,Two Rivers Housing,PRP,"<5,000",South,No,https://www.tworivershousing.org.uk/about-us/how-we-are-doing/,,20,Yes,24,No
-2024-25,,Two Rivers Housing,,"<5,000",South,,,,,,,
 2024-25,LH3737,Unity Housing Association Limited,PRP,"<5,000",North,No,https://www.unityha.co.uk/performance/how-were-performing,,28,No,24,No
-2024-25,,Unity Housing Association Limited,,"<5,000",North,,,,,,,
 2024-25,22UQ,Uttlesford District Council,LA,"<5,000",South,No,https://www.uttlesford.gov.uk/tenant-satisfaction-measures,,20,Yes,24,Yes
-2024-25,,Uttlesford District Council,,"<5,000",South,,,,,,,
 2024-25,L4441,Vico Homes Limited,PRP,"5,000-40,000",North,No,https://www.vicohomes.co.uk/about-us/our-performance/,,28,No,24,No
-2024-25,,Vico Homes Limited,,"5,000-40,000",North,,,,,,,
 2024-25,4850,Vivid Housing Limited,PRP,"5,000-40,000",South,No,http://vivid.foleon.com/reports/annual-review-24-25/how-were-performing,,21,Yes,24,No
-2024-25,,Vivid Housing Limited,,"5,000-40,000",South,,,,,,,
 2024-25,L4389,Walsall Housing Group Limited,PRP,"5,000-40,000",Midlands,No,https://whg.shorthandstories.com/you-said-we-did-end-of-year-2024-25/index.html,,65,Yes,24,No
-2024-25,,Walsall Housing Group Limited,,"5,000-40,000",Midlands,,,,,,,
 2024-25,L0277,Wandle Housing Association Limited,PRP,"5,000-40,000",London,No,https://www.wandle.com/performance-feedback/our-performance/,,28,No,24,No
-2024-25,,Wandle Housing Association Limited,,"5,000-40,000",London,,,,,,,
 2024-25,L0518,Warrington Housing Association Limited,PRP,"<5,000",North,No,https://www.wha.org.uk/performance/,,21,Yes,24,No
-2024-25,,Warrington Housing Association Limited,,"<5,000",North,,,,,,,
 2024-25,44UF,Warwick District Council,LA,"5,000-40,000",Midlands,No,https://www.warwickdc.gov.uk/info/20166/council_tenants/1981/tenant_satisfaction_measures,,40,Yes,24,No
-2024-25,,Warwick District Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,L4495,Watford Community Housing Trust,PRP,"5,000-40,000",South,No,www.wcht.org.uk/TSMresults,,20,Yes,24,No
-2024-25,,Watford Community Housing Trust,,"5,000-40,000",South,,,,,,,
 2024-25,L4383,Watmos Community Homes,PRP,"<5,000",Midlands,No,https://www.watmos.org.uk/tenant-satisfaction-measures,,25,Yes,24,No
-2024-25,,Watmos Community Homes,,"<5,000",Midlands,,,,,,,
 2024-25,43UL,Waverley Borough Council,LA,"<5,000",South,No,https://www.waverley.gov.uk/services/housing/landlord-services-performance,,28,Yes,72,Yes
-2024-25,,Waverley Borough Council,,"<5,000",South,,,,,,,
 2024-25,21UH,Wealden District Council,LA,"<5,000",South,No,https://www.wealden.gov.uk/housing/council-housing/im-an-existing-tenant/regulation-of-social-landlords/tenants-satisfaction-measures/   also see for where the report etc is published: https://www.wealden.gov.uk/housing/council-housing/im-an-existing-tenant/regulation-of-social-landlords/,,28,Yes,24,Yes
-2024-25,,Wealden District Council,,"<5,000",South,,,,,,,
 2024-25,L4341,Weaver Vale Housing Trust Limited,PRP,"5,000-40,000",North,No,https://www.wvht.co.uk/performance-,,24,Yes,24,No
-2024-25,,Weaver Vale Housing Trust Limited,,"5,000-40,000",North,,,,,,,
 2024-25,26UL,Welwyn Hatfield Borough Council,LA,"5,000-40,000",South,No,https://www.welhat.gov.uk/tsm,,45,Yes,24,No
-2024-25,,Welwyn Hatfield Borough Council,,"5,000-40,000",South,,,,,,,
 2024-25,LH3827,West Kent Housing Association,PRP,"5,000-40,000",South,No,https://www.westkent.org/tsms,,15,Yes,36,No
-2024-25,,West Kent Housing Association,,"5,000-40,000",South,,,,,,,
 2024-25,30UP,West Lancashire Borough Council,LA,"5,000-40,000",North,No,www.westlancs.gov.uk/housing/i-am-a-council-tenant/our-performance/tenant-satisfaction-measures.aspx,,28,Yes,120,Yes
-2024-25,,West Lancashire Borough Council,,"5,000-40,000",North,,,,,,,
 2024-25,5130,West Northamptonshire Council,LA,"5,000-40,000",Midlands,No,https://www.northamptonpartnershiphomes.org.uk/about/our-performance/,,64,Yes,24,No
-2024-25,,West Northamptonshire Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,5177,Westmorland and Furness Council,LA,"<5,000",North,No,https://www.barrowbc.gov.uk/residents/council-housing/about-us/performance-and-standards,,30,Yes,24,Yes
-2024-25,,Westmorland and Furness Council,,"<5,000",North,,,,,,,
 2024-25,4826,Westward Housing Group Limited,PRP,"5,000-40,000",South,No,https://www.westwardhousing.org.uk/tsm-annual,,60,Yes,24,No
-2024-25,,Westward Housing Group Limited,,"5,000-40,000",South,,,,,,,
 2024-25,00BW,Wigan Council,LA,"5,000-40,000",North,No,To date we have published a report on the 12 perception measure results TP01-12 here.  https://democracy.wigan.gov.uk/ieListDocuments.aspx?CId=617&MId=5616&Ver=4&a=1   The remaining 10 management information measures will be published once signed off by Audit and at the same time the TSM Return is submitted. The full results will be found here:  https://www.wigan.gov.uk/Resident/Housing/Council-homes/How-are-we-doing/Tenant-Satisfaction-Measures.aspx,,60,Yes,24,No
-2024-25,,Wigan Council,,"5,000-40,000",North,,,,,,,
 2024-25,L2424,Willow Tree Housing Partnership Limited,PRP,"<5,000",South,No,https://www.willowtreehousing.org.uk/our-performance/,,20,No,24,No
-2024-25,,Willow Tree Housing Partnership Limited,,"<5,000",South,,,,,,,
 2024-25,00HY,Wiltshire Council,LA,"5,000-40,000",South,No,https://www.wiltshire.gov.uk/housing-council-tenant-and-leaseholders-factsheets,,60,Yes,24,No
-2024-25,,Wiltshire Council,,"5,000-40,000",South,,,,,,,
 2024-25,24UP,Winchester City Council,LA,"5,000-40,000",South,No,https://www.winchester.gov.uk/housing/housing-performance,,22,Yes,24,No
-2024-25,,Winchester City Council,,"5,000-40,000",South,,,,,,,
 2024-25,43UM,Woking Borough Council,LA,"<5,000",South,No,Please be aware that the council website is undergoing development. The TSMs are published under:  https://www.woking.gov.uk/housing/council-tenants/tenant-satisfaction-measures-tsms,,20,Yes,8,No
-2024-25,,Woking Borough Council,,"<5,000",South,,,,,,,
 2024-25,00MF,Wokingham Borough Council,LA,"<5,000",South,No,URL will be provided once the results have been published.  Still completing the final draft that will be published.,,15,Yes,3,No
-2024-25,,Wokingham Borough Council,,"<5,000",South,,,,,,,
 2024-25,00CW,Wolverhampton City Council,LA,"5,000-40,000",Midlands,No,https://www.wolverhampton.gov.uk/housing/housing-strategy-performance-and-policy/tenant-satisfaction-measures,,65,Yes,24,Yes
-2024-25,,Wolverhampton City Council,,"5,000-40,000",Midlands,,,,,,,
 2024-25,LH4208,Worthing Homes Limited,PRP,"<5,000",South,No,https://www.worthing-homes.org.uk/resource-hub/performance-how-are-we-doing,,20,Yes,24,No
-2024-25,,Worthing Homes Limited,,"<5,000",South,,,,,,,
 2024-25,L4219,Wythenshawe Community Housing Group Limited,PRP,"5,000-40,000",North,No,https://www.wchg.org.uk/about-us/our-performance/,,60,Yes,24,No
-2024-25,,Wythenshawe Community Housing Group Limited,,"5,000-40,000",North,,,,,,,
 2024-25,LH4078,YMCA St Paul's Group,PRP,"<5,000",London,Yes,https://ymcastpaulsgroup.org/,,20,Yes,24,No
-2024-25,,YMCA St Paul's Group,,"<5,000",London,,,,,,,
 2024-25,L4521,Yorkshire Housing Limited,PRP,"5,000-40,000",North,No,https://www.yorkshirehousing.co.uk/your-home/tenant-satisfaction-measures/,,20,Yes,24,Yes
-2024-25,,Yorkshire Housing Limited,,"5,000-40,000",North,,,,,,,
 2024-25,L4203,Your Housing Group Limited,PRP,"5,000-40,000",North,No,www.yourhousinggroup.co.uk/tsms,"Perception measure TP10 has been removed as the wording differed materially from the TSM requirements, reducing its comparability to other landlords. We will use this information in our ongoing engagement with the landlord.",45,Yes,24,No
-2024-25,,Your Housing Group Limited,,"5,000-40,000",North,,,,,,,
