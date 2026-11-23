@@ -291,6 +291,49 @@ def load_register_layer(ly, w, folder, fn_index, act_index):
 TSM_THEMES = ["repairs", "safety", "engagement", "complaints", "neighbourhood"]
 
 
+def load_results(rel_dir):
+    """Landlord results for a measures layer, packed small for the atlas. None if there are none yet."""
+    folder = ROOT / rel_dir
+    years = sorted(p.stem for p in folder.glob("*.csv") if re.fullmatch(r"20\d\d-\d\d", p.stem)) if folder.is_dir() else []
+    if not years:
+        return None
+    ten = {"LCRA": "R", "Combined": "R", "LCHO": "O", "All": "A"}
+    rows = {y: list(csv.DictReader(open(folder / f"{y}.csv", encoding="utf-8"))) for y in years}
+    info = {}
+    for y in years:  # landlord details: the latest year wins
+        lf = folder / f"{y}-landlords.csv"
+        if lf.exists():
+            for r in csv.DictReader(open(lf, encoding="utf-8")):
+                if r["provider_code"]:
+                    info[r["provider_code"]] = r
+    names = {}
+    for y in years:
+        for r in rows[y]:
+            names[r["provider_code"]] = r["provider_name"]
+    codes = sorted(names, key=lambda c: names[c].lower())
+    pos = {c: i for i, c in enumerate(codes)}
+    keys = sorted({r["measure"] + (f".{r['part']}" if r["part"] else "") for y in years for r in rows[y]})
+    kpos = {k: i for i, k in enumerate(keys)}
+    vals = {}
+    for y in years:
+        grid = {t: [[None] * len(codes) for _ in keys] for t in "ROA"}
+        for r in rows[y]:
+            if r["value"] == "":
+                continue
+            k = r["measure"] + (f".{r['part']}" if r["part"] else "")
+            t = ten.get(r["tenure"], "A")
+            g = grid[t][kpos[k]]
+            if t == "R" and r["tenure"] == "Combined" and g[pos[r["provider_code"]]] is not None:
+                continue  # a landlord's separate tenant figure wins over a combined one
+            g[pos[r["provider_code"]]] = float(r["value"])
+        vals[y] = {t: [col if any(v is not None for v in col) else 0 for col in grid[t]] for t in "ROA"}
+    land = []
+    for c in codes:
+        i = info.get(c, {})
+        land.append([c, names[c], i.get("provider_type", ""), i.get("group_size", ""), i.get("region", ""), i.get("publication_url", "")])
+    return {"years": years, "L": land, "k": keys, "v": vals}
+
+
 def load_measures_layer(ly, w, folder, fn_index, act_index):
     """A measures layer: performance measures plus links to the work that drives or influences them."""
     ms = load(folder / str(ly.get("measures", "measures.yaml"))).get("measures") or []
@@ -631,6 +674,9 @@ def main(check_only):
 
     # Compact data for the site pages
     aidx = {a["code"]: i for i, a in enumerate(areas)}
+    for ly in layers:
+        if ly.get("results") and "_results" not in ly:
+            ly["_results"] = load_results(ly["results"])
     compact = {
         "version": meta.get("version"), "released": str(meta.get("released", "")), "repo": meta.get("repo_url", ""),
         "domains": [d["name"] for d in domains],
@@ -665,6 +711,7 @@ def main(check_only):
                         "links": {c: [[ly["_reg_ids"][o], 0] for o in d["requires"]] + [[ly["_reg_ids"][o], 1] for o in d["shapes"] if o not in d["requires"]]
                                   for c, d in ly["_links"].items()}} if ly.get("kind") == "register" else {}),
                     **({"kind": "measures", "rel": ["Drives", "Influences"],
+                        **({"res": f"layers/{ly['id']}-results.json"} if ly.get("_results") else {}),
                         "register": [{"id": m["id"], "n": f"{m['id']} {m['name']}", "t": m.get("kind"), "th": m.get("theme"),
                                       "u": m.get("unit", ""), "note": m.get("note", ""), "ch": []} for m in ly["_register"]],
                         "links": {c: [[ly["_reg_ids"][o], 0] for o in d["requires"]] + [[ly["_reg_ids"][o], 1] for o in d["shapes"] if o not in d["requires"]]
@@ -675,6 +722,11 @@ def main(check_only):
     if layers:
         (DIST / "layers").mkdir(exist_ok=True)
         (SITE / "layers").mkdir(exist_ok=True)
+    for ly in layers:  # landlord results, fetched by the atlas only when someone picks a landlord
+        if ly.get("_results"):
+            blob = json.dumps(ly["_results"], ensure_ascii=False, separators=(",", ":"))
+            for d in (DIST, SITE):
+                (d / "layers" / f"{ly['id']}-results.json").write_text(blob, encoding="utf-8")
     for ly in layers:
         out = {k: v for k, v in ly.items() if not k.startswith("_")}
         lk = ly.get("_links", {})

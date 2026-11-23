@@ -324,7 +324,7 @@ SURVEY_HEAD = ["year", "provider_code", "tenure"] + [k for k, _ in SURVEY_FIELDS
 
 def write_csv(path, head, rows):
     with open(path, "w", newline="", encoding="utf-8") as fh:
-        w = csv.writer(fh)
+        w = csv.writer(fh, lineterminator="\n")  # plain line endings, so git diffs and patches stay clean
         w.writerow(head)
         w.writerows(rows)
 
@@ -389,6 +389,15 @@ def main():
                 out.append(rec)
         out.sort(key=lambda x: (x[3].lower(), x[1], x[4], x[5]))
         write_csv(OUT / f"{ed['year']}.csv", RESULT_HEAD, out)
+        # Some sheets name a landlord without its code: fold those rows into the coded record of the same name
+        coded = {v["provider_name"].lower(): v for v in landlords.values() if v.get("provider_code")}
+        for key, v in list(landlords.items()):
+            twin = coded.get(v["provider_name"].lower())
+            if not v.get("provider_code") and twin is not None:
+                for k, val in v.items():
+                    if val and not twin.get(k):
+                        twin[k] = val
+                del landlords[key]
         write_csv(OUT / f"{ed['year']}-landlords.csv", LANDLORD_HEAD,
                   sorted(([ed["year"], v.get("provider_code", ""), v.get("provider_name", "")] + [v.get(k, "") for k, _ in LANDLORD_FIELDS]
                           for v in landlords.values()), key=lambda x: x[2].lower()))

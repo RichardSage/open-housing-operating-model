@@ -14,6 +14,8 @@ kind: measures
 applies_to: activities
 measures: measures.yaml
 links: links.csv
+# Published results by landlord (made by scripts/fetch_tsm.py). The atlas uses them to show one landlord on the model
+results: data/tsm
 summary: >-
   Which work drives or influences each of the 22 Tenant Satisfaction Measures that landlords in England
   report every year. Overall satisfaction (TP01) reflects everything, so it isn't linked to particular work.

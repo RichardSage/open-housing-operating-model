@@ -151,7 +151,7 @@ Layers add a point of view on top of the model without changing it. In the atlas
 
 There are three layers so far:
 - [`regulation`](layers/regulation): a register of the laws, regulatory standards and codes that apply to registered providers in England, linked to the activities they require or shape. It shows the **legal basis** for each activity and **what's changing**, with a "Coming up" timeline of dated changes. A [weekly watcher](layers/regulation/WATCH.md) flags changes to its sources for review. Not legal advice.
-- [`tsm`](layers/tsm): the 22 Tenant Satisfaction Measures every landlord in England reports, linked to the work that **drives** or **influences** each one. It shows which TSM theme each activity serves and whether it's measured by the tenant survey, landlord records or both.
+- [`tsm`](layers/tsm): the 22 Tenant Satisfaction Measures every landlord in England reports, linked to the work that **drives** or **influences** each one. It shows which TSM theme each activity serves and whether it's measured by the tenant survey, landlord records or both. Pick a landlord and the atlas shows its published results against other landlords, and colours the model by the measures each activity drives ([try it](https://richardsage.github.io/open-housing-operating-model/?layer=tsm%3Aresults)).
 - [`ai-impact`](layers/ai-impact): where AI could change each activity and how carefully to approach it, drawing on the NHF's AI code of practice and the Regulator's statements. An independent judgement for discussion, not compliance advice.
 
 See [layers/README.md](layers/README.md) to suggest changes or propose a new layer.
@@ -186,7 +186,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for naming rules and how codes work, and 
 - Short descriptions and examples for every activity
 - Versions for Scotland, Wales and Northern Ireland, and more kinds of specialist provision (such as almshouses or student housing)
 - More optional layers, such as roles, systems or data
-- Your TSM results on the model, using the Regulator's published data that the [TSM data Action](data/tsm/README.md) downloads and converts: pick a landlord from the Regulator's published data and see how it compares, function by function
+- Your capability self-assessment and your TSM results side by side
 - More tools: a service blueprint for each request, and comparing a tailored version with the reference model
 
 ## Use and licence

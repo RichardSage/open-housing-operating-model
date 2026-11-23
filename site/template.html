@@ -176,6 +176,20 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .mlist li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:6px;font-size:13px;line-height:1.35}
 .mlist li .num{font-size:12px;color:var(--muted)}
 .mlist small{display:block;color:var(--muted);font-size:11.5px}
+.lpick{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:end;margin:6px 0 4px;font-size:13px}
+.lpick label{display:grid;gap:3px;color:var(--muted)}
+.lpick input,.lpick select{font:inherit;font-size:14px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.lpick .lwho{flex:1 1 280px}
+.lpick .lwho input{width:100%}
+.lclear{font:inherit;font-size:13px;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:none;color:var(--ink);cursor:pointer}
+.lwhohead{margin:6px 0 2px}
+.lwhohead small{color:var(--muted)}
+.lpick-msg{color:var(--muted);font-size:14px;margin:6px 0}
+.mres{display:grid;gap:2px;margin-top:3px}
+.mres>span{font-size:12.5px}
+.mres.none{color:var(--muted);font-size:12px}
+.qchip{display:inline-flex;align-items:center;gap:4px;margin-left:6px;padding:0 6px;border:1.5px solid var(--lc);border-radius:9px;font-size:11px;line-height:16px;color:var(--ink)}
+.qchip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--lc)}
 .coming li{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:4px 12px;align-items:baseline;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--lc);border-radius:6px;padding:7px 10px;font-size:13px}
 .coming li .num{font-size:12px}
 .coming li small{color:var(--muted);font-size:12px;white-space:nowrap}
@@ -391,6 +405,7 @@ const LCOL = {
   'theme': ['--l3', '--l5', '--l1', '--l2', '--l0', '--l4', '--lnone'],
   'strength': ['--l0', '--t1c', '--lnone'],
   'source': ['--l1', '--l4', '--l2', '--lnone'],
+  'results': ['--l5', '--t2c', '--t1c', '--l0', '--lnone'],
 };
 const LENSES = (D.layers || []).flatMap(ly => ly.fields.map((f, fi) => ({ key: `${ly.id}:${f.id}`, ly, f, fi })).filter(x => x.f.vals.length > 2));
 let lens = null;
@@ -398,13 +413,99 @@ const lensIdx = code => { if (!lens) return -1; const v = lens.ly.data[code]; re
 const lensCol = i => { const pal = LCOL[lens.f.id] || ['--l0', '--l1', '--l2', '--l3', '--l4', '--l5']; const none = /^(none|no-change|no|stable)$/.test(lens.f.vals[i]?.id || ''); return `var(${none ? '--lnone' : (pal[i] || '--l' + (i % 6))})`; };
 const lensName = code => { const i = lensIdx(code); return i < 0 ? 'No value' : lens.f.vals[i].n; };
 const oblList = (code, rel) => (lens.ly.links?.[code] || []).filter(x => x[1] === rel).map(x => lens.ly.register[x[0]].n);
-const lensTip = code => { if (!lens) return ''; let t = `<br>${esc(lens.f.n)}: <b>${esc(lensName(code))}</b>`; if (lens.ly.links) { const r = oblList(code, 0), sh = oblList(code, 1); const RL = lens.ly.rel || ['Required by', 'Shaped by']; if (r.length) t += `<br>${RL[0]}: ${r.slice(0, 4).map(esc).join('; ')}${r.length > 4 ? ` +${r.length - 4} more` : ''}`; if (sh.length) t += `<br>${RL[1]}: ${sh.slice(0, 4).map(esc).join('; ')}${sh.length > 4 ? ` +${sh.length - 4} more` : ''}`; } return t; };
+const lensTip = code => { if (!lens) return ''; let t = `<br>${esc(lens.f.n)}: <b>${esc(lensName(code))}</b>`;
+  if (lens.f.id === 'results' && RES.who && RES.data) { const ms = (lens.ly.links[code] || []).filter(x => x[1] === 0).map(x => lens.ly.register[x[0]]); return t + ms.map(m => { const xs = resMeasure(m.id); return `<br>${esc(m.id)}: ${xs.length ? xs.map(x => `${fmtV(x.k, x.v)}${x.q != null ? ` (${QN[x.q].toLowerCase()})` : ''}`).join(', ') : 'no result'}`; }).join(''); } if (lens.ly.links) { const r = oblList(code, 0), sh = oblList(code, 1); const RL = lens.ly.rel || ['Required by', 'Shaped by']; if (r.length) t += `<br>${RL[0]}: ${r.slice(0, 4).map(esc).join('; ')}${r.length > 4 ? ` +${r.length - 4} more` : ''}`; if (sh.length) t += `<br>${RL[1]}: ${sh.slice(0, 4).map(esc).join('; ')}${sh.length > 4 ? ` +${sh.length - 4} more` : ''}`; } return t; };
 const lensBar = codes => { if (!lens || !codes.length) return ''; const c = new Map(); codes.forEach(x => { const i = lensIdx(x); c.set(i, (c.get(i) || 0) + 1); }); return `<span class="lbar">${[...c.keys()].sort((a, b) => a - b).map(i => `<i style="flex:${c.get(i)};--lc:${i < 0 ? 'var(--lnone)' : lensCol(i)}" data-tip="${esc(`${i < 0 ? 'No value' : esc(lens.f.vals[i].n)}: ${c.get(i)} activit${c.get(i) === 1 ? 'y' : 'ies'}`)}"></i>`).join('')}</span>`; };
+// TSM results: one landlord's published results, compared with other landlords and shown on the model
+const TSMLY = (D.layers || []).find(l => l.kind === 'measures' && l.res);
+const RES = { data: null, loading: null, err: '', who: null, year: null, ten: 'R', cmp: 'all' };
+const LOWER_BETTER = new Set(['RP01']), UNRATED = new Set(['CH01', 'NM01']);
+const QN = ['Bottom quarter', 'Lower middle', 'Upper middle', 'Top quarter'];
+if (TSMLY) {
+  TSMLY.fields.push({ id: 'results', n: 'Landlord results', vals: [
+    { id: 'bottom', n: QN[0], desc: 'Drives at least one measure where this landlord is in the bottom quarter of the landlords it is compared with' },
+    { id: 'lower', n: QN[1], desc: 'Its weakest driven measure is below the middle, but not in the bottom quarter' },
+    { id: 'upper', n: QN[2], desc: 'Its weakest driven measure is above the middle, but not in the top quarter' },
+    { id: 'top', n: QN[3], desc: 'Every measure it drives is in the top quarter' },
+    { id: 'none', n: 'No result to compare', desc: 'Drives no measure, or none with a comparable result for this landlord' }] });
+  const fi = TSMLY.fields.length - 1;
+  Object.keys(TSMLY.data).forEach(c => TSMLY.data[c][fi] = 4);
+  LENSES.push({ key: `${TSMLY.id}:results`, ly: TSMLY, f: TSMLY.fields[fi], fi });
+}
+function loadRes() {
+  if (RES.data || !TSMLY) return Promise.resolve(RES.data);
+  if (!RES.loading) RES.loading = fetch(TSMLY.res).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(d => { RES.data = d; RES.err = ''; if (!d.years.includes(RES.year)) RES.year = d.years[d.years.length - 1]; if (RES.who && !d.L.some(x => x[0] === RES.who)) RES.who = null; scoreRes(); return d; })
+    .catch(() => { RES.err = "The landlord results couldn't be loaded. If you opened this page as a file, open it through a web server instead."; RES.loading = null; });
+  return RES.loading;
+}
+const resLi = () => RES.data ? RES.data.L.findIndex(x => x[0] === RES.who) : -1;
+const resKeys = mid => RES.data ? RES.data.k.map((k, i) => ({ k, i })).filter(x => x.k === mid || x.k.startsWith(mid + '.')) : [];
+const resCol = (year, ki) => { const v = RES.data.v[year]; if (!v) return null; return v[RES.ten][ki] || v.A[ki] || null; };
+const resHas = (year, i) => Object.values(RES.data.v[year] || {}).some(t => t.some(col => col && col[i] != null));
+const resGroup = li => { const L = RES.data.L, me = L[li]; return L.map((x, i) => i).filter(i => resHas(RES.year, i)).filter(i => RES.cmp === 'size' ? L[i][3] === me[3] : RES.cmp === 'type' ? L[i][2] === me[2] : true); };
+function resRate(mid, ki, li, year) {
+  const col = resCol(year, ki); if (!col) return null; const v = col[li]; if (v == null) return null;
+  const vals = resGroup(li).map(i => col[i]).filter(x => x != null).sort((a, b) => a - b); const n = vals.length;
+  const med = n % 2 ? vals[(n - 1) / 2] : (vals[n / 2 - 1] + vals[n / 2]) / 2;
+  if (UNRATED.has(mid) || n < 5) return { v, n, med, q: null };
+  const low = LOWER_BETTER.has(mid); let worse = 0, same = -1;
+  vals.forEach(x => { if (x === v) same++; else if (low ? x > v : x < v) worse++; });
+  const p = (worse + same / 2) / (n - 1);
+  return { v, n, med, q: p < 0.25 ? 0 : p < 0.5 ? 1 : p < 0.75 ? 2 : 3 };
+}
+const resMeasure = mid => { const li = resLi(); if (li < 0) return []; return resKeys(mid).map(({ k, i }) => ({ k, ...(resRate(mid, i, li, RES.year) || {}), prev: (() => { const ys = RES.data.years, y = ys[ys.indexOf(RES.year) - 1]; const c = y && resCol(y, i); return c ? c[li] : null; })() })).filter(x => x.v != null); };
+const resQ = mid => { const qs = resMeasure(mid).map(x => x.q).filter(q => q != null); return qs.length ? Math.min(...qs) : null; };
+function scoreRes() {
+  if (!TSMLY) return; const fi = TSMLY.fields.findIndex(f => f.id === 'results');
+  const mq = TSMLY.register.map(m => RES.who && RES.data ? resQ(m.id) : null);
+  Object.keys(TSMLY.data).forEach(c => { const qs = (TSMLY.links[c] || []).filter(x => x[1] === 0).map(x => mq[x[0]]).filter(q => q != null); TSMLY.data[c][fi] = qs.length ? Math.min(...qs) : 4; });
+}
+const fmtV = (k, v) => v == null ? '–' : /^(CH01|NM01)/.test(k) ? `${v.toFixed(1)} per 1,000` : `${v.toFixed(1)}%`;
+const partN = k => ({ 'CH01.1': 'Stage one', 'CH01.2': 'Stage two', 'CH02.1': 'Stage one', 'CH02.2': 'Stage two', 'RP02.1': 'Non-emergency', 'RP02.2': 'Emergency', 'NM01.1': 'All ASB', 'NM01.2': 'Hate incidents' })[k] || '';
+const qChip = q => q == null ? '' : `<span class="qchip" style="--lc:var(${LCOL.results[q]})">${QN[q]}</span>`;
+function resLine(mid) {
+  if (!RES.who || !RES.data) return '';
+  const xs = resMeasure(mid); if (!xs.length) return `<span class="mres none">No result for this landlord${RES.ten === 'O' ? ' and shared owners' : ''}</span>`;
+  return `<span class="mres">${xs.map(x => { const d = x.prev != null ? x.v - x.prev : null; return `<span>${partN(x.k) ? `${partN(x.k)}: ` : ''}<b>${fmtV(x.k, x.v)}</b>${qChip(x.q)}<small>Middle ${fmtV(x.k, x.med)}${d != null && Math.abs(d) >= 0.05 ? ` · ${d > 0 ? '▲' : '▼'} ${Math.abs(d).toFixed(1)} on last year` : ''}</small></span>`; }).join('')}</span>`;
+}
+function resPicker(ly) {
+  if (ly !== TSMLY) return '';
+  if (RES.err) return `<p class="lpick-msg">${esc(RES.err)}</p>`;
+  if (!RES.data) { loadRes().then(() => resRefresh()); return `<p class="lpick-msg">Loading the landlords…</p>`; }
+  const L = RES.data.L, li = resLi(), me = L[li];
+  const hasO = li >= 0 && Object.values(RES.data.v[RES.year].O).some(col => col && col[li] != null);
+  if (!hasO && RES.ten === 'O') RES.ten = 'R';
+  const group = li >= 0 ? resGroup(li).length : 0;
+  const cmpN = { all: 'all landlords', size: `landlords with ${esc(me ? me[3] : '')} homes`, type: `other ${me && me[2] === 'LARP' ? 'councils' : 'housing associations'}` }[RES.cmp];
+  const counts = li >= 0 ? TSMLY.register.reduce((a, m) => { const q = resQ(m.id); if (q != null) a[q]++; return a; }, [0, 0, 0, 0]) : null;
+  return `<div class="lpick"><label class="lwho">See a landlord's results <input id="llIn" list="llList" autocomplete="off" placeholder="Start typing a landlord's name" value="${me ? esc(me[1]) : ''}"><datalist id="llList">${L.map(x => `<option value="${esc(x[1])}"></option>`).join('')}</datalist></label>${me ? `<button type="button" class="lclear" id="llClear">Clear</button>` : ''}
+  <label>Year <select id="llYear">${RES.data.years.map(y => `<option${y === RES.year ? ' selected' : ''}>${y.replace('-', '/')}</option>`).join('')}</select></label>
+  <label>Compare with <select id="llCmp"><option value="all"${RES.cmp === 'all' ? ' selected' : ''}>All landlords</option><option value="size"${RES.cmp === 'size' ? ' selected' : ''}>Same size band</option><option value="type"${RES.cmp === 'type' ? ' selected' : ''}>Same type of landlord</option></select></label>
+  ${hasO ? `<div class="seg" id="llTen"><button type="button" data-ten="R" aria-pressed="${RES.ten === 'R'}">Tenants</button><button type="button" data-ten="O" aria-pressed="${RES.ten === 'O'}">Shared owners</button></div>` : ''}</div>
+  ${me ? `<p class="lwhohead"><b>${esc(me[1])}</b> · ${me[2] === 'LARP' ? 'Council' : 'Housing association'}${me[3] ? ` · ${esc(me[3])} homes` : ''}${me[4] ? ` · ${esc(me[4])}` : ''}${me[5] ? ` · <a href="${esc(/^https?:/.test(me[5]) ? me[5] : 'https://' + me[5])}" rel="noopener">their own TSM page</a>` : ''}<br><small>${RES.year.replace('-', '/')} results compared with ${cmpN} (${group}). In the top quarter for ${counts[3]} measure${counts[3] === 1 ? '' : 's'} and the bottom quarter for ${counts[0]}. "Middle" is the result of the landlord in the middle of the group.${lens && lens.f.id === 'results' ? ' Each activity is coloured by the weakest measure it drives.' : ' Choose <b>Landlord results</b> above to colour the model by the measures each activity drives.'}</small></p>` : `<p class="lpick-msg">Pick a landlord to see its published results against each measure, and the model coloured by where it does well and less well. Results are published for landlords with 1,000 or more homes.</p>`}`;
+}
+function pickLandlord(code) {
+  RES.who = code || null; scoreRes();
+  try { if (RES.who) localStorage.setItem('ohom-tsm-landlord', RES.who); else localStorage.removeItem('ohom-tsm-landlord'); } catch (e) {}
+  try { const u = new URL(location.href); if (RES.who) u.searchParams.set('landlord', RES.who); else u.searchParams.delete('landlord'); history.replaceState(null, '', u); } catch (e) {}
+  setLens(RES.who ? `${TSMLY.id}:results` : (lens ? lens.key : ''), true);
+}
+const resRefresh = () => { scoreRes(); setLens(lens ? lens.key : '', false); };
+document.addEventListener('change', e => {
+  if (e.target.id === 'llIn') { const x = RES.data && RES.data.L.find(l => l[1].toLowerCase() === e.target.value.trim().toLowerCase()); if (x) pickLandlord(x[0]); }
+  if (e.target.id === 'llYear') { RES.year = e.target.value.replace('/', '-'); resRefresh(); }
+  if (e.target.id === 'llCmp') { RES.cmp = e.target.value; resRefresh(); }
+});
+document.addEventListener('click', e => {
+  if (e.target.id === 'llClear') pickLandlord(null);
+  const t = e.target.closest('#llTen button'); if (t) { RES.ten = t.dataset.ten; resRefresh(); }
+});
 function measureList(ly) {
   if (ly.kind !== 'measures') return '';
   const reach = ly.register.map(() => [0, 0]); Object.values(ly.links || {}).forEach(ls => ls.forEach(([i, r]) => reach[i][r]++));
   const TH = [['overall', 'Overall'], ['repairs', 'Keeping properties in good repair'], ['safety', 'Maintaining building safety'], ['engagement', 'Respectful and helpful engagement'], ['complaints', 'Effective handling of complaints'], ['neighbourhood', 'Responsible neighbourhood management']];
-  return `<h3 style="font-size:16px;margin:4px 0 0">The 22 measures</h3><div class="mlist">${TH.map(([id, n]) => { const ms = ly.register.map((m, i) => ({ m, i })).filter(x => x.m.th === id); return ms.length ? `<div><b>${esc(n)}</b><ul>${ms.map(({ m, i }) => `<li><span class="num">${esc(m.id)}</span><span>${esc(m.n.slice(m.id.length + 1))}<small>${m.t === 'perception' ? 'Tenant survey' : 'Landlord records'} · ${esc(m.u)}${reach[i][0] ? ` · driven by ${reach[i][0]} activities` : m.id === 'TP01' ? ' · reflects everything' : ''}</small></span></li>`).join('')}</ul></div>` : ''; }).join('')}</div>`;
+  return `<h3 style="font-size:16px;margin:4px 0 0">The 22 measures</h3><div class="mlist">${TH.map(([id, n]) => { const ms = ly.register.map((m, i) => ({ m, i })).filter(x => x.m.th === id); return ms.length ? `<div><b>${esc(n)}</b><ul>${ms.map(({ m, i }) => `<li><span class="num">${esc(m.id)}</span><span>${esc(m.n.slice(m.id.length + 1))}<small>${m.t === 'perception' ? 'Tenant survey' : 'Landlord records'} · ${esc(m.u)}${reach[i][0] ? ` · driven by ${reach[i][0]} activities` : m.id === 'TP01' ? ' · reflects everything' : ''}</small>${resLine(m.id)}</span></li>`).join('')}</ul></div>` : ''; }).join('')}</div>`;
 }
 function comingUp(ly) {
   if (!ly.register || ly.kind === 'measures') return '';
@@ -426,7 +527,7 @@ function renderLensUI() {
   $('#lensKey').innerHTML = `<div class="key">${lens.f.vals.map((v, i) => `<span style="--lc:${lensCol(i)}" data-tip="${esc(`<b>${esc(v.n)}</b><small>${esc(v.desc)}</small>`)}"><span class="lsw"></span>${esc(v.n)}</span>`).join('')}</div>`;
   const ly = lens.ly;
   $('#lensPanel').hidden = false;
-  $('#lensPanel').innerHTML = `<span class="eyebrow">Optional layer · version ${esc(ly.v)}</span><h2>${esc(ly.n)}: ${esc(lens.f.n)}</h2><p>${esc(ly.summary)} Activities in every figure below are now coloured by <strong>${esc(lens.f.n.toLowerCase())}</strong>. Switch back to "Model only" to hide it.</p><div class="vals">${lens.f.vals.map((v, i) => `<div class="val" style="--lc:${lensCol(i)}"><span class="lsw"></span><b>${esc(v.n)}</b><span class="num">${counts[i]}</span>${v.desc ? `<small>${esc(v.desc)}</small>` : ''}</div>`).join('')}</div>${measureList(ly) + comingUp(ly)}<p class="src">${ly.asOf ? `Worked out as at ${esc(ly.asOf)}. ` : ''}<strong>${esc(ly.caveat)}</strong> Sources: ${ly.sources.map(x => x.url ? `<a href="${esc(x.url)}">${esc(x.name)}</a>` : esc(x.name)).join('; ')}. <a href="layers/${esc(ly.id)}.csv" download>Download this layer (CSV)</a>${D.repo ? ` · <a href="${esc(D.repo)}/tree/main/layers/${esc(ly.id)}">See or improve it on GitHub</a>` : ''}</p>`;
+  $('#lensPanel').innerHTML = `<span class="eyebrow">Optional layer · version ${esc(ly.v)}</span><h2>${esc(ly.n)}: ${esc(lens.f.n)}</h2><p>${esc(ly.summary)} Activities in every figure below are now coloured by <strong>${esc(lens.f.n.toLowerCase())}</strong>. Switch back to "Model only" to hide it.</p>${resPicker(ly)}<div class="vals">${lens.f.vals.map((v, i) => `<div class="val" style="--lc:${lensCol(i)}"><span class="lsw"></span><b>${esc(v.n)}</b><span class="num">${counts[i]}</span>${v.desc ? `<small>${esc(v.desc)}</small>` : ''}</div>`).join('')}</div>${measureList(ly) + comingUp(ly)}<p class="src">${ly.asOf ? `Worked out as at ${esc(ly.asOf)}. ` : ''}<strong>${esc(ly.caveat)}</strong> Sources: ${ly.sources.map(x => x.url ? `<a href="${esc(x.url)}">${esc(x.name)}</a>` : esc(x.name)).join('; ')}. <a href="layers/${esc(ly.id)}.csv" download>Download this layer (CSV)</a>${D.repo ? ` · <a href="${esc(D.repo)}/tree/main/layers/${esc(ly.id)}">See or improve it on GitHub</a>` : ''}</p>`;
 }
 function setLens(key, push) {
   lens = LENSES.find(L => L.key === key) || null;
@@ -555,6 +656,7 @@ if (R) $('#guide').innerHTML = ` New to this? Read the <a href="${esc(R)}/blob/m
 $('#credit').innerHTML = `<span>To credit the model, use: <code>Open Housing Operating Model, v${esc(D.version)} (CC BY 4.0)</code>${R ? `, with a link to <a href="${esc(R)}">the repository</a>` : ''}.</span>${R ? `<span>See <a href="${esc(R)}/blob/main/CHANGELOG.md">what's changed in each version</a>.</span>` : ''}`;
 
 // Start with the model only, unless the link asks for a layer (?layer=ai-impact:route)
+if (TSMLY) { try { RES.who = new URL(location.href).searchParams.get('landlord') || localStorage.getItem('ohom-tsm-landlord') || null; } catch (e) {} if (RES.who) loadRes().then(() => { if (lens && lens.ly === TSMLY) resRefresh(); }); }
 try { const want = new URL(location.href).searchParams.get('layer'); if (want && LENSES.some(L => L.key === want)) setLens(want, false); else renderLensUI(); } catch (e) { renderLensUI(); }
 </script>
 </body>
