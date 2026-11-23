@@ -1,0 +1,38 @@
+[
+ {
+  "year": "2024-25",
+  "page": "https://www.gov.uk/government/statistics/tenant-satisfaction-measures-202425",
+  "updated": "2026-11-05T09:30:05+00:00",
+  "file": "Tenant Satisfaction Measures 2025: full data set",
+  "url": "https://assets.publishing.service.gov.uk/media/69394723e447374889cd9005/2025_TSM_Full_Data_v1.1_FINAL.xlsx",
+  "sha256": "b9f541da9ef0302e87d9063adf38d33633e771d52bf2792663f808b66a742603",
+  "bytes": 730540
+ },
+ {
+  "year": "2024-25",
+  "page": "https://www.gov.uk/government/statistics/tenant-satisfaction-measures-202425",
+  "updated": "2026-11-05T09:30:05+00:00",
+  "file": "Tenant Satisfaction Measures 2025: full data set",
+  "url": "https://assets.publishing.service.gov.uk/media/6939474f7a605b2d61cd901a/TSM_2025_Full_Data.zip",
+  "sha256": "bb3440670af5893c33999e6b1cdf42cc9021afc0df007855bdfdc027d5828978",
+  "bytes": 207270
+ },
+ {
+  "year": "2025-26",
+  "page": "https://www.gov.uk/government/statistics/tenant-satisfaction-measures-202526",
+  "updated": "2026-11-05T09:30:00+00:00",
+  "file": "Tenant Satisfaction Measures Full Dataset",
+  "url": "https://assets.publishing.service.gov.uk/media/6af48691b83b3cae0d0a2221/2026_TSM_Full_Dataset_FINAL_V1.1.xlsx",
+  "sha256": "29e6ddac1dbe0974c79d2423635f941f175b9621a03ffe18dfc90d894de48f2e",
+  "bytes": 699558
+ },
+ {
+  "year": "2025-26",
+  "page": "https://www.gov.uk/government/statistics/tenant-satisfaction-measures-202526",
+  "updated": "2026-11-05T09:30:00+00:00",
+  "file": "Tenant Satisfaction Measures Full Dataset",
+  "url": "https://assets.publishing.service.gov.uk/media/6af486ac8041fe64414e54fa/2026_TSM_Full_Dataset_FINAL_V1.1.zip",
+  "sha256": "e65f1517a1edd231598fccc009ba72543617adedad8aa386612b745e04608e31",
+  "bytes": 206419
+ }
+]
