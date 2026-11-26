@@ -4,6 +4,14 @@ All notable changes to the model are recorded here. Versions follow the rules in
 
 ## Unreleased
 
+**Faster pages**
+- **Fonts are hosted with the site** instead of loaded from Google Fonts. Pages no longer wait on two other servers before showing anything, visitors' details aren't sent to Google, and the font download is about 70 KB smaller: Latin characters only, and Literata without its optical-size axis. See `site/fonts/README.md`.
+- **The TSM results load only when the TSM view is on.** Before, anyone who had picked a landlord downloaded the 200 KB results file on every visit to the atlas.
+- **Figures further down the atlas are laid out only when they're scrolled near.**
+- **Tooltips on the whole-model view are built when you hover**, rather than written into all 667 squares every time the view changes.
+- **The services × functions matrix is built when "Compare all services" is opened.**
+- On a simulated mid-range phone, the atlas first shows content in about 0.5 seconds, against about 1.4 seconds before (allowing 0.6 seconds for Google Fonts), and switching views is about a third faster. On a desktop, switching views is more than twice as fast.
+
 **Layers**
 - New layer `tsm` v2026.11: the 22 Tenant Satisfaction Measures, linked to the work that drives or influences each one. Three lenses (TSM theme, link strength and how it's measured), and a list of the measures in the atlas's layer panel. Adds a third layer kind, `measures`.
 - **Landlord results in the atlas:** with the TSM layer on, pick any landlord to see its published results for each measure, the middle result of the landlords it's compared with, its quartile and the change on last year. Compare with all landlords, the same size band or the same type of landlord, for tenants or shared owners, in any published year. A fourth lens, **Landlord results**, colours each activity by the weakest result among the measures it drives. Links can name a landlord (`?layer=tsm:results&landlord=L4240`). The build writes the results to `layers/tsm-results.json`, which the atlas loads only when needed.
