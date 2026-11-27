@@ -12,6 +12,11 @@ stale_after_days: 180
 # How far back to look for new publications on each run (a little over a week, so nothing falls between runs)
 window_days: 9
 
+# Changes on legislation.gov.uk to skip. "Applied (with modifications)" is mostly local orders that
+# apply an Act to a single scheme (a level crossing, say), not changes to the Act itself.
+ignore_effect_types:
+  - applied (with modifications)
+
 # New publications from organisations on GOV.UK
 govuk_feeds:
   - organisation: regulator-of-social-housing
@@ -26,6 +31,10 @@ govuk_feeds:
       - "^Deregistration"
       - "^Private registered provider"
       - "^Local authority registered provider"
+    # Regulatory judgements and notices are now titled with just the landlord's name, so leave out
+    # GOV.UK's "decision" document type as well
+    exclude_types:
+      - decision
   - organisation: ministry-of-housing-communities-local-government
     name: Ministry of Housing, Communities and Local Government
     # MHCLG publishes widely, so only keep items that mention these words

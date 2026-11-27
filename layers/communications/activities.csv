@@ -1,0 +1,674 @@
+code,activity,role,audience
+01.1.1,Answer and triage inbound calls,none,none
+01.1.2,Log and route service requests,none,none
+01.1.3,Resolve enquiries at first point of contact,none,none
+01.1.4,Manage call-back and missed contact queues,none,none
+01.1.5,Forecast call volumes and staffing,none,none
+01.2.1,Manage customer portal registration and verification,none,none
+01.2.2,Monitor and respond to web chat and messaging,none,none
+01.2.3,Maintain online forms and self-service content,shapes,residents
+01.2.4,Analyse portal usage and drop-off,none,none
+01.3.1,Triage the shared mailbox,none,none
+01.3.2,Draft and send responses to written enquiries,shapes,residents
+01.3.3,Track correspondence against response targets,none,none
+01.3.4,Scan and index incoming documents,none,none
+01.4.1,Verify identity of customers and representatives,none,none
+01.4.2,Maintain household and contact records,none,none
+01.4.3,Record vulnerabilities and reasonable adjustments,none,none
+01.4.4,Manage consent and communication preferences,shapes,residents
+01.5.1,Run reception and drop-in sessions,none,none
+01.5.2,Book appointments with specialist officers,none,none
+01.5.3,Process post and documents received,none,none
+01.5.4,Visit customers unable to use other channels,none,none
+01.6.1,Triage out-of-hours emergencies,none,none
+01.6.2,Dispatch emergency contractors,none,none
+01.6.3,Hand over overnight incidents to day teams,none,none
+01.7.1,Arrange interpreters and translation,none,none
+01.7.2,Provide information in accessible formats,shapes,residents
+01.7.3,Maintain accessible communication standards,shapes,residents
+01.8.1,Run transactional satisfaction surveys,none,none
+01.8.2,Analyse contact drivers and failure demand,none,none
+01.8.3,Report customer service performance,none,none
+01.8.4,Record and share compliments and feedback,none,none
+02.1.1,Receive and process local authority nominations,none,none
+02.1.2,Assess housing applications and eligibility,none,none
+02.1.3,Maintain the housing register,none,none
+02.1.4,Review and close inactive applications,none,none
+02.2.1,Prepare property adverts,shapes,residents
+02.2.2,Publish properties on choice-based lettings schemes,shapes,residents
+02.2.3,Shortlist applicants against the allocations policy,none,none
+02.2.4,Verify bidder priority and banding,none,none
+02.3.1,Verify applicant identity and right to rent,none,none
+02.3.2,Carry out affordability and income checks,none,none
+02.3.3,Assess support needs and tenancy readiness,none,none
+02.3.4,Obtain references and previous landlord history,none,none
+02.4.1,Arrange accompanied viewings,none,none
+02.4.2,Make and record formal offers,none,none
+02.4.3,Manage refusals and re-offers,none,none
+02.4.4,Handle offer appeals and reviews,none,none
+02.5.1,Prepare tenancy agreement and welcome pack,shapes,residents
+02.5.2,Conduct sign-up meeting,none,none
+02.5.3,Set up rent account and payment method,none,none
+02.5.4,Notify utilities and council tax of new tenancy,none,none
+02.6.1,Carry out new tenancy visit,none,none
+02.6.2,Resolve early tenancy issues,none,none
+02.6.3,Check new tenant satisfaction after six weeks,none,none
+02.7.1,Process mutual exchange applications,none,none
+02.7.2,Inspect properties for mutual exchange,none,none
+02.7.3,Manage internal transfer and management move requests,none,none
+02.7.4,Carry out exchange checks with other landlords,none,none
+02.8.1,Maintain allocations and lettings policy,informs,residents
+02.8.2,Monitor relet times and lettings outcomes,none,none
+02.8.3,Agree and review local lettings plans,informs,residents
+03.1.1,Receive and acknowledge notice to end tenancy,none,none
+03.1.2,Carry out pre-termination inspection,none,none
+03.1.3,Agree recharges and clearance with outgoing tenant,none,none
+03.1.4,Collect keys and confirm end of tenancy,none,none
+03.2.1,Inspect empty property,none,none
+03.2.2,Specify works against the lettable standard,none,none
+03.2.3,Estimate void works cost,none,none
+03.3.1,Raise and issue void works orders,none,none
+03.3.2,Monitor contractor progress on voids,none,none
+03.3.3,Manage major void works,none,none
+03.3.4,Agree variations to void works,none,none
+03.4.1,Complete void gas and electrical safety checks,none,none
+03.4.2,Commission asbestos surveys for void works,none,none
+03.4.3,Secure empty properties,none,none
+03.4.4,Clear items left in empty homes,none,none
+03.5.1,Carry out post-works void inspection,none,none
+03.5.2,Confirm lettable standard and hand over to lettings,none,none
+03.5.3,Update property attributes and EPC data,none,none
+03.5.4,Manage void utility accounts and meter readings,none,none
+03.5.5,Notify council tax of empty periods,none,none
+03.6.1,Track void durations and costs,none,none
+03.6.2,Analyse void causes and recurring defects,none,none
+03.6.3,Report rent loss from voids,none,none
+03.6.4,Agree void targets with contractors,none,none
+04.1.1,Manage starter tenancy reviews,none,none
+04.1.2,Manage fixed-term tenancy reviews,none,none
+04.1.3,Extend or end probationary tenancies,none,none
+04.1.4,Maintain tenancy agreement templates,shapes,residents
+04.2.1,Process succession requests,none,none
+04.2.2,Process assignments and joint-to-sole changes,none,none
+04.2.3,Update household composition,none,none
+04.2.4,Approve lodgers and subletting of rooms,none,none
+04.3.1,Investigate tenancy breaches,none,none
+04.3.2,Issue warnings and agreements,none,none
+04.3.3,Serve notices for breach,none,none
+04.3.4,Prepare breach cases for court,none,none
+04.4.1,Investigate subletting and fraud referrals,none,none
+04.4.2,Carry out tenancy audits,none,none
+04.4.3,Recover unlawfully occupied properties,none,none
+04.4.4,Run data-matching exercises,none,none
+04.5.1,Process requests for tenant alterations,none,none
+04.5.2,Process pet and parking permissions,none,none
+04.5.3,Inspect completed tenant alterations,none,none
+04.5.4,Remove unauthorised alterations,none,none
+04.6.1,Investigate suspected abandonment,none,none
+04.6.2,End tenancies following a death,none,none
+04.6.3,Liaise with next of kin and executors,none,none
+04.6.4,Clear and secure the property,none,none
+04.7.1,Plan patch officer caseloads,none,none
+04.7.2,Carry out tenancy visits,none,none
+04.7.3,Record visit outcomes and household data,none,none
+04.7.4,Provide tenancy advice and information,shapes,residents
+04.8.1,Obtain possession orders,none,none
+04.8.2,Apply for bailiff warrants,none,none
+04.8.3,Carry out eviction and secure the property,none,none
+05.1.1,Carry out scheduled estate inspections,none,none
+05.1.2,Record and action estate defects,none,none
+05.1.3,Run resident estate walkabouts,none,none
+05.1.4,Publish estate inspection results to residents,shapes,residents
+05.2.1,Schedule communal cleaning,none,none
+05.2.2,Monitor cleaning quality,none,none
+05.2.3,Manage caretaking rotas,none,none
+05.2.4,Arrange deep cleans and graffiti removal,none,none
+05.3.1,Schedule grounds maintenance,none,none
+05.3.2,Monitor grounds contractor quality,none,none
+05.3.3,Manage tree surveys and works,none,none
+05.4.1,Manage bin stores and waste contracts,none,none
+05.4.2,Remove fly-tipping and bulky items,none,none
+05.4.3,Recharge waste removal costs,none,none
+05.5.1,Manage community room bookings,none,none
+05.5.2,Maintain communal facilities,none,none
+05.5.3,Manage door entry and fob access,none,none
+05.5.4,Inspect play areas,none,none
+05.6.1,Manage garage lettings,none,none
+05.6.2,Manage parking permits and enforcement,none,none
+05.6.3,Remove abandoned vehicles,none,none
+05.6.4,Manage visitor parking,none,none
+05.7.1,Log pest control requests,none,none
+05.7.2,Arrange pest treatments,none,none
+05.7.3,Prevent recurring infestations,none,none
+05.8.1,Identify community needs,none,none
+05.8.2,Deliver community projects and grants,none,none
+05.8.3,Manage local partnerships,none,none
+05.8.4,Measure social value,none,none
+05.8.5,Apply for external community funding,none,none
+06.1.1,Receive and log ASB reports,none,none
+06.1.2,Risk-assess victims and cases,none,none
+06.1.3,Categorise cases and set response targets,none,none
+06.1.4,Close cases and record outcomes,none,none
+06.2.1,Gather evidence and witness statements,none,none
+06.2.2,Interview alleged perpetrators,none,none
+06.2.3,Review noise monitoring and CCTV evidence,none,none
+06.2.4,Maintain case action plans,none,none
+06.3.1,Agree support plans with victims,none,none
+06.3.2,Keep complainants updated,shapes,residents
+06.3.3,Refer to victim support services,none,none
+06.3.4,Survey complainant satisfaction,none,none
+06.4.1,Issue warning letters,shapes,residents
+06.4.2,Agree acceptable behaviour contracts,none,none
+06.4.3,Arrange mediation,none,none
+06.4.4,Carry out joint visits with police,none,none
+06.5.1,Apply for injunctions,none,none
+06.5.2,Seek closure orders,none,none
+06.5.3,Pursue possession on ASB grounds,none,none
+06.5.4,Monitor and enforce court orders,none,none
+06.6.1,Attend community safety partnership meetings,none,none
+06.6.2,Share information with police and council,none,none
+06.6.3,Manage ASB case reviews,none,none
+06.6.4,Coordinate with youth services and community groups,none,none
+06.7.1,Respond to hate crime reports,none,none
+06.7.2,Respond to domestic abuse disclosures,none,none
+06.7.3,Arrange management transfers and sanctuary measures,none,none
+06.7.4,Refer high-risk cases to MARAC,none,none
+07.1.1,Post rent and service charge debits,none,none
+07.1.2,Allocate payments to accounts,none,none
+07.1.3,Process adjustments and refunds,none,none
+07.1.4,Reconcile rent accounts,none,none
+07.2.1,Set up direct debits,none,none
+07.2.2,Manage payment cards and channels,informs,residents
+07.2.3,Process failed payments,none,none
+07.2.4,Monitor payment channel costs,none,none
+07.3.1,Identify tenants at risk before arrears build,none,none
+07.3.2,Contact new tenants at risk,shapes,residents
+07.3.3,Run predictive arrears analysis,none,none
+07.3.4,Support residents moving onto Universal Credit,none,none
+07.4.1,Contact tenants in arrears,shapes,residents
+07.4.2,Agree repayment arrangements,none,none
+07.4.3,Monitor arrangements,none,none
+07.4.4,Escalate arrears cases,none,none
+07.4.5,Segment arrears caseloads and prioritise contact,none,none
+07.5.1,Verify Universal Credit housing costs,none,none
+07.5.2,Apply for managed payments to landlord,none,none
+07.5.3,Reconcile Housing Benefit schedules,none,none
+07.5.4,Process third-party deductions,none,none
+07.5.5,Challenge Housing Benefit overpayments,none,none
+07.6.1,Serve notices for arrears,none,none
+07.6.2,Prepare possession claims,none,none
+07.6.3,Attend court hearings,none,none
+07.6.4,Enforce suspended possession orders,none,none
+07.7.1,Pursue former tenant arrears,none,none
+07.7.2,Raise and collect recharges,none,none
+07.7.3,Write off irrecoverable debt,none,none
+07.7.4,Instruct debt collection agencies,none,none
+07.8.1,Calculate annual rent increase,informs,residents
+07.8.2,Apply rent standard and caps,none,none
+07.8.3,Issue rent increase notices,shapes,residents
+07.8.4,Set rents for new lettings,none,none
+07.9.1,Calculate service charge estimates,informs,residents
+07.9.2,Reconcile estimates with actuals,none,none
+07.9.3,Issue service charge statements and credits,shapes,residents
+07.9.4,Identify service charges eligible for Housing Benefit,none,none
+08.1.1,Carry out benefit checks,none,none
+08.1.2,Support benefit applications,none,none
+08.1.3,Provide budgeting advice,none,none
+08.1.4,Refer to debt advice services,none,none
+08.1.5,Administer hardship funds,none,none
+08.1.6,Provide fuel vouchers,none,none
+08.1.7,Advise on energy use,none,none
+08.1.8,Run financial inclusion campaigns,shapes,residents
+08.1.9,Promote home contents insurance,shapes,residents
+08.2.1,Identify and raise safeguarding concerns,none,none
+08.2.2,Make safeguarding referrals,none,none
+08.2.3,Manage safeguarding cases,none,none
+08.2.4,Train colleagues on safeguarding,none,none
+08.3.1,Assess support needs,none,none
+08.3.2,Maintain support plans,none,none
+08.3.3,Coordinate with health and social care,none,none
+08.3.4,Review vulnerability records,none,none
+08.4.1,Deliver employment support,none,none
+08.4.2,Run training and digital inclusion programmes,none,none
+08.4.3,Manage resident apprenticeships,none,none
+08.4.4,Track employment outcomes,none,none
+08.5.1,Respond to mental health crises,none,none
+08.5.2,Coordinate multi-agency support,none,none
+08.5.3,Refer to specialist services,none,none
+08.5.4,Hold multi-agency case conferences,none,none
+08.6.1,Identify hoarding cases,none,none
+08.6.2,Agree hoarding intervention plans,none,none
+08.6.3,Coordinate clearance and support,none,none
+08.7.1,Receive adaptation requests and OT assessments,none,none
+08.7.2,Approve and order adaptations,none,none
+08.7.3,Install minor adaptations,none,none
+08.7.4,Manage Disabled Facilities Grant cases,none,none
+08.7.5,Inspect completed adaptations,none,none
+09.1.1,Carry out wellbeing checks,none,none
+09.1.2,Manage scheme communal facilities,none,none
+09.1.3,Run social activities,none,none
+09.1.4,Carry out scheme health and safety checks,none,none
+09.2.1,Manage referrals to supported schemes,none,none
+09.2.2,Deliver key working and support plans,none,none
+09.2.3,Plan move-on,none,none
+09.2.4,Assess referral risk and suitability,none,none
+09.3.1,Manage commissioned support contracts,none,none
+09.3.2,Report outcomes to commissioners,none,none
+09.3.3,Bid for support contracts,none,none
+09.4.1,Monitor alarm calls,none,none
+09.4.2,Install and maintain telecare equipment,none,none
+09.4.3,Respond to alarm activations,none,none
+09.4.4,Migrate alarm equipment to digital lines,informs,residents
+09.5.1,Coordinate with care providers,none,none
+09.5.2,Manage extra care allocations,none,none
+09.5.3,Manage care and support charges,informs,residents
+09.5.4,Review care quality with providers,none,none
+09.6.1,Oversee managing agents,none,none
+09.6.2,Audit managing agent compliance,none,none
+09.6.3,Manage leases with support providers,none,none
+09.7.1,Evidence enhanced Housing Benefit claims,none,none
+09.7.2,Maintain exempt accommodation standards,none,none
+09.7.3,Report to local authorities,none,none
+09.7.4,Evidence the support provided,none,none
+10.1.1,Market shared ownership homes,shapes,public
+10.1.2,Assess purchaser eligibility,none,none
+10.1.3,Progress sales,none,none
+10.1.4,Complete sales,none,none
+10.1.5,Respond to sales enquiries,none,none
+10.2.1,Process staircasing applications,none,none
+10.2.2,Arrange valuations,none,none
+10.2.3,Complete staircasing transactions,none,none
+10.2.4,Calculate staircasing premiums,none,none
+10.3.1,Manage resales and nominations,none,none
+10.3.2,Process lease extensions,none,none
+10.3.3,Respond to enfranchisement claims,none,none
+10.4.1,Respond to leasehold enquiries,none,none
+10.4.2,Issue pre-sale information packs,shapes,residents
+10.4.3,Process leaseholder consents,none,none
+10.4.4,Investigate lease breaches,none,none
+10.5.1,Issue notices of intention,shapes,residents
+10.5.2,Consider leaseholder observations,none,none
+10.5.3,Issue estimates and award notices,shapes,residents
+10.5.4,Consult on long-term agreements,none,none
+10.6.1,Prepare leasehold service charge budgets,informs,residents
+10.6.2,Issue service charge demands,shapes,residents
+10.6.3,Respond to service charge challenges,none,none
+10.6.4,Collect ground rent,none,none
+10.6.5,Pursue leasehold arrears,none,none
+10.6.6,Pursue forfeiture,none,none
+10.6.7,Prepare year-end service charge accounts,none,none
+10.7.1,Recover remediation costs,none,none
+10.7.2,Issue building safety information,shapes,residents
+10.7.3,Apply leaseholder protections,none,none
+10.7.4,Respond to leaseholder building safety queries,none,none
+10.8.1,Receive and acknowledge Right to Buy and Right to Acquire applications,none,none
+10.8.2,Check eligibility and calculate discount,none,none
+10.8.3,Arrange valuations for Right to Buy sales,none,none
+10.8.4,Issue offer notices,none,none
+10.8.5,Complete Right to Buy and Right to Acquire sales,none,none
+10.8.6,Recover discount on early resale,none,none
+10.9.1,Market homes for outright sale,shapes,public
+10.9.2,Progress outright sales,none,none
+10.9.3,Let Rent to Buy homes,none,none
+10.9.4,Manage Rent to Buy purchase options,none,none
+11.1.1,Take repair reports,none,none
+11.1.2,Diagnose repair and determine trade,none,none
+11.1.3,Assign priority and target time,none,none
+11.1.4,Confirm landlord or tenant responsibility,none,none
+11.1.5,Capture photos and video of reported repairs,none,none
+11.2.1,Book repair appointments,none,none
+11.2.2,Optimise operative schedules,none,none
+11.2.3,Send appointment reminders,shapes,residents
+11.2.4,Rearrange missed appointments,none,none
+11.3.1,Attend and complete repairs,none,none
+11.3.2,Order materials and manage van stock,none,none
+11.3.3,Raise follow-on works,none,none
+11.3.4,Record job completion,none,none
+11.3.5,Monitor operative productivity,none,none
+11.4.1,Make safe emergency repairs,none,none
+11.4.2,Monitor emergency response times,none,none
+11.4.3,Manage major incidents such as floods and fires,informs,residents
+11.4.4,Arrange temporary accommodation during major incidents,none,none
+11.5.1,Triage damp and mould reports,none,none
+11.5.2,Inspect and diagnose cause,none,none
+11.5.3,Complete remedial works,none,none
+11.5.4,Monitor against Awaab's Law timescales,none,none
+11.5.5,Keep residents updated throughout damp cases,shapes,residents
+11.6.1,Receive pre-action protocol letters,none,none
+11.6.2,Inspect and schedule disrepair works,none,none
+11.6.3,Manage claims to settlement,none,none
+11.6.4,Analyse root causes of disrepair claims,none,none
+11.7.1,Issue works orders to contractors,none,none
+11.7.2,Validate contractor invoices against schedule of rates,none,none
+11.7.3,Monitor contractor KPIs,none,none
+11.7.4,Approve subcontractors,none,none
+11.8.1,Carry out post-inspections,none,none
+11.8.2,Manage recalls and right-first-time,none,none
+11.8.3,Collect repairs satisfaction,none,none
+11.8.4,Analyse repeat repairs,none,none
+11.9.1,Identify rechargeable repairs,none,none
+11.9.2,Calculate and raise recharges,none,none
+11.9.3,Recover recharge debts,none,none
+12.1.1,Schedule annual gas safety checks,none,none
+12.1.2,Manage access and no-access process,shapes,residents
+12.1.3,Record gas safety certificates,none,none
+12.1.4,Manage gas servicing contractor,none,none
+12.1.5,Carry out gas cappings and uncappings,none,none
+12.2.1,Schedule electrical installation testing,none,none
+12.2.2,Action electrical remedial works,none,none
+12.2.3,Test communal electrics,none,none
+12.2.4,Record electrical certificates,none,none
+12.3.1,Commission fire risk assessments,none,none
+12.3.2,Action fire risk assessment recommendations,none,none
+12.3.3,Inspect fire doors,none,none
+12.3.4,Maintain fire alarms and emergency lighting,none,none
+12.3.5,Maintain fire-stopping and compartmentation,none,none
+12.4.1,Maintain asbestos register,none,none
+12.4.2,Commission asbestos surveys,none,none
+12.4.3,Manage asbestos removal,none,none
+12.4.4,Re-inspect asbestos-containing materials,none,none
+12.5.1,Commission legionella risk assessments,none,none
+12.5.2,Carry out water temperature monitoring,none,none
+12.5.3,Manage water hygiene remedial actions,none,none
+12.5.4,Inspect and clean water tanks,none,none
+12.6.1,Schedule LOLER inspections,none,none
+12.6.2,Manage lift servicing and breakdowns,none,none
+12.6.3,Action lift inspection findings,none,none
+12.6.4,Service stairlifts and hoists,none,none
+12.7.1,Register higher-risk buildings,none,none
+12.7.2,Maintain safety case reports,none,none
+12.7.3,Maintain golden thread information,none,none
+12.7.4,Run resident engagement for higher-risk buildings,shapes,residents
+12.7.5,Submit mandatory occurrence reports,none,none
+12.8.1,Install and test smoke and carbon monoxide alarms,none,none
+12.8.2,Record alarm compliance,none,none
+12.8.3,Fit alarms in empty homes before letting,none,none
+12.9.1,Carry out HHSRS assessments,none,none
+12.9.2,Remedy category 1 hazards,none,none
+12.9.3,Train colleagues on hazard identification,none,none
+12.10.1,Maintain compliance data and certificates,none,none
+12.10.2,Report compliance to board,none,none
+12.10.3,Audit compliance contractors,none,none
+12.10.4,Investigate compliance failures,none,none
+13.1.1,Plan stock condition surveys,none,none
+13.1.2,Carry out stock condition surveys,none,none
+13.1.3,Validate and load survey data,none,none
+13.1.4,Commission specialist structural surveys,none,none
+13.2.1,Maintain asset register and attributes,none,none
+13.2.2,Maintain component lifecycle data,none,none
+13.2.3,Maintain property hierarchy,none,none
+13.2.4,Monitor property data quality,none,none
+13.3.1,Develop 30-year investment plan,none,none
+13.3.2,Prioritise investment programmes,informs,residents
+13.3.3,Model investment scenarios,none,none
+13.3.4,Align investment plan with financial plan,none,none
+13.4.1,Programme planned component replacements,informs,residents
+13.4.2,Consult residents on planned works,shapes,residents
+13.4.3,Manage planned works contractors,none,none
+13.4.4,Hand over completed planned works,none,none
+13.4.5,Carry out pre-works surveys,none,none
+13.5.1,Schedule cyclical decorations,none,none
+13.5.2,Schedule gutter clearance and roof inspections,none,none
+13.6.1,Assess energy performance,none,none
+13.6.2,Plan retrofit programmes,informs,residents
+13.6.3,Bid for decarbonisation funding,none,none
+13.6.4,Monitor post-retrofit performance,none,none
+13.6.5,Engage residents on retrofit,shapes,residents
+13.7.1,Evaluate asset performance,none,none
+13.7.2,Identify homes for disposal or regeneration,informs,residents
+13.7.3,Maintain asset management strategy,none,none
+13.7.4,Carry out option appraisals for poor-performing homes,none,none
+13.8.1,Develop regeneration masterplans,informs,residents
+13.8.2,Consult residents on regeneration,shapes,residents
+13.8.3,Manage decanting and rehousing,informs,residents
+13.8.4,Manage leaseholder buybacks,none,none
+13.9.1,Appraise stock acquisitions,none,none
+13.9.2,Manage property disposals,informs,residents
+13.9.3,Manage stock transfers,informs,residents
+13.10.1,Let commercial units,shapes,public
+13.10.2,Manage commercial leases,none,none
+13.10.3,Collect commercial rent and charges,none,none
+13.10.4,Arrange repairs to commercial property,none,none
+14.1.1,Receive and log complaints,none,none
+14.1.2,Acknowledge and assess complaints,shapes,residents
+14.1.3,Investigate stage 1 complaints,none,none
+14.1.4,Issue stage 1 responses,shapes,residents
+14.1.5,Agree complaint extensions with residents,none,none
+14.2.1,Review escalation requests,none,none
+14.2.2,Investigate stage 2 complaints,none,none
+14.2.3,Issue final responses,shapes,residents
+14.3.1,Respond to Ombudsman information requests,none,none
+14.3.2,Implement Ombudsman determinations,none,none
+14.3.3,Publish self-assessment against the Complaint Handling Code,shapes,several
+14.4.1,Calculate compensation,none,none
+14.4.2,Approve and pay remedies,none,none
+14.4.3,Track remedy actions,none,none
+14.4.4,Record goodwill payments,none,none
+14.5.1,Analyse complaint themes,none,none
+14.5.2,Implement service improvements,informs,residents
+14.5.3,Report learning to board,none,none
+14.5.4,Track improvement actions to completion,none,none
+14.6.1,Recruit involved residents,shapes,residents
+14.6.2,Support resident panels and scrutiny groups,none,none
+14.6.3,Run resident consultations,shapes,residents
+14.6.4,Respond to scrutiny recommendations,none,none
+14.6.5,Report the impact of resident involvement,shapes,residents
+14.7.1,Run TSM perception survey,none,none
+14.7.2,Calculate TSM results,none,none
+14.7.3,Publish TSM results,shapes,several
+14.7.4,Analyse drivers of satisfaction,none,none
+14.8.1,Log MP and councillor enquiries,none,none
+14.8.2,Respond to member enquiries,shapes,public
+14.9.1,Maintain and publish the information publication scheme,shapes,residents
+14.9.2,"Receive, log and acknowledge tenant information requests",none,none
+14.9.3,Locate and collate requested information,none,none
+14.9.4,Assess requests against refusal grounds,none,none
+14.9.5,Redact and issue responses within 30 days,none,none
+14.9.6,Review challenges to information decisions,none,none
+14.9.7,Report information request volumes and timeliness,none,none
+15.1.1,Identify development sites,none,none
+15.1.2,Carry out site due diligence,none,none
+15.1.3,Negotiate land acquisitions,none,none
+15.2.1,Build financial appraisals,none,none
+15.2.2,Seek investment committee approval,none,none
+15.2.3,Manage scheme budgets,none,none
+15.3.1,Appoint design teams,none,none
+15.3.2,Submit planning applications,informs,public
+15.3.3,Develop employer's requirements,none,none
+15.4.1,Bid for grant funding,none,none
+15.4.2,Manage grant claims and milestones,none,none
+15.4.3,Prepare for grant compliance audits,none,none
+15.5.1,Procure build contractors,none,none
+15.5.2,Manage construction contracts,none,none
+15.5.3,Monitor build quality through clerk of works,none,none
+15.6.1,Negotiate Section 106 package deals,none,none
+15.6.2,Manage joint ventures,none,none
+15.7.1,Manage practical completion and handover,none,none
+15.7.2,Manage defects liability period,none,none
+15.7.3,Manage new home warranty claims,none,none
+15.7.4,Prepare new homes for first let,none,none
+15.8.1,Report development pipeline,none,none
+15.8.2,Carry out post-occupancy evaluation,none,none
+16.1.1,Plan board and committee cycles,none,none
+16.1.2,Prepare and circulate board papers,none,none
+16.1.3,Minute meetings and track actions,none,none
+16.1.4,Recruit and appraise board members,none,none
+16.2.1,Self-assess against regulatory standards,none,none
+16.2.2,Prepare for regulatory inspection,informs,several
+16.2.3,Submit regulatory returns,none,none
+16.2.4,Maintain regulatory compliance register,none,none
+16.3.1,Maintain strategic and operational risk registers,none,none
+16.3.2,Run risk workshops,none,none
+16.3.3,Report risk to audit committee,none,none
+16.4.1,Agree internal audit plan,none,none
+16.4.2,Coordinate audits,none,none
+16.4.3,Track audit actions,none,none
+16.5.1,Map assurance across the three lines,none,none
+16.5.2,Report assurance to board,none,none
+16.6.1,Assess against the code of governance,none,none
+16.6.2,Maintain standing orders and delegations,none,none
+16.6.3,Manage declarations of interest,none,none
+16.7.1,Maintain statutory registers,none,none
+16.7.2,File statutory returns,none,none
+16.7.3,Manage group structure and subsidiaries,none,none
+16.8.1,Investigate whistleblowing concerns,none,none
+16.8.2,Maintain fraud register,none,none
+16.8.3,Report fraud to the regulator,none,none
+17.1.1,Develop corporate strategy,informs,several
+17.1.2,Prepare annual business plan,none,none
+17.1.3,Develop directorate service plans,none,none
+17.2.1,Define KPIs,none,none
+17.2.2,Produce performance reports,none,none
+17.2.3,Run performance reviews,none,none
+17.2.4,Benchmark against peers,none,none
+17.3.1,Maintain reporting dashboards,none,none
+17.3.2,Analyse customer and stock data,none,none
+17.3.3,Produce insight reports,none,none
+17.4.1,Produce VfM metrics,none,none
+17.4.2,Prepare VfM statement,shapes,public
+17.4.3,Identify efficiency opportunities,none,none
+17.5.1,Manage transformation portfolio,none,none
+17.5.2,Run business case process,none,none
+17.5.3,Track benefits realisation,none,none
+17.6.1,Produce resident newsletters and communications,leads,residents
+17.6.2,Manage website content,leads,several
+17.6.3,Manage social media,leads,several
+17.6.4,Run internal communications,leads,colleagues
+17.6.5,Plan communications for service changes and rent increases,leads,residents
+17.6.6,"Write and review resident letters, notices and templates",leads,residents
+17.6.7,Run resident awareness campaigns,leads,residents
+17.6.8,Communicate with residents during major incidents,leads,residents
+17.6.9,Measure whether communications reached and were understood,leads,several
+17.6.10,Manage brand and visual identity,leads,several
+17.7.1,Respond to media enquiries,leads,public
+17.7.2,Manage reputational incidents,leads,public
+17.7.3,Engage stakeholders and politicians,leads,public
+18.1.1,Maintain long-term financial plan,none,none
+18.1.2,Run stress testing and mitigation plans,none,none
+18.1.3,Prepare annual budget,none,none
+18.1.4,Monitor golden rules and covenants,none,none
+18.2.1,Produce monthly management accounts,none,none
+18.2.2,Run budget monitoring with managers,none,none
+18.2.3,Forecast outturn,none,none
+18.3.1,Close month-end ledgers,none,none
+18.3.2,Prepare statutory accounts,none,none
+18.3.3,Coordinate external audit,none,none
+18.3.4,Prepare SORP disclosures,none,none
+18.4.1,Process supplier invoices,none,none
+18.4.2,Match invoices to purchase orders,none,none
+18.4.3,Run supplier payment runs,none,none
+18.4.4,Maintain supplier records,none,none
+18.5.1,Raise sundry invoices,none,none
+18.5.2,Chase sundry debtors,none,none
+18.5.3,Reconcile receivables,none,none
+18.6.1,Manage cash flow forecasts,none,none
+18.6.2,Monitor loan covenants,none,none
+18.6.3,Arrange funding and refinancing,none,none
+18.6.4,Manage property security and charging,none,none
+18.7.1,Prepare VAT returns,none,none
+18.7.2,Manage corporation tax,none,none
+18.7.3,Calculate partial exemption,none,none
+18.8.1,Process monthly payroll,none,none
+18.8.2,Manage pension contributions,none,none
+18.8.3,Process expenses,none,none
+18.9.1,Maintain fixed asset register,none,none
+18.9.2,Apply componentisation,none,none
+18.9.3,Calculate depreciation and impairment,none,none
+19.1.1,Approve and raise vacancies,none,none
+19.1.2,Advertise roles,shapes,public
+19.1.3,Shortlist and interview,none,none
+19.1.4,Issue offers and pre-employment checks,none,none
+19.2.1,Prepare starter contracts,none,none
+19.2.2,Run inductions,none,none
+19.2.3,Complete probation reviews,none,none
+19.3.1,Identify training needs,none,none
+19.3.2,Deliver mandatory training,none,none
+19.3.3,Support professional qualifications,none,none
+19.3.4,Track training compliance,none,none
+19.4.1,Run appraisals,none,none
+19.4.2,Manage pay and grading,none,none
+19.4.3,Benchmark reward,none,none
+19.5.1,Manage absence,none,none
+19.5.2,Handle grievances,none,none
+19.5.3,Handle disciplinaries,none,none
+19.5.4,Consult unions and staff forums,shapes,colleagues
+19.6.1,Maintain establishment and structure,none,none
+19.6.2,Plan workforce needs,none,none
+19.6.3,Manage restructures and TUPE,informs,colleagues
+19.7.1,Run wellbeing programmes,none,none
+19.7.2,"Monitor equality, diversity and inclusion data",none,none
+19.7.3,Run colleague engagement surveys,shapes,colleagues
+19.8.1,Maintain HR records,none,none
+19.8.2,Process contract changes,none,none
+19.8.3,Process leavers and exit interviews,none,none
+20.1.1,Log and resolve IT tickets,none,none
+20.1.2,Manage user accounts and access,none,none
+20.1.3,Manage devices and equipment,none,none
+20.2.1,Manage networks and hosting,none,none
+20.2.2,Manage backups and disaster recovery,none,none
+20.2.3,Monitor system availability,none,none
+20.3.1,Monitor security threats,none,none
+20.3.2,Run security awareness training,shapes,colleagues
+20.3.3,Manage patching and vulnerabilities,none,none
+20.3.4,Respond to cyber incidents,informs,several
+20.4.1,Administer the housing management system,none,none
+20.4.2,Manage system configuration and upgrades,none,none
+20.4.3,Manage application suppliers,none,none
+20.5.1,Maintain data standards,none,none
+20.5.2,Cleanse and validate data,none,none
+20.5.3,Manage master data for properties and people,none,none
+20.6.1,Maintain system integrations,none,none
+20.6.2,Maintain enterprise architecture,none,none
+20.6.3,Assess new technology,none,none
+20.7.1,Gather digital requirements,none,none
+20.7.2,Design and build digital services,none,none
+20.7.3,Test and release changes,none,none
+20.8.1,Maintain IT roadmap,none,none
+20.8.2,Manage software licences,none,none
+20.8.3,Manage IT budget,none,none
+21.1.1,Maintain procurement pipeline,none,none
+21.1.2,Develop procurement strategies,none,none
+21.1.3,Engage the market,none,none
+21.2.1,Prepare tender documents,none,none
+21.2.2,Run compliant tender processes,none,none
+21.2.3,Evaluate bids,none,none
+21.2.4,Award contracts and manage standstill,none,none
+21.3.1,Maintain contract register,none,none
+21.3.2,Run contract performance reviews,none,none
+21.3.3,Manage contract variations,none,none
+21.3.4,Manage contract renewals and exits,none,none
+21.4.1,Onboard suppliers,none,none
+21.4.2,Carry out supplier due diligence,none,none
+21.4.3,Monitor supplier risk,none,none
+21.5.1,Value works against contracts,none,none
+21.5.2,Agree final accounts,none,none
+21.5.3,Resolve commercial disputes,none,none
+21.6.1,Set social value requirements,none,none
+21.6.2,Monitor social value delivery,none,none
+21.7.1,Raise purchase orders,none,none
+21.7.2,Manage framework call-offs,none,none
+21.7.3,Monitor spend compliance,none,none
+22.1.1,Provide legal advice,none,none
+22.1.2,Manage external solicitors,none,none
+22.1.3,Manage litigation,none,none
+22.1.4,Manage property legal work,none,none
+22.2.1,Arrange insurance cover,none,none
+22.2.2,Manage insurance claims,none,none
+22.2.3,Handle liability claims,none,none
+22.2.4,Handle residents' claims for damage to their belongings,none,none
+22.3.1,Respond to subject access requests,none,none
+22.3.2,Manage data breaches,informs,several
+22.3.3,Maintain records retention,none,none
+22.3.4,Carry out data protection impact assessments,none,none
+22.4.1,Maintain health and safety risk assessments,none,none
+22.4.2,Investigate accidents and near misses,none,none
+22.4.3,Manage lone working,none,none
+22.5.1,Manage office premises,none,none
+22.5.2,Manage fleet vehicles,none,none
+22.5.3,Manage office services,none,none
+22.6.1,Maintain business continuity plans,none,none
+22.6.2,Test business continuity arrangements,none,none
+22.6.3,Coordinate major incident response,informs,several
+22.7.1,Maintain policy library,none,none
+22.7.2,Schedule policy reviews,none,none
+22.7.3,Run equality impact assessments,none,none

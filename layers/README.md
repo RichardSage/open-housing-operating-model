@@ -17,7 +17,8 @@ A layer's version changes independently of the model. Changing a layer never cha
 |---|---|---|
 | [`ai-impact`](ai-impact/) | Where AI could change each activity (Rannoch's five impact categories), a governance tier, and a suggested route, based on the NHF AI code of practice and the Regulator's statements | 2026.11 |
 | [`tsm`](tsm/) | The 22 Tenant Satisfaction Measures, linked to the functions and activities that drive or influence each one. Three lenses: TSM theme, how strongly the work is linked to a measure, and whether it's measured by the tenant survey or landlord records | 2026.11 |
-| [`regulation`](regulation/) | A register of 48 laws, regulatory standards and codes for registered providers in England, linked to the functions and activities they require or shape. Two lenses: the legal basis for each activity, and what's changing and when | 2026.11 |
+| [`regulation`](regulation/) | A register of 49 laws, regulatory standards and codes for registered providers in England, linked to the functions and activities they require or shape. Two lenses: the legal basis for each activity, and what's changing and when | 2026.11 |
+| [`communications`](communications/) | Where communications leads the work, shapes the messages other teams send, or needs to plan how a change is explained, and the audience. A first draft for review | 2026.11 |
 
 ## Ideas for new layers
 

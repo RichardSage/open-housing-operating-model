@@ -278,7 +278,7 @@ services:
   - code: "S09.7"
     name: Get help when an emergency affects my building
     pattern: tell
-    uses: ["01.6", "11.4.3", "22.6.3"]
+    uses: ["01.6", "11.4.3", "22.6.3", "17.6.8"]
 
 - code: "S10"
   name: Improve or adapt my home
@@ -289,7 +289,7 @@ services:
   - code: "S10.1"
     name: Update my home
     pattern: book
-    uses: ["13.4.2", "13.4.3", "13.4.4", "13.4.5"]
+    uses: ["13.4.2", "13.4.3", "13.4.4", "13.4.5", "17.6.6"]
   - code: "S10.2"
     name: Make my home warmer and cheaper to heat
     pattern: book
@@ -370,7 +370,7 @@ services:
   - code: "S14.3"
     name: Understand my rent increase
     pattern: check
-    uses: ["07.8.3"]
+    uses: ["07.8.3", "17.6.5", "17.6.6"]
 
 - code: "S15"
   name: Get help with my finances
@@ -497,7 +497,7 @@ services:
   - code: "S20.3"
     name: Respond to a major works consultation
     pattern: tell
-    uses: ["10.5"]
+    uses: ["10.5", "17.6.6"]
   - code: "S20.4"
     name: Ask a question about my lease
     pattern: check
@@ -699,11 +699,11 @@ services:
   - code: "S29.2"
     name: Respond to a survey or consultation
     pattern: tell
-    uses: ["14.7.1", "14.6.3"]
+    uses: ["14.7.1", "14.6.3", "17.6.6"]
   - code: "S29.3"
     name: Have a say about regeneration plans
     pattern: tell
-    uses: ["13.8.2"]
+    uses: ["13.8.2", "17.6.5"]
 
 - code: "S30"
   name: Get information from my landlord
@@ -714,7 +714,7 @@ services:
   - code: "S30.1"
     name: Find published information
     pattern: check
-    uses: ["14.9.1", "14.7.3"]
+    uses: ["14.9.1", "14.7.3", "17.6.2"]
   - code: "S30.2"
     name: Ask for information
     pattern: request

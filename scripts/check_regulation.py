@@ -138,6 +138,9 @@ def check_govuk_page(f, url, since):
             "notes": [n for n in recent if n][:5]}
 
 
+IGNORE_EFFECTS = set()  # effect types to skip, from watch.yaml `ignore_effect_types`
+
+
 def check_legislation(f, url, since):
     """New effects recorded against this item by legislation made since `since`'s year."""
     parts = urllib.parse.urlsplit(url).path.strip("/").split("/")
@@ -156,6 +159,8 @@ def check_legislation(f, url, since):
             mod = parse_day(eff.get("Modified")) or upd
             if mod and mod <= since:
                 continue
+            if (eff.get("Type") or "").strip().lower() in IGNORE_EFFECTS:
+                continue  # such as a local order that applies the Act to one scheme
             key = eff.get("AffectingURI") or eff.get("AffectingTitle") or ""
             title = eff.findtext(f"{UKM}AffectingTitle") or key
             item = found.setdefault(key, {"title": title, "uri": eff.get("AffectingURI"), "effects": 0,
@@ -185,6 +190,8 @@ def govuk_feed(f, feed, since):
         title = r.get("title") or ""
         text = f"{title} {r.get('description') or ''}".lower()
         if any(re.search(p, title, re.I) for p in feed.get("exclude_titles") or []):
+            continue
+        if (r.get("content_store_document_type") or "") in (feed.get("exclude_types") or []):
             continue
         kws = feed.get("include_keywords")
         if kws and not any(k.lower() in text for k in kws):
@@ -407,6 +414,7 @@ def main():
 
     reg = (yaml.safe_load((REG_DIR / "register.yaml").read_text(encoding="utf-8")) or {}).get("obligations") or []
     cfg = yaml.safe_load((REG_DIR / "watch.yaml").read_text(encoding="utf-8")) or {}
+    IGNORE_EFFECTS.update(t.strip().lower() for t in cfg.get("ignore_effect_types") or [])
     f = Fetcher(args.fixtures)
     errors = []
 
