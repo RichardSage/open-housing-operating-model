@@ -10,7 +10,7 @@ An open map of what a housing association does, in two views:
 Every request a resident makes is linked to the activities it relies on.
 
 <!-- BEGIN:counts -->
-Version 0.3.0 has **42 services** made up of **117 requests**, delivered through **22 function areas, 177 functions and 667 activities**.
+Version 0.3.0 has **42 services** made up of **117 requests**, delivered through **22 function areas, 177 functions and 673 activities**.
 <!-- END:counts -->
 
 It gives people across social housing a shared vocabulary for the work: for designing services, choosing systems, planning change, benchmarking or building products. It's a starting point built on judgement, published openly so the sector can improve it together.
@@ -135,7 +135,7 @@ Codes are **permanent identifiers**: once published, a code always means the sam
 | 14 | Complaints & Resident Voice | Homes & Customers | 9 | 37 |
 | 15 | Development & New Supply | Homes & Customers | 8 | 23 |
 | 16 | Governance, Regulation & Risk | Business & Enabling | 8 | 25 |
-| 17 | Strategy, Performance & Communications | Business & Enabling | 7 | 23 |
+| 17 | Strategy, Performance & Communications | Business & Enabling | 7 | 29 |
 | 18 | Finance & Treasury | Business & Enabling | 9 | 31 |
 | 19 | People & Culture | Business & Enabling | 8 | 27 |
 | 20 | Technology, Data & Digital | Business & Enabling | 8 | 25 |
@@ -149,10 +149,11 @@ Codes are **permanent identifiers**: once published, a code always means the sam
 
 Layers add a point of view on top of the model without changing it. In the atlas, choose a layer from the **Layer** bar to colour every activity by it, and choose **Model only** to hide it again. Each layer lives in [`layers/`](layers), with its own version, sources and caveats.
 
-There are three layers so far:
+There are four layers so far:
 - [`regulation`](layers/regulation): a register of the laws, regulatory standards and codes that apply to registered providers in England, linked to the activities they require or shape. It shows the **legal basis** for each activity and **what's changing**, with a "Coming up" timeline of dated changes. A [weekly watcher](layers/regulation/WATCH.md) flags changes to its sources for review. Not legal advice.
 - [`tsm`](layers/tsm): the 22 Tenant Satisfaction Measures every landlord in England reports, linked to the work that **drives** or **influences** each one. It shows which TSM theme each activity serves and whether it's measured by the tenant survey, landlord records or both. Pick a landlord and the atlas shows its published results against other landlords, and colours the model by the measures each activity drives ([try it](https://richardsage.github.io/open-housing-operating-model/?layer=tsm%3Aresults)).
 - [`ai-impact`](layers/ai-impact): where AI could change each activity and how carefully to approach it, drawing on the NHF's AI code of practice and the Regulator's statements. An independent judgement for discussion, not compliance advice.
+- [`communications`](layers/communications): where communications **leads** the work, **shapes** the messages other teams send, or needs to plan how a change is **explained**, and who the audience is. A first draft for review, suggested by a communications manager.
 
 See [layers/README.md](layers/README.md) to suggest changes or propose a new layer.
 

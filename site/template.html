@@ -407,6 +407,8 @@ const LCOL = {
   'strength': ['--l0', '--t1c', '--lnone'],
   'source': ['--l1', '--l4', '--l2', '--lnone'],
   'results': ['--l5', '--t2c', '--t1c', '--l0', '--lnone'],
+  'role': ['--l0', '--l1', '--t2c', '--lnone'],
+  'audience': ['--l0', '--l2', '--l4', '--l3', '--lnone'],
 };
 const LENSES = (D.layers || []).flatMap(ly => ly.fields.map((f, fi) => ({ key: `${ly.id}:${f.id}`, ly, f, fi })).filter(x => x.f.vals.length > 2));
 let lens = null;

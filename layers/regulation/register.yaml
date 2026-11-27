@@ -163,12 +163,15 @@ obligations:
   changes:
   - date: "2026-11-30"
     certainty: confirmed
-    summary: "Phase 2: adds excess cold and heat, falls, fire and explosions, electrical hazards, hygiene and pests, structural collapse"
+    summary: "Phase 2: adds excess cold and heat, falls, structural collapse and falling elements, fire and explosions, electrical hazards, and domestic hygiene. Made as the Hazards in Social Housing (Prescribed Requirements) (England) (Amendment) Regulations 2026"
   - date: "2027"
     certainty: expected
     summary: "Phase 3: all remaining HHSRS hazards except overcrowding"
   url: https://www.gov.uk/government/publications/awaabs-law-phase-2-guidance-for-social-housing-landlords/awaabs-law-phase-2-guidance-for-social-landlords
-  last_checked: "2026-11-14"
+  watch:
+  - https://www.gov.uk/government/publications/awaabs-law-phase-2-guidance-for-social-housing-landlords/awaabs-law-phase-2-guidance-for-social-landlords
+  - https://www.legislation.gov.uk/uksi/2025/1042
+  last_checked: "2026-11-27"
 
 - id: hhsrs
   name: Housing Act 2004, Part 1 (HHSRS)
@@ -237,8 +240,12 @@ obligations:
   status: in-force
   in_force_from: "2025-12-01"
   summary: Electrical installations and landlord-supplied equipment inspected and tested at least every five years. Applies to new tenancies from 1 December 2025 and all tenancies from 1 May 2026.
+  changes:
+  - date: "2026-11-30"
+    certainty: confirmed
+    summary: Amendment Regulations 2026 update the standard to BS 7671:2018+A4:2026 and clarify when installations and appliances in social homes must be checked before a new tenancy starts
   url: https://www.legislation.gov.uk/uksi/2020/312
-  last_checked: "2026-11-14"
+  last_checked: "2026-11-27"
 
 - id: smoke-co
   name: Smoke and Carbon Monoxide Alarm (Amendment) Regulations 2022
@@ -441,16 +448,35 @@ obligations:
   enforcer: First-tier Tribunal (Property Chamber)
   status: partly-in-force
   in_force_from: "2024-07-24"
-  summary: Service charge transparency, litigation costs, lease extension and enfranchisement reforms, mostly awaiting commencement.
+  summary: Service charge transparency, litigation costs, lease extension and enfranchisement reforms. Commencement regulations made in 2026 set the dates for the service charge changes.
   changes:
-  - date: "2027"
-    certainty: expected
-    summary: Service charge and litigation cost changes begin for leaseholders, including shared owners
+  - date: "2027-04-01"
+    certainty: confirmed
+    summary: New rights to challenge service charges and protections from landlords' litigation costs begin, including for leaseholders and shared owners of social landlords
+  - date: "2027-11-01"
+    certainty: confirmed
+    summary: Prescribed service charge demands, accounts and annual reports begin for private landlords
   - date: "2028-11-01"
-    certainty: expected
+    certainty: confirmed
     summary: Prescribed service charge demands, accounts and annual reports extended to social landlords
   url: https://www.gov.uk/government/consultations/strengthening-leaseholder-protections-over-charges-and-services-consultation/outcome/government-response-to-the-strengthening-leaseholder-protections-over-charges-and-services-consultation
-  last_checked: "2026-11-14"
+  last_checked: "2026-11-27"
+
+- id: commonhold-leasehold-bill
+  name: Commonhold and Leasehold Reform Bill (before Parliament)
+  type: act
+  enforcer: Courts; First-tier Tribunal (Property Chamber)
+  status: not-yet-in-force
+  summary: Makes commonhold the default tenure for new flats, with permitted leases including shared ownership. Caps ground rents and replaces forfeiture with a new lease enforcement system. Introduced to Parliament on 19 November 2026.
+  changes:
+  - date: "2028"
+    certainty: expected
+    summary: Ground rent cap of £250 a year for existing leases, if the Bill becomes law as introduced
+  url: https://www.gov.uk/government/collections/commonhold-and-leasehold-reform-bill
+  watch:
+  - https://www.gov.uk/government/collections/commonhold-and-leasehold-reform-bill
+  - https://www.gov.uk/government/publications/guide-to-the-commonhold-and-leasehold-reform-bill/guide-to-the-commonhold-and-leasehold-reform-bill
+  last_checked: "2026-11-27"
 
 - id: capital-funding-guide
   name: Homes England Capital Funding Guide
@@ -548,7 +574,7 @@ obligations:
   status: in-force
   summary: Planning permission, conditions and Section 106 agreements for new homes.
   url: https://www.legislation.gov.uk/ukpga/1990/8
-  last_checked: "2026-11-14"
+  last_checked: "2026-11-27"
 
 - id: governance-code
   name: Code of Governance (for example the NHF Code of Governance)

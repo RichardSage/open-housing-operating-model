@@ -1,0 +1,57 @@
+# Optional layer: communications
+#
+# Communications runs through almost everything a housing association does, but in the core model
+# it sits in one place (17.6 and 17.7). This layer shows where communications leads the work,
+# where it shapes a message another team sends, and where a decision or change needs explaining.
+# The core model's version doesn't change when a layer changes; layers have their own version.
+
+id: communications
+name: Communications
+version: "2026.11"
+applies_to: activities
+data: activities.csv
+summary: >-
+  Where communications leads the work, shapes the messages other teams send, or needs to plan
+  how a change is explained, and who the audience is.
+caveat: >-
+  A first draft for review, not a measurement. Who owns each message varies between landlords:
+  in some, comms writes every resident letter; in others, it sets standards and services write their own.
+sources:
+- name: Suggested by a brand and communications manager in issue #2
+  url: https://github.com/RichardSage/open-housing-operating-model/issues/2
+  note: Comms as the glue between services, and the idea of an overlay
+- name: Regulator of Social Housing, Transparency, Influence and Accountability Standard
+  url: https://www.gov.uk/government/collections/regulatory-standards-for-landlords
+  note: Requires landlords to give tenants accessible information about their landlord and services
+- name: Tenant Satisfaction Measure TP07
+  note: Satisfaction that the landlord keeps tenants informed about things that matter to them
+
+fields:
+  role:
+    name: Role of communications
+    values:
+    - id: leads
+      name: Comms leads
+      description: The communications team does this work
+    - id: shapes
+      name: Comms shapes the message
+      description: Another team sends it, but the output is a message, letter, notice or published content that comms should help shape for clarity, tone and accessibility
+    - id: informs
+      name: Needs explaining
+      description: A decision or change people will notice, so comms should plan how it's explained
+    - id: none
+      name: No direct role
+      description: No message goes out as a direct result of this activity
+  audience:
+    name: Audience
+    values:
+    - id: residents
+      name: Residents and applicants
+    - id: colleagues
+      name: Colleagues
+    - id: public
+      name: Public, partners and media
+    - id: several
+      name: Several audiences
+    - id: none
+      name: No audience

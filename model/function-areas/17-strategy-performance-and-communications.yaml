@@ -63,6 +63,18 @@ functions:
     name: Manage social media
   - code: "17.6.4"
     name: Run internal communications
+  - code: "17.6.5"
+    name: Plan communications for service changes and rent increases
+  - code: "17.6.6"
+    name: Write and review resident letters, notices and templates
+  - code: "17.6.7"
+    name: Run resident awareness campaigns
+  - code: "17.6.8"
+    name: Communicate with residents during major incidents
+  - code: "17.6.9"
+    name: Measure whether communications reached and were understood
+  - code: "17.6.10"
+    name: Manage brand and visual identity
 - code: "17.7"
   name: Media & public affairs
   activities:
