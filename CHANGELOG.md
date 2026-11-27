@@ -7,7 +7,7 @@ All notable changes to the model are recorded here. Versions follow the rules in
 **Faster pages**
 - **Fonts are hosted with the site** instead of loaded from Google Fonts. Pages no longer wait on two other servers before showing anything, visitors' details aren't sent to Google, and the font download is about 70 KB smaller: Latin characters only, and Literata without its optical-size axis. See `site/fonts/README.md`.
 - **The TSM results load only when the TSM view is on.** Before, anyone who had picked a landlord downloaded the 200 KB results file on every visit to the atlas.
-- **Figures further down the atlas are laid out only when they're scrolled near.**
+- **Figures further down the atlas are laid out only when they're scrolled near.** (Fixed straight after: the first version made the atlas wider than a phone screen.)
 - **Tooltips on the whole-model view are built when you hover**, rather than written into all 667 squares every time the view changes.
 - **The services × functions matrix is built when "Compare all services" is opened.**
 - On a simulated mid-range phone, the atlas first shows content in about 0.5 seconds, against about 1.4 seconds before (allowing 0.6 seconds for Google Fonts), and switching views is about a third faster. On a desktop, switching views is more than twice as fast.

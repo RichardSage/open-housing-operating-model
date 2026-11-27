@@ -173,9 +173,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .mlist ul{list-style:none;margin:0;padding:0;display:grid;gap:5px}
 .mlist li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:6px;font-size:13px;line-height:1.35}
 .mlist li .num{font-size:12px;color:var(--muted)}
-/* Figures further down the page are only laid out when they're scrolled near, so the top of the atlas appears sooner */
-#fig2,#fig3,#fig4,#fig5,#contribute{content-visibility:auto;contain-intrinsic-size:auto 1200px}
-#fig4,#contribute{contain-intrinsic-size:auto 700px}
+/* Figures further down the page are only laid out when they're scrolled near, so the top of the atlas appears sooner.
+   Only the height is estimated: an estimated width would push the page wider than a phone screen */
+#fig2,#fig3,#fig4,#fig5,#contribute{content-visibility:auto;contain-intrinsic-block-size:auto 1200px}
+#fig4,#contribute{contain-intrinsic-block-size:auto 700px}
 .mlist small{display:block;color:var(--muted);font-size:11.5px}
 .lpick{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:end;margin:6px 0 4px;font-size:13px}
 .lpick label{display:grid;gap:3px;color:var(--muted)}
